@@ -1,505 +1,1333 @@
 # Table of Contents
 
-1.  [Version 0.6.10 - 2018-08-12](#org84b871b)
-    1.  [Incompatibilities](#orgbb1c381)
-        1.  [`pyFoamPrepareCase.py` does not execute decomposition scripts for single processor cases](#org688032e)
-    2.  [New feature/utilities](#orgfed6e14)
-        1.  [Utility `pyFoamFunkyDoCalc.py` to compare data from `funkyDoCalc`](#org51bede8)
-    3.  [Enhancements to Utilities](#org06d615c)
-        1.  [Recursive searching for `pyFoamListCases.py`](#org949c41c)
-        2.  [Look for `customRegexp` in parent directories](#org43da3f6)
-        3.  [`pyFoamPrepareCase.py` does not execute decomposition scripts for single processor cases](#org6a60b82)
-        4.  [`pyFoamPrepareCase.py` checks for proper decomposition](#org1400526)
-        5.  [`pyFoamPlotWatcher.py` automatically uses newest logfile](#org7ed14da)
-    4.  [Enhancements to the Library](#org9dfe974)
-        1.  [`FoamFileGenerator` handles `OrderedDict`](#orgd3743a3)
-        2.  [`#sinclude` handled as an alias to `#includeIfPresent`](#orgf846b11)
-        3.  [OpenFOAM 6 correctly recognized](#orgb21929c)
-    5.  [Bug fixes](#org6ae235f)
-        1.  [`pyFoamPrepareCase.py` did not remove `processor`-directories](#orgf013cec)
-    6.  [Infrastructure](#org6006da0)
-        1.  [Single digit version numbers supported](#org1cbf5df)
-2.  [Version 0.6.9 - 2018-02-25](#org479dea4)
-    1.  [Major changes](#org71cb1b7)
-        1.  [Add `curses`-output to Utilities](#org2994857)
-    2.  [Incompatibilities](#orge0e1fa4)
-        1.  [`pyFoamPrepareCase.py` creates `.foam`-file](#org8168854)
-        2.  [Hardcoded Foam-Version upgraded to `4.0`](#org540a0f8)
-        3.  [`none` no longer parsed as an equivalent for `false`](#org4d52dfc)
-    3.  [New features/utilities](#org525ab89)
-        1.  [`pyFoamJoinTimelines.py` to join Timelines from restarts](#org4233887)
-        2.  [`pyFoamRestartRunner.py` to automatically restart runs](#org6ba7c2a)
-    4.  [Enhancements to Utilities](#orgc4304b4)
-        1.  [Special snapshot utilities to use MESA](#orgeadde38)
-        2.  [Automated plotting of film properties](#orga828f04)
-        3.  [`pyFoamClearCase.py` automatically executes an existing `Allclean`](#org8bc55ce)
-        4.  [`pyFoamPrepareCase.py` executes tutorial scripts if available](#org520eefd)
-        5.  [Script for clearing in `pyFoamPrepareCase.py`](#org4029233)
-        6.  [`pyFoamPlotWatcher.py` now can handle multiple files](#org60a4839)
-        7.  [`pyFoamPrepareCase.py` now allows separate decomposition scripts](#org5ce5d73)
-        8.  [Runner-utilities now create seperate logfiles on restart](#orgcc2d447)
-        9.  [`pyFoamPVSnapshot.py` improves rewriting of state-files](#orgb59b716)
-        10. [`pyFoamPackCase.py` adds parallel data](#org844853f)
-        11. [`--replacement`-option in `pyFoamPVSnapshot.py` supports Foam-format](#orgda5e0c8)
-        12. [`pyFoamPVSnapshot.py` improved error messages with problems in replacement](#orgd86886c)
-        13. [`customRegexp` now searched in parent directories](#org35a5fd5)
-    5.  [Enhancements to the Library](#org3c58669)
-        1.  [`Paraview.StateFile` extended](#org0540659)
-        2.  [`BasicRunner` now checks for regular End](#org1a73a1e)
-    6.  [Bug fixes](#orga46a874)
-        1.  [`pyFoamPrepareCaser.py` ran out of memory for large script outputs](#orgc38aa17)
-        2.  [No Courant number plottet if `WM_PROJECT_VERSION` is unset](#orge18fb20)
-        3.  [Rescale does not work for streamlines in `pyFoamPVSnapshot.py`](#org2353f6e)
-        4.  [Server not correctly running on Python 2.7 with `socketserver`](#org4fa0164)
-3.  [Version 0.6.8.1 - 2017-08-03](#orgf790ce8)
-    1.  [Bug fixes](#orga569bcc)
-        1.  [Fork not correctly detected for `v1706`](#orgc7a1e35)
-4.  [Version 0.6.8 - 2017-07-06](#org7993c93)
-    1.  [Major changes](#org9034d1a)
-        1.  [`pyFoamNet`-utilities now work without a Meta-Server](#orgf1633a2)
-    2.  [New features/utilities](#org175fe2d)
-        1.  [Added module `PyFoam.Infrastructure.Authentication`](#orgaa1cfab)
-    3.  [Enhancements to Utilities](#org47da3a7)
-        1.  [`pyFoamClearCase.py` now has `-dry-run` option](#org3eccd36)
-        2.  [New option `--keep-time` for `pyFoamClearCase.py`](#org9fc3f17)
-        3.  [`pyFoamNetList.py` no longer needs a meta-server to work](#orgf5dfd75)
-    4.  [Enhancements to the Library](#org1b192c4)
-        1.  [Better calculation of used memory in runs](#orgc6ba2b5)
-        2.  [Pre and post-hooks are now also searched in `PyFoam.Site`](#org32ac72f)
-        3.  [Adapted to correctly detect `OpenFOAM+ v1706`](#orga214d38)
-    5.  [Infrastructure](#org6b8acca)
-        1.  [The `Runner`-utilities now register as `ZeroConf`-services](#orgb70e7db)
-    6.  [Bug fixes](#orge82d4f8)
-        1.  [`--keep-interval` in `pyFoamClearCase.py` not working for parallel-cases](#org0412ec5)
-5.  [Version 0.6.7 - 2017-06-04](#org5897621)
-    1.  [Requirements](#orgccad6f1)
-        1.  [Now at least Python 2.6 required](#org48b37fc)
-    2.  [Incompatibilities](#orgf4fff7c)
-        1.  [Names of files generated by `pyFoamPVSnapshot.py` differ](#org283fc1b)
-    3.  [New features/utilities](#orgd14f225)
-        1.  [Utility `pyFoamListProfilingInfo.py` to print profiling data](#orgef14785)
-        2.  [Utility `pyFoamBlockMeshConverter.py` to convert a 2D-mesh to 3D](#orgf362823)
-    4.  [Enhancements to Utilities](#orgbd2cefa)
-        1.  [`customRegexp` now can scan for texts](#orgcd57159)
-        2.  [Lines in `PyFoamHistory` escaped](#org305b4e0)
-        3.  [`--values-string` of `pyFoamPrepareCase.py` now accepts OpenFOAM-format](#org38a7c0c)
-        4.  [`pyFoamRunner.py` and `pyFoamPlotRunner.py` allow automatic selection of solver](#org35dc394)
-        5.  [Calculations (data transformations) in `customRegexp`](#orgc34f275)
-        6.  [Multi-part `idNr` for `dynamic` in `customRegexp`](#orgc241571)
-        7.  [`pyFoamListCases.py` detects dead runs](#org1059fc7)
-        8.  [Improved time-handling of `pyFoamPVSnapshot.py`](#org3c81fb8)
-        9.  [Default plots can be set in configuration](#org828c296)
-        10. [`derivedParameters.py`-script called from `pyFoamPrepareCase.py` allows error reporting](#orgbf51695)
-    5.  [Enhancements to the Library](#org96912f9)
-        1.  [Detection of new versions of OpenFOAM-foundation and OpenFOAM+](#orgc2b2dba)
-        2.  [`SpreadsheetData` now handles string data](#org0e42f45)
-        3.  [`TimelineData` tolerates string values](#org1dc2d74)
-        4.  [`()` operator of `SpreadsheetData` works without name](#org7933d1c)
-        5.  [New function `setCurrentTimeline` in `PyFoam.Paraview.Data` to get data at time](#org2e5d1b2)
-        6.  [User-specific temporary directory](#org59dde44)
-        7.  [`Gnuplot`-plots now get better titles](#org42fcc63)
-        8.  [`ParsedParameterFile` now supports `#includeFunc`](#org0724cd0)
-        9.  [New utility function `findFileInDir`](#org849b984)
-        10. [`humandReadableDuration` added to `PyFoam.Basics.Utilities`](#org42c5806)
-    6.  [Infrastructure](#org39e5e19)
-        1.  [`pyFoamVersion.py` now reports the versions of the `ThirdParty`-packages](#org537c57d)
-    7.  [Bug Fixes](#org6f42fcc)
-        1.  [Application classes fail in Paraview](#org9e6154d)
-        2.  [Scripts in `pyFoamPrepareCaseParameters.sh` not working on Mac OS X](#org8e83251)
-        3.  [Processor-directories unsorted in `SolutionDirectory`](#org5cb49ef)
-        4.  [Deleting failed if a file did't exist](#orgad9c6fa)
-        5.  [Missing files in `RegionCases`](#orge5bb8ed)
-        6.  [Wrong `solver` in `pyFoamListCase.py`](#org32cfb55)
-    8.  [ThirdParty](#org5364e6e)
-        1.  [Updated `tqdm` to version 4.8.4](#org8b6be0c)
-        2.  [Updated `PLY` to version 3.9](#org158d692)
-        3.  [Updated `six` to 1.10.0](#org430eee8)
-6.  [Version 0.6.6 - 2016-07-15](#org6f9b4b5)
-    1.  [Incompatibilities](#orgc45533c)
-        1.  [Changes in `IPython`-notebooks 3.0](#org0fdf091)
-    2.  [Enhancements to Utilities](#org20a2153)
-        1.  [`pyFoamPrepareCase.py` executes `setFields` if appropriate](#orge85c3f8)
-        2.  [Plotting utilities now automatically add custom plots depending on the solver name](#org7b09d73)
-        3.  [`alternateAxis`-entries now can be regular expressions](#orgb0c72ec)
-        4.  [Plotting utilities now allow choice of Gnuplot terminal](#org8f3f008)
-        5.  [Plotting utilities now sort legend by name](#org269ca9a)
-        6.  [`pyFoamExecute.py` allows calling with debugger](#org7fe65c6)
-        7.  [`pyFoamPrepareCase.py` fails if execution of a script fails](#orgd560a70)
-        8.  [`--hardcopy` in plotting library now allows modification of `gnuplot`-terminals](#orgbe5b616)
-        9.  [`pyFoamPrepareCase.py` writes state information about what it is currently doing](#orgc6a8ee9)
-        10. [`pyFoamBinarySize.py` can handle new location of binaries in OpenFOAM 3.0](#orga91209c)
-        11. [`Runner`-utilites now can signal on `blink(1)`-devices](#org256ea58)
-        12. [`pyFoamExecute.py` can flash a `blink(1)`](#org60e2f2d)
-        13. [`pyFoamDecompose.py` allows using a template file](#orgf580ee0)
-        14. [`pyFoamTimelinePlot.py` now handles new format of probe files](#orgc0beb9f)
-        15. [`ReST`-report of `pyFoamPrepareCase.py` now reports derived parameters](#orgfed3fc3)
-        16. [`pyFoamPrepareCase` can now ignore directories](#orgb1c7d3d)
-        17. [`pyFoamConvertToCSV.py` allows adding formulas to XLSX-files](#orgd378af9)
-        18. [`pyFoamListCases.py` now displays mercurial info](#orgfc9f839)
-        19. [Progress bar added to utilities with long run-time](#org06564e6)
-        20. [Utilities that clear data can now report what is cleared](#org84d50cb)
-        21. [`pyFoamConvertToCSV.py` now allows manipulating the input](#org73c5385)
-    3.  [Enhancements to the Library](#org754138f)
-        1.  [Detection of `OpenFOAM-dev`](#org17cd28f)
-        2.  [Add `OpenFOAM+` as a fork](#org6dc451b)
-        3.  [Accept new convention for location of `blockMeshDict`](#org6ba7f0d)
-        4.  [Handling of complex data by `Configuration`](#orgbf10763)
-        5.  [`Configuration` has method `getArch` for architecture dependent settings](#orga4a5cab)
-        6.  [`execute`-method from `PyFoam.Basics.Utilities` returns status-code](#org524fca5)
-        7.  [`BasicRunner` now supports more ways of stopping runs](#org5222fbc)
-        8.  [Added `Blink1` class to support `blink(1)` devices](#orgcb3b89d)
-        9.  [`ParsedParameterFiles` now supports `includeEtc`](#org39d8f9b)
-        10. [Parses uniform fields correctly](#org31bbb51)
-        11. [`toNumpy`-method added to `Unparsed` and `Field`](#org9381955)
-        12. [Added module `PyFoam.RunDictionary.LagrangianPatchData` to read data from patch function object](#orgc85c754)
-        13. [Added module `PyFoam.RunDictionary.LagrangianCloudData` to read cloud data](#orgb7b2d2f)
-        14. [Method `code` added to =RestructuredTextHelper](#org7471f3f)
-        15. [`ParsedParameterFile` now parses new dimension format correctly](#orgfc60304)
-        16. [`ParsedParameterFiel` now parses uniform fields correctly](#org033bc6e)
-    4.  [Infrastructure](#orgc36aa4d)
-        1.  [Change of documentation from `epydoc` to `sphinx`](#org02565ae)
-        2.  [Adaptions to the unittests](#org749f2a4)
-    5.  [Bug fixes](#orge995ca3)
-        1.  [Wrong format of `ExecutionTime` breaks plotting utilities](#orgdd15797)
-        2.  [`phases` not working with dynamic plots](#orgcfe88cb)
-        3.  [Phase name added to function object output](#orga5e3885)
-        4.  [One region mesh too many in utilities that change the boundary](#org9f0c8a0)
-        5.  [`pyFoamClearCase.py` fails on write-protected case](#org8a87665)
-        6.  [Copying of directories in `pyFoamPrepareCase.py` confused by zipped files](#orgee39c9a)
-        7.  [Wrong times for multi-view layouts in `pyFoamPVSnapshots.py`](#orgb7e7a09)
-        8.  [First timestep not plotted (and not stored)](#orga0b3f26)
-        9.  [`DYLD_LIBRARY_PATH` not passed on *Mac OS X 10.11*](#org7a54f79)
-        10. [Newer versions of `pandas` broke the writing of excel files with `pyFoamConvertToCSV.py`](#org20d6aed)
-        11. [Capital `E` in exponential notation for floats breaks parser](#org3970865)
-        12. [`Runner`-utilities clear processor directories if first time in parallel data differs](#org1cd83c1)
-        13. [Utilities `pvpython` not working when installed through `distutils`](#org5d454ec)
-    6.  [ThirdParty](#orgf8bccf8)
-        1.  [Added `tqdm` for progress bars](#orga27c4b9)
-7.  [Version 0.6.5 - 2015-06-01](#org8bba1b4)
-    1.  [Major changes](#org6353779)
-        1.  [PyFoam now on *Python Package Index*](#org26256cf)
-    2.  [Incompatibilities](#org59717ea)
-        1.  [`ArchiveDir` in `SolutionDirectory` discouraged](#org1df0609)
-        2.  [Pickled data files now written as binary](#org53b5138)
-        3.  [The `PlotRunner` and `PlotWatcher` now don't strip spaces](#org434c899)
-        4.  [Different column names in `pyFoamConvertToCSV.py`](#orge32d0c2)
-        5.  [`pyFoamChangeBoundaryName.py` and `pyFoamChangeBoundaryType.py` automatically modify `processorX`](#org7b39857)
-    3.  [Bugfixes](#orga8bcf0a)
-        1.  [Arbitrary commands in `TemplateFile` passed to file](#orgd83c6d3)
-        2.  [Pickled files not opened in binary mode](#org99b4aa3)
-        3.  [Additional fixes for Python 3](#org7391490)
-        4.  [`ParsedParameterFile` fails if "complete" dictionary is `#include` ed](#orga5624f3)
-        5.  [`ParsedParameterFile` fails if there is more info after `#include`](#org049e1db)
-        6.  [`pyFoamDisplayBlockMesh.py` not working with VTK 6](#org8a85724)
-        7.  [`pyFoamCreateModuleFile.py` failed with environment variables containing `=`](#org8f89d9d)
-        8.  [Fix import in `GeneralVCSInterface`](#orge2390b6)
-        9.  [Support of old format in `ParsedBlockMeshDict` broken](#org8e37a4e)
-        10. [`TemplateFile` not correctly working in Python 3](#orgfd75863)
-        11. [Certain things not done by `pyFoamPrepareCase` in `--quiet` was set](#orgda67bbd)
-        12. [Annoying warning at the start of the run](#orgdb28656)
-        13. [Redirected values](#org9db402c)
-        14. [Behavior of Template-engine not consistent in Python3 and Python2](#org44b533a)
-        15. [Braces, brackets, parentheses in column name broke `RunDatabase`](#org7fdd2f8)
-        16. [Finding of installations in alternate locations broken](#orgcb4bb15)
-        17. [Failing on 3.x if socket for server thread already occupied](#org372224a)
-    4.  [Enhancements to Utilities](#org45e0276)
-        1.  [`pyFoamPrepareCase` recognizes multi-region cases](#org12bae05)
-        2.  [`pyFoamPrepareCase` adds specialized templates](#org91be8df)
-        3.  [`pyFoamPrepareCase` keeps data generated by meshing script](#org9084e32)
-        4.  [`pyFoamPrepareCase` adds possibility for a file with default values](#org4137293)
-        5.  [`pyFoamPrepareCase` writes report about the variables](#org4a17785)
-        6.  [Gnuplot can be styled with default commands](#orgf9b0632)
-        7.  [`pyFoamPVSnapshot.py` now supports Paraview 4.2 and later](#org201196d)
-        8.  [`pyFoamPVSnapshot.py` allows switching between decomposed and reconstructed data](#org2ee5b0d)
-        9.  [`pyFoamPVSnapshot.py` allows changing the field for sources](#org50e808d)
-        10. [`pyFoamPVSnapshot.py` allows rescaling the color-legend](#orgd1971ea)
-        11. [`pyFoamPVsnapshot` reads parameters written by `pyFoamPrepareCase.py`](#org5e490a2)
-        12. [`pyFoamListCases.py` allows filtering](#org8a3889d)
-        13. [`pyFoamRunParametervariation.py` now allows dictionaries](#orge51f88a)
-        14. [`pyFoamConvertToCSV.py` now has all functionality of `pyFoamJoinCSV.py`](#orgb175523)
-        15. [`dynamic` in `customRegexp` now allows composition from multiple match-groups](#org850e01b)
-        16. [New type `dynamicslave` in `customRegexp`](#orgf7e989b)
-        17. [Additional profiling option `--profile-line-profiler`](#org45744c4)
-        18. [Utilities that use templates can be customized with the configuration](#orge445dca)
-        19. [`LocalConfigPyFoam` now can be read **before** argument parsing](#org890857a)
-        20. [`pyFoamConvertToCSV.py` automatically selects the output format with `--automatic-format`](#orga3f4554)
-        21. [`pyFoamConvertToCSV.py` allows adding original data as separate sheets](#org441e157)
-        22. [`pyFoamConvertToCSV.py` has improved naming of columns](#org896103f)
-        23. [`pyFoamConvertToCSV.py` now supports sets-files](#org0d0a13c)
-        24. [`pyFoamPrepareCase.py` can calculate derived values with a script](#org7635980)
-        25. [`pyFoamPrepareCase.py` adds a variable `numberOfProcessors`](#orga7be00b)
-        26. [`pyFoamChangeBoundaryName.py` and `pyFoamChangeBoundaryType.py` now support decomposed cases](#org226e0e9)
-        27. [`pyFoamPrepareCase.py` has possibility for templates after the final stage](#org5b25ded)
-        28. [`pyFoamRunParameterVariation` allows adding postfix to cloned cases](#org7aa31a2)
-        29. [`pyFoamConvertToCSV` now allows setting of default input file format](#orge97b85d)
-        30. [`pyFoamListCases.py` adds the hostname to the printed information](#org8e37ea6)
-        31. [`pyFoamPrepareCase.py` allows cloning](#org40e3ce1)
-    5.  [Enhancements to the Library](#org6a723d7)
-        1.  [`SolutionDirectory` detects multiple regions](#orgd8de29f)
-        2.  [`BoolProxy` now compares like builtin `bool`](#orgd983b5a)
-        3.  [`PyFoamApplication`-class now supports `pvpython` for debugging](#orgcc9ab71)
-        4.  [`TemplateFile` now allows more flexible assignments](#org6fd5a2c)
-        5.  [`ThirdParty`-library `six` upgraded to 1.9.0](#org80a60d6)
-        6.  [Additional markup in `RestructuredTextHelper`](#org14c356b)
-        7.  [`SpreadsheetData` can now read files produced by the `sets`-functionObject](#org2c38145)
-    6.  [Infrastructure](#org9d470b5)
-        1.  [Adaption of Debian packaging to new conventions](#org0397751)
-    7.  [Development changes](#org126b6f2)
-        1.  [Now uses `pytest` for unittesting](#org7056e27)
-8.  [Version 0.6.4 - 2014-11-24](#orgddb7668)
-    1.  [Requirements](#orgcc406a8)
-    2.  [Future changes](#orgc6c46ea)
-        1.  [Redundant utilities `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` unified](#org71d8f5e)
-    3.  [Major changes](#orgb66c746)
-        1.  [Multi-line regular expressions in `customRegexp`](#org3dc5f69)
-        2.  [Enhancement of `pyFoamPrepare.py`](#org9815b5a)
-        3.  [Enhancements of the CSV-utilities](#org49ad2c7)
-        4.  [Environment variable `PYFOAM_SITE_DIR` and `PYFOAM_DIR`](#org802e65b)
-    4.  [Incompatibilities](#org7753d79)
-        1.  [Option `--silent` removed from `pyFoamPrepareCase.py`](#org45f3cd7)
-        2.  [Keys in `RunDatabase` with column-names that contain upper-case letters change](#org2cf0e0a)
-        3.  [Change in unique variable names in `pyFoamConvertToCSV.py`](#org61b69d9)
-        4.  [`PyFoam.IPython`-module renamed to `PyFoam.IPythonHelpers`](#org3376887)
-    5.  [Bugfixes](#org568bfb5)
-        1.  [Templates in `pyFoamPrepareCase.py` did not keep permissions](#orgbefa804)
-        2.  [`pyFoamComparator.py` failed due to circular dependency](#org09a0d3c)
-        3.  [`pyFoamDumpRunDatabaseToCSV.py` fails if Pandas-data is requested](#orgf0f8b54)
-        4.  [`sort` for list broke code on Python 3](#orgc664f55)
-        5.  [Changing the OF-version does not work in Python 3](#org4301c40)
-        6.  [`addData` in `PyFoamDataFrame` extrapolates for invalid values](#org9ba8e77)
-        7.  [`--keep-last` did not work for `pyFoamClearCase.py` and parallel cases](#orgba7b9bb)
-        8.  [`pyFoamDumpRunDatabaseToCSV.py` does not add basic run information](#org3b04686)
-        9.  [Restore of `FileBasisBackup` did not work](#orgc4fc284)
-        10. [Remove circular dependency in `DataStructures`](#orga76de64)
-    6.  [New features/Utilities](#org471d982)
-        1.  [`pyFoamRunParameterVariation.py`](#org87d7ade)
-        2.  [`pyFoamBinarySize.py`](#orgc9f85e4)
-        3.  [`pyFoamBlockMeshRewrite.py`](#org0c366f1)
-    7.  [Enhancements to Utilities](#orgd09bce3)
-        1.  [`pyFoamChangeBoundaryType.py` allows setting additional values](#orgf94e1b5)
-        2.  [`pyFoamPrepareCase.py` now has OF-version and fork as defined variables](#org586aaf4)
-        3.  [`pyFoamPrepareCase.py` now allows "overloading" another directory](#org6cf1ae5)
-        4.  [`pyFoamIPythonNotebook.py` adds improvements to the notebook](#org70c65fb)
-        5.  [`pyFoamListCases.py` more tolerant to faulty `controlDict`](#orgcf33316)
-        6.  [`pyFoamDumpConfiguration.py` prints sections and keys alphabetically](#org8c89b71)
-        7.  [`pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` read and write Excel-files](#org699df6f)
-        8.  [Flexible variable filtering in `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py`](#org66b2ea0)
-        9.  [Columns in `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` can be recalculated](#org987bac7)
-        10. [Testing for `Numeric` removed from `pyFoamVersion.py`](#org86a4810)
-    8.  [Enhancements to the Library](#org1529210)
-        1.  [Subclass of `ClusterJob` that support `PrepareCase`](#orga153141)
-        2.  [Subclass of `ClusterJob` that support `RunParameterVariation`](#org53e1144)
-        3.  [`execute` in `PyFoam/Utilities` fails if script is not executable](#org5eaa753)
-        4.  [`foamVersion` uses a separate wrapper class for `tuple`](#org21b9195)
-        5.  [Move calculation of disk usage to `Utilities`](#org03ca6e4)
-        6.  [Enhancement of `--help`](#orgce19ec9)
-        7.  [`which`-routine in `Utitlities` uses native Python-routine](#org0eb536b)
-        8.  [`FileBasis` now allows file handles instead of the filename](#orgc25b368)
-        9.  [`BlockMesh` doesn't force writing to file anymore](#orgd1f87c0)
-        10. [Additional methods for `BlockMesh`-class](#orga951404)
-        11. [`LineReader` allows keeping spaces on left](#orga5225e9)
-        12. [`TemplateFile` now allows writing of assignment-results in file](#orgb3ec8ca)
-        13. [`SolverJob` now allows passing of parameters to the solver](#org2f49bcf)
-        14. [`SpreadsheetData` now allows reading from an Excel file](#org6ebea2b)
-        15. [`SpreadsheetData` allows recalculating columns](#orgc255cd3)
-    9.  [Known bugs](#org4af8bf0)
-        1.  [Timelines not forgotten for multiple runner calls](#orgc80df1b)
-9.  [Version 0.6.3 - 2014-06-23](#org433f6e4)
-    1.  [Requirements](#org86e4231)
-    2.  [Major changes](#org62b8557)
-        1.  [Version changing supports forks of OpenFOAM](#orge6259e5)
-    3.  [Incompatibilities](#org133d168)
-        1.  [Change of command interface of `pyFoamSTLUtility.py`](#orgaaa60e1)
-        2.  [If `0.org` is present `pyFoamCloneCase.py` and `pyFoamPackCase.py` ignore `0`](#org0e7808d)
-    4.  [Bugfixes](#orgdabb57a)
-        1.  [PlotWatcher has long times between updates if pickling takes long](#org6c6c13f)
-        2.  [`pyFoamPVSnapshot.py` fails for newer paraview-versions](#org85e76ad)
-        3.  [SamplePlot failed when valueNames are unspecified](#org94a8956)
-        4.  [`pyFoamTimelinePlot.py` failed Numpy/Pandas output of vector fields](#orga2d8be3)
-        5.  [`alternateAxis` ignored for slave](#org4cbb10c)
-        6.  [`pyFoamCaseReport.py` more stable for binary `boundary`-files](#org0fcf83b)
-        7.  [`SpreadsheetData` returns data which breaks certain Pandas-operations](#org46cf305)
-        8.  [`pyFoamCloneCase.py` added duplicates to the archive](#orge8fc472)
-        9.  [`nonuniform` of length 3 not correctly printed](#orgec1c90f)
-    5.  [New features/Utilities](#org9878e6f)
-        1.  [`pyFoamPrepareCase.py` for case preparation](#org26bcb39)
-        2.  [`pyFoamIPythonNotebook.py` for generating and manipulating IPython-notebooks](#org2accd3f)
-        3.  [Additional sub-module `PyFoam.IPython`](#org3045a85)
-        4.  [Additional sub-module `PyFoam.Wrappers`](#orgf74897a)
-    6.  [Enhancements to Utilities](#org482a6bd)
-        1.  [`pyFoamSampleplot` has option to use index instead of time in filenames](#orga5e378d)
-        2.  [`pyFoamListCases.py` Allows addition of custom data](#orgea1c845)
-        3.  [Switch compiler versions](#orgf34c186)
-        4.  [`pyFoamVersion.py` reports the installed versions better](#orgc8de0e5)
-        5.  [Offscreen rendering can be switched off in `pyFoamPVSnapshot.py`](#orga6c6546)
-        6.  [Write 3D-data in `pyFoamPVSnapshot.py`](#org3548d12)
-        7.  [Added capabilities to `pyFoamSTLUtility`](#orgc295089)
-        8.  [`pyFoamDecomposer.py` switches off function objects](#org4177e34)
-        9.  [`pyFoamCloneCase.py` clones more stuff](#orged1605c)
-    7.  [Enhancements to the Library](#orgd017b3f)
-        1.  [`BasicRunner` now can print the command line that is actually used](#org29d1ae0)
-        2.  [`ClusterJob` now can live without a machinefile](#org4a34275)
-        3.  [Enhanced treatment of symlinks during cloning](#org6d4b819)
-        4.  [`AnalyzedCommon` clears the `analyzed`-directory](#org80fb47d)
-        5.  [`TimelineDirectory` is more tolerant](#org680b4ec)
-        6.  [Possibility of a subcommand-interface for utilities](#org7add6eb)
-        7.  [`STLUtility` accepts file-handles](#org1c6aaa3)
-        8.  [`addClone` in `SolutionDirectory` accepts glob patterns](#org62e28b5)
-        9.  [`execute` in `Utilities` allows specification of working directory and echoing of output](#org412c539)
-        10. [`rmtree` and `copytree` more tolerant](#org8d59286)
-        11. [Enhanced support for booleans in the parser](#org146ca24)
-        12. [Application classes now allow specifying options as keyword parameters](#org34ee199)
-        13. [`SolutionDirector` now can classify directories in the `postProcessing`-directory](#org70efca6)
-        14. [`pyFoamSamplePlot.py` now more flexible for distributions](#org51a19e3)
-        15. [`DictProxy` now has a `dict`-like `update`-method](#orgfbf25be)
-        16. [`FoamFileGenerator` automatically quotes strings](#orgc316704)
-        17. [Children of `FileBasis` now can be used with the `with`-statement](#orge763112)
-10. [Version 0.6.2 - 2013-11-03](#orgde882da)
-    1.  [Major changes](#org7beaab5)
-        1.  [Use of `pandas`-library](#orgeaeea56)
-    2.  [Incompatibilities](#org8dc95d1)
-        1.  [Different separator for databases in CSV-files](#orgb43db42)
-        2.  [Change of independent variable name in sample data](#orgb2069eb)
-    3.  [Bugfixes](#org8b27577)
-        1.  [`pyFoamPackCase.py` does not handle symbolic links correctly](#orga27a6cd)
-        2.  [`pyFoamPotentialRunner.py` not working with OpenFOAM 2.0 or newer](#orgb78b006)
-        3.  [`pyFoamListCase.py` fails with `controlDict` that use preprocessing](#orgde354ca)
-        4.  [Cloning fails in symlink-mode if files are specified twice](#orgc9fe126)
-    4.  [Utilities](#org51ff02a)
-        1.  [`pyFoamPotentialRunner.py` now allows removing of `functions` and `libs`](#orga28f4cb)
-        2.  [The Runner-utilities now have more options for clearing](#orga3db91d)
-    5.  [Library](#org8d9cc17)
-        1.  [`SolutionDirectory` and `TimeDirectory` are more tolerant](#orgdeb590e)
-        2.  [`ClusterJob` now handles template files](#org3fb9176)
-        3.  [Additional parameters in `ClusterJob`](#org77d5628)
-        4.  [Custom data in directory easier accessible](#org35e8b67)
-        5.  [`SolverJob` now allows compression of output](#org69793e7)
-        6.  [`PyFoamApplication`-class now allows quick access to data](#orge8c073d)
-    6.  [New features/Utilities](#orge97c2c2)
-        1.  [Post-run hook that sends mail at the end of run](#org13e0056)
-        2.  [New utility `pyFoamCompressCases.py`](#orgdc9d918)
-        3.  [Paraview-module to read additional data](#orged1d575)
-    7.  [Enhancements](#org8e41b89)
-        1.  [`pyFoamRedoPlot.py` can plot in XKCD-mode](#org0a826f8)
-        2.  [`pyFoamListCases.py` now displays disk usage in human readable form](#org0678807)
-        3.  [`pyFoamClearCase.py` more flexible in selection of data to be removed](#org84d49e9)
-        4.  [`pyFoamFromTemplate.py` automatically chooses template and default values](#org14bba57)
-        5.  [`pyFoamDumpRunDatabaseToCSV.py` can disable standard-fields](#orge6a791c)
-        6.  [`pyFoamDumpRunDatabaseToCSV.py` prints `pandas`-object](#org566bfaa)
-        7.  [Better debugging with `ipdb`](#orgeae8663)
-        8.  [Interactive shell after execution for utilities](#org6d3a5d5)
-        9.  [Utilities that read quantitative data convert to `pandas`-data and/or `numpy`](#orgc229738)
-        10. [Utilities that read quantitative data write Excel files](#orgca642e4)
-        11. [Specify additional settings for `GnuPlot` in `customRegexp`](#org199e83a)
-        12. [More flexible data specification for `pyFoamSamplePlot.py`](#orgf671d5e)
-        13. [`pyFoamSamplePlot.py` now allows specification of x-range](#orgd1be111)
-11. [Version 0.6.1 - 2013-05-24](#org77656aa)
-    1.  [Major changes](#orga17bf9c)
-    2.  [Bugfixes](#org806aa24)
-        1.  [Restoring of `controlDict` after `write`](#orgd83eb79)
-        2.  [Custom-plot type `slave` not working if no `master` defined](#org591afe7)
-        3.  [`-list-only` did not correctly parse lists with a numeric prefix](#org015ee88)
-    3.  [Utilities](#org016d3f5)
-        1.  [`pyFoamBuildHelper.py` now allow more than one action](#org139411a)
-        2.  [Utilities warn if OpenFOAM-version is unset](#orgf6ee4fe)
-        3.  [`pyFoamUpgradeDictionariesTo20.py` allows single files](#org456d359)
-        4.  [`pyFoamUpgradeDictionariesTo20.py` transforms reaction-schemes](#org70adf25)
-        5.  [`pyFoamUpgradeDictionariesTo20.py` transforms thermophysical data](#org6d0d369)
-        6.  [`pyFoamCloneCase` now allows creating directory that symlinks to the original](#org29fb415)
-        7.  [`pyFoamClearCase.py` now removes `postProcessing` and allows removal of additional files](#org115b490)
-        8.  [Improvements to `pyFoamVersion.py`](#org24ba161)
-        9.  [Additional files automatically cloned](#orgf3c54c7)
-        10. [`pyFoamDisplayBlockMesh.py` uses the same options for template format as `pyFoamFromTemplate.py`](#org5500967)
-    4.  [Library](#orgbb745ef)
-        1.  [Improvements in syntax of `ParsedParameterFile`](#org7b73448)
-        2.  [`Utilities`-class now function to find files matching a pattern](#org3f826a8)
-        3.  [VCS ignores more files](#org7435ada)
-    5.  [New features/Utilities](#orgdaf317c)
-        1.  [New Utility `pyFoamSymlinkToFile.py`](#orgd8f81c4)
-12. [Version 0.6.0 - 2013-03-14](#orgc0bbf77)
-    1.  [Major changes](#org2cbfb76)
-        1.  [Adaption to work with Python3](#org715eded)
-        2.  [New ThirdParty-Libraries](#org9d3b9fc)
-        3.  [Porting to `Windows`](#org1aad344)
-        4.  [Experimental port to `pypy`](#orgb55bef9)
-    2.  [Third-Party](#orgec8278c)
-        1.  [Upgraded `ply` to 3.4](#org69a4faf)
-    3.  [Infrastructure](#orga7aab51)
-        1.  [Parameters can't be modified in `CTestRun` after initialization](#orgdc97e95)
-        2.  [Treat timeouts in the `MetaServer` right](#org74372a4)
-        3.  [Add `execute`-method to `ClusterJob`](#org1f26b36)
-        4.  [Add possibility to run specific modules before or after the solver](#org0f7c5fd)
-        5.  [Parameters added to the info about the run](#org5cd0b2d)
-        6.  [Parameter handling in `ClusterJob` extended](#orgf724ac3)
-        7.  [Run data written alongside `PickledPlots`](#orgdc80f3a)
-        8.  [`BasicRunner` collects error and warning texts](#orgb7b6538)
-    4.  [Library](#org2eebeb9)
-        1.  [`TemplateFile` now uses `pyratemp`](#org7e51b14)
-        2.  [Clearer error message in Application-classes](#org27eddf9)
-        3.  [Output is only colored if it goes to the terminal](#org6918218)
-        4.  [`error`-method of application classes now raises an exception](#org5db6c73)
-        5.  [`ParsedParameterFile` now knows how to handle binary files](#orga71a854)
-        6.  [`LabledReSTTable` for more flexible table generation](#org03bdfa9)
-        7.  [Plotting classes now allow setting of `xlabel`](#orgddcd243)
-    5.  [Utilities](#org6dfce5a)
-        1.  [`pyFoamFromTemplate.py` with new templating engine](#org31cc1a8)
-        2.  [`pyFoamSamplePlot.py` allows using the reference data as basis for comparison](#org8913c31)
-        3.  [Scaling and offsets are now used in plots of `pyFoamSamplePlot.py`](#orgf18fa76)
-        4.  [`pyFoamPrintData2DStatistics.py` prints relative average error](#org807845e)
-        5.  [Enhancements to `pyFoamVersion.py`](#org963fe1b)
-        6.  [`pyFoamRunner.py` allows hooks](#orgc449fd5)
-        7.  [`pyFoamRedoPlots.py` supports range for plots](#org784d57c)
-        8.  [`pyFoamDisplayBlockMesh.py` no supports templates](#orgf014434)
-        9.  [`pyFoamCaseReport.py` is tolerant towards binary files](#orgb61b386)
-        10. [`pyFoamSamplePlot.py` and `pyFoamTimelinePlot.py` raise error if no plots are generated](#orge67f760)
-        11. [`pyFoamSurfacePlot.py` can wait for a key](#orgc994b2b)
-        12. [`pyFoamEchoDictionary.py` is more flexible with binary files](#org5dd4925)
-        13. [All utilities now have a switch that starts the debugger even with syntax-errors](#orgd8540f7)
-        14. [Utilities now can be killed with `USR1` and will give a traceback](#orga00d907)
-        15. [Switch to switch on **all** debug options](#orgad68f26)
-        16. [Plotting utilities now allow specification of x-Axis label](#orgad3d274)
-        17. [Metrics and compare for `pyFoamTimelinePlot.py` and `pyFoamSamplePlot.py` support time ranges](#orgb25c9aa)
-        18. [`pyFoamDisplayBlockMesh.py` allows graphical selection of blocks and patches](#org318c9d8)
-        19. [`pyFoamCloneCase.py` and `pyFoamPackCase.py` accept additional parameters](#orgef3912f)
-        20. [`pyFoamListCases.py` now calculates estimated end-times](#orgb818bb3)
-    6.  [New features](#orga8a9dad)
-        1.  [Different "phases" for multi-region solvers](#orga36c809)
-        2.  [`pyFoamChangeBoundaryType.py` allows selection of region and time](#org94e5e2c)
-        3.  [New class for storing case data in a sqlite-database and associated utilities](#org9b6dfb6)
-    7.  [Bugfixes](#org7c00884)
-        1.  [Only binary packages of 1.x were found](#org313ab7b)
-        2.  [Option group *Regular expressions* was listed twice](#orgaf35dc0)
-        3.  [`--clear`-option for `pyFoamDecompose.py` not working](#org906971f)
-        4.  [`pyFoamDisplayBlockmesh.py` not working with variable substitution](#org4c1d63f)
-        5.  [Option `--function-object-data` of `pyFoamClearCase.py` not working with directories](#org5c899a6)
-        6.  [`nonuniform` of length 0 not correctly printed](#orgd6dd8c8)
-        7.  [Building of pseudocases with `pyFoamRunner.py` broken](#org7491d7a)
-        8.  [`pyFoamRedoPlot.py` did not correctly honor `--end` and `--start`](#org965de14)
-        9.  [`WriteParameterFile` does not preserve the order of additions](#org69626a7)
-        10. [Wrong number of arguments when using `TimelinePlot` in `positions`-mode](#org957119d)
-        11. [`ClusterJob` uses only `metis` for decomposition](#org62ac25a)
-        12. [`pyFoamSamplePlot.py` and `pyFoamTimelinePlot.py` produced no pictures for regions](#org9d1a117)
-        13. [Barplots in `pyFoamTimelinePlot.py` not working if value is a vector](#org71f60d6)
-        14. [Mysterious deadlocks while plotting long logfiles](#orgd44be69)
-        15. [Scanning linear expressions form the block coupled solver failed](#org16c8449)
-        16. [`#include` not correctly working with macros in the included file](#org0e442cb)
-        17. [Macros not correctly expanded to strings](#orgda8aeff)
-        18. [`pyFoamPackCase.py` in the working directory produces 'invisible' tar](#org0173539)
-        19. [String at the end of a linear solver output makes parsing fail](#org68189bd)
-        20. [Paraview utilities not working with higher Paraview versions](#org395f28a)
-        21. [Camera settings not honored with `pyFoamPVSnapshot.py`](#org3e800ff)
-13. [Version 0.5.7 - 2012-04-13](#orge61d9ce)
-    1.  [Parser improvements](#orge6253c1)
-    2.  [Utility improvements](#orgbfa1c88)
-    3.  [New Utilities](#org9a7dc6b)
-    4.  [Library improvements](#org78cd067)
-    5.  [Removed utilities](#org9f5f01d)
-    6.  [Thirdparty](#org002fcb0)
-    7.  [Other](#orgaf4ce64)
-14. [Older Versions](#org6aef53f)
+1.  [Version 2020.05 - 2020-05-31](#orgefd8b77)
+    1.  [New features/utilities](#orge726960)
+    2.  [Enhancements to the utilities](#org35b31fa)
+        1.  [Paraview-utilities now work in Paraviews that use Python 3](#orge61dd37)
+        2.  [`pyFoamPrepareCase.py` allows automatically zipping template results](#org4be4d39)
+        3.  [`customRegexp` has a type `mark` to add marks to the plots](#org789feda)
+        4.  [Plotting utilities now plot progress of `snappyHexMesh`](#org88dc80d)
+        5.  [Plotting utilities now plot progress of `foamyHexMesh`](#orga575349)
+        6.  [Plotting utilities now print available values of `type`](#org5273767)
+        7.  [Missing attributes in `customRegexp`-specifications now give better error messages](#org34087de)
+        8.  [Option `--quiet-plot` for plotting utilities swallows output of the plotting program](#org63e3ca4)
+        9.  [Colored markers in `pyFoamPlotWatcher` for logfiles from restarts](#org2c8bcb5)
+        10. [`writeFiles` in a `customRegexp`-entry writes scanned output to file](#orgd8a3ff1)
+        11. [Modifying splitting behavior for plot data](#org41fbfda)
+        12. [Parametric plots with `xvalue` in `customRegexp`](#org794ac26)
+    3.  [Enhancements to the library](#org837ed01)
+        1.  [Paraview-classes now work with Python 3](#org434adf9)
+        2.  [`TemplateFile` now can write the result as zipped](#orgad758c5)
+        3.  [Mechanism to have `alternateTime` in single `customRegexp`](#org9935fb2)
+        4.  [`quiet`-option added to plotting implementations](#org92e136c)
+        5.  [The `[]`-operator of the `PyFoamDataFrame` is now more flexible](#org699a18d)
+        6.  [Each run started by `BasicRunner` has a unique ID](#orgdabbed2)
+        7.  [`pyFoamAddCaseDataToDatabase.py` allows updating data](#org8cb3e3c)
+        8.  [`RunDatabase` gets method `modify`](#org2364f38)
+    4.  [Bug fixes](#org6db46fe)
+        1.  [`auto` for the solver does not work with compressed `controlDict`](#org6cecfa9)
+        2.  [`FileBasisBackup` now works with zipped file](#org0491721)
+        3.  [Case with zipped `controlDict` not recognized as a valid case](#orga163aa3)
+        4.  [`pyFoamDisplayBlockMesh.py` not working with newer VTK-versions](#org13def47)
+    5.  [Incompatibilities](#org6508ded)
+        1.  [`TemplateFile` writes to zipped file if it exists](#orgad386e5)
+        2.  [`pyFoamDisplayBlockMesh.py` not working with Python 2.x anymore](#orgc8b6274)
+        3.  [Constructor of `PyFoamDataFrame` is more restrictive](#orgbd4bbb2)
+        4.  [`[]`-operator of `PyFoamDataFrame` returns a `PyFoamDataFrame`](#org81c51ae)
+        5.  [`RunDatabase` fails if the same unique ID is inserted again](#org9500c4b)
+    6.  [Code structure](#org2a3d9b4)
+    7.  [Infrastructure](#orgcfa8ae8)
+    8.  [ThirdParty](#orgd0a1a5a)
+        1.  [Modification to `Gnuplot`-library](#orgdfde4be)
+2.  [Version 0.6.11 - 2019-10-31](#org2eafb37)
+    1.  [Code structure](#orgb40bdcf)
+        1.  [Moved library into `src`-directory](#org58fe213)
+        2.  [Added Developer notes](#orge5f3b3a)
+    2.  [Incompatibilities](#org8e801c2)
+        1.  [Behaviour reading `customRegexp`](#orgc9c2de7)
+        2.  [Gnuplot does not use `FIFO` as the default anymore](#orgd77d17a)
+    3.  [Enhancements to Utilities](#orgcb37c00)
+        1.  [Replay data-files in `customRegexp`](#org40fb5b2)
+        2.  [Macro expansion in `customRegexp`](#orgbb65426)
+        3.  [`progress` entry in `customRegexp` now allows `format` strings](#org3b2e5b0)
+        4.  [`pyFoamRedoPlot.py` allows passing terminal options](#org53e5ec0)
+        5.  [`pyFoamPlotWatcher.py` stops scanning the file is `--end` was specified](#orgf8b6b3e)
+        6.  [Hardcopies of custom plots have more descriptive names](#org27ee736)
+        7.  [Plotting in Gnuplot can switch between using FIFO or regular files](#org2ac653d)
+        8.  [`pyFoamPrepareCase.py` calls script after copying initial conditions](#orgf2231b5)
+        9.  [`--stop-after-template` and `--keep-zero` improve control in `pyFoamPrepareCaseParameters.py`](#org122dfdf)
+        10. [`pyFoamPVSnapshot.py` allows specification of the image quality](#orge6fcc1f)
+        11. [Image size specification for `pyFoamPVSnapshot.py`](#org37477f2)
+        12. [Setting separation of views and background transparency in `pyFoamPVSnapshot.py`](#org6f12b92)
+        13. [`pyFoamPVLoadState.py` automatically uses decomposed or reconstructed data](#org64f0d1c)
+        14. [Change directory for `pyFoamPrepareCase.py` to target](#org26e3cde)
+        15. [`pyFoamPrepareCase.py` can create an example case](#orgd7a50bd)
+        16. [`pyFoamPrepareCase` prints derived values](#orgda3189f)
+        17. [`pyFoamPVSnapshot` allows specifying different colors for different views](#orga8a8284)
+        18. [`alternateLogscale` for custom plots](#org7f31875)
+        19. [`pyFoamBinarySize.py` now calculates documentation size as well](#org27da598)
+        20. [`pyFoamCompareDictionary.py` allows specification of significant digits](#org3eb7fc0)
+    4.  [Enhancements to the Library](#org0a93298)
+        1.  [`progress`-data is automatically converted to `float`](#orgc91f3ac)
+        2.  [Additional directories in `FoamInformation`](#org4ee69e3)
+        3.  [`BoolProxy` now works correctly with `!=`](#org66c248c)
+    5.  [Bug fixes](#orge5a62e6)
+        1.  [With dynamic plots names with `_slave` are problematic](#org999a6a7)
+        2.  [New-style dimensioned scalars fail](#orgbc22467)
+        3.  [`pyFoamPVSnapshot.py` not working with Paraview 5.6](#org8f7034e)
+        4.  [`customRegexp` farthes away was used](#org38b3f61)
+        5.  [`ParameterFile`-class got confused by commented lines](#org9762654)
+        6.  [`pyFoamBinarySize.py` did not count files in `build`](#orgcfd483c)
+        7.  [Binary files with `ParsedParameterFile` not working in Python 3](#org6cf4789)
+        8.  [Improved handling of binary files in Python 2 and 3](#orgc9add50)
+3.  [Version 0.6.10 - 2018-08-12](#org6e7a4c9)
+    1.  [Incompatibilities](#org9f57b15)
+        1.  [`pyFoamPrepareCase.py` does not execute decomposition scripts for single processor cases](#org4d429de)
+    2.  [New feature/utilities](#org93364bb)
+        1.  [Utility `pyFoamFunkyDoCalc.py` to compare data from `funkyDoCalc`](#orgb2e8c1f)
+    3.  [Enhancements to Utilities](#org994b34a)
+        1.  [Recursive searching for `pyFoamListCases.py`](#orgea237a9)
+        2.  [Look for `customRegexp` in parent directories](#org33c1711)
+        3.  [`pyFoamPrepareCase.py` does not execute decomposition scripts for single processor cases](#org7149677)
+        4.  [`pyFoamPrepareCase.py` checks for proper decomposition](#org51e91a8)
+        5.  [`pyFoamPlotWatcher.py` automatically uses newest logfile](#orgca7cec6)
+    4.  [Enhancements to the Library](#org049fd18)
+        1.  [`FoamFileGenerator` handles `OrderedDict`](#org3ee6a7e)
+        2.  [`#sinclude` handled as an alias to `#includeIfPresent`](#org158027e)
+        3.  [OpenFOAM 6 correctly recognized](#org8d8c788)
+    5.  [Bug fixes](#orgbb8d185)
+        1.  [`pyFoamPrepareCase.py` did not remove `processor`-directories](#orgad01d16)
+    6.  [Infrastructure](#orgfd97d1b)
+        1.  [Single digit version numbers supported](#org0cf6327)
+4.  [Version 0.6.9 - 2018-02-25](#org47921c9)
+    1.  [Major changes](#org3c3d3fb)
+        1.  [Add `curses`-output to Utilities](#org0fa7381)
+    2.  [Incompatibilities](#orgefdcf8d)
+        1.  [`pyFoamPrepareCase.py` creates `.foam`-file](#orgc38f88a)
+        2.  [Hardcoded Foam-Version upgraded to `4.0`](#orgf5c154c)
+        3.  [`none` no longer parsed as an equivalent for `false`](#orgf09fc5c)
+    3.  [New features/utilities](#orgdeb5f26)
+        1.  [`pyFoamJoinTimelines.py` to join Timelines from restarts](#orgd887c0f)
+        2.  [`pyFoamRestartRunner.py` to automatically restart runs](#orga7af2cd)
+    4.  [Enhancements to Utilities](#orgf502610)
+        1.  [Special snapshot utilities to use MESA](#orga521798)
+        2.  [Automated plotting of film properties](#org5ab0a93)
+        3.  [`pyFoamClearCase.py` automatically executes an existing `Allclean`](#orgf65a624)
+        4.  [`pyFoamPrepareCase.py` executes tutorial scripts if available](#org527d7b4)
+        5.  [Script for clearing in `pyFoamPrepareCase.py`](#org6c1b3b6)
+        6.  [`pyFoamPlotWatcher.py` now can handle multiple files](#org0382dc6)
+        7.  [`pyFoamPrepareCase.py` now allows separate decomposition scripts](#org3a7a43f)
+        8.  [Runner-utilities now create seperate logfiles on restart](#org56a06fb)
+        9.  [`pyFoamPVSnapshot.py` improves rewriting of state-files](#org57028fd)
+        10. [`pyFoamPackCase.py` adds parallel data](#orgbf7d93e)
+        11. [`--replacement`-option in `pyFoamPVSnapshot.py` supports Foam-format](#org291493c)
+        12. [`pyFoamPVSnapshot.py` improved error messages with problems in replacement](#org9c514a9)
+        13. [`customRegexp` now searched in parent directories](#orgd48ac63)
+    5.  [Enhancements to the Library](#orga2f11d5)
+        1.  [`Paraview.StateFile` extended](#org3bc664b)
+        2.  [`BasicRunner` now checks for regular End](#orgf4ffcfe)
+    6.  [Bug fixes](#orgccf14c0)
+        1.  [`pyFoamPrepareCaser.py` ran out of memory for large script outputs](#orgbb05286)
+        2.  [No Courant number plottet if `WM_PROJECT_VERSION` is unset](#org7ad16ad)
+        3.  [Rescale does not work for streamlines in `pyFoamPVSnapshot.py`](#org5e30d76)
+        4.  [Server not correctly running on Python 2.7 with `socketserver`](#org4276c90)
+5.  [Version 0.6.8.1 - 2017-08-03](#org9d52524)
+    1.  [Bug fixes](#orga808114)
+        1.  [Fork not correctly detected for `v1706`](#orga226f17)
+6.  [Version 0.6.8 - 2017-07-06](#orgadef466)
+    1.  [Major changes](#orga1c7981)
+        1.  [`pyFoamNet`-utilities now work without a Meta-Server](#org98653bb)
+    2.  [New features/utilities](#orgf06b9a6)
+        1.  [Added module `PyFoam.Infrastructure.Authentication`](#orgbd74abe)
+    3.  [Enhancements to Utilities](#orgca5e081)
+        1.  [`pyFoamClearCase.py` now has `-dry-run` option](#org9436ccf)
+        2.  [New option `--keep-time` for `pyFoamClearCase.py`](#org6fdaf48)
+        3.  [`pyFoamNetList.py` no longer needs a meta-server to work](#org9262d56)
+    4.  [Enhancements to the Library](#orgf87b224)
+        1.  [Better calculation of used memory in runs](#org6b9b349)
+        2.  [Pre and post-hooks are now also searched in `PyFoam.Site`](#orgf11246d)
+        3.  [Adapted to correctly detect `OpenFOAM+ v1706`](#org52ab223)
+    5.  [Infrastructure](#org20da645)
+        1.  [The `Runner`-utilities now register as `ZeroConf`-services](#org6f10147)
+    6.  [Bug fixes](#org9c14a53)
+        1.  [`--keep-interval` in `pyFoamClearCase.py` not working for parallel-cases](#orge7ab508)
+7.  [Version 0.6.7 - 2017-06-04](#org1a44697)
+    1.  [Requirements](#org83842c0)
+        1.  [Now at least Python 2.6 required](#orge7d303a)
+    2.  [Incompatibilities](#orgd1f3347)
+        1.  [Names of files generated by `pyFoamPVSnapshot.py` differ](#org7aca195)
+    3.  [New features/utilities](#org666b355)
+        1.  [Utility `pyFoamListProfilingInfo.py` to print profiling data](#org09e9e35)
+        2.  [Utility `pyFoamBlockMeshConverter.py` to convert a 2D-mesh to 3D](#org470db84)
+    4.  [Enhancements to Utilities](#orgc33f759)
+        1.  [`customRegexp` now can scan for texts](#orge9cc1c2)
+        2.  [Lines in `PyFoamHistory` escaped](#org4e92ca2)
+        3.  [`--values-string` of `pyFoamPrepareCase.py` now accepts OpenFOAM-format](#org845ea4c)
+        4.  [`pyFoamRunner.py` and `pyFoamPlotRunner.py` allow automatic selection of solver](#orgc21c4d4)
+        5.  [Calculations (data transformations) in `customRegexp`](#orga8c99fd)
+        6.  [Multi-part `idNr` for `dynamic` in `customRegexp`](#orge7c6b6b)
+        7.  [`pyFoamListCases.py` detects dead runs](#org824642d)
+        8.  [Improved time-handling of `pyFoamPVSnapshot.py`](#org64f8254)
+        9.  [Default plots can be set in configuration](#org6a28c04)
+        10. [`derivedParameters.py`-script called from `pyFoamPrepareCase.py` allows error reporting](#orgd299d81)
+    5.  [Enhancements to the Library](#org353e08e)
+        1.  [Detection of new versions of OpenFOAM-foundation and OpenFOAM+](#orgfd55bc8)
+        2.  [`SpreadsheetData` now handles string data](#org8666d5d)
+        3.  [`TimelineData` tolerates string values](#org735a4a9)
+        4.  [`()` operator of `SpreadsheetData` works without name](#org312c71c)
+        5.  [New function `setCurrentTimeline` in `PyFoam.Paraview.Data` to get data at time](#org334c8fb)
+        6.  [User-specific temporary directory](#org42a3315)
+        7.  [`Gnuplot`-plots now get better titles](#org955ff88)
+        8.  [`ParsedParameterFile` now supports `#includeFunc`](#orgea48271)
+        9.  [New utility function `findFileInDir`](#org2909ebd)
+        10. [`humandReadableDuration` added to `PyFoam.Basics.Utilities`](#org173dad2)
+    6.  [Infrastructure](#org6999ec6)
+        1.  [`pyFoamVersion.py` now reports the versions of the `ThirdParty`-packages](#org79e1267)
+    7.  [Bug Fixes](#org9c9b7a1)
+        1.  [Application classes fail in Paraview](#orgeb93533)
+        2.  [Scripts in `pyFoamPrepareCaseParameters.sh` not working on Mac OS X](#orgd4b5cff)
+        3.  [Processor-directories unsorted in `SolutionDirectory`](#org4cd3e33)
+        4.  [Deleting failed if a file did't exist](#org1c11bad)
+        5.  [Missing files in `RegionCases`](#org1293a18)
+        6.  [Wrong `solver` in `pyFoamListCase.py`](#orgf8be61f)
+    8.  [ThirdParty](#orgfeeaca2)
+        1.  [Updated `tqdm` to version 4.8.4](#orgef048a1)
+        2.  [Updated `PLY` to version 3.9](#orgc4fc1ca)
+        3.  [Updated `six` to 1.10.0](#org87637c0)
+8.  [Version 0.6.6 - 2016-07-15](#org8fef9a9)
+    1.  [Incompatibilities](#orgb5db43f)
+        1.  [Changes in `IPython`-notebooks 3.0](#orgd9575d0)
+    2.  [Enhancements to Utilities](#orgf5c82ca)
+        1.  [`pyFoamPrepareCase.py` executes `setFields` if appropriate](#org4bd9ced)
+        2.  [Plotting utilities now automatically add custom plots depending on the solver name](#org45bdd33)
+        3.  [`alternateAxis`-entries now can be regular expressions](#org107e7f5)
+        4.  [Plotting utilities now allow choice of Gnuplot terminal](#org4e93c2c)
+        5.  [Plotting utilities now sort legend by name](#org40aa407)
+        6.  [`pyFoamExecute.py` allows calling with debugger](#org3f9d4b8)
+        7.  [`pyFoamPrepareCase.py` fails if execution of a script fails](#org136a2bb)
+        8.  [`--hardcopy` in plotting library now allows modification of `gnuplot`-terminals](#org35a5302)
+        9.  [`pyFoamPrepareCase.py` writes state information about what it is currently doing](#orgfb6d8fe)
+        10. [`pyFoamBinarySize.py` can handle new location of binaries in OpenFOAM 3.0](#orgcfd72dd)
+        11. [`Runner`-utilites now can signal on `blink(1)`-devices](#orge868dca)
+        12. [`pyFoamExecute.py` can flash a `blink(1)`](#org45acb92)
+        13. [`pyFoamDecompose.py` allows using a template file](#org6f9bc21)
+        14. [`pyFoamTimelinePlot.py` now handles new format of probe files](#org82ff35e)
+        15. [`ReST`-report of `pyFoamPrepareCase.py` now reports derived parameters](#org433a419)
+        16. [`pyFoamPrepareCase` can now ignore directories](#org54817a1)
+        17. [`pyFoamConvertToCSV.py` allows adding formulas to XLSX-files](#org0497db6)
+        18. [`pyFoamListCases.py` now displays mercurial info](#org64d6671)
+        19. [Progress bar added to utilities with long run-time](#org1e74fb9)
+        20. [Utilities that clear data can now report what is cleared](#org6b86f85)
+        21. [`pyFoamConvertToCSV.py` now allows manipulating the input](#org1f87b46)
+    3.  [Enhancements to the Library](#org82ba474)
+        1.  [Detection of `OpenFOAM-dev`](#orge87a5ff)
+        2.  [Add `OpenFOAM+` as a fork](#orgbbc8c8e)
+        3.  [Accept new convention for location of `blockMeshDict`](#org4bb6deb)
+        4.  [Handling of complex data by `Configuration`](#org295320b)
+        5.  [`Configuration` has method `getArch` for architecture dependent settings](#orgab892ec)
+        6.  [`execute`-method from `PyFoam.Basics.Utilities` returns status-code](#org49e5ad9)
+        7.  [`BasicRunner` now supports more ways of stopping runs](#orgae24da1)
+        8.  [Added `Blink1` class to support `blink(1)` devices](#org94df8e5)
+        9.  [`ParsedParameterFiles` now supports `includeEtc`](#orgb9cc79c)
+        10. [Parses uniform fields correctly](#org6c7934c)
+        11. [`toNumpy`-method added to `Unparsed` and `Field`](#orge6cabd5)
+        12. [Added module `PyFoam.RunDictionary.LagrangianPatchData` to read data from patch function object](#org407a2c7)
+        13. [Added module `PyFoam.RunDictionary.LagrangianCloudData` to read cloud data](#orgee6cac0)
+        14. [Method `code` added to =RestructuredTextHelper](#org9a8f060)
+        15. [`ParsedParameterFile` now parses new dimension format correctly](#orga7c003c)
+        16. [`ParsedParameterFiel` now parses uniform fields correctly](#orgc0b5157)
+    4.  [Infrastructure](#org51bf0b2)
+        1.  [Change of documentation from `epydoc` to `sphinx`](#orgcd19241)
+        2.  [Adaptions to the unittests](#org22f5c94)
+    5.  [Bug fixes](#org619740f)
+        1.  [Wrong format of `ExecutionTime` breaks plotting utilities](#org402cb62)
+        2.  [`phases` not working with dynamic plots](#org6a2fddc)
+        3.  [Phase name added to function object output](#orgc0c9ada)
+        4.  [One region mesh too many in utilities that change the boundary](#org31d542c)
+        5.  [`pyFoamClearCase.py` fails on write-protected case](#org943984a)
+        6.  [Copying of directories in `pyFoamPrepareCase.py` confused by zipped files](#org356f5e8)
+        7.  [Wrong times for multi-view layouts in `pyFoamPVSnapshots.py`](#orgff1d155)
+        8.  [First timestep not plotted (and not stored)](#org7bdbf9f)
+        9.  [`DYLD_LIBRARY_PATH` not passed on *Mac OS X 10.11*](#org1ccc37e)
+        10. [Newer versions of `pandas` broke the writing of excel files with `pyFoamConvertToCSV.py`](#orgfc4b116)
+        11. [Capital `E` in exponential notation for floats breaks parser](#org2c8c981)
+        12. [`Runner`-utilities clear processor directories if first time in parallel data differs](#orga5967fd)
+        13. [Utilities `pvpython` not working when installed through `distutils`](#orgef7d320)
+    6.  [ThirdParty](#orgb5fde54)
+        1.  [Added `tqdm` for progress bars](#org1477176)
+9.  [Version 0.6.5 - 2015-06-01](#org152d629)
+    1.  [Major changes](#org8b7d259)
+        1.  [PyFoam now on *Python Package Index*](#org26a64c6)
+    2.  [Incompatibilities](#org5bb4071)
+        1.  [`ArchiveDir` in `SolutionDirectory` discouraged](#orgafa63b9)
+        2.  [Pickled data files now written as binary](#org5c124e2)
+        3.  [The `PlotRunner` and `PlotWatcher` now don't strip spaces](#org0092f07)
+        4.  [Different column names in `pyFoamConvertToCSV.py`](#org8552ad2)
+        5.  [`pyFoamChangeBoundaryName.py` and `pyFoamChangeBoundaryType.py` automatically modify `processorX`](#org703980a)
+    3.  [Bugfixes](#org7237849)
+        1.  [Arbitrary commands in `TemplateFile` passed to file](#orgc09ac12)
+        2.  [Pickled files not opened in binary mode](#org9809f2c)
+        3.  [Additional fixes for Python 3](#orgbfb7b5c)
+        4.  [`ParsedParameterFile` fails if "complete" dictionary is `#include` ed](#org4a6cd0d)
+        5.  [`ParsedParameterFile` fails if there is more info after `#include`](#org4c065a9)
+        6.  [`pyFoamDisplayBlockMesh.py` not working with VTK 6](#org8d266bf)
+        7.  [`pyFoamCreateModuleFile.py` failed with environment variables containing `=`](#org2117cb3)
+        8.  [Fix import in `GeneralVCSInterface`](#org55354dd)
+        9.  [Support of old format in `ParsedBlockMeshDict` broken](#org516028f)
+        10. [`TemplateFile` not correctly working in Python 3](#org9e8b2d4)
+        11. [Certain things not done by `pyFoamPrepareCase` in `--quiet` was set](#orgf98aac5)
+        12. [Annoying warning at the start of the run](#org8349f3f)
+        13. [Redirected values](#org9eb79eb)
+        14. [Behavior of Template-engine not consistent in Python3 and Python2](#org737f554)
+        15. [Braces, brackets, parentheses in column name broke `RunDatabase`](#org902a190)
+        16. [Finding of installations in alternate locations broken](#orgbfe8964)
+        17. [Failing on 3.x if socket for server thread already occupied](#org7daa5dd)
+    4.  [Enhancements to Utilities](#org313ba17)
+        1.  [`pyFoamPrepareCase` recognizes multi-region cases](#org00b5e4e)
+        2.  [`pyFoamPrepareCase` adds specialized templates](#org5c815f9)
+        3.  [`pyFoamPrepareCase` keeps data generated by meshing script](#org2be61a9)
+        4.  [`pyFoamPrepareCase` adds possibility for a file with default values](#org1d26e67)
+        5.  [`pyFoamPrepareCase` writes report about the variables](#orgb5ffcd0)
+        6.  [Gnuplot can be styled with default commands](#orgd9fd9c9)
+        7.  [`pyFoamPVSnapshot.py` now supports Paraview 4.2 and later](#org000ef3c)
+        8.  [`pyFoamPVSnapshot.py` allows switching between decomposed and reconstructed data](#org761cb33)
+        9.  [`pyFoamPVSnapshot.py` allows changing the field for sources](#orgc0e6696)
+        10. [`pyFoamPVSnapshot.py` allows rescaling the color-legend](#org9ea88dd)
+        11. [`pyFoamPVsnapshot` reads parameters written by `pyFoamPrepareCase.py`](#orgf0ddf88)
+        12. [`pyFoamListCases.py` allows filtering](#orgec18d63)
+        13. [`pyFoamRunParametervariation.py` now allows dictionaries](#org23e723f)
+        14. [`pyFoamConvertToCSV.py` now has all functionality of `pyFoamJoinCSV.py`](#orgb010ce9)
+        15. [`dynamic` in `customRegexp` now allows composition from multiple match-groups](#orgcbc014d)
+        16. [New type `dynamicslave` in `customRegexp`](#org1f83c16)
+        17. [Additional profiling option `--profile-line-profiler`](#orgf5aca46)
+        18. [Utilities that use templates can be customized with the configuration](#org846023b)
+        19. [`LocalConfigPyFoam` now can be read **before** argument parsing](#org28ae15d)
+        20. [`pyFoamConvertToCSV.py` automatically selects the output format with `--automatic-format`](#orgc014f67)
+        21. [`pyFoamConvertToCSV.py` allows adding original data as separate sheets](#org6949a54)
+        22. [`pyFoamConvertToCSV.py` has improved naming of columns](#org10bb611)
+        23. [`pyFoamConvertToCSV.py` now supports sets-files](#org22a49a2)
+        24. [`pyFoamPrepareCase.py` can calculate derived values with a script](#orga6d96d9)
+        25. [`pyFoamPrepareCase.py` adds a variable `numberOfProcessors`](#org127fd5c)
+        26. [`pyFoamChangeBoundaryName.py` and `pyFoamChangeBoundaryType.py` now support decomposed cases](#orgf191d60)
+        27. [`pyFoamPrepareCase.py` has possibility for templates after the final stage](#org6af9f86)
+        28. [`pyFoamRunParameterVariation` allows adding postfix to cloned cases](#org63113c4)
+        29. [`pyFoamConvertToCSV` now allows setting of default input file format](#org821a6cf)
+        30. [`pyFoamListCases.py` adds the hostname to the printed information](#org2e12d0c)
+        31. [`pyFoamPrepareCase.py` allows cloning](#org7324e77)
+    5.  [Enhancements to the Library](#org6b610ba)
+        1.  [`SolutionDirectory` detects multiple regions](#orgaf9b0a5)
+        2.  [`BoolProxy` now compares like builtin `bool`](#org3c9e833)
+        3.  [`PyFoamApplication`-class now supports `pvpython` for debugging](#org2216978)
+        4.  [`TemplateFile` now allows more flexible assignments](#org2b37edb)
+        5.  [`ThirdParty`-library `six` upgraded to 1.9.0](#org630426c)
+        6.  [Additional markup in `RestructuredTextHelper`](#org519ac04)
+        7.  [`SpreadsheetData` can now read files produced by the `sets`-functionObject](#orgd6dd6eb)
+    6.  [Infrastructure](#orgc124849)
+        1.  [Adaption of Debian packaging to new conventions](#org6a838ef)
+    7.  [Development changes](#org44bf0dc)
+        1.  [Now uses `pytest` for unittesting](#org9474476)
+10. [Version 0.6.4 - 2014-11-24](#orgffa0aba)
+    1.  [Requirements](#org4340f22)
+    2.  [Future changes](#orge443fc9)
+        1.  [Redundant utilities `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` unified](#org0568e98)
+    3.  [Major changes](#orgf8d84f2)
+        1.  [Multi-line regular expressions in `customRegexp`](#org65b39e1)
+        2.  [Enhancement of `pyFoamPrepare.py`](#orgc6e9439)
+        3.  [Enhancements of the CSV-utilities](#org3db9f86)
+        4.  [Environment variable `PYFOAM_SITE_DIR` and `PYFOAM_DIR`](#orgb2c3147)
+    4.  [Incompatibilities](#org69ad1ff)
+        1.  [Option `--silent` removed from `pyFoamPrepareCase.py`](#org0e4f694)
+        2.  [Keys in `RunDatabase` with column-names that contain upper-case letters change](#orgd5affa9)
+        3.  [Change in unique variable names in `pyFoamConvertToCSV.py`](#org2d97667)
+        4.  [`PyFoam.IPython`-module renamed to `PyFoam.IPythonHelpers`](#org608e741)
+    5.  [Bugfixes](#org61fd701)
+        1.  [Templates in `pyFoamPrepareCase.py` did not keep permissions](#org485f6d9)
+        2.  [`pyFoamComparator.py` failed due to circular dependency](#org8fcbd70)
+        3.  [`pyFoamDumpRunDatabaseToCSV.py` fails if Pandas-data is requested](#org4444ea0)
+        4.  [`sort` for list broke code on Python 3](#org1f5dbff)
+        5.  [Changing the OF-version does not work in Python 3](#org7871c80)
+        6.  [`addData` in `PyFoamDataFrame` extrapolates for invalid values](#orgfcad0be)
+        7.  [`--keep-last` did not work for `pyFoamClearCase.py` and parallel cases](#org90e4bb8)
+        8.  [`pyFoamDumpRunDatabaseToCSV.py` does not add basic run information](#org716b98a)
+        9.  [Restore of `FileBasisBackup` did not work](#org9d97d50)
+        10. [Remove circular dependency in `DataStructures`](#org78939f0)
+    6.  [New features/Utilities](#org0e9b5fd)
+        1.  [`pyFoamRunParameterVariation.py`](#orgbaee07d)
+        2.  [`pyFoamBinarySize.py`](#orgb43a197)
+        3.  [`pyFoamBlockMeshRewrite.py`](#orgdf36d91)
+    7.  [Enhancements to Utilities](#org5c56aef)
+        1.  [`pyFoamChangeBoundaryType.py` allows setting additional values](#orgc9f283f)
+        2.  [`pyFoamPrepareCase.py` now has OF-version and fork as defined variables](#orga45baf5)
+        3.  [`pyFoamPrepareCase.py` now allows "overloading" another directory](#orge915061)
+        4.  [`pyFoamIPythonNotebook.py` adds improvements to the notebook](#org7da19fa)
+        5.  [`pyFoamListCases.py` more tolerant to faulty `controlDict`](#org378f8f7)
+        6.  [`pyFoamDumpConfiguration.py` prints sections and keys alphabetically](#org991b606)
+        7.  [`pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` read and write Excel-files](#orge8de696)
+        8.  [Flexible variable filtering in `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py`](#org1c93cbe)
+        9.  [Columns in `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` can be recalculated](#org920aff2)
+        10. [Testing for `Numeric` removed from `pyFoamVersion.py`](#org0f20bc5)
+    8.  [Enhancements to the Library](#org2227ede)
+        1.  [Subclass of `ClusterJob` that support `PrepareCase`](#orgab2d2a9)
+        2.  [Subclass of `ClusterJob` that support `RunParameterVariation`](#org1c7f8b7)
+        3.  [`execute` in `PyFoam/Utilities` fails if script is not executable](#orgdd1b070)
+        4.  [`foamVersion` uses a separate wrapper class for `tuple`](#org75ceede)
+        5.  [Move calculation of disk usage to `Utilities`](#org613f2c2)
+        6.  [Enhancement of `--help`](#org0873444)
+        7.  [`which`-routine in `Utitlities` uses native Python-routine](#org585f3dc)
+        8.  [`FileBasis` now allows file handles instead of the filename](#org9cd9789)
+        9.  [`BlockMesh` doesn't force writing to file anymore](#orgfba0c5f)
+        10. [Additional methods for `BlockMesh`-class](#org1b3df98)
+        11. [`LineReader` allows keeping spaces on left](#org8f2f45e)
+        12. [`TemplateFile` now allows writing of assignment-results in file](#orgdbfb6a3)
+        13. [`SolverJob` now allows passing of parameters to the solver](#orgdf70f3f)
+        14. [`SpreadsheetData` now allows reading from an Excel file](#org48809c8)
+        15. [`SpreadsheetData` allows recalculating columns](#orga2092cd)
+    9.  [Known bugs](#org401da72)
+        1.  [Timelines not forgotten for multiple runner calls](#orgbb32410)
+11. [Version 0.6.3 - 2014-06-23](#org0b1f0ab)
+    1.  [Requirements](#org7865117)
+    2.  [Major changes](#org4378395)
+        1.  [Version changing supports forks of OpenFOAM](#orgaf719cd)
+    3.  [Incompatibilities](#org860613b)
+        1.  [Change of command interface of `pyFoamSTLUtility.py`](#orgf23582e)
+        2.  [If `0.org` is present `pyFoamCloneCase.py` and `pyFoamPackCase.py` ignore `0`](#org15fb3c9)
+    4.  [Bugfixes](#org2d54a6c)
+        1.  [PlotWatcher has long times between updates if pickling takes long](#org69c924a)
+        2.  [`pyFoamPVSnapshot.py` fails for newer paraview-versions](#org6352197)
+        3.  [SamplePlot failed when valueNames are unspecified](#orgb4eed3b)
+        4.  [`pyFoamTimelinePlot.py` failed Numpy/Pandas output of vector fields](#orgf7e2c2a)
+        5.  [`alternateAxis` ignored for slave](#org9cb720e)
+        6.  [`pyFoamCaseReport.py` more stable for binary `boundary`-files](#orgeb976ed)
+        7.  [`SpreadsheetData` returns data which breaks certain Pandas-operations](#org4e1d877)
+        8.  [`pyFoamCloneCase.py` added duplicates to the archive](#org37c773a)
+        9.  [`nonuniform` of length 3 not correctly printed](#org5640337)
+    5.  [New features/Utilities](#org738cdb7)
+        1.  [`pyFoamPrepareCase.py` for case preparation](#org29e8fc8)
+        2.  [`pyFoamIPythonNotebook.py` for generating and manipulating IPython-notebooks](#org6978b85)
+        3.  [Additional sub-module `PyFoam.IPython`](#org8b2456e)
+        4.  [Additional sub-module `PyFoam.Wrappers`](#org33f00ec)
+    6.  [Enhancements to Utilities](#org73f0690)
+        1.  [`pyFoamSampleplot` has option to use index instead of time in filenames](#orgb894d59)
+        2.  [`pyFoamListCases.py` Allows addition of custom data](#org67d36c7)
+        3.  [Switch compiler versions](#org7889381)
+        4.  [`pyFoamVersion.py` reports the installed versions better](#org4909955)
+        5.  [Offscreen rendering can be switched off in `pyFoamPVSnapshot.py`](#orgdd8b975)
+        6.  [Write 3D-data in `pyFoamPVSnapshot.py`](#orgefc2af8)
+        7.  [Added capabilities to `pyFoamSTLUtility`](#orgf213e26)
+        8.  [`pyFoamDecomposer.py` switches off function objects](#org437f0d5)
+        9.  [`pyFoamCloneCase.py` clones more stuff](#org212b571)
+    7.  [Enhancements to the Library](#org67e48a1)
+        1.  [`BasicRunner` now can print the command line that is actually used](#orge25a934)
+        2.  [`ClusterJob` now can live without a machinefile](#org7990f42)
+        3.  [Enhanced treatment of symlinks during cloning](#org4099a92)
+        4.  [`AnalyzedCommon` clears the `analyzed`-directory](#orge5b8071)
+        5.  [`TimelineDirectory` is more tolerant](#org7b9eddd)
+        6.  [Possibility of a subcommand-interface for utilities](#org9d4fafe)
+        7.  [`STLUtility` accepts file-handles](#org63a990b)
+        8.  [`addClone` in `SolutionDirectory` accepts glob patterns](#org496a681)
+        9.  [`execute` in `Utilities` allows specification of working directory and echoing of output](#orgd747a48)
+        10. [`rmtree` and `copytree` more tolerant](#org656f875)
+        11. [Enhanced support for booleans in the parser](#org4d44379)
+        12. [Application classes now allow specifying options as keyword parameters](#org0f697b4)
+        13. [`SolutionDirector` now can classify directories in the `postProcessing`-directory](#orge8435f0)
+        14. [`pyFoamSamplePlot.py` now more flexible for distributions](#org9c2164e)
+        15. [`DictProxy` now has a `dict`-like `update`-method](#orgde01205)
+        16. [`FoamFileGenerator` automatically quotes strings](#orgd35805e)
+        17. [Children of `FileBasis` now can be used with the `with`-statement](#org4639c6f)
+12. [Version 0.6.2 - 2013-11-03](#orgd01d581)
+    1.  [Major changes](#orgdfb0f75)
+        1.  [Use of `pandas`-library](#org2b7d1b1)
+    2.  [Incompatibilities](#orgb0caeb9)
+        1.  [Different separator for databases in CSV-files](#orgf6cb10d)
+        2.  [Change of independent variable name in sample data](#orgd7716cd)
+    3.  [Bugfixes](#org59de3df)
+        1.  [`pyFoamPackCase.py` does not handle symbolic links correctly](#org7f93356)
+        2.  [`pyFoamPotentialRunner.py` not working with OpenFOAM 2.0 or newer](#orgb0737e1)
+        3.  [`pyFoamListCase.py` fails with `controlDict` that use preprocessing](#org9fd7929)
+        4.  [Cloning fails in symlink-mode if files are specified twice](#org2de3177)
+    4.  [Utilities](#orgba69ec6)
+        1.  [`pyFoamPotentialRunner.py` now allows removing of `functions` and `libs`](#orgd87a039)
+        2.  [The Runner-utilities now have more options for clearing](#orgf5ac1ef)
+    5.  [Library](#orgec73fe6)
+        1.  [`SolutionDirectory` and `TimeDirectory` are more tolerant](#orgaf3ba74)
+        2.  [`ClusterJob` now handles template files](#orge086213)
+        3.  [Additional parameters in `ClusterJob`](#orgadc622f)
+        4.  [Custom data in directory easier accessible](#org91d22e6)
+        5.  [`SolverJob` now allows compression of output](#org0500ddf)
+        6.  [`PyFoamApplication`-class now allows quick access to data](#org12013c9)
+    6.  [New features/Utilities](#org37548e9)
+        1.  [Post-run hook that sends mail at the end of run](#orgd82b086)
+        2.  [New utility `pyFoamCompressCases.py`](#orgd1643e3)
+        3.  [Paraview-module to read additional data](#org44541cd)
+    7.  [Enhancements](#orgf8d1a8e)
+        1.  [`pyFoamRedoPlot.py` can plot in XKCD-mode](#orgd41efa3)
+        2.  [`pyFoamListCases.py` now displays disk usage in human readable form](#org92558cf)
+        3.  [`pyFoamClearCase.py` more flexible in selection of data to be removed](#orgdbb0782)
+        4.  [`pyFoamFromTemplate.py` automatically chooses template and default values](#org36c255e)
+        5.  [`pyFoamDumpRunDatabaseToCSV.py` can disable standard-fields](#org9e83f7f)
+        6.  [`pyFoamDumpRunDatabaseToCSV.py` prints `pandas`-object](#org98e12f3)
+        7.  [Better debugging with `ipdb`](#orgd3441c8)
+        8.  [Interactive shell after execution for utilities](#orgdeedecf)
+        9.  [Utilities that read quantitative data convert to `pandas`-data and/or `numpy`](#org99456d2)
+        10. [Utilities that read quantitative data write Excel files](#orge7eed03)
+        11. [Specify additional settings for `GnuPlot` in `customRegexp`](#orgf89e3bd)
+        12. [More flexible data specification for `pyFoamSamplePlot.py`](#org5dbdf6f)
+        13. [`pyFoamSamplePlot.py` now allows specification of x-range](#org550d704)
+13. [Version 0.6.1 - 2013-05-24](#org3195ee9)
+    1.  [Major changes](#org504a0d2)
+    2.  [Bugfixes](#orgeb65346)
+        1.  [Restoring of `controlDict` after `write`](#orge6a588b)
+        2.  [Custom-plot type `slave` not working if no `master` defined](#org1066ad5)
+        3.  [`-list-only` did not correctly parse lists with a numeric prefix](#org63c154d)
+    3.  [Utilities](#orgb9ba89a)
+        1.  [`pyFoamBuildHelper.py` now allow more than one action](#org3129a1b)
+        2.  [Utilities warn if OpenFOAM-version is unset](#org54465d8)
+        3.  [`pyFoamUpgradeDictionariesTo20.py` allows single files](#orgf3ed47c)
+        4.  [`pyFoamUpgradeDictionariesTo20.py` transforms reaction-schemes](#org0546883)
+        5.  [`pyFoamUpgradeDictionariesTo20.py` transforms thermophysical data](#org5a3a21b)
+        6.  [`pyFoamCloneCase` now allows creating directory that symlinks to the original](#org10659cf)
+        7.  [`pyFoamClearCase.py` now removes `postProcessing` and allows removal of additional files](#org243bb24)
+        8.  [Improvements to `pyFoamVersion.py`](#org7ecbed6)
+        9.  [Additional files automatically cloned](#orgd669804)
+        10. [`pyFoamDisplayBlockMesh.py` uses the same options for template format as `pyFoamFromTemplate.py`](#orgdee9fb7)
+    4.  [Library](#orgcd26afc)
+        1.  [Improvements in syntax of `ParsedParameterFile`](#org1aab1e0)
+        2.  [`Utilities`-class now function to find files matching a pattern](#orgd8ae483)
+        3.  [VCS ignores more files](#org782392d)
+    5.  [New features/Utilities](#org8b9f26f)
+        1.  [New Utility `pyFoamSymlinkToFile.py`](#org219914f)
+14. [Version 0.6.0 - 2013-03-14](#orgcd78171)
+    1.  [Major changes](#org1eed951)
+        1.  [Adaption to work with Python3](#orga493099)
+        2.  [New ThirdParty-Libraries](#orgdd7e015)
+        3.  [Porting to `Windows`](#org5fab96b)
+        4.  [Experimental port to `pypy`](#orge14f2d3)
+    2.  [Third-Party](#org129aee9)
+        1.  [Upgraded `ply` to 3.4](#org98b1fac)
+    3.  [Infrastructure](#orgcd7d7fa)
+        1.  [Parameters can't be modified in `CTestRun` after initialization](#orgc362a6e)
+        2.  [Treat timeouts in the `MetaServer` right](#org3f0be21)
+        3.  [Add `execute`-method to `ClusterJob`](#org8a00291)
+        4.  [Add possibility to run specific modules before or after the solver](#org241f5c9)
+        5.  [Parameters added to the info about the run](#org4532ca7)
+        6.  [Parameter handling in `ClusterJob` extended](#org912e268)
+        7.  [Run data written alongside `PickledPlots`](#orgecdba57)
+        8.  [`BasicRunner` collects error and warning texts](#org55eeb9a)
+    4.  [Library](#org192b044)
+        1.  [`TemplateFile` now uses `pyratemp`](#org8c75c06)
+        2.  [Clearer error message in Application-classes](#org43f27b3)
+        3.  [Output is only colored if it goes to the terminal](#orgf115ac9)
+        4.  [`error`-method of application classes now raises an exception](#org7a85257)
+        5.  [`ParsedParameterFile` now knows how to handle binary files](#orgd58fc0d)
+        6.  [`LabledReSTTable` for more flexible table generation](#org9e4a0e4)
+        7.  [Plotting classes now allow setting of `xlabel`](#orge2bb9e7)
+    5.  [Utilities](#orgc33d9fe)
+        1.  [`pyFoamFromTemplate.py` with new templating engine](#org22e243f)
+        2.  [`pyFoamSamplePlot.py` allows using the reference data as basis for comparison](#orga47b021)
+        3.  [Scaling and offsets are now used in plots of `pyFoamSamplePlot.py`](#orgad1fa51)
+        4.  [`pyFoamPrintData2DStatistics.py` prints relative average error](#org275b284)
+        5.  [Enhancements to `pyFoamVersion.py`](#org4393abe)
+        6.  [`pyFoamRunner.py` allows hooks](#org33d240c)
+        7.  [`pyFoamRedoPlots.py` supports range for plots](#org6ab1093)
+        8.  [`pyFoamDisplayBlockMesh.py` no supports templates](#org46ddd5d)
+        9.  [`pyFoamCaseReport.py` is tolerant towards binary files](#org2462324)
+        10. [`pyFoamSamplePlot.py` and `pyFoamTimelinePlot.py` raise error if no plots are generated](#orgf1f11ca)
+        11. [`pyFoamSurfacePlot.py` can wait for a key](#org6f2bc92)
+        12. [`pyFoamEchoDictionary.py` is more flexible with binary files](#org57a4e6b)
+        13. [All utilities now have a switch that starts the debugger even with syntax-errors](#org3f64970)
+        14. [Utilities now can be killed with `USR1` and will give a traceback](#orgfeae291)
+        15. [Switch to switch on **all** debug options](#orgd13a452)
+        16. [Plotting utilities now allow specification of x-Axis label](#org9ad4450)
+        17. [Metrics and compare for `pyFoamTimelinePlot.py` and `pyFoamSamplePlot.py` support time ranges](#org87a41e8)
+        18. [`pyFoamDisplayBlockMesh.py` allows graphical selection of blocks and patches](#org31d8158)
+        19. [`pyFoamCloneCase.py` and `pyFoamPackCase.py` accept additional parameters](#org8df48bf)
+        20. [`pyFoamListCases.py` now calculates estimated end-times](#org58b56f3)
+    6.  [New features](#org14f1a27)
+        1.  [Different "phases" for multi-region solvers](#org322eddc)
+        2.  [`pyFoamChangeBoundaryType.py` allows selection of region and time](#orgd872304)
+        3.  [New class for storing case data in a sqlite-database and associated utilities](#org7899e8c)
+    7.  [Bugfixes](#org210accf)
+        1.  [Only binary packages of 1.x were found](#org50d890d)
+        2.  [Option group *Regular expressions* was listed twice](#orgd08865f)
+        3.  [`--clear`-option for `pyFoamDecompose.py` not working](#org8ae5ac2)
+        4.  [`pyFoamDisplayBlockmesh.py` not working with variable substitution](#org09d9ded)
+        5.  [Option `--function-object-data` of `pyFoamClearCase.py` not working with directories](#org417d475)
+        6.  [`nonuniform` of length 0 not correctly printed](#org584e461)
+        7.  [Building of pseudocases with `pyFoamRunner.py` broken](#org8982ad7)
+        8.  [`pyFoamRedoPlot.py` did not correctly honor `--end` and `--start`](#orgb1a4cf6)
+        9.  [`WriteParameterFile` does not preserve the order of additions](#orgbe1d4c0)
+        10. [Wrong number of arguments when using `TimelinePlot` in `positions`-mode](#org45ddaf8)
+        11. [`ClusterJob` uses only `metis` for decomposition](#org494c2a5)
+        12. [`pyFoamSamplePlot.py` and `pyFoamTimelinePlot.py` produced no pictures for regions](#org3905c98)
+        13. [Barplots in `pyFoamTimelinePlot.py` not working if value is a vector](#orge64c9f2)
+        14. [Mysterious deadlocks while plotting long logfiles](#orga667e41)
+        15. [Scanning linear expressions form the block coupled solver failed](#orgafcf3b5)
+        16. [`#include` not correctly working with macros in the included file](#orge25845d)
+        17. [Macros not correctly expanded to strings](#orgf0a7609)
+        18. [`pyFoamPackCase.py` in the working directory produces 'invisible' tar](#org0973882)
+        19. [String at the end of a linear solver output makes parsing fail](#org1ac4bc3)
+        20. [Paraview utilities not working with higher Paraview versions](#org7989e0d)
+        21. [Camera settings not honored with `pyFoamPVSnapshot.py`](#org747a618)
+15. [Version 0.5.7 - 2012-04-13](#org1b39196)
+    1.  [Parser improvements](#orgb39724a)
+    2.  [Utility improvements](#org9c337fe)
+    3.  [New Utilities](#orgd0670e5)
+    4.  [Library improvements](#org5a6b3a5)
+    5.  [Removed utilities](#org59d3a6c)
+    6.  [Thirdparty](#org7fd7a08)
+    7.  [Other](#org06df14b)
+16. [Older Versions](#org24807ef)
 
 
-<a id="org84b871b"></a>
+<a id="orgefd8b77"></a>
+
+# Version 2020.05 - 2020-05-31
+
+This is the first version of *PyFoam* where the version numbers
+change from pseudo-semantic versioning to date-based versions
+
+
+<a id="orge726960"></a>
+
+## New features/utilities
+
+
+<a id="org35b31fa"></a>
+
+## Enhancements to the utilities
+
+
+<a id="orge61dd37"></a>
+
+### Paraview-utilities now work in Paraviews that use Python 3
+
+Newer versions of Paraview may use Python 3 as the
+Python-interpreter which made `pyFoamPVSnapshot.py` fail.
+
+The Paraview-utiliies (and the library as well) have been adapted
+to work with Python 3 **and** 2
+
+
+<a id="org4be4d39"></a>
+
+### `pyFoamPrepareCase.py` allows automatically zipping template results
+
+The utility now allows automatically zipping the results of
+template evaluations **if** the result file has no extension
+(because then it can be assumed that these files are
+OpenFOAM-dictionaries which are transparently unzipped).
+
+This allows automatically ignoring this files with proper patterns
+in `.gitignore` or `.hgignore`
+
+This can be switched on via the command line or the
+`LocalConfigPyFoam` file
+
+
+<a id="org789feda"></a>
+
+### `customRegexp` has a type `mark` to add marks to the plots
+
+Plots of `type mark` don't plot but there is a list `targets` with
+names of other plots. Every time the `expr` matches a vertical
+line is added to those plots.
+
+Purpose of this type is to annotate singular events in the graphs
+
+
+<a id="org88dc80d"></a>
+
+### Plotting utilities now plot progress of `snappyHexMesh`
+
+The `pyFoamPlotRunner.py` and `pyFoamPlotWatcher.py` now allow
+plotting the numbers of cells in different refinement levels in
+`snappyHexMesh`
+
+Different phases are annotated with vertical lines
+
+
+<a id="orga575349"></a>
+
+### Plotting utilities now plot progress of `foamyHexMesh`
+
+The `pyFoamPlotRunner.py` and `pyFoamPlotWatcher.py` now allow
+plotting the numbers of inserted points and the total displacement
+and distance of `foamyHexMesh`
+
+
+<a id="org5273767"></a>
+
+### Plotting utilities now print available values of `type`
+
+Instead of an obscure error message it now prints a list of the
+available types and a short descriptions
+
+
+<a id="org34087de"></a>
+
+### Missing attributes in `customRegexp`-specifications now give better error messages
+
+Now the complete spec is printed (in addition to the missing attribute)
+
+
+<a id="org63e3ca4"></a>
+
+### Option `--quiet-plot` for plotting utilities swallows output of the plotting program
+
+`gnuplot` sometimes outputs error messages which mess up the
+`ncurses`-output. The `--quiet-plot`-option swallows this
+output. This behaviour is **not** the default because sometimes this
+output is useful
+
+
+<a id="org2c8bcb5"></a>
+
+### Colored markers in `pyFoamPlotWatcher` for logfiles from restarts
+
+If following a file which has `.restartXX`-files then when the
+file is changed a red marker line with the label "Restart" is
+shown in all the plots
+
+
+<a id="orgd8a3ff1"></a>
+
+### `writeFiles` in a `customRegexp`-entry writes scanned output to file
+
+If a line
+
+    writeFiles yes;
+
+is added to an entry in `customRegexp` then the data is written to
+a file as well. These files are found in the `.analyzed`-folder
+
+
+<a id="org41fbfda"></a>
+
+### Modifying splitting behavior for plot data
+
+Plotting data is reduced from time to time if the number of data
+points exceeds a certain threshold. Usually this threshold
+is 2048. Now for most runner utilities (and the `PlotWatcher`)
+there are two additional options: `--split-data-points-threshold`
+allows setting the number of data points to a different value than
+2048 and `--no-split-data-points`  to switch off splitting altogether
+
+
+<a id="org794ac26"></a>
+
+### Parametric plots with `xvalue` in `customRegexp`
+
+If an entry `xvalue` is found in a `customRegexp`-specification
+then the value with that name is **not** plotted but used instead of
+the time as the $x$-coordinate for the plot. So something like
+
+    highspeedLocation {
+        theTitle "Location of the highest velocity";
+        expr "Expression highSpeedLoc :  min=\((.+) (.+) .+\)";
+        titles (
+            x
+            y
+        );
+        xlabel "x";
+        ylabel "y";
+        xvalue x;
+    }
+
+plots the location of the highest speed
+
+
+<a id="org837ed01"></a>
+
+## Enhancements to the library
+
+
+<a id="org434adf9"></a>
+
+### Paraview-classes now work with Python 3
+
+See above: *Paraview-utilities now work in Paraviews that use
+Python 3*
+
+
+<a id="orgad758c5"></a>
+
+### `TemplateFile` now can write the result as zipped
+
+The `writeFile`-method now has an optional parameter `gzip` that
+forces the file to be written in compressed form with the
+extension `.gz` added. If the file already has the extension `.gz`
+it is assumed that `gzip` is set. If a file of the same name with
+an extension `.gz` exists then it is assumed that this is to be
+overwritten. If a file is written zipped and the same file without
+`.gz` exists then it is removed to avoid confusion which file will
+be used
+
+
+<a id="org9935fb2"></a>
+
+### Mechanism to have `alternateTime` in single `customRegexp`
+
+The entry `alternateTime` now allows to reference special
+expressions that will serve as an alternate "time source". This
+was for instance used to implement the progress graph for
+`snappyHexMesh`
+
+
+<a id="org92e136c"></a>
+
+### `quiet`-option added to plotting implementations
+
+This option tells the plotting program to not output anything to
+the terminal. Currently only works for `Gnuplot`
+
+
+<a id="org699a18d"></a>
+
+### The `[]`-operator of the `PyFoamDataFrame` is now more flexible
+
+If that operator gets a single numeric value or a list of numbers
+it gets the rows where the index (usually the time) is nearest to
+the number(s) and returns a `PyFoamDataFrame`
+
+All other keys are passed to the "usual" `[]`-operator of the
+`DataFrame` but the result is converted to a `PyFoamDataFrame`
+
+
+<a id="orgdabbed2"></a>
+
+### Each run started by `BasicRunner` has a unique ID
+
+Each run gets a unique id. This allows to easily find out whether
+the data is from the same run
+
+
+<a id="org8cb3e3c"></a>
+
+### `pyFoamAddCaseDataToDatabase.py` allows updating data
+
+The `--update` switch allows updating the data for runs. Otherwise
+if the run already exists in the database the utility will fail
+
+
+<a id="org2364f38"></a>
+
+### `RunDatabase` gets method `modify`
+
+This method allows updating a run with a unique id by specifying a
+(nested) dictionary with the values
+
+
+<a id="org6db46fe"></a>
+
+## Bug fixes
+
+
+<a id="org6cecfa9"></a>
+
+### `auto` for the solver does not work with compressed `controlDict`
+
+If the `controlDict` was compressed the value of the
+`application`-entry could not be read. This has been fixed
+
+
+<a id="org0491721"></a>
+
+### `FileBasisBackup` now works with zipped file
+
+If a file is already zipped then the `FileBasisBackup` class could
+not create a backup file and failed. This works now
+
+
+<a id="orga163aa3"></a>
+
+### Case with zipped `controlDict` not recognized as a valid case
+
+If the `controlDict` was zipped for some reason then PyFoam (and
+therefor utilities like `pyFoamListCase.py`) did not recognize it
+as a valid case
+
+
+<a id="org13def47"></a>
+
+### `pyFoamDisplayBlockMesh.py` not working with newer VTK-versions
+
+The utility did not work with newer versions of VTK. This has been
+fixed. In the process support for Python 2.x has been broken
+
+
+<a id="org6508ded"></a>
+
+## Incompatibilities
+
+
+<a id="orgad386e5"></a>
+
+### `TemplateFile` writes to zipped file if it exists
+
+The method `writeFile` looks for a file o the same name with `.gz`
+added. If this exists then it is assumed that this should be
+written (in zipped form)
+
+
+<a id="orgc8b6274"></a>
+
+### `pyFoamDisplayBlockMesh.py` not working with Python 2.x anymore
+
+This utility now requires Python 3.
+
+It is not typically run on computation servers (which mostly still
+have Python 2) so the extra effort to support this outdated
+version of Python is not worth it
+
+
+<a id="orgbd4bbb2"></a>
+
+### Constructor of `PyFoamDataFrame` is more restrictive
+
+The constructor now checks if
+
+-   the index has a number type
+-   the index is strictly monothonic
+
+because most additional algorithms (`integrate()` etc) rely on
+these assumptions
+
+
+<a id="org81c51ae"></a>
+
+### `[]`-operator of `PyFoamDataFrame` returns a `PyFoamDataFrame`
+
+The old behaviour of this was to return a `DataFrame`. Shouldn't
+break existing code but makes it easier to chain indexes
+
+
+<a id="org9500c4b"></a>
+
+### `RunDatabase` fails if the same unique ID is inserted again
+
+If a dataset with the same unique ID is added with `add` for a
+second time the method fails with a `KeyError` unless the
+`update_existing`-flag is set
+
+This has the potential to beak old code (which probably wouldn't
+work correctly anyway as the old behaviour was to add the data for
+the rum for a second time)
+
+
+<a id="org2a3d9b4"></a>
+
+## Code structure
+
+
+<a id="orgcfa8ae8"></a>
+
+## Infrastructure
+
+
+<a id="orgd0a1a5a"></a>
+
+## ThirdParty
+
+
+<a id="orgdfde4be"></a>
+
+### Modification to `Gnuplot`-library
+
+There has been a `quiet`-option added that swallows all terminal
+output of `gnuplot`. This only works in the
+Unix/Linux-implementation. All others ignore it
+
+
+<a id="org2eafb37"></a>
+
+# Version 0.6.11 - 2019-10-31
+
+
+<a id="orgb40bdcf"></a>
+
+## Code structure
+
+
+<a id="org58fe213"></a>
+
+### Moved library into `src`-directory
+
+To make sure that the `tox`-tests are not affected the library is
+moved into the `src`-subdirectory
+
+
+<a id="orge5f3b3a"></a>
+
+### Added Developer notes
+
+Added a file `DeveloperNotes` with hints for people who want to
+contribute
+
+
+<a id="org8e801c2"></a>
+
+## Incompatibilities
+
+
+<a id="orgc9c2de7"></a>
+
+### Behaviour reading `customRegexp`
+
+Macro expansion in the `customRegexp` might break it for some
+cases
+
+
+<a id="orgd77d17a"></a>
+
+### Gnuplot does not use `FIFO` as the default anymore
+
+See the relevant entry in *Enhancements to Utilities*
+
+A potential problem is that the new implementation leaves files in
+the `/tmp` filesystem
+
+
+<a id="orgcb37c00"></a>
+
+## Enhancements to Utilities
+
+
+<a id="org40fb5b2"></a>
+
+### Replay data-files in `customRegexp`
+
+There are two new `type` s available in `customRegexp`: `data` and
+`dataslave`. These have to have one of the enxtries `csvName`,
+`excelName` or `txtName` with the name of a "spreadsheet type"
+file. The data from this file will be plotted according to the
+current simulation time. With `dataslave` it will be plotted to
+another plot.
+
+The entry `timeName` interprets the name of the column that is to
+be interpreted as the time and either `validData` or
+`validMatchRegexp` select the other columns to plot.
+
+`skip_header`, `stripCharacters` and `replaceFirstLine` are other
+parameters of the `SpreadsheetData`-class that preprocess the file
+to conform to an expected format
+
+
+<a id="orgbb65426"></a>
+
+### Macro expansion in `customRegexp`
+
+In the `customRegexp` it is now possible to use the usual
+OpenFOAM-macro-expansions with `$` etc. This makes
+
+
+<a id="org3b2e5b0"></a>
+
+### `progress` entry in `customRegexp` now allows `format` strings
+
+The `progress` entry in `customRegexp`-entries now allows strings
+in the format of the `str.format` method in Python. So instead off
+
+    progress "$0: $1";
+
+one can write
+
+    progress "{0}: ${1}";
+
+The advantage of this format is additional flexibility. For
+instance the length of the strings can be fixed
+
+    progress "{0:5}: ${1:10}";
+
+Note: the entries are strings. Not numbers as expected
+
+
+<a id="org53e5ec0"></a>
+
+### `pyFoamRedoPlot.py` allows passing terminal options
+
+The utility now allows passing options to the plotting
+implementation with the `--terminal-options`-option. This can for
+instance be used to modify the size of the plot
+
+
+<a id="orgf8b6b3e"></a>
+
+### `pyFoamPlotWatcher.py` stops scanning the file is `--end` was specified
+
+If the `--end-time` option is specified then the solver stops
+scanning if that time is reached. The plot windows are killed. To
+keep them specify `--persistent`
+
+
+<a id="org27ee736"></a>
+
+### Hardcopies of custom plots have more descriptive names
+
+Instead of the `custom00xxx` name the hardcopies of custom plots
+now have and additional short name that describes the content of
+the plot (it is taken from the id in the `customRegexp`)
+
+
+<a id="org2ac653d"></a>
+
+### Plotting in Gnuplot can switch between using FIFO or regular files
+
+The plotting utilities have two new options `--gnuplot-use-fifo`
+and `--gnuplot-no-use-fifo` that switches whether the plotting
+windows will use a FIFO-queue or a regular file for the data of
+the plot.
+
+Until now FIFO was used. This had two problems
+
+-   a deadlock-situation that sometimes occurred when the utility was
+    stopped with Ctrl-C
+-   the plots were not interactive (no zooming) or did not
+    immediately repaint when the windows were resized
+
+Now the default behavior is to use regular files. The problem with
+this is that the files are not removed in the end from
+`/tmp`. This shouldn't be a problem as usually that filesystem is
+purged of old files at regular intervals
+
+
+<a id="orgf2231b5"></a>
+
+### `pyFoamPrepareCase.py` calls script after copying initial conditions
+
+A script `postCopy.sh` is called after the initial conditions are
+copied from `0.org`
+
+
+<a id="org122dfdf"></a>
+
+### `--stop-after-template` and `--keep-zero` improve control in `pyFoamPrepareCaseParameters.py`
+
+The combination of these two parameters allow "just" changing
+something in the templates without running other lengthy
+operations
+
+
+<a id="orge6fcc1f"></a>
+
+### `pyFoamPVSnapshot.py` allows specification of the image quality
+
+The option `--quality` now allows specifying the quality of the
+image with a value of \(0\) being worst (but producing the smallest
+pictures) and \(100\) best (but producing huge pictures). The
+default is \(50\)
+
+
+<a id="org37477f2"></a>
+
+### Image size specification for `pyFoamPVSnapshot.py`
+
+The options `--x-resolution` and `--y-resolution` allow specifying
+the resolution of the image. If only one of them is set the image
+is scaled proportionally. This only works for Paraview versions
+bigger than 5.4
+
+
+<a id="org6f12b92"></a>
+
+### Setting separation of views and background transparency in `pyFoamPVSnapshot.py`
+
+Two new options were added that allow setting a separation between
+different views and making the background transparent. This only
+works for Paraview versions bigger than 5.4
+
+
+<a id="org64f0d1c"></a>
+
+### `pyFoamPVLoadState.py` automatically uses decomposed or reconstructed data
+
+Depending which of the two sets has more timesteps that state is
+set to this before loading. So if more parallel timesteps are
+present then these are used even if the state file uses the
+reconstructed times. The behavior can be changed with the
+`--decompoes-mode`-option
+
+
+<a id="org26e3cde"></a>
+
+### Change directory for `pyFoamPrepareCase.py` to target
+
+The option `--extecute-in-case-directory` changes the working
+directory to the target directory. THis allows specifying
+parameter files that are in that directory without a full path
+
+
+<a id="orgd7a50bd"></a>
+
+### `pyFoamPrepareCase.py` can create an example case
+
+A command like
+
+    pyFoamPrepareCase.py exampleCase --paramter-file=parameters.base --build-example --clone-case=originalCase
+
+creates an example case `exampleCase` from a template case
+`originalCase` using the parameter file `parameter.base`. It
+creates a script `Allrun` that allows executing the case without
+`PyFoam` (if none of the scripts uses `PyFoam`-scripts)
+
+This may not work for all configurations (especially cases that use `postTemplate`)
+
+
+<a id="orgda3189f"></a>
+
+### `pyFoamPrepareCase` prints derived values
+
+The same way that the utility printed the used values it now
+prints the derived values as well
+
+
+<a id="orga8a8284"></a>
+
+### `pyFoamPVSnapshot` allows specifying different colors for different views
+
+The option `--color-for-filers` now allows specifying a different
+color for the same filter in different view. This is done by
+specifying a dictionary
+
+
+<a id="org7f31875"></a>
+
+### `alternateLogscale` for custom plots
+
+This is analog to `logscale` but for the values that are specified
+with `alternateAxis`
+
+
+<a id="org27da598"></a>
+
+### `pyFoamBinarySize.py` now calculates documentation size as well
+
+If there is `html` documentation then this is counted as well
+
+
+<a id="org3eb7fc0"></a>
+
+### `pyFoamCompareDictionary.py` allows specification of significant digits
+
+When comparing numbers now the number of significant digits can be
+specified. This only works for single numbers. Not compound types
+like lists and vectors
+
+
+<a id="org0a93298"></a>
+
+## Enhancements to the Library
+
+
+<a id="orgc91f3ac"></a>
+
+### `progress`-data is automatically converted to `float`
+
+When using format-strings for the `progress`-entry then the
+library automatically attempts to convert the data to `float`
+(otherwise it keeps it as `str`)
+
+
+<a id="org4ee69e3"></a>
+
+### Additional directories in `FoamInformation`
+
+Two functions `foamCaseDicts()` and `foamPostProcessing()` have
+been added that return the paths to these directories inside
+`$FOAM_ETC`
+
+
+<a id="org66c248c"></a>
+
+### `BoolProxy` now works correctly with `!=`
+
+Added a method `__ne__` so that the results of the `!=` operator
+are consistent with `==`
+
+
+<a id="orge5a62e6"></a>
+
+## Bug fixes
+
+
+<a id="org999a6a7"></a>
+
+### With dynamic plots names with `_slave` are problematic
+
+This made the slave plots that had `_slave` in the name fail
+
+
+<a id="orgbc22467"></a>
+
+### New-style dimensioned scalars fail
+
+As reported in
+<https://sourceforge.net/p/openfoam-extend/ticketspyfoam/223/> by
+Rodrigo Leite Prates parsing certain constructs that involve
+dimension sets fail. This is because of a problem with the
+comparison of `Dimension` that assumes that the other side is a
+`Dimension` as well. Fixed
+
+
+<a id="org8f7034e"></a>
+
+### `pyFoamPVSnapshot.py` not working with Paraview 5.6
+
+The API now has to be called through a different module. Otherwise
+it will fail
+
+
+<a id="org38b3f61"></a>
+
+### `customRegexp` farthes away was used
+
+When looking automatically for a `customRegexp` the one furtherest
+up in the directory tree was used. Now instead all the
+`customRegexp` are used with the lower ones overriding the other
+ones
+
+
+<a id="org9762654"></a>
+
+### `ParameterFile`-class got confused by commented lines
+
+One of the oldest classes in PyFoam had the problem that it
+"found" parameters that were commented out with `//`. This has been fixed
+
+
+<a id="orgcfd483c"></a>
+
+### `pyFoamBinarySize.py` did not count files in `build`
+
+Some distros have a directory `build` with the intermediate object
+files. This has not been counted until now
+
+
+<a id="org6cf4789"></a>
+
+### Binary files with `ParsedParameterFile` not working in Python 3
+
+Because Python 3 tries to encode read files as Unicode strings and
+certain byte combinations are not valid UTF-8 encodings.
+
+Hopefully fixed by reading the file as binary and then create a
+`latin-1` encoded string
+
+Reported in
+<https://sourceforge.net/p/openfoam-extend/ticketspyfoam/225/> by
+Johan Hidding
+
+
+<a id="orgc9add50"></a>
+
+### Improved handling of binary files in Python 2 and 3
+
+Parts of the `FileBasis` class were not working correctly in
+Python 3 because there strings are no longer 'lists of
+bytes'. This has been adapted so that these parts work correctly
+in Python 2 **and** 3 and unit tests have been added
+
+
+<a id="org6e7a4c9"></a>
 
 # Version 0.6.10 - 2018-08-12
 
@@ -507,12 +1335,12 @@ This is only a minor release with the main purpose to recognize
 OpenFOAM 6 installations with their new numbering scheme
 
 
-<a id="orgbb1c381"></a>
+<a id="org9f57b15"></a>
 
 ## Incompatibilities
 
 
-<a id="org688032e"></a>
+<a id="org4d429de"></a>
 
 ### `pyFoamPrepareCase.py` does not execute decomposition scripts for single processor cases
 
@@ -522,12 +1350,12 @@ that the setup process relied on these scripts being always
 executed
 
 
-<a id="orgfed6e14"></a>
+<a id="org93364bb"></a>
 
 ## New feature/utilities
 
 
-<a id="org51bede8"></a>
+<a id="orgb2e8c1f"></a>
 
 ### Utility `pyFoamFunkyDoCalc.py` to compare data from `funkyDoCalc`
 
@@ -537,12 +1365,12 @@ This utility compares data written by the `funkyDoCalc`-utility from
 For details on the usage see the online help of the utility
 
 
-<a id="org06d615c"></a>
+<a id="org994b34a"></a>
 
 ## Enhancements to Utilities
 
 
-<a id="org949c41c"></a>
+<a id="orgea237a9"></a>
 
 ### Recursive searching for `pyFoamListCases.py`
 
@@ -551,7 +1379,7 @@ directories for cases. Without the option it behaves the way it
 did before
 
 
-<a id="org43da3f6"></a>
+<a id="org33c1711"></a>
 
 ### Look for `customRegexp` in parent directories
 
@@ -562,7 +1390,7 @@ behavior can be switched off with the
 `--no-parent-customRegexp`-option
 
 
-<a id="org6a60b82"></a>
+<a id="org7149677"></a>
 
 ### `pyFoamPrepareCase.py` does not execute decomposition scripts for single processor cases
 
@@ -570,7 +1398,7 @@ If `numberOfProcessors` is smaller than 2 then the decomposition
 scripts are ignored
 
 
-<a id="org1400526"></a>
+<a id="org51e91a8"></a>
 
 ### `pyFoamPrepareCase.py` checks for proper decomposition
 
@@ -578,7 +1406,7 @@ At the end the utility now checks if the number of processor
 directories is consistent with the specified `--number-of-processors`
 
 
-<a id="org7ed14da"></a>
+<a id="orgca7cec6"></a>
 
 ### `pyFoamPlotWatcher.py` automatically uses newest logfile
 
@@ -589,12 +1417,12 @@ Like any automatism this might produce unexpected results. So use
 with care
 
 
-<a id="org9dfe974"></a>
+<a id="org049fd18"></a>
 
 ## Enhancements to the Library
 
 
-<a id="orgd3743a3"></a>
+<a id="org3ee6a7e"></a>
 
 ### `FoamFileGenerator` handles `OrderedDict`
 
@@ -603,7 +1431,7 @@ is found (instead of the usual behaviour of sorting the keys to
 always get the same output)
 
 
-<a id="orgf846b11"></a>
+<a id="org158027e"></a>
 
 ### `#sinclude` handled as an alias to `#includeIfPresent`
 
@@ -611,7 +1439,7 @@ OpenFOAM v1812 introduces this as an alias. It is now handled by
 the parser similarly
 
 
-<a id="orgb21929c"></a>
+<a id="org8d8c788"></a>
 
 ### OpenFOAM 6 correctly recognized
 
@@ -620,39 +1448,39 @@ With OpenFOAM 6 the naming scheme changed again. Instead of 6.0
 recognizes both forms in the directory name
 
 
-<a id="org6ae235f"></a>
+<a id="orgbb8d185"></a>
 
 ## Bug fixes
 
 
-<a id="orgf013cec"></a>
+<a id="orgad01d16"></a>
 
 ### `pyFoamPrepareCase.py` did not remove `processor`-directories
 
 
-<a id="org6006da0"></a>
+<a id="orgfd97d1b"></a>
 
 ## Infrastructure
 
 
-<a id="org1cbf5df"></a>
+<a id="org0cf6327"></a>
 
 ### Single digit version numbers supported
 
 Now installations with names like `OpenFOAM-6` are recognized
 
 
-<a id="org479dea4"></a>
+<a id="org47921c9"></a>
 
 # Version 0.6.9 - 2018-02-25
 
 
-<a id="org71cb1b7"></a>
+<a id="org3c3d3fb"></a>
 
 ## Major changes
 
 
-<a id="org2994857"></a>
+<a id="org0fa7381"></a>
 
 ### Add `curses`-output to Utilities
 
@@ -676,12 +1504,12 @@ causes a segmentation fault of Python which may stop your
 simulation
 
 
-<a id="orge0e1fa4"></a>
+<a id="orgefdcf8d"></a>
 
 ## Incompatibilities
 
 
-<a id="org8168854"></a>
+<a id="orgc38f88a"></a>
 
 ### `pyFoamPrepareCase.py` creates `.foam`-file
 
@@ -689,7 +1517,7 @@ The utility now automatically creates a file that allows Paraview
 to open the case
 
 
-<a id="org540a0f8"></a>
+<a id="orgf5c154c"></a>
 
 ### Hardcoded Foam-Version upgraded to `4.0`
 
@@ -698,19 +1526,19 @@ The hardcoded Foam-version that is used if the
 `4.0` from the rather ancient version `1.5`
 
 
-<a id="org4d52dfc"></a>
+<a id="orgf09fc5c"></a>
 
 ### `none` no longer parsed as an equivalent for `false`
 
 This breaks the parsing of cases where `none` is used as a word.
 
 
-<a id="org525ab89"></a>
+<a id="orgdeb5f26"></a>
 
 ## New features/utilities
 
 
-<a id="org4233887"></a>
+<a id="orgd887c0f"></a>
 
 ### `pyFoamJoinTimelines.py` to join Timelines from restarts
 
@@ -718,7 +1546,7 @@ This utility joins timeline files from different restarts. The
 lines from times that will be in the next file are discarded
 
 
-<a id="org6ba7c2a"></a>
+<a id="orga7af2cd"></a>
 
 ### `pyFoamRestartRunner.py` to automatically restart runs
 
@@ -731,12 +1559,12 @@ is reached or no new time-step is written to disk (in this case it
 makes no sense to run again)
 
 
-<a id="orgc4304b4"></a>
+<a id="orgf502610"></a>
 
 ## Enhancements to Utilities
 
 
-<a id="orgeadde38"></a>
+<a id="orga521798"></a>
 
 ### Special snapshot utilities to use MESA
 
@@ -746,7 +1574,7 @@ enforces the used `OpenGL`-implementation (especially Mesa). Use this run
 the script on a machine that don't have hardware support for 3D-graphics
 
 
-<a id="orga828f04"></a>
+<a id="org5ab0a93"></a>
 
 ### Automated plotting of film properties
 
@@ -754,7 +1582,7 @@ For the surface film solvers there now properties like the mass,
 covered surface, thickness and velocity are automatically plotted
 
 
-<a id="org8bc55ce"></a>
+<a id="orgf65a624"></a>
 
 ### `pyFoamClearCase.py` automatically executes an existing `Allclean`
 
@@ -762,7 +1590,7 @@ If present the script (which is usually found in tutorial cases)
 is executed before other cleaning takes places
 
 
-<a id="org520eefd"></a>
+<a id="org527d7b4"></a>
 
 ### `pyFoamPrepareCase.py` executes tutorial scripts if available
 
@@ -772,7 +1600,7 @@ and no special scripts are present then the original scripts are
 executed
 
 
-<a id="org4029233"></a>
+<a id="org6c1b3b6"></a>
 
 ### Script for clearing in `pyFoamPrepareCase.py`
 
@@ -781,7 +1609,7 @@ additional clearing. If instead a script `Allclean` is found then
 this is used
 
 
-<a id="org60a4839"></a>
+<a id="org0382dc6"></a>
 
 ### `pyFoamPlotWatcher.py` now can handle multiple files
 
@@ -800,7 +1628,7 @@ are found then these are automatically added (there is an option
 to prohibit this)
 
 
-<a id="org5ce5d73"></a>
+<a id="org3a7a43f"></a>
 
 ### `pyFoamPrepareCase.py` now allows separate decomposition scripts
 
@@ -816,7 +1644,7 @@ to adapt for different situations (for instance: the mesh already
 being generated in parallel)
 
 
-<a id="orgcc2d447"></a>
+<a id="org56a06fb"></a>
 
 ### Runner-utilities now create seperate logfiles on restart
 
@@ -826,7 +1654,7 @@ there already exists a logfile) it creates logfiles with
 restart log
 
 
-<a id="orgb59b716"></a>
+<a id="org57028fd"></a>
 
 ### `pyFoamPVSnapshot.py` improves rewriting of state-files
 
@@ -847,21 +1675,21 @@ then one propery can be changed like this
 `--set-property` can be used more than once
 
 
-<a id="org844853f"></a>
+<a id="orgbf7d93e"></a>
 
 ### `pyFoamPackCase.py` adds parallel data
 
 With the option `--parallel` now adds parallel data
 
 
-<a id="orgda5e0c8"></a>
+<a id="org291493c"></a>
 
 ### `--replacement`-option in `pyFoamPVSnapshot.py` supports Foam-format
 
 The option can now alternatively use Foam-format instead of Python-format
 
 
-<a id="orgd86886c"></a>
+<a id="org9c514a9"></a>
 
 ### `pyFoamPVSnapshot.py` improved error messages with problems in replacement
 
@@ -869,7 +1697,7 @@ Instead of a stack trace there is now an output of the template
 string and the available values
 
 
-<a id="org35a5fd5"></a>
+<a id="orgd48ac63"></a>
 
 ### `customRegexp` now searched in parent directories
 
@@ -878,12 +1706,12 @@ log-file is not in the current directory then PyFoam looks for it
 in all directories up to the current directories
 
 
-<a id="org3c58669"></a>
+<a id="orga2f11d5"></a>
 
 ## Enhancements to the Library
 
 
-<a id="org0540659"></a>
+<a id="org3bc664b"></a>
 
 ### `Paraview.StateFile` extended
 
@@ -891,7 +1719,7 @@ This module has been extended to allow more flexible manipulations
 of the state-file
 
 
-<a id="org1a73a1e"></a>
+<a id="orgf4ffcfe"></a>
 
 ### `BasicRunner` now checks for regular End
 
@@ -901,12 +1729,12 @@ reached its "regular" end and is also reported in the
 `PyFoamState.TheState`-file
 
 
-<a id="orga46a874"></a>
+<a id="orgccf14c0"></a>
 
 ## Bug fixes
 
 
-<a id="orgc38aa17"></a>
+<a id="orgbb05286"></a>
 
 ### `pyFoamPrepareCaser.py` ran out of memory for large script outputs
 
@@ -916,7 +1744,7 @@ memory when there was much output. The output is now written
 directly to disk
 
 
-<a id="orge18fb20"></a>
+<a id="org7ad16ad"></a>
 
 ### No Courant number plottet if `WM_PROJECT_VERSION` is unset
 
@@ -924,7 +1752,7 @@ Scanning for the Courant number defaulted to the versy old
 version. This has been fixed
 
 
-<a id="org2353f6e"></a>
+<a id="org5e30d76"></a>
 
 ### Rescale does not work for streamlines in `pyFoamPVSnapshot.py`
 
@@ -932,7 +1760,7 @@ version. This has been fixed
 cell values (like streamlines). Fixed.
 
 
-<a id="org4fa0164"></a>
+<a id="org4276c90"></a>
 
 ### Server not correctly running on Python 2.7 with `socketserver`
 
@@ -941,17 +1769,17 @@ Some installations of Python 2.7 already have the
 `BaseServer`-module. Fixed
 
 
-<a id="orgf790ce8"></a>
+<a id="org9d52524"></a>
 
 # Version 0.6.8.1 - 2017-08-03
 
 
-<a id="orga569bcc"></a>
+<a id="orga808114"></a>
 
 ## Bug fixes
 
 
-<a id="orgc7a1e35"></a>
+<a id="orga226f17"></a>
 
 ### Fork not correctly detected for `v1706`
 
@@ -959,17 +1787,17 @@ As the `+` is not present in the `WM_PROJECT_VERSION` this distro
 was detected as the Foundation fork
 
 
-<a id="org7993c93"></a>
+<a id="orgadef466"></a>
 
 # Version 0.6.8 - 2017-07-06
 
 
-<a id="org9034d1a"></a>
+<a id="orga1c7981"></a>
 
 ## Major changes
 
 
-<a id="orgf1633a2"></a>
+<a id="org98653bb"></a>
 
 ### `pyFoamNet`-utilities now work without a Meta-Server
 
@@ -982,12 +1810,12 @@ installed with
     pip install zeroconf
 
 
-<a id="org175fe2d"></a>
+<a id="orgf06b9a6"></a>
 
 ## New features/utilities
 
 
-<a id="orgaa1cfab"></a>
+<a id="orgbd74abe"></a>
 
 ### Added module `PyFoam.Infrastructure.Authentication`
 
@@ -997,12 +1825,12 @@ username is in the set of authenticated keys (or is the own
 username) then this key is used to check the challenge.
 
 
-<a id="org47da3a7"></a>
+<a id="orgca5e081"></a>
 
 ## Enhancements to Utilities
 
 
-<a id="org3eccd36"></a>
+<a id="org9436ccf"></a>
 
 ### `pyFoamClearCase.py` now has `-dry-run` option
 
@@ -1010,7 +1838,7 @@ This option doesn't clear anything but prints the things that will
 be erased
 
 
-<a id="org9fc3f17"></a>
+<a id="org6fdaf48"></a>
 
 ### New option `--keep-time` for `pyFoamClearCase.py`
 
@@ -1018,7 +1846,7 @@ This option (which can be specified more than once) allows
 specifying single time-steps that should be kept
 
 
-<a id="orgf5dfd75"></a>
+<a id="org9262d56"></a>
 
 ### `pyFoamNetList.py` no longer needs a meta-server to work
 
@@ -1026,12 +1854,12 @@ Due to the addition of `ZeroConf` this utility no longer needs a
 Meta-Server to find running calculations in the same subnet
 
 
-<a id="org1b192c4"></a>
+<a id="orgf87b224"></a>
 
 ## Enhancements to the Library
 
 
-<a id="orgc6ba2b5"></a>
+<a id="org6b9b349"></a>
 
 ### Better calculation of used memory in runs
 
@@ -1039,7 +1867,7 @@ If the `psutil`-library is installed then the memory used by
 parallel runs is calculated as well
 
 
-<a id="org32ac72f"></a>
+<a id="orgf11246d"></a>
 
 ### Pre and post-hooks are now also searched in `PyFoam.Site`
 
@@ -1050,7 +1878,7 @@ variable `PYFOAM_SITE_DIR` (which allows adding user-scripts and
 modules)
 
 
-<a id="orga214d38"></a>
+<a id="org52ab223"></a>
 
 ### Adapted to correctly detect `OpenFOAM+ v1706`
 
@@ -1059,12 +1887,12 @@ version string). This broke a regular expression and a function to
 detect the number
 
 
-<a id="org6b8acca"></a>
+<a id="org20da645"></a>
 
 ## Infrastructure
 
 
-<a id="orgb70e7db"></a>
+<a id="org6f10147"></a>
 
 ### The `Runner`-utilities now register as `ZeroConf`-services
 
@@ -1081,12 +1909,12 @@ Due to the limitation of the protocol this only works reliable in
 the same broadcast-subnet
 
 
-<a id="orge82d4f8"></a>
+<a id="org9c14a53"></a>
 
 ## Bug fixes
 
 
-<a id="org0412ec5"></a>
+<a id="orge7ab508"></a>
 
 ### `--keep-interval` in `pyFoamClearCase.py` not working for parallel-cases
 
@@ -1094,17 +1922,17 @@ Due to a copy/past error this option did not work for parallel
 cases. This is now fixed
 
 
-<a id="org5897621"></a>
+<a id="org1a44697"></a>
 
 # Version 0.6.7 - 2017-06-04
 
 
-<a id="orgccad6f1"></a>
+<a id="org83842c0"></a>
 
 ## Requirements
 
 
-<a id="org48b37fc"></a>
+<a id="orge7d303a"></a>
 
 ### Now at least Python 2.6 required
 
@@ -1113,12 +1941,12 @@ Python-version. If your system has Python 2.5 or older stick with
 PyFoam 0.6.6
 
 
-<a id="orgf4fff7c"></a>
+<a id="orgd1f3347"></a>
 
 ## Incompatibilities
 
 
-<a id="org283fc1b"></a>
+<a id="org7aca195"></a>
 
 ### Names of files generated by `pyFoamPVSnapshot.py` differ
 
@@ -1128,12 +1956,12 @@ add the options `--consecutive-index-for-timesteps` and
 `--duplicate-times`
 
 
-<a id="orgd14f225"></a>
+<a id="org666b355"></a>
 
 ## New features/utilities
 
 
-<a id="orgef14785"></a>
+<a id="org09e9e35"></a>
 
 ### Utility `pyFoamListProfilingInfo.py` to print profiling data
 
@@ -1146,7 +1974,7 @@ The utility reads the profiling info written by
 and prints it in a human-readable form
 
 
-<a id="orgf362823"></a>
+<a id="org470db84"></a>
 
 ### Utility `pyFoamBlockMeshConverter.py` to convert a 2D-mesh to 3D
 
@@ -1160,12 +1988,12 @@ by either extruding in the $z$-direction or by rotating around the
 \(x\) or the $y$-axis
 
 
-<a id="orgbd2cefa"></a>
+<a id="orgc33f759"></a>
 
 ## Enhancements to Utilities
 
 
-<a id="orgcd57159"></a>
+<a id="orge9cc1c2"></a>
 
 ### `customRegexp` now can scan for texts
 
@@ -1177,7 +2005,7 @@ being plotted. They are written to disk with `--write-files` and
 they can be used in `progress`
 
 
-<a id="org305b4e0"></a>
+<a id="org4e92ca2"></a>
 
 ### Lines in `PyFoamHistory` escaped
 
@@ -1186,7 +2014,7 @@ and/or quotes are quoted and quotes inside are escaped. This
 allows these command lines to be copy/pasted to the command line
 
 
-<a id="org38a7c0c"></a>
+<a id="org845ea4c"></a>
 
 ### `--values-string` of `pyFoamPrepareCase.py` now accepts OpenFOAM-format
 
@@ -1195,7 +2023,7 @@ starting `{` and no ending `}`. With these the old behavior
 (parsing as a Python-dictionary) is used
 
 
-<a id="org35dc394"></a>
+<a id="orgc21c4d4"></a>
 
 ### `pyFoamRunner.py` and `pyFoamPlotRunner.py` allow automatic selection of solver
 
@@ -1204,7 +2032,7 @@ proper solver (like `interFoam`) then the utility looks into
 `controlDict` for the `application`-entry and uses that
 
 
-<a id="orgc34f275"></a>
+<a id="orga8c99fd"></a>
 
 ### Calculations (data transformations) in `customRegexp`
 
@@ -1223,7 +2051,7 @@ The `titles`-entry corresponds to these results. If the "raw"
 identity-transformations of the form `"$1"`
 
 
-<a id="orgc241571"></a>
+<a id="orge7c6b6b"></a>
 
 ### Multi-part `idNr` for `dynamic` in `customRegexp`
 
@@ -1236,7 +2064,7 @@ If only a number is specified it has the old behavior.
 As usual the indexes of the matches stat with \(1\) (not \(0\))
 
 
-<a id="org1059fc7"></a>
+<a id="org824642d"></a>
 
 ### `pyFoamListCases.py` detects dead runs
 
@@ -1244,7 +2072,7 @@ If a run has not had any output in the last hour it is listed as
 dead. This threshold can be customized
 
 
-<a id="org3c81fb8"></a>
+<a id="org64f8254"></a>
 
 ### Improved time-handling of `pyFoamPVSnapshot.py`
 
@@ -1258,7 +2086,7 @@ The old behaviour can be reproduced with
 `--consecutive-index-for-timesteps` and `--duplicate-times`
 
 
-<a id="org828c296"></a>
+<a id="org6a28c04"></a>
 
 ### Default plots can be set in configuration
 
@@ -1270,7 +2098,7 @@ switched off with the corresponding `--no`-option. If off by
 default the `--with`-option switches it on
 
 
-<a id="orgbf51695"></a>
+<a id="orgd299d81"></a>
 
 ### `derivedParameters.py`-script called from `pyFoamPrepareCase.py` allows error reporting
 
@@ -1279,12 +2107,12 @@ parameter checking there now is a function `error` available that
 makes the script and the complete execution fail
 
 
-<a id="org96912f9"></a>
+<a id="org353e08e"></a>
 
 ## Enhancements to the Library
 
 
-<a id="orgc2b2dba"></a>
+<a id="orgfd55bc8"></a>
 
 ### Detection of new versions of OpenFOAM-foundation and OpenFOAM+
 
@@ -1292,7 +2120,7 @@ Both distros changed their scheme for the version numbers and the
 regular expressions have been adapted to detect them
 
 
-<a id="org0e42f45"></a>
+<a id="org8666d5d"></a>
 
 ### `SpreadsheetData` now handles string data
 
@@ -1300,7 +2128,7 @@ If one of the columns is string data then the `()`-operator
 returns string values (when interpolating the next value)
 
 
-<a id="org1dc2d74"></a>
+<a id="org735a4a9"></a>
 
 ### `TimelineData` tolerates string values
 
@@ -1308,7 +2136,7 @@ The class can now read strings without spaces (OpenFOAM `words`)
 and pass them to `SpreadsheetData`
 
 
-<a id="org7933d1c"></a>
+<a id="org312c71c"></a>
 
 ### `()` operator of `SpreadsheetData` works without name
 
@@ -1316,7 +2144,7 @@ If no `name` parameter is given then the method returns a
 dictionary with all the values
 
 
-<a id="org2e5d1b2"></a>
+<a id="org334c8fb"></a>
 
 ### New function `setCurrentTimeline` in `PyFoam.Paraview.Data` to get data at time
 
@@ -1342,7 +2170,7 @@ Hint: this reads string values as well. But in that case the value has to be
 converted with `val.GetValue(0)` in the expression
 
 
-<a id="org59dde44"></a>
+<a id="org42a3315"></a>
 
 ### User-specific temporary directory
 
@@ -1351,7 +2179,7 @@ a user specific temporary directory exists and returns the path to
 that directory
 
 
-<a id="org42fcc63"></a>
+<a id="org955ff88"></a>
 
 ### `Gnuplot`-plots now get better titles
 
@@ -1360,7 +2188,7 @@ the actual title of the plots. This should make it easier to find
 plot windows in the window manager
 
 
-<a id="org0724cd0"></a>
+<a id="orgea48271"></a>
 
 ### `ParsedParameterFile` now supports `#includeFunc`
 
@@ -1372,7 +2200,7 @@ from how OpenFOAM because that searches in the
 for it in `$FOAM_ETC`
 
 
-<a id="org849b984"></a>
+<a id="org2909ebd"></a>
 
 ### New utility function `findFileInDir`
 
@@ -1380,7 +2208,7 @@ This function in `PyFoam.Basics.Utilities` looks recursively for a
 file in a directory
 
 
-<a id="org42c5806"></a>
+<a id="org173dad2"></a>
 
 ### `humandReadableDuration` added to `PyFoam.Basics.Utilities`
 
@@ -1388,24 +2216,24 @@ This function takes a duration (in seconds) and prints it in a
 human-readable form
 
 
-<a id="org39e5e19"></a>
+<a id="org6999ec6"></a>
 
 ## Infrastructure
 
 
-<a id="org537c57d"></a>
+<a id="org79e1267"></a>
 
 ### `pyFoamVersion.py` now reports the versions of the `ThirdParty`-packages
 
 Now these versions are reported as well for quick reference
 
 
-<a id="org6f42fcc"></a>
+<a id="org9c9b7a1"></a>
 
 ## Bug Fixes
 
 
-<a id="org9e6154d"></a>
+<a id="orgeb93533"></a>
 
 ### Application classes fail in Paraview
 
@@ -1413,7 +2241,7 @@ The class `PyFoamApplication` assumes that the module `sys` has an
 element `argv`. This is not the case inside Paraview
 
 
-<a id="org8e83251"></a>
+<a id="orgd4b5cff"></a>
 
 ### Scripts in `pyFoamPrepareCaseParameters.sh` not working on Mac OS X
 
@@ -1424,7 +2252,7 @@ loaded. This has been fixed by generating a special script that
 exports `LD_LIBRARY_PATH` before executing the rest
 
 
-<a id="org5cb49ef"></a>
+<a id="org4cd3e33"></a>
 
 ### Processor-directories unsorted in `SolutionDirectory`
 
@@ -1433,7 +2261,7 @@ numeric order which is not necessarily the case. This caused
 problems with `pyFoamCaseReport.py`
 
 
-<a id="orgad9c6fa"></a>
+<a id="org1c11bad"></a>
 
 ### Deleting failed if a file did't exist
 
@@ -1441,7 +2269,7 @@ The utility function to delete directories failed if the directory
 didn't exist. Fixed
 
 
-<a id="orge5bb8ed"></a>
+<a id="org1293a18"></a>
 
 ### Missing files in `RegionCases`
 
@@ -1451,7 +2279,7 @@ symlinked. This causes some programs to fail. Now everything from
 file of that name there
 
 
-<a id="org32cfb55"></a>
+<a id="orgf8be61f"></a>
 
 ### Wrong `solver` in `pyFoamListCase.py`
 
@@ -1459,43 +2287,43 @@ If another utility was run in the mean-time the wrong solver is
 listed by the utility. Fixed
 
 
-<a id="org5364e6e"></a>
+<a id="orgfeeaca2"></a>
 
 ## ThirdParty
 
 
-<a id="org8b6be0c"></a>
+<a id="orgef048a1"></a>
 
 ### Updated `tqdm` to version 4.8.4
 
 No reason. Just because there was an update
 
 
-<a id="org158d692"></a>
+<a id="orgc4fc1ca"></a>
 
 ### Updated `PLY` to version 3.9
 
 This breaks compatibility with Python 2.5 or older
 
 
-<a id="org430eee8"></a>
+<a id="org87637c0"></a>
 
 ### Updated `six` to 1.10.0
 
 This also breaks compatibiliy with Python 2.5 or older
 
 
-<a id="org6f9b4b5"></a>
+<a id="org8fef9a9"></a>
 
 # Version 0.6.6 - 2016-07-15
 
 
-<a id="orgc45533c"></a>
+<a id="orgb5db43f"></a>
 
 ## Incompatibilities
 
 
-<a id="org0fdf091"></a>
+<a id="orgd9575d0"></a>
 
 ### Changes in `IPython`-notebooks 3.0
 
@@ -1506,12 +2334,12 @@ a consequence won't work with old version of the `IPython`
 notebooks
 
 
-<a id="org20a2153"></a>
+<a id="orgf5c82ca"></a>
 
 ## Enhancements to Utilities
 
 
-<a id="orge85c3f8"></a>
+<a id="org4bd9ced"></a>
 
 ### `pyFoamPrepareCase.py` executes `setFields` if appropriate
 
@@ -1519,7 +2347,7 @@ If no setup-script is specified and if there is a `setFieldsDict`
 present then `setFields` is automatically executed
 
 
-<a id="org7b09d73"></a>
+<a id="org45bdd33"></a>
 
 ### Plotting utilities now automatically add custom plots depending on the solver name
 
@@ -1565,7 +2393,7 @@ the autoplot `cloudnumbermass` is used regardless of the solver
 name
 
 
-<a id="orgb0c72ec"></a>
+<a id="org107e7f5"></a>
 
 ### `alternateAxis`-entries now can be regular expressions
 
@@ -1573,7 +2401,7 @@ This allows specifying plots generated with `type dynamic` on the
 alternate axis
 
 
-<a id="org8f3f008"></a>
+<a id="org4e93c2c"></a>
 
 ### Plotting utilities now allow choice of Gnuplot terminal
 
@@ -1582,7 +2410,7 @@ choose the terminal. Otherwise the terminal specified in the
 configuration (usually `x11`) is used
 
 
-<a id="org269ca9a"></a>
+<a id="org40aa407"></a>
 
 ### Plotting utilities now sort legend by name
 
@@ -1590,7 +2418,7 @@ Names in the legend are now sorted. This improves readability for
 large numbers of lines in the plot
 
 
-<a id="org7fe65c6"></a>
+<a id="org3f9d4b8"></a>
 
 ### `pyFoamExecute.py` allows calling with debugger
 
@@ -1598,7 +2426,7 @@ The option `--run-with-debugger` runs the command in the
 debugger. The arguments are appropriately handled
 
 
-<a id="orgd560a70"></a>
+<a id="org136a2bb"></a>
 
 ### `pyFoamPrepareCase.py` fails if execution of a script fails
 
@@ -1616,7 +2444,7 @@ instance with
 in a `bash`-script
 
 
-<a id="orgbe5b616"></a>
+<a id="org35a5302"></a>
 
 ### `--hardcopy` in plotting library now allows modification of `gnuplot`-terminals
 
@@ -1627,7 +2455,7 @@ configuration section `[Plotting]` under the name
 terminal (for instance for `png` the option is `hardcopyOptions_png`.
 
 
-<a id="orgc6a8ee9"></a>
+<a id="orgfb6d8fe"></a>
 
 ### `pyFoamPrepareCase.py` writes state information about what it is currently doing
 
@@ -1636,7 +2464,7 @@ will list this information. If the scripts call `pyFoamRunner.py`
 then this information will be overwritten
 
 
-<a id="orga91209c"></a>
+<a id="orgcfd72dd"></a>
 
 ### `pyFoamBinarySize.py` can handle new location of binaries in OpenFOAM 3.0
 
@@ -1644,7 +2472,7 @@ Since that foam version all binaries (and object files are located
 in the directory `platforms`. The utility now finds them there
 
 
-<a id="org256ea58"></a>
+<a id="orge868dca"></a>
 
 ### `Runner`-utilites now can signal on `blink(1)`-devices
 
@@ -1652,7 +2480,7 @@ With the option `--use-blink1` these utilities now flash on a
 plugged in `blink(1)` USB-device for every time-step
 
 
-<a id="org60e2f2d"></a>
+<a id="org45acb92"></a>
 
 ### `pyFoamExecute.py` can flash a `blink(1)`
 
@@ -1660,7 +2488,7 @@ To indicate that the utility is still running it is able to play a pattern on a
 `blink(1)`-device. This is switched on with `-use-blink`
 
 
-<a id="orgf580ee0"></a>
+<a id="org6f9bc21"></a>
 
 ### `pyFoamDecompose.py` allows using a template file
 
@@ -1669,7 +2497,7 @@ output with an existing file. With this file it is possible to add
 'complicated' settings.
 
 
-<a id="orgc0beb9f"></a>
+<a id="org82ff35e"></a>
 
 ### `pyFoamTimelinePlot.py` now handles new format of probe files
 
@@ -1678,7 +2506,7 @@ position. This format is now correctly detected and plotted. Old
 probe files are also handled
 
 
-<a id="orgfed3fc3"></a>
+<a id="org433a419"></a>
 
 ### `ReST`-report of `pyFoamPrepareCase.py` now reports derived parameters
 
@@ -1686,7 +2514,7 @@ The `.rst`-file written by the utility now adds a section on
 derived parameters if such parameters were specified in a script
 
 
-<a id="orgb1c7d3d"></a>
+<a id="org54817a1"></a>
 
 ### `pyFoamPrepareCase` can now ignore directories
 
@@ -1695,7 +2523,7 @@ when looking for templates. Some sensible defaults like
 `postProcessing`, `processor*` and `VTK` are already set
 
 
-<a id="orgd378af9"></a>
+<a id="org0497db6"></a>
 
 ### `pyFoamConvertToCSV.py` allows adding formulas to XLSX-files
 
@@ -1707,7 +2535,7 @@ Excel-sheet. Something like
 adds a column `massflow` that subtracts the columns `inlet` and `outlet`
 
 
-<a id="orgfc9f839"></a>
+<a id="org64d6671"></a>
 
 ### `pyFoamListCases.py` now displays mercurial info
 
@@ -1716,7 +2544,7 @@ utility now has the option `-hg-info` that displays the mercurial
 hash-ID, the local id and the branch name
 
 
-<a id="org06564e6"></a>
+<a id="org1e74fb9"></a>
 
 ### Progress bar added to utilities with long run-time
 
@@ -1730,7 +2558,7 @@ are not disturbing the regular output. These utilities are
 Bars can be switched off with `--no-progress-bar`
 
 
-<a id="org84d50cb"></a>
+<a id="org6b86f85"></a>
 
 ### Utilities that clear data can now report what is cleared
 
@@ -1739,7 +2567,7 @@ option now also have a `--verbose-clear` option that reports
 **what** is being cleared
 
 
-<a id="org73c5385"></a>
+<a id="org1f87b46"></a>
 
 ### `pyFoamConvertToCSV.py` now allows manipulating the input
 
@@ -1751,12 +2579,12 @@ The utility now has two new options:
     the header does not match the data
 
 
-<a id="org754138f"></a>
+<a id="org82ba474"></a>
 
 ## Enhancements to the Library
 
 
-<a id="org17cd28f"></a>
+<a id="orge87a5ff"></a>
 
 ### Detection of `OpenFOAM-dev`
 
@@ -1766,7 +2594,7 @@ this as version `9.9.9` (as this is larger than any version in the
 foreseeable future
 
 
-<a id="org6dc451b"></a>
+<a id="orgbbc8c8e"></a>
 
 ### Add `OpenFOAM+` as a fork
 
@@ -1777,7 +2605,7 @@ to this fork. Also `OpenFOAM-plus` is added as the development
 version of this fork
 
 
-<a id="org6ba7f0d"></a>
+<a id="org4bb6deb"></a>
 
 ### Accept new convention for location of `blockMeshDict`
 
@@ -1786,7 +2614,7 @@ In newer OpenFOAM-versions `blockMeshDict` may be located in
 `constant/polyMesh`-location
 
 
-<a id="orgbf10763"></a>
+<a id="org295320b"></a>
 
 ### Handling of complex data by `Configuration`
 
@@ -1795,7 +2623,7 @@ correctly formatted if they are longer than one line (indented by
 at least one space - convention for configuration files)
 
 
-<a id="orga4a5cab"></a>
+<a id="orgab892ec"></a>
 
 ### `Configuration` has method `getArch` for architecture dependent settings
 
@@ -1805,7 +2633,7 @@ Architecture `arch` is the output of the `uname`-command. The
 architecture-dependent name is `opt_arch`.
 
 
-<a id="org524fca5"></a>
+<a id="org49e5ad9"></a>
 
 ### `execute`-method from `PyFoam.Basics.Utilities` returns status-code
 
@@ -1813,7 +2641,7 @@ This function now has an option that makes it return the status of
 the execution as well as the output of the execution.
 
 
-<a id="org5222fbc"></a>
+<a id="orgae24da1"></a>
 
 ### `BasicRunner` now supports more ways of stopping runs
 
@@ -1825,7 +2653,7 @@ found. Now two additional files are looked for
 -   **kill:** gracefully stops the run without any writing
 
 
-<a id="orgcb3b89d"></a>
+<a id="org94df8e5"></a>
 
 ### Added `Blink1` class to support `blink(1)` devices
 
@@ -1835,14 +2663,14 @@ running. It wraps these calls so that utilities can use them
 conveniently
 
 
-<a id="org39d8f9b"></a>
+<a id="orgb9cc79c"></a>
 
 ### `ParsedParameterFiles` now supports `includeEtc`
 
 `#includeEtc` is now supported
 
 
-<a id="org31bbb51"></a>
+<a id="org6c7934c"></a>
 
 ### Parses uniform fields correctly
 
@@ -1850,7 +2678,7 @@ Uniform fields of the form `1002{42.5}` (Field with 1002 values
 \(42.5\)) are now correctly parsed
 
 
-<a id="org9381955"></a>
+<a id="orge6cabd5"></a>
 
 ### `toNumpy`-method added to `Unparsed` and `Field`
 
@@ -1860,7 +2688,7 @@ applications for this in `PyFoam` yet but an application will be
 the parsing of lagrangian data
 
 
-<a id="orgc85c754"></a>
+<a id="org407a2c7"></a>
 
 ### Added module `PyFoam.RunDictionary.LagrangianPatchData` to read data from patch function object
 
@@ -1876,7 +2704,7 @@ It adds some properties to the data
 -   a `globalId` constructed from `origId` and `origProcId`
 
 
-<a id="orgb7b2d2f"></a>
+<a id="orgee6cac0"></a>
 
 ### Added module `PyFoam.RunDictionary.LagrangianCloudData` to read cloud data
 
@@ -1890,7 +2718,7 @@ This gets
 A `globalId` that is consistent with the one in `LagrangianPatchData` is set
 
 
-<a id="org7471f3f"></a>
+<a id="org9a8f060"></a>
 
 ### Method `code` added to =RestructuredTextHelper
 
@@ -1898,7 +2726,7 @@ This method formats a string assuming that it is a program
 code. Default value is `python`
 
 
-<a id="orgfc60304"></a>
+<a id="orga7c003c"></a>
 
 ### `ParsedParameterFile` now parses new dimension format correctly
 
@@ -1906,7 +2734,7 @@ Newer OpenFOAM-versions allow dimensions in symbolic format (for
 example `[ m s^-1 ]`). These are now correctly parsed
 
 
-<a id="org033bc6e"></a>
+<a id="orgc0b5157"></a>
 
 ### `ParsedParameterFiel` now parses uniform fields correctly
 
@@ -1914,12 +2742,12 @@ Fields of the form `23 { 4.2 }` (meaning "23 times 4.2") are now
 correctly parsed
 
 
-<a id="orgc36aa4d"></a>
+<a id="org51bf0b2"></a>
 
 ## Infrastructure
 
 
-<a id="org02565ae"></a>
+<a id="orgcd19241"></a>
 
 ### Change of documentation from `epydoc` to `sphinx`
 
@@ -1938,7 +2766,7 @@ a document set for offline searching with `Dash` (for Mac OS X) or
 clones (on other OSes) can be generated
 
 
-<a id="org749f2a4"></a>
+<a id="org22f5c94"></a>
 
 ### Adaptions to the unittests
 
@@ -1948,12 +2776,12 @@ support intermediate versions as the changes are mainly about
 changed tutorials
 
 
-<a id="orge995ca3"></a>
+<a id="org619740f"></a>
 
 ## Bug fixes
 
 
-<a id="orgdd15797"></a>
+<a id="org402cb62"></a>
 
 ### Wrong format of `ExecutionTime` breaks plotting utilities
 
@@ -1962,14 +2790,14 @@ and `pyFoamPlotRunner.py` finish with an error. This is now more
 robust
 
 
-<a id="orgcfe88cb"></a>
+<a id="org6a2fddc"></a>
 
 ### `phases` not working with dynamic plots
 
 For dynamic plots the addition of the phase name did not work. Fixed
 
 
-<a id="orga5e3885"></a>
+<a id="orgc0c9ada"></a>
 
 ### Phase name added to function object output
 
@@ -1978,7 +2806,7 @@ to the names even though the function objects do not belong to the
 phase. This is fixed
 
 
-<a id="org9f0c8a0"></a>
+<a id="org31d542c"></a>
 
 ### One region mesh too many in utilities that change the boundary
 
@@ -1986,7 +2814,7 @@ When working with regions one region too many was added in
 `pyFoamChangeBoundaryType.py` and `pyFoamChangeBoundaryName.py`. Fixed
 
 
-<a id="org8a87665"></a>
+<a id="org943984a"></a>
 
 ### `pyFoamClearCase.py` fails on write-protected case
 
@@ -1994,7 +2822,7 @@ If a case is write protected then the utility failed. Now it only
 issues a warning and continues cleaning
 
 
-<a id="orgee39c9a"></a>
+<a id="org356f5e8"></a>
 
 ### Copying of directories in `pyFoamPrepareCase.py` confused by zipped files
 
@@ -2003,7 +2831,7 @@ copying doesn't replace the destination correctly but adds the
 zipped/unzipped variant
 
 
-<a id="orgb7e7a09"></a>
+<a id="orgff1d155"></a>
 
 ### Wrong times for multi-view layouts in `pyFoamPVSnapshots.py`
 
@@ -2012,7 +2840,7 @@ then some of the views had the wrong time (either that from the
 state-file or from the timestep before). Fixed
 
 
-<a id="orga0b3f26"></a>
+<a id="org7bdbf9f"></a>
 
 ### First timestep not plotted (and not stored)
 
@@ -2020,7 +2848,7 @@ The data from the first timestep was not plotted under certain
 circumstances. This has been fixed
 
 
-<a id="org7a54f79"></a>
+<a id="org1ccc37e"></a>
 
 ### `DYLD_LIBRARY_PATH` not passed on *Mac OS X 10.11*
 
@@ -2030,7 +2858,7 @@ shell. `PyFoam` detects this and creates these variables and makes
 sure they are passed to the processes
 
 
-<a id="org20d6aed"></a>
+<a id="orgfc4b116"></a>
 
 ### Newer versions of `pandas` broke the writing of excel files with `pyFoamConvertToCSV.py`
 
@@ -2038,7 +2866,7 @@ The reason is that the old way of making axis data unique did not
 work anymore. This has been fixed
 
 
-<a id="org3970865"></a>
+<a id="org2c8c981"></a>
 
 ### Capital `E` in exponential notation for floats breaks parser
 
@@ -2047,7 +2875,7 @@ This problem has been reported at
 (the number `1E-2` is not correctly parsed to `0.01`) and has been fixed
 
 
-<a id="org1cd83c1"></a>
+<a id="orga5967fd"></a>
 
 ### `Runner`-utilities clear processor directories if first time in parallel data differs
 
@@ -2056,7 +2884,7 @@ than \(0\) the `pyFoamRunner.py` and similar utilities cleared that
 data and made a restart impossible. This has been fixed
 
 
-<a id="org5d454ec"></a>
+<a id="orgef7d320"></a>
 
 ### Utilities `pvpython` not working when installed through `distutils`
 
@@ -2066,12 +2894,12 @@ removed. This has been fixed by generating a temporary script file
 that is actually executed with =pvpython)
 
 
-<a id="orgf8bccf8"></a>
+<a id="orgb5fde54"></a>
 
 ## ThirdParty
 
 
-<a id="orga27c4b9"></a>
+<a id="org1477176"></a>
 
 ### Added `tqdm` for progress bars
 
@@ -2081,17 +2909,17 @@ progress bars to utilities.
 Library is under `MIT` License
 
 
-<a id="org8bba1b4"></a>
+<a id="org152d629"></a>
 
 # Version 0.6.5 - 2015-06-01
 
 
-<a id="org6353779"></a>
+<a id="org8b7d259"></a>
 
 ## Major changes
 
 
-<a id="org26256cf"></a>
+<a id="org26a64c6"></a>
 
 ### PyFoam now on *Python Package Index*
 
@@ -2105,12 +2933,12 @@ This will also make sure that the required `numpy`-package is
 installed
 
 
-<a id="org59717ea"></a>
+<a id="org5bb4071"></a>
 
 ## Incompatibilities
 
 
-<a id="org1df0609"></a>
+<a id="orgafa63b9"></a>
 
 ### `ArchiveDir` in `SolutionDirectory` discouraged
 
@@ -2121,7 +2949,7 @@ If you don't understand what this means it probably doesn't
 concern you
 
 
-<a id="org53b5138"></a>
+<a id="org5c124e2"></a>
 
 ### Pickled data files now written as binary
 
@@ -2131,7 +2959,7 @@ cause problems with old cases (but no effort has been made to
 check whether this problem actually exists)
 
 
-<a id="org434c899"></a>
+<a id="org0092f07"></a>
 
 ### The `PlotRunner` and `PlotWatcher` now don't strip spaces
 
@@ -2143,7 +2971,7 @@ The old behaviour may be reset by overriding `stripSpaces` in
 section `SolverOutput` with a value `True`
 
 
-<a id="orge32d0c2"></a>
+<a id="org8552ad2"></a>
 
 ### Different column names in `pyFoamConvertToCSV.py`
 
@@ -2151,7 +2979,7 @@ The enhanced naming of the columns might break scripts that rely
 on the old naming
 
 
-<a id="org7b39857"></a>
+<a id="org703980a"></a>
 
 ### `pyFoamChangeBoundaryName.py` and `pyFoamChangeBoundaryType.py` automatically modify `processorX`
 
@@ -2161,12 +2989,12 @@ they are. Scripts that rely on unchanged `boundary`-files in the
 the `--no-processor`-option
 
 
-<a id="orga8bcf0a"></a>
+<a id="org7237849"></a>
 
 ## Bugfixes
 
 
-<a id="orgd83c6d3"></a>
+<a id="orgc09ac12"></a>
 
 ### Arbitrary commands in `TemplateFile` passed to file
 
@@ -2174,7 +3002,7 @@ Lines with `$$` are passed to the file and make it syntactically incorrect.
 Fixed
 
 
-<a id="org99b4aa3"></a>
+<a id="org9809f2c"></a>
 
 ### Pickled files not opened in binary mode
 
@@ -2183,7 +3011,7 @@ correctly written (actually: attempts to write them to a
 pickle-file made the application fail)
 
 
-<a id="org7391490"></a>
+<a id="orgbfb7b5c"></a>
 
 ### Additional fixes for Python 3
 
@@ -2197,7 +3025,7 @@ Python 2 and 3 makes these fail on Python 3. Changes are
     floating point number as a result
 
 
-<a id="orga5624f3"></a>
+<a id="org4a6cd0d"></a>
 
 ### `ParsedParameterFile` fails if "complete" dictionary is `#include` ed
 
@@ -2205,7 +3033,7 @@ If an included dictionary has a header parsing failed. This is
 fixed by retrying the parsing with the header
 
 
-<a id="org049e1db"></a>
+<a id="org4c065a9"></a>
 
 ### `ParsedParameterFile` fails if there is more info after `#include`
 
@@ -2214,7 +3042,7 @@ regular OpenFOAM-parser ignores it. The PyFoam-parser failed. This
 has been fixed and the parser behaves like regular OpenFOAM
 
 
-<a id="org8a85724"></a>
+<a id="org8d266bf"></a>
 
 ### `pyFoamDisplayBlockMesh.py` not working with VTK 6
 
@@ -2222,7 +3050,7 @@ Due to changes in the API the program did not work. This is now
 fixed and the program works with VTK 6 as well as VTK 5
 
 
-<a id="org8f89d9d"></a>
+<a id="org2117cb3"></a>
 
 ### `pyFoamCreateModuleFile.py` failed with environment variables containing `=`
 
@@ -2231,7 +3059,7 @@ In that case an overeager `split` created lists.
 Fix provided by Martin Beaudoin
 
 
-<a id="orge2390b6"></a>
+<a id="org55354dd"></a>
 
 ### Fix import in `GeneralVCSInterface`
 
@@ -2240,14 +3068,14 @@ one. Fixed. But doesn't matter as Mercurial doesn't support
 Python3
 
 
-<a id="org8e37a4e"></a>
+<a id="org516028f"></a>
 
 ### Support of old format in `ParsedBlockMeshDict` broken
 
 Wrong usage of indexes. Fixed
 
 
-<a id="orgfd75863"></a>
+<a id="org9e8b2d4"></a>
 
 ### `TemplateFile` not correctly working in Python 3
 
@@ -2255,7 +3083,7 @@ Reason was a different calling convention to the `exec`-function
 of Python. Fixed
 
 
-<a id="orgda67bbd"></a>
+<a id="orgf98aac5"></a>
 
 ### Certain things not done by `pyFoamPrepareCase` in `--quiet` was set
 
@@ -2263,7 +3091,7 @@ This was due to actions being on the same level as the
 debug-output. Fixed
 
 
-<a id="orgdb28656"></a>
+<a id="org8349f3f"></a>
 
 ### Annoying warning at the start of the run
 
@@ -2272,7 +3100,7 @@ phase when no information about the current time is
 available. This is now fixed
 
 
-<a id="org9db402c"></a>
+<a id="org9eb79eb"></a>
 
 ### Redirected values
 
@@ -2281,7 +3109,7 @@ not used when iterating over dictionaries
     redirected dictionaries were not used. This is now fixed
 
 
-<a id="org44b533a"></a>
+<a id="org737f554"></a>
 
 ### Behavior of Template-engine not consistent in Python3 and Python2
 
@@ -2290,7 +3118,7 @@ Python 3 certain expressions (especially with list comprehension)
 failed. Fixed
 
 
-<a id="org7fdd2f8"></a>
+<a id="org902a190"></a>
 
 ### Braces, brackets, parentheses in column name broke `RunDatabase`
 
@@ -2299,7 +3127,7 @@ normalized to special character combinations (which will be
 denormalized after reading)
 
 
-<a id="orgcb4bb15"></a>
+<a id="orgbfe8964"></a>
 
 ### Finding of installations in alternate locations broken
 
@@ -2307,7 +3135,7 @@ The algorithm to find (Open)FOAM-installations in alternate
 locations was broken. Now working again
 
 
-<a id="org372224a"></a>
+<a id="org7daa5dd"></a>
 
 ### Failing on 3.x if socket for server thread already occupied
 
@@ -2316,12 +3144,12 @@ thread (usually port 18000) was already notified the program
 failed. Fixed. Tested on 2.7 as well
 
 
-<a id="org45e0276"></a>
+<a id="org313ba17"></a>
 
 ## Enhancements to Utilities
 
 
-<a id="org12bae05"></a>
+<a id="org00b5e4e"></a>
 
 ### `pyFoamPrepareCase` recognizes multi-region cases
 
@@ -2329,7 +3157,7 @@ If there are multiple regions and no `prepareMesh.sh` then it will
 try to execute `blockMesh` for the regions
 
 
-<a id="org91be8df"></a>
+<a id="org5c815f9"></a>
 
 ### `pyFoamPrepareCase` adds specialized templates
 
@@ -2340,7 +3168,7 @@ Application may be for instance special templates for
 `potentialFoam`
 
 
-<a id="org9084e32"></a>
+<a id="org2be61a9"></a>
 
 ### `pyFoamPrepareCase` keeps data generated by meshing script
 
@@ -2349,7 +3177,7 @@ directory will be kept. This can be switched off if this is not
 the desired behaviour
 
 
-<a id="org4137293"></a>
+<a id="org1d26e67"></a>
 
 ### `pyFoamPrepareCase` adds possibility for a file with default values
 
@@ -2378,7 +3206,7 @@ It is recommended that **all** used values are specified in this
 file as this will be used for reporting
 
 
-<a id="org4a17785"></a>
+<a id="orgb5ffcd0"></a>
 
 ### `pyFoamPrepareCase` writes report about the variables
 
@@ -2390,7 +3218,7 @@ default value and the actual value are reported.
 The file can be converted with a utility like `rst2pdf`
 
 
-<a id="orgf9b0632"></a>
+<a id="orgd9fd9c9"></a>
 
 ### Gnuplot can be styled with default commands
 
@@ -2403,7 +3231,7 @@ The settings can be reset with the `gnuplotCommands`-list in the
 `customRegexp`-entries
 
 
-<a id="org201196d"></a>
+<a id="org000ef3c"></a>
 
 ### `pyFoamPVSnapshot.py` now supports Paraview 4.2 and later
 
@@ -2416,7 +3244,7 @@ switched on with the `-no-layouts`-option.
 This allows screenshots exactly the way they look on screen
 
 
-<a id="org2ee5b0d"></a>
+<a id="org761cb33"></a>
 
 ### `pyFoamPVSnapshot.py` allows switching between decomposed and reconstructed data
 
@@ -2425,7 +3253,7 @@ or reconstructed data is read. The default is that the data set
 for which more timesteps exist is selected
 
 
-<a id="org50e808d"></a>
+<a id="orgc0e6696"></a>
 
 ### `pyFoamPVSnapshot.py` allows changing the field for sources
 
@@ -2439,7 +3267,7 @@ This works for
 -   bar charts
 
 
-<a id="orgd1971ea"></a>
+<a id="org9ea88dd"></a>
 
 ### `pyFoamPVSnapshot.py` allows rescaling the color-legend
 
@@ -2454,7 +3282,7 @@ There are now two ways to rescale the color-transfer functions
 The first method will override the second
 
 
-<a id="org5e490a2"></a>
+<a id="orgf0ddf88"></a>
 
 ### `pyFoamPVsnapshot` reads parameters written by `pyFoamPrepareCase.py`
 
@@ -2463,7 +3291,7 @@ read. They are then available for substitution in the *Text*
 source
 
 
-<a id="org8a3889d"></a>
+<a id="orgec18d63"></a>
 
 ### `pyFoamListCases.py` allows filtering
 
@@ -2472,7 +3300,7 @@ considered by name of the case. Either substrings or globs can be
 used. Ignore patterns can be specified as well
 
 
-<a id="orge51f88a"></a>
+<a id="org23e723f"></a>
 
 ### `pyFoamRunParametervariation.py` now allows dictionaries
 
@@ -2503,7 +3331,7 @@ where sets has two variations. Values unset in `sets` will be used
 from `defaults`
 
 
-<a id="orgb175523"></a>
+<a id="orgb010ce9"></a>
 
 ### `pyFoamConvertToCSV.py` now has all functionality of `pyFoamJoinCSV.py`
 
@@ -2513,7 +3341,7 @@ utility (including interpolating times)
 `pyFoamJoinCSV.py` will be removed in future versions of `PyFoam`
 
 
-<a id="org850e01b"></a>
+<a id="orgcbc014d"></a>
 
 ### `dynamic` in `customRegexp` now allows composition from multiple match-groups
 
@@ -2525,7 +3353,7 @@ Application for the new behavior would be for instance to have the
 flow of different species on different patches in one plot
 
 
-<a id="orgf7e989b"></a>
+<a id="org1f83c16"></a>
 
 ### New type `dynamicslave` in `customRegexp`
 
@@ -2533,7 +3361,7 @@ This combines the properties of the types `dynamic` and `slave`:
 dynamically generated data sets that are added to another plot
 
 
-<a id="org45744c4"></a>
+<a id="orgf5aca46"></a>
 
 ### Additional profiling option `--profile-line-profiler`
 
@@ -2541,7 +3369,7 @@ Uses the library `line_profiler` for profiling. Only of interest
 for developers. Experimental
 
 
-<a id="orge445dca"></a>
+<a id="org846023b"></a>
 
 ### Utilities that use templates can be customized with the configuration
 
@@ -2550,7 +3378,7 @@ the behavior of the templating engine (how templates are processed
 and syntax details)
 
 
-<a id="org890857a"></a>
+<a id="org28ae15d"></a>
 
 ### `LocalConfigPyFoam` now can be read **before** argument parsing
 
@@ -2563,7 +3391,7 @@ configuration file can overrule the default behavior of the
 template engine
 
 
-<a id="orga3f4554"></a>
+<a id="orgc014f67"></a>
 
 ### `pyFoamConvertToCSV.py` automatically selects the output format with `--automatic-format`
 
@@ -2572,7 +3400,7 @@ Now if that option is selected and the extension of the output is
 anymore
 
 
-<a id="org441e157"></a>
+<a id="org6949a54"></a>
 
 ### `pyFoamConvertToCSV.py` allows adding original data as separate sheets
 
@@ -2580,7 +3408,7 @@ The input data files now can be added to an excel-file as separate
 sheets with the `--add-sheets`-option
 
 
-<a id="org896103f"></a>
+<a id="org10bb611"></a>
 
 ### `pyFoamConvertToCSV.py` has improved naming of columns
 
@@ -2594,7 +3422,7 @@ to file. The time name can be changed with
 `--column-name-transformation`
 
 
-<a id="org0d0a13c"></a>
+<a id="org22a49a2"></a>
 
 ### `pyFoamConvertToCSV.py` now supports sets-files
 
@@ -2603,7 +3431,7 @@ from the filename. `--automatic` assumes that files with the
 extension `.xy` are of this format
 
 
-<a id="org7635980"></a>
+<a id="orga6d96d9"></a>
 
 ### `pyFoamPrepareCase.py` can calculate derived values with a script
 
@@ -2611,7 +3439,7 @@ If a script `derivedParameters.py` is present then it is executed
 and values set in that script can be used in the templates as well
 
 
-<a id="orga7be00b"></a>
+<a id="org127fd5c"></a>
 
 ### `pyFoamPrepareCase.py` adds a variable `numberOfProcessors`
 
@@ -2622,7 +3450,7 @@ The `PrepareCaseJob`-class in `ClusterJob` automatically sets the
 values according to the number of processors in the cluster job
 
 
-<a id="org226e0e9"></a>
+<a id="orgf191d60"></a>
 
 ### `pyFoamChangeBoundaryName.py` and `pyFoamChangeBoundaryType.py` now support decomposed cases
 
@@ -2630,7 +3458,7 @@ Both utilities now also modify the boundary files in the
 `processorX`-direcories. This behaviour can be switched off from the command line
 
 
-<a id="org5b25ded"></a>
+<a id="org6af9f86"></a>
 
 ### `pyFoamPrepareCase.py` has possibility for templates after the final stage
 
@@ -2638,7 +3466,7 @@ Templates with the extension `.finalTemplate` are executed after
 the `caseSetup.sh`-script.
 
 
-<a id="org7aa31a2"></a>
+<a id="org63113c4"></a>
 
 ### `pyFoamRunParameterVariation` allows adding postfix to cloned cases
 
@@ -2648,7 +3476,7 @@ variations with the same parameter file should be kept (for
 instance when comparing OpenFOAM-versions)
 
 
-<a id="orge97b85d"></a>
+<a id="org821a6cf"></a>
 
 ### `pyFoamConvertToCSV` now allows setting of default input file format
 
@@ -2656,7 +3484,7 @@ The option `--default-read-format` now allows setting a different
 format than `csv` as the default format for input files
 
 
-<a id="org8e37ea6"></a>
+<a id="org2e12d0c"></a>
 
 ### `pyFoamListCases.py` adds the hostname to the printed information
 
@@ -2665,7 +3493,7 @@ simulation was run on and prints it (can be switched off with an
 option)
 
 
-<a id="org40e3ce1"></a>
+<a id="org7324e77"></a>
 
 ### `pyFoamPrepareCase.py` allows cloning
 
@@ -2676,12 +3504,12 @@ the created directory **can** be constructed from the specified
 parameters with the `--automatic-casename`-option
 
 
-<a id="org6a723d7"></a>
+<a id="org6b610ba"></a>
 
 ## Enhancements to the Library
 
 
-<a id="orgd8de29f"></a>
+<a id="orgaf9b0a5"></a>
 
 ### `SolutionDirectory` detects multiple regions
 
@@ -2689,7 +3517,7 @@ Valid regions are sub-directories of `constant` that have a
 `polyMesh`-directory
 
 
-<a id="orgd983b5a"></a>
+<a id="org3c9e833"></a>
 
 ### `BoolProxy` now compares like builtin `bool`
 
@@ -2697,7 +3525,7 @@ Comparison used to fail for types where it was not explicitly
 implemented like `None`
 
 
-<a id="orgcc9ab71"></a>
+<a id="org2216978"></a>
 
 ### `PyFoamApplication`-class now supports `pvpython` for debugging
 
@@ -2705,7 +3533,7 @@ Now `--interactive-after-exception` also works in the utilities
 that use `pvpython`
 
 
-<a id="org6fd5a2c"></a>
+<a id="org2b37edb"></a>
 
 ### `TemplateFile` now allows more flexible assignments
 
@@ -2721,14 +3549,14 @@ assignments to variables are possible. To be specific:
     $$ a,b = 2,3
 
 
-<a id="org80a60d6"></a>
+<a id="org630426c"></a>
 
 ### `ThirdParty`-library `six` upgraded to 1.9.0
 
 This library has been upgraded to the latest released version
 
 
-<a id="org14c356b"></a>
+<a id="org519ac04"></a>
 
 ### Additional markup in `RestructuredTextHelper`
 
@@ -2739,7 +3567,7 @@ The methods `bulletList`, `enumerateList` and `definitionList`
 take lists or dictionaries and mark them as lists
 
 
-<a id="org2c38145"></a>
+<a id="orgd6dd6eb"></a>
 
 ### `SpreadsheetData` can now read files produced by the `sets`-functionObject
 
@@ -2748,12 +3576,12 @@ field names are in the filename and there is no header with field
 names in the file
 
 
-<a id="org9d470b5"></a>
+<a id="orgc124849"></a>
 
 ## Infrastructure
 
 
-<a id="org0397751"></a>
+<a id="org6a838ef"></a>
 
 ### Adaption of Debian packaging to new conventions
 
@@ -2761,12 +3589,12 @@ By Oliver Borm. The building of Debian packages for Python
 libraries has changes. Necessary adaptions were done by Oliver Borm
 
 
-<a id="org126b6f2"></a>
+<a id="org44bf0dc"></a>
 
 ## Development changes
 
 
-<a id="org7056e27"></a>
+<a id="org9474476"></a>
 
 ### Now uses `pytest` for unittesting
 
@@ -2774,12 +3602,12 @@ The `nose`-library had problems and all the unit-tests run
 out-of-the-box with `pytest`
 
 
-<a id="orgddb7668"></a>
+<a id="orgffa0aba"></a>
 
 # Version 0.6.4 - 2014-11-24
 
 
-<a id="orgcc406a8"></a>
+<a id="org4340f22"></a>
 
 ## Requirements
 
@@ -2797,12 +3625,12 @@ needed. Other libraries are tested for and reported by
 that you need it)
 
 
-<a id="orgc6c46ea"></a>
+<a id="orge443fc9"></a>
 
 ## Future changes
 
 
-<a id="org71d8f5e"></a>
+<a id="org0568e98"></a>
 
 ### Redundant utilities `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` unified
 
@@ -2810,12 +3638,12 @@ These two utilities are almost indistinguishable and will be
 unified into one
 
 
-<a id="orgb66c746"></a>
+<a id="orgf8d84f2"></a>
 
 ## Major changes
 
 
-<a id="org3dc5f69"></a>
+<a id="org65b39e1"></a>
 
 ### Multi-line regular expressions in `customRegexp`
 
@@ -2827,7 +3655,7 @@ This makes it possible to match for instance the output of the
 `forces`-function objects
 
 
-<a id="org9815b5a"></a>
+<a id="orgc6e9439"></a>
 
 ### Enhancement of `pyFoamPrepare.py`
 
@@ -2836,7 +3664,7 @@ more usable and will be central to all things that set up the case
 (for instance a special `ClusterJob`)
 
 
-<a id="org49ad2c7"></a>
+<a id="org3db9f86"></a>
 
 ### Enhancements of the CSV-utilities
 
@@ -2844,7 +3672,7 @@ These utilities are now more flexible and allow writing and
 reading of Excel-files too
 
 
-<a id="org802e65b"></a>
+<a id="orgb2c3147"></a>
 
 ### Environment variable `PYFOAM_SITE_DIR` and `PYFOAM_DIR`
 
@@ -2874,19 +3702,19 @@ Purpose of `PYFOAM_SITE_DIR` is to allow administrators to provide
 site-wide scripts and settings for all users on a site
 
 
-<a id="org7753d79"></a>
+<a id="org69ad1ff"></a>
 
 ## Incompatibilities
 
 
-<a id="org45f3cd7"></a>
+<a id="org0e4f694"></a>
 
 ### Option `--silent` removed from `pyFoamPrepareCase.py`
 
 Option has been renamed to `--no-complain`
 
 
-<a id="org2cf0e0a"></a>
+<a id="orgd5affa9"></a>
 
 ### Keys in `RunDatabase` with column-names that contain upper-case letters change
 
@@ -2898,7 +3726,7 @@ the column names are replaced by an underscore and the letter
 This means that old databases might not be read correctly
 
 
-<a id="org61b69d9"></a>
+<a id="org2d97667"></a>
 
 ### Change in unique variable names in `pyFoamConvertToCSV.py`
 
@@ -2907,7 +3735,7 @@ it uses the part of the filenames that differ) and scripts relying
 on these names might fail
 
 
-<a id="org3376887"></a>
+<a id="org608e741"></a>
 
 ### `PyFoam.IPython`-module renamed to `PyFoam.IPythonHelpers`
 
@@ -2922,12 +3750,12 @@ potential problems:
     adapted to be usable again
 
 
-<a id="org568bfb5"></a>
+<a id="org61fd701"></a>
 
 ## Bugfixes
 
 
-<a id="orgbefa804"></a>
+<a id="org485f6d9"></a>
 
 ### Templates in `pyFoamPrepareCase.py` did not keep permissions
 
@@ -2935,21 +3763,21 @@ This was a problem for script-templates which were not executable
 any more. Fixed
 
 
-<a id="org09a0d3c"></a>
+<a id="org8fcbd70"></a>
 
 ### `pyFoamComparator.py` failed due to circular dependency
 
 This has been fixed by adding an import in `BasicRunner.py`
 
 
-<a id="orgf0f8b54"></a>
+<a id="org4444ea0"></a>
 
 ### `pyFoamDumpRunDatabaseToCSV.py` fails if Pandas-data is requested
 
 This is now fixed
 
 
-<a id="orgc664f55"></a>
+<a id="org1f5dbff"></a>
 
 ### `sort` for list broke code on Python 3
 
@@ -2958,7 +3786,7 @@ not exist for Python3 anymore. These calls have been replaced with
 `key` and `reverse`
 
 
-<a id="org4301c40"></a>
+<a id="org7871c80"></a>
 
 ### Changing the OF-version does not work in Python 3
 
@@ -2966,14 +3794,14 @@ Because the output of `subprocess` is now *binary* instead of a
 regular string. Fixed
 
 
-<a id="org9ba8e77"></a>
+<a id="orgfcad0be"></a>
 
 ### `addData` in `PyFoamDataFrame` extrapolates for invalid values
 
 This was due to incorrect use of the `interpolate`-method
 
 
-<a id="orgba7b9bb"></a>
+<a id="org90e4bb8"></a>
 
 ### `--keep-last` did not work for `pyFoamClearCase.py` and parallel cases
 
@@ -2981,7 +3809,7 @@ This was because there was a problem in the library code and the
 utility did not consider the parallel time-steps. Fixed
 
 
-<a id="org3b04686"></a>
+<a id="org716b98a"></a>
 
 ### `pyFoamDumpRunDatabaseToCSV.py` does not add basic run information
 
@@ -2989,7 +3817,7 @@ Basic run information was not added to the file. Now it is with
 the prefix `runInfo//`
 
 
-<a id="orgc4fc284"></a>
+<a id="org9d97d50"></a>
 
 ### Restore of `FileBasisBackup` did not work
 
@@ -2998,7 +3826,7 @@ wrong. This affected the proper restore of files with utilities
 for instance for `--write-all`
 
 
-<a id="orga76de64"></a>
+<a id="org78939f0"></a>
 
 ### Remove circular dependency in `DataStructures`
 
@@ -3009,12 +3837,12 @@ dependency with `FoamFileGenerator`. Fixed by moving an import to
 the back of the file
 
 
-<a id="org471d982"></a>
+<a id="org0e9b5fd"></a>
 
 ## New features/Utilities
 
 
-<a id="org87d7ade"></a>
+<a id="orgbaee07d"></a>
 
 ### `pyFoamRunParameterVariation.py`
 
@@ -3025,7 +3853,7 @@ collects the data into a database. The database can then be
 extracted with `pyFoamDumpRunDatabaseToCSV.py`
 
 
-<a id="orgc9f85e4"></a>
+<a id="orgb43a197"></a>
 
 ### `pyFoamBinarySize.py`
 
@@ -3033,7 +3861,7 @@ Calculates the size of the binaries in an OpenFOAM-installation
 separated by compile-option
 
 
-<a id="org0c366f1"></a>
+<a id="orgdf36d91"></a>
 
 ### `pyFoamBlockMeshRewrite.py`
 
@@ -3058,12 +3886,12 @@ Sub-commands are:
     in front
 
 
-<a id="orgd09bce3"></a>
+<a id="org5c56aef"></a>
 
 ## Enhancements to Utilities
 
 
-<a id="orgf94e1b5"></a>
+<a id="orgc9f283f"></a>
 
 ### `pyFoamChangeBoundaryType.py` allows setting additional values
 
@@ -3072,7 +3900,7 @@ with additional values for the boundary (stuff that is needed by
 `mappedWall` etc)
 
 
-<a id="org586aaf4"></a>
+<a id="orga45baf5"></a>
 
 ### `pyFoamPrepareCase.py` now has OF-version and fork as defined variables
 
@@ -3080,7 +3908,7 @@ This allows to write case-templates that can distinguish between
 different OF-versions
 
 
-<a id="org6cf1ae5"></a>
+<a id="orge915061"></a>
 
 ### `pyFoamPrepareCase.py` now allows "overloading" another directory
 
@@ -3089,7 +3917,7 @@ are copied into the current case. This allows for instance to use
 tutorial cases as the basis for a case
 
 
-<a id="org70c65fb"></a>
+<a id="org7da19fa"></a>
 
 ### `pyFoamIPythonNotebook.py` adds improvements to the notebook
 
@@ -3100,7 +3928,7 @@ Additional code added to the generated notebook:
     (generated by some `swak`-function objects) added
 
 
-<a id="orgcf33316"></a>
+<a id="org378f8f7"></a>
 
 ### `pyFoamListCases.py` more tolerant to faulty `controlDict`
 
@@ -3110,14 +3938,14 @@ the utility does not fail anymore (but no data is collected for
 that case).
 
 
-<a id="org8c89b71"></a>
+<a id="org991b606"></a>
 
 ### `pyFoamDumpConfiguration.py` prints sections and keys alphabetically
 
 This should make it easier to find items
 
 
-<a id="org699df6f"></a>
+<a id="orge8de696"></a>
 
 ### `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` read and write Excel-files
 
@@ -3127,7 +3955,7 @@ In addition to regular text files the first sheet from `xls`-files
 can be read
 
 
-<a id="org66b2ea0"></a>
+<a id="org1c93cbe"></a>
 
 ### Flexible variable filtering in `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py`
 
@@ -3137,7 +3965,7 @@ The functionality of the two utilities now is very similar and it
 is possible that one of them will be discontinued
 
 
-<a id="org987bac7"></a>
+<a id="org920aff2"></a>
 
 ### Columns in `pyFoamJoinCSV.py` and `pyFoamConvertToCSV.py` can be recalculated
 
@@ -3145,7 +3973,7 @@ The two utilities now can add columns or recalculate columns
 based on the existing column values
 
 
-<a id="org86a4810"></a>
+<a id="org0f20bc5"></a>
 
 ### Testing for `Numeric` removed from `pyFoamVersion.py`
 
@@ -3154,12 +3982,12 @@ longer supported as a fallback for `numpy`. Test also removed from
 `setup.py`
 
 
-<a id="org1529210"></a>
+<a id="org2227ede"></a>
 
 ## Enhancements to the Library
 
 
-<a id="orga153141"></a>
+<a id="orgab2d2a9"></a>
 
 ### Subclass of `ClusterJob` that support `PrepareCase`
 
@@ -3171,7 +3999,7 @@ The class `PrepareCaseJob` supports cases that are set up with
     name/value-pairs
 
 
-<a id="org53e1144"></a>
+<a id="org1c7f8b7"></a>
 
 ### Subclass of `ClusterJob` that support `RunParameterVariation`
 
@@ -3182,7 +4010,7 @@ The class `VariationCaseJob` supports cases that are set up with
 -   the name of the variations-file
 
 
-<a id="org5eaa753"></a>
+<a id="orgdd1b070"></a>
 
 ### `execute` in `PyFoam/Utilities` fails if script is not executable
 
@@ -3190,7 +4018,7 @@ The function checks if the file exists and is **not**
 executable. The program fails in that case
 
 
-<a id="org21b9195"></a>
+<a id="org75ceede"></a>
 
 ### `foamVersion` uses a separate wrapper class for `tuple`
 
@@ -3198,7 +4026,7 @@ This ensures that it is printed in a form that is valid in
 OF-dictionaries
 
 
-<a id="org03ca6e4"></a>
+<a id="org613f2c2"></a>
 
 ### Move calculation of disk usage to `Utilities`
 
@@ -3206,7 +4034,7 @@ This has until now only been used in `ListCases` but moved to a
 separate method/function `diskUsage` in the `Utilities`-module
 
 
-<a id="orgce19ec9"></a>
+<a id="org0873444"></a>
 
 ### Enhancement of `--help`
 
@@ -3218,7 +4046,7 @@ if two line-breaks are encountered in the text a new paragraph is
 created
 
 
-<a id="org0eb536b"></a>
+<a id="org585f3dc"></a>
 
 ### `which`-routine in `Utitlities` uses native Python-routine
 
@@ -3226,7 +4054,7 @@ For Python-version where `shutil` has a `which`-function this is
 used instead of calling an external program
 
 
-<a id="orgc25b368"></a>
+<a id="org9cd9789"></a>
 
 ### `FileBasis` now allows file handles instead of the filename
 
@@ -3234,7 +4062,7 @@ This currently only works for reading, Backups, zipping etc won't
 work but it makes algorithms more flexible
 
 
-<a id="orgd1f87c0"></a>
+<a id="orgfba0c5f"></a>
 
 ### `BlockMesh` doesn't force writing to file anymore
 
@@ -3242,7 +4070,7 @@ Instead content is stored in memory. Old behaviour is the default
 to preserve compatibility with old scripts
 
 
-<a id="orga951404"></a>
+<a id="org1b3df98"></a>
 
 ### Additional methods for `BlockMesh`-class
 
@@ -3250,7 +4078,7 @@ to preserve compatibility with old scripts
     vertices
 
 
-<a id="orga5225e9"></a>
+<a id="org8f2f45e"></a>
 
 ### `LineReader` allows keeping spaces on left
 
@@ -3259,7 +4087,7 @@ the left hand spaces can be ket. Old behaviour is still default
 for compatibility
 
 
-<a id="orgb3ec8ca"></a>
+<a id="orgdbfb6a3"></a>
 
 ### `TemplateFile` now allows writing of assignment-results in file
 
@@ -3267,7 +4095,7 @@ This allows faster debugging of template-files. This can be
 enabled with a switch in the utilities using templates
 
 
-<a id="org2f49bcf"></a>
+<a id="orgdf70f3f"></a>
 
 ### `SolverJob` now allows passing of parameters to the solver
 
@@ -3275,7 +4103,7 @@ And additional parameter `solverArgs` will now be passed to the
 solver (if the solver accepts arguments)
 
 
-<a id="org6ebea2b"></a>
+<a id="org48809c8"></a>
 
 ### `SpreadsheetData` now allows reading from an Excel file
 
@@ -3284,7 +4112,7 @@ During construction if an Excel-file is specified and the
 the file is read
 
 
-<a id="orgc255cd3"></a>
+<a id="orga2092cd"></a>
 
 ### `SpreadsheetData` allows recalculating columns
 
@@ -3295,12 +4123,12 @@ for items that are not valid variable names. A variable `this`
 points to the item to be recalculated
 
 
-<a id="org4af8bf0"></a>
+<a id="org401da72"></a>
 
 ## Known bugs
 
 
-<a id="orgc80df1b"></a>
+<a id="orgbb32410"></a>
 
 ### Timelines not forgotten for multiple runner calls
 
@@ -3308,12 +4136,12 @@ This manifests with `pyFoamRunParameterVariation.py`. The custom
 timelines are still kept in memory. Not a problem. Just annoying
 
 
-<a id="org433f6e4"></a>
+<a id="org0b1f0ab"></a>
 
 # Version 0.6.3 - 2014-06-23
 
 
-<a id="org86e4231"></a>
+<a id="org7865117"></a>
 
 ## Requirements
 
@@ -3332,12 +4160,12 @@ needed. Other libraries are tested for and reported by
 that you need it)
 
 
-<a id="org62b8557"></a>
+<a id="org4378395"></a>
 
 ## Major changes
 
 
-<a id="orge6259e5"></a>
+<a id="orgaf719cd"></a>
 
 ### Version changing supports forks of OpenFOAM
 
@@ -3355,12 +4183,12 @@ be extended. For each new fork a `dirpatterns` and
 `installation`-parameter has to be specified
 
 
-<a id="org133d168"></a>
+<a id="org860613b"></a>
 
 ## Incompatibilities
 
 
-<a id="orgaaa60e1"></a>
+<a id="orgf23582e"></a>
 
 ### Change of command interface of `pyFoamSTLUtility.py`
 
@@ -3368,7 +4196,7 @@ The selection of what is to be done is now selected by subcommands
 instead of options. This will break scripts using this
 
 
-<a id="org0e7808d"></a>
+<a id="org15fb3c9"></a>
 
 ### If `0.org` is present `pyFoamCloneCase.py` and `pyFoamPackCase.py` ignore `0`
 
@@ -3376,12 +4204,12 @@ The reason is that the utilities assume that this directory is
 produced from `0.org`
 
 
-<a id="orgdabb57a"></a>
+<a id="org2d54a6c"></a>
 
 ## Bugfixes
 
 
-<a id="org6c6c13f"></a>
+<a id="org69c924a"></a>
 
 ### PlotWatcher has long times between updates if pickling takes long
 
@@ -3389,7 +4217,7 @@ The reason was that it used the same throttling that made sense
 for the PlotRunner. Fixed
 
 
-<a id="org85e76ad"></a>
+<a id="org6352197"></a>
 
 ### `pyFoamPVSnapshot.py` fails for newer paraview-versions
 
@@ -3397,7 +4225,7 @@ Reason is that the class `vtkPythonStdStreamCaptureHelper` does
 not support `isatty`
 
 
-<a id="org94a8956"></a>
+<a id="orgb4eed3b"></a>
 
 ### SamplePlot failed when valueNames are unspecified
 
@@ -3406,7 +4234,7 @@ Reported in
 and fixed
 
 
-<a id="orga2d8be3"></a>
+<a id="orgf7e2c2a"></a>
 
 ### `pyFoamTimelinePlot.py` failed Numpy/Pandas output of vector fields
 
@@ -3414,7 +4242,7 @@ Vector fields only were added to the data fields if they were the
 first in the list. Fixed
 
 
-<a id="org4cbb10c"></a>
+<a id="org9cb720e"></a>
 
 ### `alternateAxis` ignored for slave
 
@@ -3422,7 +4250,7 @@ This is now fixed. The alternate values have to be specified in
 the master (specifying in the slave gives an error)
 
 
-<a id="org0fcf83b"></a>
+<a id="orgeb976ed"></a>
 
 ### `pyFoamCaseReport.py` more stable for binary `boundary`-files
 
@@ -3431,7 +4259,7 @@ Usually these files are `ascii` (even if the header says
 enforcing reading as `ascii`. Can be switched off
 
 
-<a id="org46cf305"></a>
+<a id="org4e1d877"></a>
 
 ### `SpreadsheetData` returns data which breaks certain Pandas-operations
 
@@ -3440,7 +4268,7 @@ index was non-unique which certain Pandas-operations don't
 appreciate. Solved by dropping duplicate times. Can be switched off
 
 
-<a id="orge8fc472"></a>
+<a id="org37c773a"></a>
 
 ### `pyFoamCloneCase.py` added duplicates to the archive
 
@@ -3449,7 +4277,7 @@ checked whether the item already exists in the tar-file before
 adding them
 
 
-<a id="orgec1c90f"></a>
+<a id="org5640337"></a>
 
 ### `nonuniform` of length 3 not correctly printed
 
@@ -3460,12 +4288,12 @@ numeric prefix was removed. Reported at
 Fixed by introducing an extra parameter to `FoamFileGenerator`
 
 
-<a id="org9878e6f"></a>
+<a id="org738cdb7"></a>
 
 ## New features/Utilities
 
 
-<a id="org26bcb39"></a>
+<a id="org29e8fc8"></a>
 
 ### `pyFoamPrepareCase.py` for case preparation
 
@@ -3485,7 +4313,7 @@ set up cases. The steps it executes are
 7.  execute another preparation script
 
 
-<a id="org2accd3f"></a>
+<a id="org6978b85"></a>
 
 ### `pyFoamIPythonNotebook.py` for generating and manipulating IPython-notebooks
 
@@ -3531,7 +4359,7 @@ Recommended way of working with this utility is
 3.  Copy it over to another, similar case
 
 
-<a id="org3045a85"></a>
+<a id="org8b2456e"></a>
 
 ### Additional sub-module `PyFoam.IPython`
 
@@ -3549,7 +4377,7 @@ The purpose of this submodule is to support
     some of the PyFoam-utilities through a simple interface
 
 
-<a id="orgf74897a"></a>
+<a id="org33f00ec"></a>
 
 ### Additional sub-module `PyFoam.Wrappers`
 
@@ -3577,12 +4405,12 @@ Currently only one Wrapper is implemented:
         `describe`-command
 
 
-<a id="org482a6bd"></a>
+<a id="org73f0690"></a>
 
 ## Enhancements to Utilities
 
 
-<a id="orga5e378d"></a>
+<a id="orgb894d59"></a>
 
 ### `pyFoamSampleplot` has option to use index instead of time in filenames
 
@@ -3590,7 +4418,7 @@ The option `-index-instead-of-filename` switches this on. This
 makes it easier to generate movies from the files
 
 
-<a id="orgea1c845"></a>
+<a id="org67d36c7"></a>
 
 ### `pyFoamListCases.py` Allows addition of custom data
 
@@ -3599,7 +4427,7 @@ data items. These are read from the `pickledData`-files and
 displayed in the table like regular data items
 
 
-<a id="orgf34c186"></a>
+<a id="org7889381"></a>
 
 ### Switch compiler versions
 
@@ -3609,14 +4437,14 @@ instance from `Gcc47` to `Gcc48`). The relevant options are
 `--force-compiler`
 
 
-<a id="orgc8de0e5"></a>
+<a id="org4909955"></a>
 
 ### `pyFoamVersion.py` reports the installed versions better
 
 Now the location of the installations is reported as well
 
 
-<a id="orga6c6546"></a>
+<a id="orgdd8b975"></a>
 
 ### Offscreen rendering can be switched off in `pyFoamPVSnapshot.py`
 
@@ -3624,7 +4452,7 @@ This is a workaround where the writer produces a segmentation
 fault
 
 
-<a id="org3548d12"></a>
+<a id="orgefc2af8"></a>
 
 ### Write 3D-data in `pyFoamPVSnapshot.py`
 
@@ -3632,7 +4460,7 @@ In addition to writing out bitmaps allows writing out 3D-data (for
 importing into other applications). Sources can be selected by name
 
 
-<a id="orgc295089"></a>
+<a id="orgf213e26"></a>
 
 ### Added capabilities to `pyFoamSTLUtility`
 
@@ -3642,7 +4470,7 @@ The utility can now also:
 -   merge selected patches into one
 
 
-<a id="org4177e34"></a>
+<a id="org437f0d5"></a>
 
 ### `pyFoamDecomposer.py` switches off function objects
 
@@ -3650,7 +4478,7 @@ This now automatically happens for OF-versions that support
 it (2.0 and greater). They can be switched on again
 
 
-<a id="orged1605c"></a>
+<a id="org212b571"></a>
 
 ### `pyFoamCloneCase.py` clones more stuff
 
@@ -3660,12 +4488,12 @@ directories) with the extensions `.sh`, `.template` and
 `.org`. Also IPython notebooks (extension `.ipynb` are added)
 
 
-<a id="orgd017b3f"></a>
+<a id="org67e48a1"></a>
 
 ## Enhancements to the Library
 
 
-<a id="org29d1ae0"></a>
+<a id="orge25a934"></a>
 
 ### `BasicRunner` now can print the command line that is actually used
 
@@ -3674,7 +4502,7 @@ This should help with diagnosing problems with MPI etc.
 Can be switched on in some utilities with `--echo-command-prefix`
 
 
-<a id="org4a34275"></a>
+<a id="org7990f42"></a>
 
 ### `ClusterJob` now can live without a machinefile
 
@@ -3682,7 +4510,7 @@ Using the machine-file now can be switched off for job-schedulers
 with a tight integration
 
 
-<a id="org6d4b819"></a>
+<a id="org4099a92"></a>
 
 ### Enhanced treatment of symlinks during cloning
 
@@ -3695,14 +4523,14 @@ a symlink to the target the original symlink. If the
 behaviour for selected files
 
 
-<a id="org80fb47d"></a>
+<a id="orge5b8071"></a>
 
 ### `AnalyzedCommon` clears the `analyzed`-directory
 
 The directory is cleared if it exits from a previous run.
 
 
-<a id="org680b4ec"></a>
+<a id="org7b9eddd"></a>
 
 ### `TimelineDirectory` is more tolerant
 
@@ -3710,7 +4538,7 @@ Used to fail if incompatible data types were used. Now ignores
 them
 
 
-<a id="org7add6eb"></a>
+<a id="org9d4fafe"></a>
 
 ### Possibility of a subcommand-interface for utilities
 
@@ -3720,7 +4548,7 @@ supports this as an option. As an example this is implemented in
 `pyFoamSTLUtilities.py`
 
 
-<a id="org1c6aaa3"></a>
+<a id="org63a990b"></a>
 
 ### `STLUtility` accepts file-handles
 
@@ -3729,7 +4557,7 @@ case doesn't try to open a file for reading or writing but uses
 the handle
 
 
-<a id="org62e28b5"></a>
+<a id="org496a681"></a>
 
 ### `addClone` in `SolutionDirectory` accepts glob patterns
 
@@ -3738,7 +4566,7 @@ glob-pattern and all matching files are added. This affects all
 utilities that use that method (especially `pyFoamCloneCase.py`)
 
 
-<a id="org412c539"></a>
+<a id="orgd747a48"></a>
 
 ### `execute` in `Utilities` allows specification of working directory and echoing of output
 
@@ -3751,7 +4579,7 @@ There is also an option `echo` that immediately prints the output
 to the screen
 
 
-<a id="org8d59286"></a>
+<a id="org656f875"></a>
 
 ### `rmtree` and `copytree` more tolerant
 
@@ -3761,7 +4589,7 @@ to the screen
 destination directory if it exists
 
 
-<a id="org146ca24"></a>
+<a id="org4d44379"></a>
 
 ### Enhanced support for booleans in the parser
 
@@ -3773,7 +4601,7 @@ For instance an expression `test no;` in a dictionary now allows
 things like `if d['test']:` in the script
 
 
-<a id="org34ee199"></a>
+<a id="org0f697b4"></a>
 
 ### Application classes now allow specifying options as keyword parameters
 
@@ -3789,7 +4617,7 @@ value has to be passed. So the correct usage in a call would be
 `listCustomRegexp=True`.
 
 
-<a id="org70efca6"></a>
+<a id="orge8435f0"></a>
 
 ### `SolutionDirector` now can classify directories in the `postProcessing`-directory
 
@@ -3816,7 +4644,7 @@ Additional properties are
 These lists are sorted in descending temporal order (newest first)
 
 
-<a id="org51a19e3"></a>
+<a id="org9c2164e"></a>
 
 ### `pyFoamSamplePlot.py` now more flexible for distributions
 
@@ -3824,14 +4652,14 @@ Tries to determine the names of the values from the first line in
 the files
 
 
-<a id="orgfbf25be"></a>
+<a id="orgde01205"></a>
 
 ### `DictProxy` now has a `dict`-like `update`-method
 
 This also allows enforcing string values
 
 
-<a id="orgc316704"></a>
+<a id="orgd35805e"></a>
 
 ### `FoamFileGenerator` automatically quotes strings
 
@@ -3839,24 +4667,24 @@ If strings are unquoted but contain characters that make it
 illegal as a word then the string is quoted before output
 
 
-<a id="orge763112"></a>
+<a id="org4639c6f"></a>
 
 ### Children of `FileBasis` now can be used with the `with`-statement
 
 This mainly concerns `ParsedParameterFile`
 
 
-<a id="orgde882da"></a>
+<a id="orgd01d581"></a>
 
 # Version 0.6.2 - 2013-11-03
 
 
-<a id="org7beaab5"></a>
+<a id="orgdfb0f75"></a>
 
 ## Major changes
 
 
-<a id="orgeaeea56"></a>
+<a id="org2b7d1b1"></a>
 
 ### Use of `pandas`-library
 
@@ -3873,12 +4701,12 @@ It is not necessary to install `pandas` if these classes are not
 used (and even then most of their functionality works)
 
 
-<a id="org8dc95d1"></a>
+<a id="orgb0caeb9"></a>
 
 ## Incompatibilities
 
 
-<a id="orgb43db42"></a>
+<a id="orgf6cb10d"></a>
 
 ### Different separator for databases in CSV-files
 
@@ -3892,7 +4720,7 @@ consistent and easier to parse as `//` is the saperator for other
 levels of dictionaries
 
 
-<a id="orgb2069eb"></a>
+<a id="orgd7716cd"></a>
 
 ### Change of independent variable name in sample data
 
@@ -3901,12 +4729,12 @@ with scripts that use that column name in the resulting
 `SpreadsheetData`-object
 
 
-<a id="org8b27577"></a>
+<a id="org59de3df"></a>
 
 ## Bugfixes
 
 
-<a id="orga27a6cd"></a>
+<a id="org7f93356"></a>
 
 ### `pyFoamPackCase.py` does not handle symbolic links correctly
 
@@ -3916,7 +4744,7 @@ path or points outside the case directory it is replaced with the
 file it points to. Otherwise it is preserved as a symbolic link
 
 
-<a id="orgb78b006"></a>
+<a id="orgb0737e1"></a>
 
 ### `pyFoamPotentialRunner.py` not working with OpenFOAM 2.0 or newer
 
@@ -3924,7 +4752,7 @@ These versions require an entry `potentialFlow` in the
 `fvSolution`-file instead of the old `SIMPLE`
 
 
-<a id="orgde354ca"></a>
+<a id="org9fd7929"></a>
 
 ### `pyFoamListCase.py` fails with `controlDict` that use preprocessing
 
@@ -3932,7 +4760,7 @@ Fixed by first trying to read that with preprocessing. Without if
 that fails
 
 
-<a id="orgc9fe126"></a>
+<a id="org2de3177"></a>
 
 ### Cloning fails in symlink-mode if files are specified twice
 
@@ -3940,12 +4768,12 @@ Now using a `set` instead of a `list` makes sure that no file is
 cloned twice
 
 
-<a id="org51ff02a"></a>
+<a id="orgba69ec6"></a>
 
 ## Utilities
 
 
-<a id="orga28f4cb"></a>
+<a id="orgd87a039"></a>
 
 ### `pyFoamPotentialRunner.py` now allows removing of `functions` and `libs`
 
@@ -3953,7 +4781,7 @@ The utility now allows removing these entries in case that they
 don't work with `potentialFoam`
 
 
-<a id="orga3db91d"></a>
+<a id="orgf5ac1ef"></a>
 
 ### The Runner-utilities now have more options for clearing
 
@@ -3963,12 +4791,12 @@ Some of the options of `pyFoamClearCase.py` for clearing cases
 removed by default
 
 
-<a id="org8d9cc17"></a>
+<a id="orgec73fe6"></a>
 
 ## Library
 
 
-<a id="orgdeb590e"></a>
+<a id="orgaf3ba74"></a>
 
 ### `SolutionDirectory` and `TimeDirectory` are more tolerant
 
@@ -3976,7 +4804,7 @@ If there are field files and their zipped counterpart than
 instead of an error a warning **can** be given
 
 
-<a id="org3fb9176"></a>
+<a id="orge086213"></a>
 
 ### `ClusterJob` now handles template files
 
@@ -3985,7 +4813,7 @@ constructed from a template of the same name plus the extension
 `.template`
 
 
-<a id="org77d5628"></a>
+<a id="orgadc622f"></a>
 
 ### Additional parameters in `ClusterJob`
 
@@ -3993,7 +4821,7 @@ The method `additionalParameters` can return a dictionary with
 additional parameters
 
 
-<a id="org35e8b67"></a>
+<a id="org91d22e6"></a>
 
 ### Custom data in directory easier accessible
 
@@ -4015,7 +4843,7 @@ order the expressions were specified is now no longer necessary
 The old notation is still available but deprecated
 
 
-<a id="org69793e7"></a>
+<a id="org0500ddf"></a>
 
 ### `SolverJob` now allows compression of output
 
@@ -4024,7 +4852,7 @@ writing it to disc. **Attention:** This may lead to corrupted
 log-files if the run crashes
 
 
-<a id="orge8c073d"></a>
+<a id="org12013c9"></a>
 
 ### `PyFoamApplication`-class now allows quick access to data
 
@@ -4032,12 +4860,12 @@ The dictionary returned by `getData()` now allows access to all
 the elements as attributes.
 
 
-<a id="orge97c2c2"></a>
+<a id="org37548e9"></a>
 
 ## New features/Utilities
 
 
-<a id="org13e0056"></a>
+<a id="orgd82b086"></a>
 
 ### Post-run hook that sends mail at the end of run
 
@@ -4046,7 +4874,7 @@ run. Prerequisite is an SMTP-Server that doesn't need
 authentication
 
 
-<a id="orgdc9d918"></a>
+<a id="orgd1643e3"></a>
 
 ### New utility `pyFoamCompressCases.py`
 
@@ -4057,7 +4885,7 @@ Purpose of this utility is to shrink cases where
 `writeCompression` was not turned on during the run
 
 
-<a id="orged1d575"></a>
+<a id="org44541cd"></a>
 
 ### Paraview-module to read additional data
 
@@ -4070,12 +4898,12 @@ following functions and can be used in `Programmable filters`:
 -   **setPlotData:** reads pickled plot data using `RedoPlot`
 
 
-<a id="org8e41b89"></a>
+<a id="orgf8d1a8e"></a>
 
 ## Enhancements
 
 
-<a id="org0a826f8"></a>
+<a id="orgd41efa3"></a>
 
 ### `pyFoamRedoPlot.py` can plot in XKCD-mode
 
@@ -4084,7 +4912,7 @@ When used with the option `--implementation=xkcd` and version of
 the style of the webcomics <http://xkcd.com>
 
 
-<a id="org0678807"></a>
+<a id="org92558cf"></a>
 
 ### `pyFoamListCases.py` now displays disk usage in human readable form
 
@@ -4093,7 +4921,7 @@ in human readable form (as KB, MB, GB or TB) for sizes larger than
 one Kilobyte
 
 
-<a id="org84d49e9"></a>
+<a id="orgdbb0782"></a>
 
 ### `pyFoamClearCase.py` more flexible in selection of data to be removed
 
@@ -4109,7 +4937,7 @@ Options to be more flexible in removing data are added:
     too. Old behavior was to remove them. Now they are kept by default
 
 
-<a id="org14bba57"></a>
+<a id="org36c255e"></a>
 
 ### `pyFoamFromTemplate.py` automatically chooses template and default values
 
@@ -4121,14 +4949,14 @@ used as default parameter values. Other specifications override
 these defaults
 
 
-<a id="orge6a791c"></a>
+<a id="org9e83f7f"></a>
 
 ### `pyFoamDumpRunDatabaseToCSV.py` can disable standard-fields
 
 Additional option `--disable-run-data`
 
 
-<a id="org566bfaa"></a>
+<a id="org98e12f3"></a>
 
 ### `pyFoamDumpRunDatabaseToCSV.py` prints `pandas`-object
 
@@ -4136,7 +4964,7 @@ With the `-pandas-print`-option a `DataFrame` is generated and
 printed
 
 
-<a id="orgeae8663"></a>
+<a id="orgd3441c8"></a>
 
 ### Better debugging with `ipdb`
 
@@ -4145,7 +4973,7 @@ is installed then it is used. This gives additions like
 tab-completion
 
 
-<a id="org6d3a5d5"></a>
+<a id="orgdeedecf"></a>
 
 ### Interactive shell after execution for utilities
 
@@ -4154,7 +4982,7 @@ interactive shell where the namespace can be inspected. If present
 `IPython` will be used, otherwise the regular shell is used
 
 
-<a id="orgc229738"></a>
+<a id="org99456d2"></a>
 
 ### Utilities that read quantitative data convert to `pandas`-data and/or `numpy`
 
@@ -4170,7 +4998,7 @@ analysis or write this data out. The utilities are:
     as pandas-objects
 
 
-<a id="orgca642e4"></a>
+<a id="orge7eed03"></a>
 
 ### Utilities that read quantitative data write Excel files
 
@@ -4179,7 +5007,7 @@ The utilities `pyDumpRunDatabaseToCSV.py`,
 `pyFoamRedoPlot.py` now have options to write Excel-files
 
 
-<a id="org199e83a"></a>
+<a id="orgf89e3bd"></a>
 
 ### Specify additional settings for `GnuPlot` in `customRegexp`
 
@@ -4194,7 +5022,7 @@ before the first plotting. For instance
 changes the number format on the y-axis
 
 
-<a id="orgf671d5e"></a>
+<a id="org5dbdf6f"></a>
 
 ### More flexible data specification for `pyFoamSamplePlot.py`
 
@@ -4205,7 +5033,7 @@ The option `--is-distribution` is a shorthand that sets these
 options for distribution files
 
 
-<a id="orgd1be111"></a>
+<a id="org550d704"></a>
 
 ### `pyFoamSamplePlot.py` now allows specification of x-range
 
@@ -4217,22 +5045,22 @@ automatically scaling to the domains of all the data sets with
 These domains are set for **all** plots
 
 
-<a id="org77656aa"></a>
+<a id="org3195ee9"></a>
 
 # Version 0.6.1 - 2013-05-24
 
 
-<a id="orga17bf9c"></a>
+<a id="org504a0d2"></a>
 
 ## Major changes
 
 
-<a id="org806aa24"></a>
+<a id="orgeb65346"></a>
 
 ## Bugfixes
 
 
-<a id="orgd83eb79"></a>
+<a id="orge6a588b"></a>
 
 ### Restoring of `controlDict` after `write`
 
@@ -4242,14 +5070,14 @@ recognized (due to a change in the output in recent
 OF-versions). Now a number of different formats is recognized
 
 
-<a id="org591afe7"></a>
+<a id="org1066ad5"></a>
 
 ### Custom-plot type `slave` not working if no `master` defined
 
 That plot-type needs a `master`. Fixed to fail if none is defined
 
 
-<a id="org015ee88"></a>
+<a id="org63c154d"></a>
 
 ### `-list-only` did not correctly parse lists with a numeric prefix
 
@@ -4257,12 +5085,12 @@ This did affect all utilities that use that option and also calls
 with `listOnly` to the library class
 
 
-<a id="org016d3f5"></a>
+<a id="orgb9ba89a"></a>
 
 ## Utilities
 
 
-<a id="org139411a"></a>
+<a id="org3129a1b"></a>
 
 ### `pyFoamBuildHelper.py` now allow more than one action
 
@@ -4270,7 +5098,7 @@ If multiple actions like `--update` and `--build` are specified
 they are executed in a sensible order (update before build etc)
 
 
-<a id="orgf6ee4fe"></a>
+<a id="org54465d8"></a>
 
 ### Utilities warn if OpenFOAM-version is unset
 
@@ -4278,7 +5106,7 @@ If the environment variable that determines the OpenFOAM-version
 is unset a warning is issued by the utilities
 
 
-<a id="org456d359"></a>
+<a id="orgf3ed47c"></a>
 
 ### `pyFoamUpgradeDictionariesTo20.py` allows single files
 
@@ -4286,7 +5114,7 @@ If  single file is specified then the action to transform it has
 can be specified
 
 
-<a id="org70adf25"></a>
+<a id="org0546883"></a>
 
 ### `pyFoamUpgradeDictionariesTo20.py` transforms reaction-schemes
 
@@ -4295,7 +5123,7 @@ Now knows how to transform "old" reaction files (where the
 dictionary). Only a limited number of reaction types is supported.
 
 
-<a id="org6d0d369"></a>
+<a id="org5a3a21b"></a>
 
 ### `pyFoamUpgradeDictionariesTo20.py` transforms thermophysical data
 
@@ -4303,7 +5131,7 @@ Now the old form of thermophysical data (lists) is transformed
 into the new dictionary-form
 
 
-<a id="org29fb415"></a>
+<a id="org10659cf"></a>
 
 ### `pyFoamCloneCase` now allows creating directory that symlinks to the original
 
@@ -4315,7 +5143,7 @@ specified. This allows the clone to share the configuration files
 with the original
 
 
-<a id="org115b490"></a>
+<a id="org243bb24"></a>
 
 ### `pyFoamClearCase.py` now removes `postProcessing` and allows removal of additional files
 
@@ -4325,7 +5153,7 @@ switched off with `--keep-postprocessing`). Also with the
 can be specified.
 
 
-<a id="org24ba161"></a>
+<a id="org7ecbed6"></a>
 
 ### Improvements to `pyFoamVersion.py`
 
@@ -4333,7 +5161,7 @@ can be specified.
 -   Reports locations of used libraries
 
 
-<a id="orgf3c54c7"></a>
+<a id="orgd669804"></a>
 
 ### Additional files automatically cloned
 
@@ -4341,7 +5169,7 @@ The files `Allrun`, `Allclean` and `0.org` are automatically
 added during cloning as these are often used by the standard-utilities
 
 
-<a id="org5500967"></a>
+<a id="orgdee9fb7"></a>
 
 ### `pyFoamDisplayBlockMesh.py` uses the same options for template format as `pyFoamFromTemplate.py`
 
@@ -4349,12 +5177,12 @@ This makes sure that templates are handled consistently and also
 allows different delimiters in the `blockMeshDict.template`
 
 
-<a id="orgbb745ef"></a>
+<a id="orgcd26afc"></a>
 
 ## Library
 
 
-<a id="org7b73448"></a>
+<a id="org1aab1e0"></a>
 
 ### Improvements in syntax of `ParsedParameterFile`
 
@@ -4362,14 +5190,14 @@ allows different delimiters in the `blockMeshDict.template`
     supported
 
 
-<a id="org3f826a8"></a>
+<a id="orgd8ae483"></a>
 
 ### `Utilities`-class now function to find files matching a pattern
 
 Added a function `find` that approxiamtes the `find`-command
 
 
-<a id="org7435ada"></a>
+<a id="org782392d"></a>
 
 ### VCS ignores more files
 
@@ -4378,12 +5206,12 @@ VSC-controlled case. All of them concerning files that PyFoam
 creates during operation
 
 
-<a id="orgdaf317c"></a>
+<a id="org8b9f26f"></a>
 
 ## New features/Utilities
 
 
-<a id="orgd8f81c4"></a>
+<a id="org219914f"></a>
 
 ### New Utility `pyFoamSymlinkToFile.py`
 
@@ -4392,17 +5220,17 @@ file/directories it points to. To be used after a
 `pyFoamCloneCase.py` in `--symlink-mode`
 
 
-<a id="orgc0bbf77"></a>
+<a id="orgcd78171"></a>
 
 # Version 0.6.0 - 2013-03-14
 
 
-<a id="org2cbfb76"></a>
+<a id="org1eed951"></a>
 
 ## Major changes
 
 
-<a id="org715eded"></a>
+<a id="orga493099"></a>
 
 ### Adaption to work with Python3
 
@@ -4422,7 +5250,7 @@ work with Python3:
     compatibility)
 
 
-<a id="org9d3b9fc"></a>
+<a id="orgdd7e015"></a>
 
 ### New ThirdParty-Libraries
 
@@ -4435,7 +5263,7 @@ work with Python3:
     is used
 
 
-<a id="org1aad344"></a>
+<a id="org5fab96b"></a>
 
 ### Porting to `Windows`
 
@@ -4449,7 +5277,7 @@ Patch was originally posted at
 Windows.
 
 
-<a id="orgb55bef9"></a>
+<a id="orge14f2d3"></a>
 
 ### Experimental port to `pypy`
 
@@ -4457,12 +5285,12 @@ Sources are executed in `pypy` but it seems there are problems
 with `numpy` and also with code like `for l in open(f).readlines()`
 
 
-<a id="orgec8278c"></a>
+<a id="org129aee9"></a>
 
 ## Third-Party
 
 
-<a id="org69a4faf"></a>
+<a id="org98b1fac"></a>
 
 ### Upgraded `ply` to 3.4
 
@@ -4470,19 +5298,19 @@ This brings virtually no changes. `README` with copyright
 information has been added
 
 
-<a id="orga7aab51"></a>
+<a id="orgcd7d7fa"></a>
 
 ## Infrastructure
 
 
-<a id="orgdc97e95"></a>
+<a id="orgc362a6e"></a>
 
 ### Parameters can't be modified in `CTestRun` after initialization
 
 This should help to avoid side-effects
 
 
-<a id="org74372a4"></a>
+<a id="org3f0be21"></a>
 
 ### Treat timeouts in the `MetaServer` right
 
@@ -4490,7 +5318,7 @@ Due to a previous workaround timeouts when collecting information
 about new machines was not treated correctly
 
 
-<a id="org1f26b36"></a>
+<a id="org8a00291"></a>
 
 ### Add `execute`-method to `ClusterJob`
 
@@ -4498,7 +5326,7 @@ This allows the execution of a shell-script in the directory of
 the case
 
 
-<a id="org0f7c5fd"></a>
+<a id="org241f5c9"></a>
 
 ### Add possibility to run specific modules before or after the solver
 
@@ -4513,7 +5341,7 @@ Hooks are automatically instantiated from the configuration data
 (examples are hardcoded))
 
 
-<a id="org5cd0b2d"></a>
+<a id="org4532ca7"></a>
 
 ### Parameters added to the info about the run
 
@@ -4528,7 +5356,7 @@ Purpose of this facility is to identify different runs in the
 database better.
 
 
-<a id="orgf724ac3"></a>
+<a id="org912e268"></a>
 
 ### Parameter handling in `ClusterJob` extended
 
@@ -4537,7 +5365,7 @@ dictionary with parameters can be handed to the constructor and
 will be used in the relevant callbacks
 
 
-<a id="orgdc80f3a"></a>
+<a id="orgecdba57"></a>
 
 ### Run data written alongside `PickledPlots`
 
@@ -4549,7 +5377,7 @@ Also a file `pickledStartData` gets written that has the data that
 is available at the start of the run.
 
 
-<a id="orgb7b6538"></a>
+<a id="org55eeb9a"></a>
 
 ### `BasicRunner` collects error and warning texts
 
@@ -4563,12 +5391,12 @@ The runner collects
 And stores them in the application data
 
 
-<a id="org2eebeb9"></a>
+<a id="org192b044"></a>
 
 ## Library
 
 
-<a id="org7e51b14"></a>
+<a id="org8c75c06"></a>
 
 ### `TemplateFile` now uses `pyratemp`
 
@@ -4577,7 +5405,7 @@ engine. The  old implementation is in the class
 `TemplateFileOldFormat`
 
 
-<a id="org27eddf9"></a>
+<a id="org43f27b3"></a>
 
 ### Clearer error message in Application-classes
 
@@ -4585,7 +5413,7 @@ If used as classes (not as utilities) these classes print the
 class name instead of the calling utilities name
 
 
-<a id="org6918218"></a>
+<a id="orgf115ac9"></a>
 
 ### Output is only colored if it goes to the terminal
 
@@ -4593,7 +5421,7 @@ Error and warning messages don't decorate the output if it goes to
 files or other non-terminal streams
 
 
-<a id="org5db6c73"></a>
+<a id="org7a85257"></a>
 
 ### `error`-method of application classes now raises an exception
 
@@ -4602,7 +5430,7 @@ to handle such errors if the application class is used. The
 exception is passed up until there is a "real" application
 
 
-<a id="orga71a854"></a>
+<a id="orgd58fc0d"></a>
 
 ### `ParsedParameterFile` now knows how to handle binary files
 
@@ -4622,7 +5450,7 @@ It would be hard to work around these restrictions without
 reprogramming the full functionality of OpenFOAM
 
 
-<a id="org03bdfa9"></a>
+<a id="org9e4a0e4"></a>
 
 ### `LabledReSTTable` for more flexible table generation
 
@@ -4632,7 +5460,7 @@ if these don't exist in the first row/column the table is extended
 appropriately
 
 
-<a id="orgddcd243"></a>
+<a id="orge2bb9e7"></a>
 
 ### Plotting classes now allow setting of `xlabel`
 
@@ -4640,12 +5468,12 @@ This is implemented for `Gnuplot` and `Matplotlib`. Default for
 the label on the x-Axis is now "Time [s]"
 
 
-<a id="org6dfce5a"></a>
+<a id="orgc33d9fe"></a>
 
 ## Utilities
 
 
-<a id="org31cc1a8"></a>
+<a id="org22e243f"></a>
 
 ### `pyFoamFromTemplate.py` with new templating engine
 
@@ -4653,7 +5481,7 @@ The utility can now use the pyratemp-templating engine which
 allows templates with loops, conditions and other  fancy stuff
 
 
-<a id="org8913c31"></a>
+<a id="orga47b021"></a>
 
 ### `pyFoamSamplePlot.py` allows using the reference data as basis for comparison
 
@@ -4664,7 +5492,7 @@ of the reference data can be used for comparing (with the
 Same for `pyFoamTimelimePlot.py`
 
 
-<a id="orgf18fa76"></a>
+<a id="orgad1fa51"></a>
 
 ### Scaling and offsets are now used in plots of `pyFoamSamplePlot.py`
 
@@ -4672,14 +5500,14 @@ If scales not equal to \(1\) and offsets not equal to \(0\) are
 specified they are used in the `gnuplot`-output
 
 
-<a id="org807845e"></a>
+<a id="org275b284"></a>
 
 ### `pyFoamPrintData2DStatistics.py` prints relative average error
 
 With the `--relative-average-error`-option
 
 
-<a id="org963fe1b"></a>
+<a id="org4393abe"></a>
 
 ### Enhancements to `pyFoamVersion.py`
 
@@ -4688,14 +5516,14 @@ With the `--relative-average-error`-option
 -   Checks whether utility version is consistent the library found
 
 
-<a id="orgc449fd5"></a>
+<a id="org33d240c"></a>
 
 ### `pyFoamRunner.py` allows hooks
 
 Hooks can be added at the start and the end of a run
 
 
-<a id="org784d57c"></a>
+<a id="org6ab1093"></a>
 
 ### `pyFoamRedoPlots.py` supports range for plots
 
@@ -4705,7 +5533,7 @@ plotted.
 Currently not working with the Matplotlib-implementation (only gnuplot)
 
 
-<a id="orgf014434"></a>
+<a id="org46ddd5d"></a>
 
 ### `pyFoamDisplayBlockMesh.py` no supports templates
 
@@ -4713,7 +5541,7 @@ If a file with values is specified then the utility assumes you're
 editing a template file and will evaluate it before displaying it
 
 
-<a id="orgb61b386"></a>
+<a id="org2462324"></a>
 
 ### `pyFoamCaseReport.py` is tolerant towards binary files
 
@@ -4721,7 +5549,7 @@ New switch that makes the parser treat files that are declared
 `binary` in the header as if they were `ascii`
 
 
-<a id="orge67f760"></a>
+<a id="orgf1f11ca"></a>
 
 ### `pyFoamSamplePlot.py` and `pyFoamTimelinePlot.py` raise error if no plots are generated
 
@@ -4729,7 +5557,7 @@ This makes it easier to catch faulty specifications (or empty
 timeline-files)
 
 
-<a id="orgc994b2b"></a>
+<a id="org6f2bc92"></a>
 
 ### `pyFoamSurfacePlot.py` can wait for a key
 
@@ -4737,14 +5565,14 @@ An option `--wait` has been added that makes the utility wait
 before displaying the next picture
 
 
-<a id="org5dd4925"></a>
+<a id="org57a4e6b"></a>
 
 ### `pyFoamEchoDictionary.py` is more flexible with binary files
 
 Switch allows forcing it to read a binary File as an ASCII
 
 
-<a id="orgd8540f7"></a>
+<a id="org3f64970"></a>
 
 ### All utilities now have a switch that starts the debugger even with syntax-errors
 
@@ -4753,7 +5581,7 @@ debugger if the error was **no** syntax error. This is still the
 default behavior, but can be overruled
 
 
-<a id="orga00d907"></a>
+<a id="orgfeae291"></a>
 
 ### Utilities now can be killed with `USR1` and will give a traceback
 
@@ -4765,7 +5593,7 @@ Option `--keyboard-interrupt-trace` triggers the same behaviour
 for keyboard interrupts with `<Ctrl>-C`
 
 
-<a id="orgad68f26"></a>
+<a id="orgd13a452"></a>
 
 ### Switch to switch on **all** debug options
 
@@ -4773,7 +5601,7 @@ For the purpose of developing a switch `--i-am-a-developer` has
 been added.
 
 
-<a id="orgad3d274"></a>
+<a id="org9ad4450"></a>
 
 ### Plotting utilities now allow specification of x-Axis label
 
@@ -4782,7 +5610,7 @@ the x-axis of the plot can be changed. Setting `ylabel` and
 `y2label` (for the secondary axis) was already possible
 
 
-<a id="orgb25c9aa"></a>
+<a id="org87a41e8"></a>
 
 ### Metrics and compare for `pyFoamTimelinePlot.py` and `pyFoamSamplePlot.py` support time ranges
 
@@ -4790,7 +5618,7 @@ Now the options `--min-time` and `--max-time` are supported by
 `--metrics` and `--compare`
 
 
-<a id="org318c9d8"></a>
+<a id="org31d8158"></a>
 
 ### `pyFoamDisplayBlockMesh.py` allows graphical selection of blocks and patches
 
@@ -4798,7 +5626,7 @@ New addition by Marc Immer allows the graphical selection of
 blocks and patches and adds them to the `blockMeshDict`
 
 
-<a id="orgef3912f"></a>
+<a id="org8df48bf"></a>
 
 ### `pyFoamCloneCase.py` and `pyFoamPackCase.py` accept additional parameters
 
@@ -4808,7 +5636,7 @@ then these files are cloned/packed automatically (no user
 specification required)
 
 
-<a id="orgb818bb3"></a>
+<a id="org58b56f3"></a>
 
 ### `pyFoamListCases.py` now calculates estimated end-times
 
@@ -4820,12 +5648,12 @@ Also now allows printing the end and the start-time according to
 the `controlDict`
 
 
-<a id="orga8a9dad"></a>
+<a id="org14f1a27"></a>
 
 ## New features
 
 
-<a id="orga36c809"></a>
+<a id="org322eddc"></a>
 
 ### Different "phases" for multi-region solvers
 
@@ -4834,7 +5662,7 @@ anything. The set a phase-name that is used for subsequent values
 (for instance to distinguish the different residuals)
 
 
-<a id="org94e5e2c"></a>
+<a id="orgd872304"></a>
 
 ### `pyFoamChangeBoundaryType.py` allows selection of region and time
 
@@ -4842,7 +5670,7 @@ Options `--region` and `--time-directory` added that allow
 selecting different `boundary`-files
 
 
-<a id="org9b6dfb6"></a>
+<a id="org7899e8c"></a>
 
 ### New class for storing case data in a sqlite-database and associated utilities
 
@@ -4855,33 +5683,33 @@ instance)
 Database can also be populated using a special post-run hook
 
 
-<a id="org7c00884"></a>
+<a id="org210accf"></a>
 
 ## Bugfixes
 
 
-<a id="org313ab7b"></a>
+<a id="org50d890d"></a>
 
 ### Only binary packages of 1.x were found
 
 Pattern had to start with 1 (now every digit is possible))
 
 
-<a id="orgaf35dc0"></a>
+<a id="orgd08865f"></a>
 
 ### Option group *Regular expressions* was listed twice
 
 No harm done. But fixed
 
 
-<a id="org906971f"></a>
+<a id="org8ae5ac2"></a>
 
 ### `--clear`-option for `pyFoamDecompose.py` not working
 
 Reason was that `rmtree` does not allow wildcards. Fixed
 
 
-<a id="org4c1d63f"></a>
+<a id="org09d9ded"></a>
 
 ### `pyFoamDisplayBlockmesh.py` not working with variable substitution
 
@@ -4889,7 +5717,7 @@ The `DictRedirect` would not convert to float. Fixed. Although it
 might happen again for other data types
 
 
-<a id="org5c899a6"></a>
+<a id="org417d475"></a>
 
 ### Option `--function-object-data` of `pyFoamClearCase.py` not working with directories
 
@@ -4899,7 +5727,7 @@ The option was only implemented for the list-form of the
 Now fixed to also work with the dictionary-form
 
 
-<a id="orgd6dd8c8"></a>
+<a id="org584e461"></a>
 
 ### `nonuniform` of length 0 not correctly printed
 
@@ -4907,14 +5735,14 @@ Seems like the length was interpreted as the name of the
 list. Fixed
 
 
-<a id="org7491d7a"></a>
+<a id="org8982ad7"></a>
 
 ### Building of pseudocases with `pyFoamRunner.py` broken
 
 Only worked if no region was specified (= not at all). Fixed
 
 
-<a id="org965de14"></a>
+<a id="orgb1a4cf6"></a>
 
 ### `pyFoamRedoPlot.py` did not correctly honor `--end` and `--start`
 
@@ -4922,7 +5750,7 @@ Plots were over the whole data range. This is now fix (also the
 issue that `--end` alone did not work)
 
 
-<a id="org69626a7"></a>
+<a id="orgbe1d4c0"></a>
 
 ### `WriteParameterFile` does not preserve the order of additions
 
@@ -4930,14 +5758,14 @@ Contents was "only" set as a dictionary which does not preserve
 the order in which entries are added. Replaced with a `DictProxy`
 
 
-<a id="org957119d"></a>
+<a id="org45ddaf8"></a>
 
 ### Wrong number of arguments when using `TimelinePlot` in `positions`-mode
 
 Problem that was introduced by changes in the `fields`-mode
 
 
-<a id="org62ac25a"></a>
+<a id="org494c2a5"></a>
 
 ### `ClusterJob` uses only `metis` for decomposition
 
@@ -4945,7 +5773,7 @@ For OpenFOAM-versions 1.6 and higher the automatic decomposition
 used is now `scotch`
 
 
-<a id="org9d1a117"></a>
+<a id="org3905c98"></a>
 
 ### `pyFoamSamplePlot.py` and `pyFoamTimelinePlot.py` produced no pictures for regions
 
@@ -4954,14 +5782,14 @@ directory name was inserted into the filename and if the
 subdirectory did not exist `gnuplot` did not create the picture
 
 
-<a id="org71f60d6"></a>
+<a id="orge64c9f2"></a>
 
 ### Barplots in `pyFoamTimelinePlot.py` not working if value is a vector
 
 The base class didn't correctly handle the `(` and `)`. Fixed
 
 
-<a id="orgd44be69"></a>
+<a id="orga667e41"></a>
 
 ### Mysterious deadlocks while plotting long logfiles
 
@@ -4971,7 +5799,7 @@ left a lock on the data structure locked and the next access to
 the structure was held indefinitely. Fixed
 
 
-<a id="org16c8449"></a>
+<a id="orgafcf3b5"></a>
 
 ### Scanning linear expressions form the block coupled solver failed
 
@@ -4982,14 +5810,14 @@ is plotted separately (distinguished by a `[x]` with `x` being the
 number of the component)
 
 
-<a id="org0e442cb"></a>
+<a id="orge25845d"></a>
 
 ### `#include` not correctly working with macros in the included file
 
 Macros `$var` were not correctly expanded. Fixed
 
 
-<a id="orgda8aeff"></a>
+<a id="orgf0a7609"></a>
 
 ### Macros not correctly expanded to strings
 
@@ -4997,7 +5825,7 @@ When being expanded to string form macros were not correctly
 expanded
 
 
-<a id="org0173539"></a>
+<a id="org0973882"></a>
 
 ### `pyFoamPackCase.py` in the working directory produces 'invisible' tar
 
@@ -5008,7 +5836,7 @@ If the utility was used in the form
 then an 'invisible' tar `..tgz` was produced. Fixed
 
 
-<a id="org68189bd"></a>
+<a id="org1ac4bc3"></a>
 
 ### String at the end of a linear solver output makes parsing fail
 
@@ -5017,7 +5845,7 @@ Reported in
 the string is assumed to be part of the iteration number. Fixed
 
 
-<a id="org395f28a"></a>
+<a id="org7989e0d"></a>
 
 ### Paraview utilities not working with higher Paraview versions
 
@@ -5026,7 +5854,7 @@ determined has changed and the PV-utilities failed. This has been
 fixed but is untested with old versions
 
 
-<a id="org3e800ff"></a>
+<a id="org747a618"></a>
 
 ### Camera settings not honored with `pyFoamPVSnapshot.py`
 
@@ -5035,12 +5863,12 @@ camera. This has now been switched off (so the snapshot is
 rendered correctly)
 
 
-<a id="orge61d9ce"></a>
+<a id="org1b39196"></a>
 
 # Version 0.5.7 - 2012-04-13
 
 
-<a id="orge6253c1"></a>
+<a id="orgb39724a"></a>
 
 ## Parser improvements
 
@@ -5053,7 +5881,7 @@ rendered correctly)
 -   "lookup redirection" in OF-dictionaries now works
 
 
-<a id="orgbfa1c88"></a>
+<a id="org9c337fe"></a>
 
 ## Utility improvements
 
@@ -5088,7 +5916,7 @@ rendered correctly)
 -   Plot-utilities now don't interpret \_ in names not as LaTeX
 
 
-<a id="org9a7dc6b"></a>
+<a id="orgd0670e5"></a>
 
 ## New Utilities
 
@@ -5101,7 +5929,7 @@ rendered correctly)
 -   pyFoamSTLUtility.py to join STL-files
 
 
-<a id="org78cd067"></a>
+<a id="org5a6b3a5"></a>
 
 ## Library improvements
 
@@ -5125,7 +5953,7 @@ rendered correctly)
 -   ParsedBlockMeshDict now doesn't introduce prefixes for 'long' lists
 
 
-<a id="org9f5f01d"></a>
+<a id="org59d3a6c"></a>
 
 ## Removed utilities
 
@@ -5133,14 +5961,14 @@ rendered correctly)
 -   pyFoamPlotResiduals.py
 
 
-<a id="org002fcb0"></a>
+<a id="org7fd7a08"></a>
 
 ## Thirdparty
 
 -   Got rid of Numeric-support in Gnuplot-library
 
 
-<a id="orgaf4ce64"></a>
+<a id="org06df14b"></a>
 
 ## Other
 
@@ -5150,7 +5978,7 @@ rendered correctly)
     sampleDict
 
 
-<a id="org6aef53f"></a>
+<a id="org24807ef"></a>
 
 # Older Versions
 

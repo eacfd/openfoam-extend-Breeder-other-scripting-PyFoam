@@ -1,4 +1,352 @@
 # -*- mode: org -*-
+* Version 2020.05 - 2020-05-31
+  This is the first version of /PyFoam/ where the version numbers
+  change from pseudo-semantic versioning to date-based versions
+** New features/utilities
+** Enhancements to the utilities
+*** Paraview-utilities now work in Paraviews that use Python 3
+    Newer versions of Paraview may use Python 3 as the
+    Python-interpreter which made =pyFoamPVSnapshot.py= fail.
+
+    The Paraview-utiliies (and the library as well) have been adapted
+    to work with Python 3 *and* 2
+*** =pyFoamPrepareCase.py= allows automatically zipping template results
+    The utility now allows automatically zipping the results of
+    template evaluations *if* the result file has no extension
+    (because then it can be assumed that these files are
+    OpenFOAM-dictionaries which are transparently unzipped).
+
+    This allows automatically ignoring this files with proper patterns
+    in =.gitignore= or =.hgignore=
+
+    This can be switched on via the command line or the
+    =LocalConfigPyFoam= file
+*** =customRegexp= has a type =mark= to add marks to the plots
+    Plots of =type mark= don't plot but there is a list =targets= with
+    names of other plots. Every time the =expr= matches a vertical
+    line is added to those plots.
+
+    Purpose of this type is to annotate singular events in the graphs
+*** Plotting utilities now plot progress of =snappyHexMesh=
+    The =pyFoamPlotRunner.py= and =pyFoamPlotWatcher.py= now allow
+    plotting the numbers of cells in different refinement levels in
+    =snappyHexMesh=
+
+    Different phases are annotated with vertical lines
+*** Plotting utilities now plot progress of =foamyHexMesh=
+    The =pyFoamPlotRunner.py= and =pyFoamPlotWatcher.py= now allow
+    plotting the numbers of inserted points and the total displacement
+    and distance of =foamyHexMesh=
+*** Plotting utilities now print available values of =type=
+    Instead of an obscure error message it now prints a list of the
+    available types and a short descriptions
+*** Missing attributes in =customRegexp=-specifications now give better error messages
+    Now the complete spec is printed (in addition to the missing attribute)
+*** Option =--quiet-plot= for plotting utilities swallows output of the plotting program
+    =gnuplot= sometimes outputs error messages which mess up the
+    =ncurses=-output. The =--quiet-plot=-option swallows this
+    output. This behaviour is *not* the default because sometimes this
+    output is useful
+*** Colored markers in =pyFoamPlotWatcher= for logfiles from restarts
+    If following a file which has =.restartXX=-files then when the
+    file is changed a red marker line with the label "Restart" is
+    shown in all the plots
+*** =writeFiles= in a =customRegexp=-entry writes scanned output to file
+    If a line
+: writeFiles yes;
+    is added to an entry in =customRegexp= then the data is written to
+    a file as well. These files are found in the =.analyzed=-folder
+*** Modifying splitting behavior for plot data
+    Plotting data is reduced from time to time if the number of data
+    points exceeds a certain threshold. Usually this threshold
+    is 2048. Now for most runner utilities (and the =PlotWatcher=)
+    there are two additional options: =--split-data-points-threshold=
+    allows setting the number of data points to a different value than
+    2048 and =--no-split-data-points=  to switch off splitting altogether
+*** Parametric plots with =xvalue= in =customRegexp=
+    If an entry =xvalue= is found in a =customRegexp=-specification
+    then the value with that name is *not* plotted but used instead of
+    the time as the $x$-coordinate for the plot. So something like
+#+begin_src c++
+highspeedLocation {
+    theTitle "Location of the highest velocity";
+    expr "Expression highSpeedLoc :  min=\((.+) (.+) .+\)";
+    titles (
+        x
+        y
+    );
+    xlabel "x";
+    ylabel "y";
+    xvalue x;
+}
+#+end_src
+    plots the location of the highest speed
+** Enhancements to the library
+*** Paraview-classes now work with Python 3
+    See above: /Paraview-utilities now work in Paraviews that use
+    Python 3/
+*** =TemplateFile= now can write the result as zipped
+    The =writeFile=-method now has an optional parameter =gzip= that
+    forces the file to be written in compressed form with the
+    extension =.gz= added. If the file already has the extension =.gz=
+    it is assumed that =gzip= is set. If a file of the same name with
+    an extension =.gz= exists then it is assumed that this is to be
+    overwritten. If a file is written zipped and the same file without
+    =.gz= exists then it is removed to avoid confusion which file will
+    be used
+*** Mechanism to have =alternateTime= in single =customRegexp=
+    The entry =alternateTime= now allows to reference special
+    expressions that will serve as an alternate "time source". This
+    was for instance used to implement the progress graph for
+    =snappyHexMesh=
+*** =quiet=-option added to plotting implementations
+    This option tells the plotting program to not output anything to
+    the terminal. Currently only works for =Gnuplot=
+*** The =[]=-operator of the =PyFoamDataFrame= is now more flexible
+    If that operator gets a single numeric value or a list of numbers
+    it gets the rows where the index (usually the time) is nearest to
+    the number(s) and returns a =PyFoamDataFrame=
+
+    All other keys are passed to the "usual" =[]=-operator of the
+    =DataFrame= but the result is converted to a =PyFoamDataFrame=
+*** Each run started by =BasicRunner= has a unique ID
+    Each run gets a unique id. This allows to easily find out whether
+    the data is from the same run
+*** =pyFoamAddCaseDataToDatabase.py= allows updating data
+    The =--update= switch allows updating the data for runs. Otherwise
+    if the run already exists in the database the utility will fail
+*** =RunDatabase= gets method =modify=
+    This method allows updating a run with a unique id by specifying a
+    (nested) dictionary with the values
+** Bug fixes
+*** =auto= for the solver does not work with compressed =controlDict=
+    If the =controlDict= was compressed the value of the
+    =application=-entry could not be read. This has been fixed
+*** =FileBasisBackup= now works with zipped file
+    If a file is already zipped then the =FileBasisBackup= class could
+    not create a backup file and failed. This works now
+*** Case with zipped =controlDict= not recognized as a valid case
+    If the =controlDict= was zipped for some reason then PyFoam (and
+    therefor utilities like =pyFoamListCase.py=) did not recognize it
+    as a valid case
+*** =pyFoamDisplayBlockMesh.py= not working with newer VTK-versions
+    The utility did not work with newer versions of VTK. This has been
+    fixed. In the process support for Python 2.x has been broken
+** Incompatibilities
+*** =TemplateFile= writes to zipped file if it exists
+    The method =writeFile= looks for a file o the same name with =.gz=
+    added. If this exists then it is assumed that this should be
+    written (in zipped form)
+*** =pyFoamDisplayBlockMesh.py= not working with Python 2.x anymore
+    This utility now requires Python 3.
+
+    It is not typically run on computation servers (which mostly still
+    have Python 2) so the extra effort to support this outdated
+    version of Python is not worth it
+*** Constructor of =PyFoamDataFrame= is more restrictive
+    The constructor now checks if
+    - the index has a number type
+    - the index is strictly monothonic
+    because most additional algorithms (=integrate()= etc) rely on
+    these assumptions
+*** =[]=-operator of =PyFoamDataFrame= returns a =PyFoamDataFrame=
+    The old behaviour of this was to return a =DataFrame=. Shouldn't
+    break existing code but makes it easier to chain indexes
+*** =RunDatabase= fails if the same unique ID is inserted again
+    If a dataset with the same unique ID is added with =add= for a
+    second time the method fails with a =KeyError= unless the
+    =update_existing=-flag is set
+
+    This has the potential to beak old code (which probably wouldn't
+    work correctly anyway as the old behaviour was to add the data for
+    the rum for a second time)
+** Code structure
+** Infrastructure
+** ThirdParty
+*** Modification to =Gnuplot=-library
+    There has been a =quiet=-option added that swallows all terminal
+    output of =gnuplot=. This only works in the
+    Unix/Linux-implementation. All others ignore it
+* Version 0.6.11 - 2019-10-31
+** Code structure
+*** Moved library into =src=-directory
+    To make sure that the =tox=-tests are not affected the library is
+    moved into the =src=-subdirectory
+*** Added Developer notes
+    Added a file =DeveloperNotes= with hints for people who want to
+    contribute
+** Incompatibilities
+*** Behaviour reading =customRegexp=
+    Macro expansion in the =customRegexp= might break it for some
+    cases
+*** Gnuplot does not use =FIFO= as the default anymore
+    See the relevant entry in /Enhancements to Utilities/
+
+    A potential problem is that the new implementation leaves files in
+    the =/tmp= filesystem
+** Enhancements to Utilities
+*** Replay data-files in =customRegexp=
+    There are two new =type= s available in =customRegexp=: =data= and
+    =dataslave=. These have to have one of the enxtries =csvName=,
+    =excelName= or =txtName= with the name of a "spreadsheet type"
+    file. The data from this file will be plotted according to the
+    current simulation time. With =dataslave= it will be plotted to
+    another plot.
+
+    The entry =timeName= interprets the name of the column that is to
+    be interpreted as the time and either =validData= or
+    =validMatchRegexp= select the other columns to plot.
+
+    =skip_header=, =stripCharacters= and =replaceFirstLine= are other
+    parameters of the =SpreadsheetData=-class that preprocess the file
+    to conform to an expected format
+*** Macro expansion in =customRegexp=
+    In the =customRegexp= it is now possible to use the usual
+    OpenFOAM-macro-expansions with =$= etc. This makes
+*** =progress= entry in =customRegexp= now allows =format= strings
+    The =progress= entry in =customRegexp=-entries now allows strings
+    in the format of the =str.format= method in Python. So instead off
+: progress "$0: $1";
+    one can write
+: progress "{0}: ${1}";
+    The advantage of this format is additional flexibility. For
+    instance the length of the strings can be fixed
+: progress "{0:5}: ${1:10}";
+    Note: the entries are strings. Not numbers as expected
+*** =pyFoamRedoPlot.py= allows passing terminal options
+    The utility now allows passing options to the plotting
+    implementation with the =--terminal-options=-option. This can for
+    instance be used to modify the size of the plot
+*** =pyFoamPlotWatcher.py= stops scanning the file is =--end= was specified
+    If the =--end-time= option is specified then the solver stops
+    scanning if that time is reached. The plot windows are killed. To
+    keep them specify =--persistent=
+*** Hardcopies of custom plots have more descriptive names
+    Instead of the =custom00xxx= name the hardcopies of custom plots
+    now have and additional short name that describes the content of
+    the plot (it is taken from the id in the =customRegexp=)
+*** Plotting in Gnuplot can switch between using FIFO or regular files
+    The plotting utilities have two new options =--gnuplot-use-fifo=
+    and =--gnuplot-no-use-fifo= that switches whether the plotting
+    windows will use a FIFO-queue or a regular file for the data of
+    the plot.
+
+    Until now FIFO was used. This had two problems
+    - a deadlock-situation that sometimes occurred when the utility was
+      stopped with Ctrl-C
+    - the plots were not interactive (no zooming) or did not
+      immediately repaint when the windows were resized
+    Now the default behavior is to use regular files. The problem with
+    this is that the files are not removed in the end from
+    =/tmp=. This shouldn't be a problem as usually that filesystem is
+    purged of old files at regular intervals
+*** =pyFoamPrepareCase.py= calls script after copying initial conditions
+    A script =postCopy.sh= is called after the initial conditions are
+    copied from =0.org=
+*** =--stop-after-template= and =--keep-zero= improve control in =pyFoamPrepareCaseParameters.py=
+    The combination of these two parameters allow "just" changing
+    something in the templates without running other lengthy
+    operations
+*** =pyFoamPVSnapshot.py= allows specification of the image quality
+     The option =--quality= now allows specifying the quality of the
+     image with a value of $0$ being worst (but producing the smallest
+     pictures) and $100$ best (but producing huge pictures). The
+     default is $50$
+*** Image size specification for =pyFoamPVSnapshot.py=
+    The options =--x-resolution= and =--y-resolution= allow specifying
+    the resolution of the image. If only one of them is set the image
+    is scaled proportionally. This only works for Paraview versions
+    bigger than 5.4
+*** Setting separation of views and background transparency in =pyFoamPVSnapshot.py=
+    Two new options were added that allow setting a separation between
+    different views and making the background transparent. This only
+    works for Paraview versions bigger than 5.4
+*** =pyFoamPVLoadState.py= automatically uses decomposed or reconstructed data
+    Depending which of the two sets has more timesteps that state is
+    set to this before loading. So if more parallel timesteps are
+    present then these are used even if the state file uses the
+    reconstructed times. The behavior can be changed with the
+    =--decompoes-mode=-option
+*** Change directory for =pyFoamPrepareCase.py= to target
+    The option =--extecute-in-case-directory= changes the working
+    directory to the target directory. THis allows specifying
+    parameter files that are in that directory without a full path
+*** =pyFoamPrepareCase.py= can create an example case
+    A command like
+: pyFoamPrepareCase.py exampleCase --paramter-file=parameters.base --build-example --clone-case=originalCase
+    creates an example case =exampleCase= from a template case
+    =originalCase= using the parameter file =parameter.base=. It
+    creates a script =Allrun= that allows executing the case without
+    =PyFoam= (if none of the scripts uses =PyFoam=-scripts)
+
+    This may not work for all configurations (especially cases that use =postTemplate=)
+*** =pyFoamPrepareCase= prints derived values
+    The same way that the utility printed the used values it now
+    prints the derived values as well
+*** =pyFoamPVSnapshot= allows specifying different colors for different views
+    The option =--color-for-filers= now allows specifying a different
+    color for the same filter in different view. This is done by
+    specifying a dictionary
+*** =alternateLogscale= for custom plots
+    This is analog to =logscale= but for the values that are specified
+    with =alternateAxis=
+*** =pyFoamBinarySize.py= now calculates documentation size as well
+    If there is =html= documentation then this is counted as well
+*** =pyFoamCompareDictionary.py= allows specification of significant digits
+    When comparing numbers now the number of significant digits can be
+    specified. This only works for single numbers. Not compound types
+    like lists and vectors
+** Enhancements to the Library
+*** =progress=-data is automatically converted to =float=
+    When using format-strings for the =progress=-entry then the
+    library automatically attempts to convert the data to =float=
+    (otherwise it keeps it as =str=)
+*** Additional directories in =FoamInformation=
+    Two functions =foamCaseDicts()= and =foamPostProcessing()= have
+    been added that return the paths to these directories inside
+    =$FOAM_ETC=
+*** =BoolProxy= now works correctly with ~!=~
+    Added a method =__ne__= so that the results of the ~!=~ operator
+    are consistent with ~==~
+** Bug fixes
+*** With dynamic plots names with =_slave= are problematic
+    This made the slave plots that had =_slave= in the name fail
+*** New-style dimensioned scalars fail
+    As reported in
+    https://sourceforge.net/p/openfoam-extend/ticketspyfoam/223/ by
+    Rodrigo Leite Prates parsing certain constructs that involve
+    dimension sets fail. This is because of a problem with the
+    comparison of =Dimension= that assumes that the other side is a
+    =Dimension= as well. Fixed
+*** =pyFoamPVSnapshot.py= not working with Paraview 5.6
+    The API now has to be called through a different module. Otherwise
+    it will fail
+*** =customRegexp= farthes away was used
+    When looking automatically for a =customRegexp= the one furtherest
+    up in the directory tree was used. Now instead all the
+    =customRegexp= are used with the lower ones overriding the other
+    ones
+*** =ParameterFile=-class got confused by commented lines
+    One of the oldest classes in PyFoam had the problem that it
+    "found" parameters that were commented out with =//=. This has been fixed
+*** =pyFoamBinarySize.py= did not count files in =build=
+    Some distros have a directory =build= with the intermediate object
+    files. This has not been counted until now
+*** Binary files with =ParsedParameterFile= not working in Python 3
+    Because Python 3 tries to encode read files as Unicode strings and
+    certain byte combinations are not valid UTF-8 encodings.
+
+    Hopefully fixed by reading the file as binary and then create a
+    =latin-1= encoded string
+
+    Reported in
+    https://sourceforge.net/p/openfoam-extend/ticketspyfoam/225/ by
+    Johan Hidding
+*** Improved handling of binary files in Python 2 and 3
+    Parts of the =FileBasis= class were not working correctly in
+    Python 3 because there strings are no longer 'lists of
+    bytes'. This has been adapted so that these parts work correctly
+    in Python 2 *and* 3 and unit tests have been added
 * Version 0.6.10 - 2018-08-12
   This is only a minor release with the main purpose to recognize
   OpenFOAM 6 installations with their new numbering scheme
