@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.Execution package" href="PyFoam.Execution.html"/>
-        <link rel="next" title="PyFoam.Execution.StepAnalyzedRunner module" href="PyFoam.Execution.StepAnalyzedRunner.html"/>
-        <link rel="prev" title="PyFoam.Execution.ParallelExecution module" href="PyFoam.Execution.ParallelExecution.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.Execution.StepAnalyzedRunner module" href="PyFoam.Execution.StepAnalyzedRunner.html" />
+    <link rel="prev" title="PyFoam.Execution.ParallelExecution module" href="PyFoam.Execution.ParallelExecution.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,23 +182,38 @@
 <p>Common stuff for classes that do something at every timestep</p>
 <dl class="class">
 <dt id="PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon">
-<em class="property">class </em><code class="descclassname">PyFoam.Execution.StepAnalyzedCommon.</code><code class="descname">StepAnalyzedCommon</code><span class="sig-paren">(</span><em>filename</em>, <em>analyzer</em>, <em>splitThres=2048</em>, <em>writePickled=True</em>, <em>smallestFreq=0</em>, <em>adaptFrequency=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.Execution.AnalyzedCommon.html#PyFoam.Execution.AnalyzedCommon.AnalyzedCommon" title="PyFoam.Execution.AnalyzedCommon.AnalyzedCommon"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.Execution.AnalyzedCommon.AnalyzedCommon</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Execution.StepAnalyzedCommon.</code><code class="sig-name descname">StepAnalyzedCommon</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">analyzer</em>, <em class="sig-param">splitThres=2048</em>, <em class="sig-param">split_fraction_unchanged=0.2</em>, <em class="sig-param">writePickled=True</em>, <em class="sig-param">smallestFreq=0</em>, <em class="sig-param">adaptFrequency=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.Execution.AnalyzedCommon.html#PyFoam.Execution.AnalyzedCommon.AnalyzedCommon" title="PyFoam.Execution.AnalyzedCommon.AnalyzedCommon"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.Execution.AnalyzedCommon.AnalyzedCommon</span></code></a></p>
 <p>Stuff is performed forevery timestep in the file</p>
 <dl class="method">
+<dt id="PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">analyzer</em>, <em class="sig-param">splitThres=2048</em>, <em class="sig-param">split_fraction_unchanged=0.2</em>, <em class="sig-param">writePickled=True</em>, <em class="sig-param">smallestFreq=0</em>, <em class="sig-param">adaptFrequency=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>smallestFreq</strong> – the smallest intervall of real time (in seconds) that the time change is honored</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Execution.StepAnalyzedCommon'</em><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.stopHandle">
-<code class="descname">stopHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon.stopHandle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.stopHandle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stopHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon.stopHandle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.stopHandle" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.timeChanged">
-<code class="descname">timeChanged</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon.timeChanged"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.timeChanged" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timeChanged</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon.timeChanged"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.timeChanged" title="Permalink to this definition">¶</a></dt>
 <dd><p>React to a change of the simulation time in the log</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.timeHandle">
-<code class="descname">timeHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon.timeHandle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.timeHandle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timeHandle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Execution/StepAnalyzedCommon.html#StepAnalyzedCommon.timeHandle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.timeHandle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handler that reacts to the change of time. To be overridden be sub-classes</p>
 </dd></dl>
 
@@ -214,9 +223,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -225,7 +232,7 @@
         <a href="PyFoam.Execution.StepAnalyzedRunner.html" class="btn btn-neutral float-right" title="PyFoam.Execution.StepAnalyzedRunner module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.Execution.ParallelExecution.html" class="btn btn-neutral" title="PyFoam.Execution.ParallelExecution module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.Execution.ParallelExecution.html" class="btn btn-neutral float-left" title="PyFoam.Execution.ParallelExecution module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -234,11 +241,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -251,36 +258,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

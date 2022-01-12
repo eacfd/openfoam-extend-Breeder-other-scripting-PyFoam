@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../../PyFoam.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -143,8 +137,6 @@
     
     
       <li class="wy-breadcrumbs-aside">
-        
-            
         
       </li>
     
@@ -188,9 +180,9 @@
 
 <span class="kn">import</span> <span class="nn">types</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">gp</span><span class="p">,</span> <span class="n">Errors</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">gp</span><span class="p">,</span> <span class="n">Errors</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">string_types</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">string_types</span>
 
 <div class="viewcode-block" id="Arg"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.Arg">[docs]</a><span class="k">class</span> <span class="nc">Arg</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Process terminal subargs and return a command fragment.</span>
@@ -223,9 +215,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
+<div class="viewcode-block" id="ArgOneParam.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.ArgOneParam.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">argname</span> <span class="o">=</span> <span class="n">argname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">default</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">default</span></div>
 
 <div class="viewcode-block" id="ArgOneParam.get_option"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.ArgOneParam.get_option">[docs]</a>    <span class="k">def</span> <span class="nf">get_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the keyword argument corresponding to this Arg.</span>
@@ -264,12 +256,12 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="KeywordArg.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.KeywordArg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">ArgOneParam</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="o">=</span> <span class="n">fixedword</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="KeywordArg.__call__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.KeywordArg.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
         <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="n">keyw</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -281,17 +273,17 @@
                 <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">Errors</span><span class="o">.</span><span class="n">OptionError</span><span class="p">(</span>
-                <span class="s1">&#39;Illegal option </span><span class="si">%s</span><span class="s1">=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">argname</span><span class="p">,</span> <span class="n">k</span><span class="p">,))</span></div>
+                <span class="s1">&#39;Illegal option </span><span class="si">%s</span><span class="s1">=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">argname</span><span class="p">,</span> <span class="n">k</span><span class="p">,))</span></div></div>
 
 
 <div class="viewcode-block" id="StringArg"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.StringArg">[docs]</a><span class="k">class</span> <span class="nc">StringArg</span><span class="p">(</span><span class="n">ArgOneParam</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;An option taking a quoted string argument.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="StringArg.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.StringArg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">ArgOneParam</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="o">=</span> <span class="n">fixedword</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="o">=</span> <span class="n">fixedword</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="StringArg.__call__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.StringArg.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
         <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="n">keyw</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -304,7 +296,7 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span><span class="p">)</span>
             <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">k</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">retval</span></div>
+            <span class="k">return</span> <span class="n">retval</span></div></div>
 
 
 <div class="viewcode-block" id="BareStringArg"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.BareStringArg">[docs]</a><span class="k">class</span> <span class="nc">BareStringArg</span><span class="p">(</span><span class="n">ArgOneParam</span><span class="p">):</span>
@@ -319,11 +311,11 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="BareStringArg.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.BareStringArg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">ArgOneParam</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="o">=</span> <span class="n">fixedword</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="o">=</span> <span class="n">fixedword</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="BareStringArg.__call__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.BareStringArg.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
         <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="n">keyw</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -337,7 +329,7 @@
                     <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-            <span class="k">return</span> <span class="n">retval</span></div>
+            <span class="k">return</span> <span class="n">retval</span></div></div>
 
 
 <div class="viewcode-block" id="BooleanArg"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.BooleanArg">[docs]</a><span class="k">class</span> <span class="nc">BooleanArg</span><span class="p">(</span><span class="n">ArgOneParam</span><span class="p">):</span>
@@ -350,14 +342,14 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">trueval</span><span class="p">,</span> <span class="n">falseval</span><span class="p">,</span>
+<div class="viewcode-block" id="BooleanArg.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.BooleanArg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">trueval</span><span class="p">,</span> <span class="n">falseval</span><span class="p">,</span>
                  <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">ArgOneParam</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">argname</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trueval</span> <span class="o">=</span> <span class="n">trueval</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">falseval</span> <span class="o">=</span> <span class="n">falseval</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="o">=</span> <span class="n">fixedword</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="o">=</span> <span class="n">fixedword</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="BooleanArg.__call__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.BooleanArg.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
         <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="n">keyw</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -371,7 +363,7 @@
                 <span class="n">val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">falseval</span>
             <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">retval</span></div>
+            <span class="k">return</span> <span class="n">retval</span></div></div>
 
 
 <div class="viewcode-block" id="MutuallyExclusiveArgs"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.MutuallyExclusiveArgs">[docs]</a><span class="k">class</span> <span class="nc">MutuallyExclusiveArgs</span><span class="p">(</span><span class="n">Arg</span><span class="p">):</span>
@@ -386,10 +378,10 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">subargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">subargs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">subargs</span><span class="p">)</span>
+<div class="viewcode-block" id="MutuallyExclusiveArgs.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.MutuallyExclusiveArgs.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">subargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subargs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">subargs</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="MutuallyExclusiveArgs.__call__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.MutuallyExclusiveArgs.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
         <span class="n">foundargname</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">retval</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="p">(</span><span class="n">argname</span><span class="p">,</span> <span class="n">arg</span><span class="p">,)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subargs</span><span class="p">:</span>
@@ -403,7 +395,7 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">foundargname</span> <span class="o">=</span> <span class="n">argname</span>
                     <span class="n">retval</span> <span class="o">=</span> <span class="n">cmd</span>
-        <span class="k">return</span> <span class="n">retval</span> <span class="c1"># might be None</span></div>
+        <span class="k">return</span> <span class="n">retval</span> <span class="c1"># might be None</span></div></div>
 
 
 <div class="viewcode-block" id="KeywordOrBooleanArg"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.KeywordOrBooleanArg">[docs]</a><span class="k">class</span> <span class="nc">KeywordOrBooleanArg</span><span class="p">(</span><span class="n">Arg</span><span class="p">):</span>
@@ -454,15 +446,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">argname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="KeywordOrBooleanArg.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.KeywordOrBooleanArg.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">argname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fixedword</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">argname</span> <span class="o">=</span> <span class="n">argname</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="o">=</span> <span class="n">fixedword</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">default</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> \
-               <span class="s1">&#39;default must be a valid option&#39;</span>
+               <span class="s1">&#39;default must be a valid option&#39;</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="KeywordOrBooleanArg.__call__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.termdefs.html#PyFoam.ThirdParty.Gnuplot.termdefs.KeywordOrBooleanArg.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keyw</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">argname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">argname</span> <span class="ow">in</span> <span class="n">keyw</span><span class="p">:</span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">keyw</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">argname</span><span class="p">]</span>
             <span class="k">del</span> <span class="n">keyw</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">argname</span><span class="p">]</span>
@@ -514,7 +506,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fixedword</span><span class="p">)</span>
         <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">retval</span></div>
+        <span class="k">return</span> <span class="n">retval</span></div></div>
 
 
 <span class="c1"># Now we define the allowed options for a few terminal types.  This</span>
@@ -642,9 +634,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -653,11 +643,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -670,36 +660,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

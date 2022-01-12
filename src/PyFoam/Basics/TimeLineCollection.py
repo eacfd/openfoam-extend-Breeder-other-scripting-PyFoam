@@ -61,35 +61,38 @@ class TimeLinesRegistry(object):
 
         lst={}
         for i,p in iteritems(self.lines):
-            slaves=[]
-            for s in p.slaves:
-                slaves.append(s.lineNr)
+            collectors=[]
+            for s in p.collectors:
+                collectors.append(s.lineNr)
 
             lst[str(i)]={ "nr"    : i,
                      "times" : deepcopy(p.times),
                      "values": deepcopy(p.values),
                      "lastValid" : deepcopy(p.lastValid),
-                     "slaves": slaves }
+                     "collectors": collectors }
 
         transmissionLock.release()
 
         return lst
 
     def resolveSlaves(self):
+        self.resolveCollectors()
+
+    def resolveCollectors(self):
         """Looks through all the registered lines and replaces integers with
         the actual registered line"""
         for i,p in iteritems(self.lines):
-            if len(p.slaves)>0:
-                slaves=[]
-                for s in p.slaves:
+            if len(p.collectors)>0:
+                collectors=[]
+                for s in p.collectors:
                     if type(s)==int:
                         try:
-                            slaves.append(self.lines[s])
+                            collectors.append(self.lines[s])
                         except KeyError:
                             error(s,"not a known data set:",list(self.lines.keys()))
                     else:
-                        slaves.append(s)
-                p.slaves=slaves
+                        collectors.append(s)
+                p.collectors=collectors
 
 _allLines=TimeLinesRegistry()
 
@@ -101,9 +104,10 @@ class TimeLineCollection(object):
     possibleAccumulations=["first", "last", "min", "max", "average", "sum","count"]
 
     def __init__(self,
-                 deflt=0.,
+                 deflt=float("NaN"),
                  extendCopy=False,
                  splitThres=None,
+                 split_fraction_unchanged=0.2,
                  splitFun=None,
                  noEmptyTime=True,
                  advancedSplit=False,
@@ -129,6 +133,7 @@ class TimeLineCollection(object):
         self.setExtend(extendCopy)
         self.thres=None
         self.fun=None
+        self.is_parametric = False
 
         if not (accumulation in TimeLineCollection.possibleAccumulations):
             error("Value",accumulation,"not in list of possible values:",TimeLineCollection.possibleAccumulations)
@@ -136,9 +141,10 @@ class TimeLineCollection(object):
         self.accumulations={}
         self.occured={}
 
-        self.slaves=[]
+        self.collectors=[]
 
         self.setSplitting(splitThres=splitThres,
+                          split_fraction_unchanged=split_fraction_unchanged,
                           splitFun=splitFun,
                           advancedSplit=advancedSplit,
                           noEmptyTime=noEmptyTime)
@@ -147,7 +153,7 @@ class TimeLineCollection(object):
         if preloadData:
             self.times=preloadData["times"]
             self.values=preloadData["values"]
-            self.slaves=preloadData["slaves"]
+            self.collectors=preloadData["collectors"]
             self.lineNr=int(preloadData["nr"])
             if "lastValid" in preloadData:
                 self.lastValid=preloadData["lastValid"]
@@ -163,23 +169,27 @@ class TimeLineCollection(object):
         self.lastValid={}
         for n in self.values:
             self.lastValid[n]=val
-        for s in self.slaves:
+        for s in self.collectors:
             s.resetValid(val=val)
 
     def nrValid(self):
         """Helper function that gets the number of valid values"""
         nr=list(self.lastValid.values()).count(True)
-        for s in self.slaves:
+        for s in self.collectors:
             nr+=s.nrValid()
         return nr
 
     def addSlave(self,slave):
-        """Adds a slave time-line-collection"""
-        self.slaves.append(slave)
-        slave.setSplitting(splitThres=self.thres,
-                           splitFun=self.fun,
-                           advancedSplit=self.advancedSplit,
-                           noEmptyTime=self.noEmptyTime)
+        self.addCollector(slave)
+
+    def addCollector(self,collector):
+        """Adds a collector time-line-collection"""
+        self.collectors.append(collector)
+        collector.setSplitting(splitThres=self.thres,
+                               split_fraction_unchanged=self.split_fraction_unchanged,
+                               splitFun=self.fun,
+                               advancedSplit=self.advancedSplit,
+                               noEmptyTime=self.noEmptyTime)
 
     def setAccumulator(self,name,accu):
         """Sets a special accumulator fopr a timeline
@@ -189,7 +199,12 @@ class TimeLineCollection(object):
             error("Value",accu,"not in list of possible values:",TimeLineCollection.possibleAccumulations,"When setting for",name)
         self.accumulations[name]=accu
 
-    def setSplitting(self,splitThres=None,splitFun=None,advancedSplit=False,noEmptyTime=True):
+    def setSplitting(self,
+                     splitThres=None,
+                     split_fraction_unchanged=0.2,
+                     splitFun=None,
+                     advancedSplit=False,
+                     noEmptyTime=True):
         """Sets the parameters for splitting"""
 
         self.advancedSplit = advancedSplit
@@ -205,10 +220,16 @@ class TimeLineCollection(object):
         elif not self.fun:
             self.fun=mean
 
-        for s in self.slaves:
-            s.setSplitting(splitThres=splitThres,splitFun=splitFun,advancedSplit=advancedSplit,noEmptyTime=noEmptyTime)
+        for s in self.collectors:
+            s.setSplitting(splitThres=splitThres,
+                           split_fraction_unchanged=split_fraction_unchanged,
+                           splitFun=splitFun,
+                           advancedSplit=advancedSplit,
+                           noEmptyTime=noEmptyTime)
 
         self.noEmptyTime=noEmptyTime
+
+        self.split_fraction_unchanged = split_fraction_unchanged
 
     def setDefault(self,deflt):
         """:param deflt: default value to be used"""
@@ -257,73 +278,16 @@ class TimeLineCollection(object):
 
             self.resetValid()
 
-            if self.thres and append:
+            if self.thres and append and not self.is_parametric:
               try:
                 if len(self.times)>=self.thres:
                     if self.advancedSplit:
-                        # Clumsy algorithm where the maximum and the minimum of a
-                        # data-window are preserved in that order
-                        if len(self.splitLevels)<len(self.times):
-                            self.splitLevels+=[0]*(len(self.times)-len(self.splitLevels))
-                        splitTill=int(len(self.times)*0.75)
-                        if self.splitLevels[splitTill]!=0:
-                            # Shouldn't happen. But just in case
-                            splitTill=self.splitLevels.index(0)
-                        splitFrom=0
-                        maxLevel=self.splitLevels[0]
-                        for l in range(maxLevel):
-                             try:
-                                 li=self.splitLevels.index(l)
-                                 if li>=0 and li<splitTill/2:
-                                     splitFrom=li
-                                     break
-                             except ValueError:
-                                 pass
-                        window=4
-                        if ((splitTill-splitFrom)/window)!=0:
-                            splitTill=splitFrom+window*int(ceil((splitTill-splitFrom)/float(window)))
-
-                        # prepare data that will not be split
-                        times=self.times[:splitFrom]
-                        levels=self.splitLevels[:splitFrom]
-                        values={}
-                        for k in self.values:
-                            values[k]=self.values[k][:splitFrom]
-
-                        for start in range(splitFrom,splitTill,window):
-                            end=start+window-1
-                            sTime=self.times[start]
-                            eTime=self.times[end]
-                            times+=[sTime,(eTime-sTime)*(2./3)+sTime]
-                            levels+=[self.splitLevels[start]+1,self.splitLevels[end]+1]
-                            for k in self.values:
-                                minV=self.values[k][start]
-                                minI=0
-                                maxV=self.values[k][start]
-                                maxI=0
-                                for j in range(1,window):
-                                    val=self.values[k][start+j]
-                                    if val>maxV:
-                                        maxV=val
-                                        maxI=j
-                                    if val<minV:
-                                        minV=val
-                                        minI=j
-                                if minI<maxI:
-                                    values[k]+=[minV,maxV]
-                                else:
-                                    values[k]+=[maxV,minV]
-                        firstUnsplit=int(splitTill/window)*window
-                        self.times=times+self.times[firstUnsplit:]
-                        self.splitLevels=levels+self.splitLevels[firstUnsplit:]
-                        # print self.splitLevels
-                        for k in self.values:
-                            self.values[k]=values[k]+self.values[k][firstUnsplit:]
-                            assert len(self.times)==len(self.values[k])
+                        # self._advanced_split()
+                        self._time_resolution_split()
                     else:
-                        self.times=self.split(self.times,min)
+                        self.times = self.split(self.times, min)
                         for k in list(self.values.keys()):
-                            self.values[k]=self.split(self.values[k],self.fun)
+                            self.values[k] = self.split(self.values[k], self.fun)
               except Exception:
                    e = sys.exc_info()[1] # Needed because python 2.5 does not support 'as e'
                    err, detail, tb = sys.exc_info()
@@ -332,11 +296,151 @@ class TimeLineCollection(object):
 
             self.occured={}
 
-        for s in self.slaves:
-            s.setTime(time,noLock=True,forceAppend=append)
+        if not self.is_parametric:
+            for s in self.collectors:
+                s.setTime(time,noLock=True,forceAppend=append)
 
         if not noLock:
             transmissionLock.release()
+
+    def _time_resolution_split(self):
+        # This algorithm tries to have an evenly spacing of the values
+        # and preserve maxima and minima and their order
+
+        def concatenate(lists):
+            result = lists[0]
+            for l in lists[1:]:
+                result.extend(l)
+            return result
+
+        def time_ranges(orig, delta):
+            lngth = len(orig)
+            ranges = []
+            t, ind = orig[0], 0
+            tend = orig[-1]
+            last = orig[0]
+            while ind < lngth:
+                limit = orig[ind] + delta
+                start = ind
+                while ind < lngth and orig[ind] < limit:
+                    ind += 1
+                if ind == lngth:
+                    limit = orig[-1]
+                ranges.append((start, ind, last, limit))
+                last = limit
+            return ranges
+
+        def base_times(orig, ranges):
+            bases = []
+            for start, stop, base, end in ranges:
+                nr = stop-start
+                assert nr > 0
+                if nr == 1:
+                    bases.append(([orig[start]], (start, stop)))
+                elif nr==2:
+                    bases.append(([orig[start], orig[start+1]], (start, stop)))
+                else:
+                    delta = end - base
+                    bases.append(([base + 0.25*delta, base + 0.75*delta], (start, stop)))
+            return bases
+
+        def reduce_value(vals, bases):
+            result = []
+            for _, ind in bases:
+                start, stop = ind
+                if (stop-start) <= 2:
+                    result.append(list(vals[start:stop]))
+                else:
+                    v_min, i_min = vals[start], 0
+                    v_max, i_max = vals[start], 0
+                    for i,v in enumerate(vals[(start+1):stop]):
+                        if v < v_min:
+                            v_min = v
+                            i_min = i + 1
+                        if v > v_max:
+                            v_max = v
+                            i_max = i + 1
+                    if i_max < i_min:
+                        result.append([v_max, v_min])
+                    else:
+                        result.append([v_min, v_max])
+            return concatenate(result)
+
+        nr_points = min(max(int(self.thres/2), 20), len(self.times))
+        nr_back = max(int(nr_points*self.split_fraction_unchanged), 5)
+        nr_rest = nr_points - nr_back
+
+        times_back = self.times[-nr_back:]
+        times = self.times[:-nr_back]
+        vals_back = {k: self.values[k][-nr_back:] for k in self.values}
+        vals = {k: self.values[k][:-nr_back] for k in self.values}
+        delta = (times[-1]-times[0])/nr_rest
+        bases = base_times(times, time_ranges(times, delta))
+
+        self.times = concatenate([b[0] for b in bases]) + times_back
+        for k in self.values:
+            self.values[k] = reduce_value(vals[k], bases) + vals_back[k]
+
+    def _advanced_split(self):
+        # Clumsy algorithm where the maximum and the minimum of a
+        # data-window are preserved in that order
+        if len(self.splitLevels)<len(self.times):
+            self.splitLevels+=[0]*(len(self.times)-len(self.splitLevels))
+        splitTill=int(len(self.times)*0.75)
+        if self.splitLevels[splitTill]!=0:
+            # Shouldn't happen. But just in case
+            splitTill=self.splitLevels.index(0)
+        splitFrom=0
+        maxLevel=self.splitLevels[0]
+        for l in range(maxLevel):
+             try:
+                 li=self.splitLevels.index(l)
+                 if li>=0 and li<splitTill/2:
+                     splitFrom=li
+                     break
+             except ValueError:
+                 pass
+        window=4
+        if ((splitTill-splitFrom)/window)!=0:
+            splitTill=splitFrom+window*int(ceil((splitTill-splitFrom)/float(window)))
+
+        # prepare data that will not be split
+        times=self.times[:splitFrom]
+        levels=self.splitLevels[:splitFrom]
+        values={}
+        for k in self.values:
+            values[k]=self.values[k][:splitFrom]
+
+        for start in range(splitFrom,splitTill,window):
+            end=start+window-1
+            sTime=self.times[start]
+            eTime=self.times[end]
+            times+=[sTime,(eTime-sTime)*(2./3)+sTime]
+            levels+=[self.splitLevels[start]+1,self.splitLevels[end]+1]
+            for k in self.values:
+                minV=self.values[k][start]
+                minI=0
+                maxV=self.values[k][start]
+                maxI=0
+                for j in range(1,window):
+                    val=self.values[k][start+j]
+                    if val>maxV:
+                        maxV=val
+                        maxI=j
+                    if val<minV:
+                        minV=val
+                        minI=j
+                if minI<maxI:
+                    values[k]+=[minV,maxV]
+                else:
+                    values[k]+=[maxV,minV]
+        firstUnsplit=int(splitTill/window)*window
+        self.times=times+self.times[firstUnsplit:]
+        self.splitLevels=levels+self.splitLevels[firstUnsplit:]
+
+        for k in self.values:
+            self.values[k]=values[k]+self.values[k][firstUnsplit:]
+            assert len(self.times)==len(self.values[k])
 
     def split(self,array,func):
         """Makes the array smaller by joining every two points
@@ -357,7 +461,7 @@ class TimeLineCollection(object):
         if name in self.values or name is None:
             tm=self.times
         else:
-            for s in self.slaves:
+            for s in self.collectors:
                 if name in s.values:
                     tm=s.times
                     break
@@ -366,9 +470,9 @@ class TimeLineCollection(object):
     def getValueNames(self):
         """:return: A list with the names of the safed values"""
         names=list(self.values.keys())
-        for i,s in enumerate(self.slaves):
+        for i,s in enumerate(self.collectors):
             for n in s.getValueNames():
-                names.append("%s-slave%02d" % (n,i))
+                names.append("%s-collector%02d" % (n,i))
         return names
 
     def getValues(self,name):
@@ -377,11 +481,11 @@ class TimeLineCollection(object):
         :return: List with the values"""
 
         if name not in self.values:
-            if len(self.slaves)>0:
-                if name.rfind("-slave")>0:
+            if len(self.collectors)>0:
+                if name.rfind("-collector")>0:
                     nr=int(name[-2:])
-                    nm=name[:name.rfind("-slave")]
-                    return self.slaves[nr].getValues(nm)
+                    nm=name[:name.rfind("-collector")]
+                    return self.collectors[nr].getValues(nm)
             self.values[name]=self.nr()*[self.defaultValue]
         return self.values[name]
 

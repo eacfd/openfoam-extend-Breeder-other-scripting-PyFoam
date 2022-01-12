@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.ThirdParty.Gnuplot package" href="PyFoam.ThirdParty.Gnuplot.html"/>
-        <link rel="next" title="PyFoam.ThirdParty.ply package" href="PyFoam.ThirdParty.ply.html"/>
-        <link rel="prev" title="PyFoam.ThirdParty.Gnuplot.test module" href="PyFoam.ThirdParty.Gnuplot.test.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.ThirdParty.ply package" href="PyFoam.ThirdParty.ply.html" />
+    <link rel="prev" title="PyFoam.ThirdParty.Gnuplot.test module" href="PyFoam.ThirdParty.Gnuplot.test.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -192,7 +186,7 @@
 particularly gnuplot-related.</p>
 <dl class="function">
 <dt id="PyFoam.ThirdParty.Gnuplot.utils.float_array">
-<code class="descclassname">PyFoam.ThirdParty.Gnuplot.utils.</code><code class="descname">float_array</code><span class="sig-paren">(</span><em>m</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/utils.html#float_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.utils.float_array" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.ThirdParty.Gnuplot.utils.</code><code class="sig-name descname">float_array</code><span class="sig-paren">(</span><em class="sig-param">m</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/utils.html#float_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.utils.float_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the argument as a numpy array of type at least ‘Float32’.</p>
 <p>Leave ‘Float64’ unchanged, but upcast all other types to
 ‘Float32’.  Allow also for the possibility that the argument is a
@@ -203,25 +197,25 @@ downcasting to single-precision float.</p>
 
 <dl class="function">
 <dt id="PyFoam.ThirdParty.Gnuplot.utils.write_array">
-<code class="descclassname">PyFoam.ThirdParty.Gnuplot.utils.</code><code class="descname">write_array</code><span class="sig-paren">(</span><em>f</em>, <em>set</em>, <em>item_sep=' '</em>, <em>nest_prefix=''</em>, <em>nest_suffix='\n'</em>, <em>nest_sep=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/utils.html#write_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.utils.write_array" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.ThirdParty.Gnuplot.utils.</code><code class="sig-name descname">write_array</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">set</em>, <em class="sig-param">item_sep=' '</em>, <em class="sig-param">nest_prefix=''</em>, <em class="sig-param">nest_suffix='\n'</em>, <em class="sig-param">nest_sep=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/utils.html#write_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.utils.write_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write an array of arbitrary dimension to a file.</p>
 <blockquote>
-<div>A general recursive array writer.  The last four parameters allow
+<div><p>A general recursive array writer.  The last four parameters allow
 a great deal of freedom in choosing the output format of the
 array.  The defaults for those parameters give output that is
-gnuplot-readable.  But using ‘(“,”, “{“, “}”, “,</div></blockquote>
-<dl class="docutils">
-<dt>“)’ would output</dt>
-<dd><p class="first">an array in a format that Mathematica could read.  ‘item_sep’
+gnuplot-readable.  But using ‘(“,”, “{“, “}”, “,</p>
+</div></blockquote>
+<dl>
+<dt>“)’ would output</dt><dd><p>an array in a format that Mathematica could read.  ‘item_sep’
 should not contain ‘%’ (or if it does, it should be escaped to
 ‘%%’) since it is put into a format string.</p>
 <p>The default 2-d file organization:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">...</span>
 <span class="nb">set</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="nb">set</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>The 3-d format:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">...</span>
 <span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="nb">set</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">...</span>
 
 <span class="nb">set</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="nb">set</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">...</span>
@@ -236,9 +230,7 @@ should not contain ‘%’ (or if it does, it should be escaped to
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -247,7 +239,7 @@ should not contain ‘%’ (or if it does, it should be escaped to
         <a href="PyFoam.ThirdParty.ply.html" class="btn btn-neutral float-right" title="PyFoam.ThirdParty.ply package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.ThirdParty.Gnuplot.test.html" class="btn btn-neutral" title="PyFoam.ThirdParty.Gnuplot.test module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.ThirdParty.Gnuplot.test.html" class="btn btn-neutral float-left" title="PyFoam.ThirdParty.Gnuplot.test module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -256,11 +248,11 @@ should not contain ‘%’ (or if it does, it should be escaped to
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -273,36 +265,15 @@ should not contain ‘%’ (or if it does, it should be escaped to
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

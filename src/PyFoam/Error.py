@@ -88,8 +88,12 @@ class PyFoamException(Exception):
 class FatalErrorPyFoamException(PyFoamException):
      """The PyFoam-exception that does not expect to be caught"""
 
-     def __init__(self,*text):
-          info=getLine(up=2)
+     def __init__(self, *text, **kwargs):
+          # Up reports how many levels of the stack-trace should be
+          # discarded. 2 usually is the place where the exception was raised
+          up = kwargs.get("up", 2) # necessary because a up=2 in the definition does not work in python 2
+
+          info=getLine(up=up)
           descr="PyFoam FATAL ERROR on line %d of file %s:" % (info[1],info[0])
           #          super(FatalErrorPyFoamException,self).__init__(descr,*text) # does not work with Python 2.4
           PyFoamException.__init__(self,descr,*text)

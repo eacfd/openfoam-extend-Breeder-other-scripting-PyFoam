@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -167,14 +159,14 @@
 <span class="c1"># from FileLineAnalyzer import FileLineAnalyzer</span>
 <span class="c1"># from TimeLineLineAnalyzer import TimeLineLineAnalyzer</span>
 
-<span class="kn">from</span> <span class="nn">.GeneralLineAnalyzer</span> <span class="k">import</span> <span class="n">GeneralLineAnalyzer</span>
+<span class="kn">from</span> <span class="nn">.GeneralLineAnalyzer</span> <span class="kn">import</span> <span class="n">GeneralLineAnalyzer</span>
 
 <div class="viewcode-block" id="GeneralBoundingLineAnalyzer"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.BoundingLineAnalyzer.html#PyFoam.LogAnalysis.BoundingLineAnalyzer.GeneralBoundingLineAnalyzer">[docs]</a><span class="k">class</span> <span class="nc">GeneralBoundingLineAnalyzer</span><span class="p">(</span><span class="n">GeneralLineAnalyzer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses the line for information about variables being bounded</span>
 
 <span class="sd">    Writes files of the form bounding_&lt;var&gt;&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="GeneralBoundingLineAnalyzer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.BoundingLineAnalyzer.html#PyFoam.LogAnalysis.BoundingLineAnalyzer.GeneralBoundingLineAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">doTimelines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">doFiles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">singleFile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -188,7 +180,7 @@
                                      <span class="n">startTime</span><span class="o">=</span><span class="n">startTime</span><span class="p">,</span>
                                      <span class="n">endTime</span><span class="o">=</span><span class="n">endTime</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">exp</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">boundingRegExp</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">registerRegexp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registerRegexp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GeneralBoundingLineAnalyzer.addToFiles"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.BoundingLineAnalyzer.html#PyFoam.LogAnalysis.BoundingLineAnalyzer.GeneralBoundingLineAnalyzer.addToFiles">[docs]</a>    <span class="k">def</span> <span class="nf">addToFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">match</span><span class="p">):</span>
         <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fName</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
@@ -208,8 +200,8 @@
 
 <span class="sd">    Writes files of the form bounding_&lt;var&gt;&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">GeneralBoundingLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doTimelines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BoundingLineAnalyzer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.BoundingLineAnalyzer.html#PyFoam.LogAnalysis.BoundingLineAnalyzer.BoundingLineAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GeneralBoundingLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doTimelines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
 
 <span class="c1">##        FileLineAnalyzer.__init__(self,titles=[&#39;Minimum&#39;,&#39;Maximum&#39;,&#39;Average&#39;])</span>
 <span class="c1">##        self.exp=re.compile(boundingRegExp)</span>
@@ -224,8 +216,8 @@
 <div class="viewcode-block" id="TimeLineBoundingLineAnalyzer"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.BoundingLineAnalyzer.html#PyFoam.LogAnalysis.BoundingLineAnalyzer.TimeLineBoundingLineAnalyzer">[docs]</a><span class="k">class</span> <span class="nc">TimeLineBoundingLineAnalyzer</span><span class="p">(</span><span class="n">GeneralBoundingLineAnalyzer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses the line for information about variables being bounded&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">GeneralBoundingLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doFiles</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+<div class="viewcode-block" id="TimeLineBoundingLineAnalyzer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.BoundingLineAnalyzer.html#PyFoam.LogAnalysis.BoundingLineAnalyzer.TimeLineBoundingLineAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GeneralBoundingLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doFiles</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
 
 <span class="c1">##        TimeLineLineAnalyzer.__init__(self)</span>
 <span class="c1">##        self.exp=re.compile(boundingRegExp)</span>
@@ -245,9 +237,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -256,11 +246,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -273,36 +263,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

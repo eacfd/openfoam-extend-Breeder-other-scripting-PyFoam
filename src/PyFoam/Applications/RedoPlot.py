@@ -204,7 +204,7 @@ and either displays the plot or writes the plots to file
                 print_("Adding line",nr)
             TimeLineCollection(preloadData=line,registry=registry)
 
-        registry.resolveSlaves()
+        registry.resolveCollectors()
 
         if (self.opts.csvFiles or self.opts.excelFiles or doPandas or self.opts.numpyData) and self.opts.rawLines:
             rawData={}

@@ -18,7 +18,7 @@ def validTerminals():
         terms.append("aqua")
     return terms
 
-class GnuplotTimelines(GeneralPlotTimelines,Gnuplot):
+class GnuplotTimelines(GeneralPlotTimelines, Gnuplot):
     """This class opens a gnuplot window and plots a timelines-collection in it"""
 
     terminalNr=1
@@ -120,29 +120,36 @@ class GnuplotTimelines(GeneralPlotTimelines,Gnuplot):
 
         self.redo()
 
-    def buildData(self,times,name,title,lastValid):
+    def buildData(self, times, name, title, lastValid, tag=None):
         """Build the implementation specific data
         :param times: The vector of times for which data exists
         :param name: the name under which the data is stored in the timeline
         :param title: the title under which this will be displayed"""
 
-        tm=times
-        dt=self.data.getValues(name)
-        if len(tm)>0 and not lastValid:
-            tm=tm[:-1]
-            dt=dt[:-1]
+        tm = times
+        dt = self.data.getValues(name)
+        if len(tm) > 0 and not lastValid:
+            tm = tm[:-1]
+            if len(dt) == len(tm) + 1:
+                dt=dt[:-1]
+            # dt = dt[:-1]
 
-        if len(dt)>0:
-            with_=self.with_
+        if len(dt) > 0:
+            with_ = self.with_
             if name in self.spec.specialwith:
-                with_=self.spec.specialwith[name].strip('"')
+                with_ = self.spec.specialwith[name].strip('"')
 
-            it=Data(tm,dt,title=title,with_=with_)
+            it = Data(tm, dt, title=title, with_=with_)
 
             if self.testAlternate(name):
                 it.set_option(axes="x1y2")
 
             self.itemlist.append(it)
+
+            if tag is not None:
+                txt = 'label {} "{}" at first {}, first {} point pt 2 ps 2'.format(
+                    tag, title, tm[-1], dt[-1])
+                self.set_string(txt)
 
     def preparePlot(self):
         """Prepare the plotting window"""

@@ -171,6 +171,7 @@ reasons that have nothing to do with the physics but runs fine after a restart
                                                    doTimelines=True),
                                silent=self.opts.progress or self.opts.silent,
                                splitThres=self.opts.splitDataPointsThreshold if self.opts.doSplitDataPoints else None,
+                               split_fraction_unchanged=self.opts.split_fraction_unchanged,
                                argv=args,
                                server=self.opts.server,
                                lam=lam,
@@ -185,6 +186,7 @@ reasons that have nothing to do with the physics but runs fine after a restart
 
             run.createPlots(customRegexp=self.lines_,
                             splitThres=self.opts.splitDataPointsThreshold if self.opts.doSplitDataPoints else None,
+                            split_fraction_unchanged=self.opts.split_fraction_unchanged,
                             writeFiles=self.opts.writeFiles)
 
             if self.cursesWindow:

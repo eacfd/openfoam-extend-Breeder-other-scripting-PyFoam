@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.LogAnalysis package" href="PyFoam.LogAnalysis.html"/>
-        <link rel="next" title="PyFoam.LogAnalysis.PhaseChangerLineAnalyzer module" href="PyFoam.LogAnalysis.PhaseChangerLineAnalyzer.html"/>
-        <link rel="prev" title="PyFoam.LogAnalysis.LogLineAnalyzer module" href="PyFoam.LogAnalysis.LogLineAnalyzer.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.LogAnalysis.PhaseChangerLineAnalyzer module" href="PyFoam.LogAnalysis.PhaseChangerLineAnalyzer.html" />
+    <link rel="prev" title="PyFoam.LogAnalysis.LogLineAnalyzer module" href="PyFoam.LogAnalysis.LogLineAnalyzer.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,19 +182,45 @@
 <p>A line analyzer that generates a list of names</p>
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.NameFinderLineAnalyzer.</code><code class="descname">NameFinderLineAnalyzer</code><span class="sig-paren">(</span><em>trigger</em>, <em>analyze</em>, <em>idNr=1</em>, <em>nr=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/NameFinderLineAnalyzer.html#NameFinderLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.ContextLineAnalyzer.html#PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer" title="PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.NameFinderLineAnalyzer.</code><code class="sig-name descname">NameFinderLineAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">trigger</em>, <em class="sig-param">analyze</em>, <em class="sig-param">idNr=1</em>, <em class="sig-param">nr=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/NameFinderLineAnalyzer.html#NameFinderLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.ContextLineAnalyzer.html#PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer" title="PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer</span></code></a></p>
 <p>Class that finds names depending on a context</p>
 <dl class="method">
+<dt id="PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">trigger</em>, <em class="sig-param">analyze</em>, <em class="sig-param">idNr=1</em>, <em class="sig-param">nr=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/NameFinderLineAnalyzer.html#NameFinderLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trigger</strong> – The regular expression that has to match before data is collected</p></li>
+<li><p><strong>nr</strong> – The number of lines after the match that data is collected</p></li>
+<li><p><strong>analyze</strong> – The regular expression that is used for analysis</p></li>
+<li><p><strong>idNr</strong> – The id of the group that is used for analysis</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.NameFinderLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.callOnChange">
-<code class="descname">callOnChange</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/NameFinderLineAnalyzer.html#NameFinderLineAnalyzer.callOnChange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.callOnChange" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">callOnChange</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/NameFinderLineAnalyzer.html#NameFinderLineAnalyzer.callOnChange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.callOnChange" title="Permalink to this definition">¶</a></dt>
 <dd><p>To be called if the name list changes</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.doActualAnalysis">
-<code class="descname">doActualAnalysis</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/NameFinderLineAnalyzer.html#NameFinderLineAnalyzer.doActualAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.doActualAnalysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">doActualAnalysis</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/NameFinderLineAnalyzer.html#NameFinderLineAnalyzer.doActualAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.doActualAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called nr lines after the match</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>line</strong> – The line that should be analyzed</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -208,9 +228,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -219,7 +237,7 @@
         <a href="PyFoam.LogAnalysis.PhaseChangerLineAnalyzer.html" class="btn btn-neutral float-right" title="PyFoam.LogAnalysis.PhaseChangerLineAnalyzer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.LogAnalysis.LogLineAnalyzer.html" class="btn btn-neutral" title="PyFoam.LogAnalysis.LogLineAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.LogAnalysis.LogLineAnalyzer.html" class="btn btn-neutral float-left" title="PyFoam.LogAnalysis.LogLineAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -228,11 +246,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -245,36 +263,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

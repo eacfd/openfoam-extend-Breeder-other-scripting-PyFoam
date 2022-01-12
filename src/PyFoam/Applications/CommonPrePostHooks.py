@@ -18,22 +18,34 @@ class CommonPrePostHooks(object):
     """ The class that runs the hooks
     """
 
-    def addOptions(self):
+    def addOptions(self, auto_enable=True):
         grp=OptionGroup(self.parser,
                         "Pre- and Postrun hooks",
                         "These options control the hooks that are either specified in the 'LocalConfigPyFoam' of the case or other config files (for a system-wide configuration)")
         self.parser.add_option_group(grp)
 
-        grp.add_option("--disable-pre-hooks",
-                       action="store_false",
-                       dest="runPreHook",
-                       default=True,
-                       help="Disable running of hooks before the solver")
-        grp.add_option("--disable-post-hooks",
-                       action="store_false",
-                       dest="runPostHook",
-                       default=True,
-                       help="Disable running of hooks after the solver")
+        if auto_enable:
+            grp.add_option("--disable-pre-hooks",
+                           action="store_false",
+                           dest="runPreHook",
+                           default=True,
+                           help="Disable running of hooks before the solver")
+            grp.add_option("--disable-post-hooks",
+                           action="store_false",
+                           dest="runPostHook",
+                           default=True,
+                           help="Disable running of hooks after the solver")
+        else:
+            grp.add_option("--enable-pre-hooks",
+                           action="store_true",
+                           dest="runPreHook",
+                           default=False,
+                           help="Enable running of hooks before the solver")
+            grp.add_option("--enable-post-hooks",
+                           action="store_true",
+                           dest="runPostHook",
+                           default=False,
+                           help="Enable running of hooks after the solver")
         grp.add_option("--disable-all-hooks",
                        action="store_true",
                        dest="disableAllHooks",
@@ -55,43 +67,43 @@ class CommonPrePostHooks(object):
                        default=False,
                        help="If there are problems with the hooks then execution of the runner stops")
 
-    def hookmessage(self,*args):
+    def _hookmessage(self,*args):
         if self.opts.verboseHooks:
             print_(*args)
 
-    def stopExecutionOnHookError(self,spec=False):
+    def _stopExecutionOnHookError(self,spec=False):
          if spec or self.opts.hookErrorsFatal:
               self.error("Stopping because of error in hook")
 
     def runPreHooks(self):
         """Run the hooks before the execution of the solver"""
         if self.opts.runPreHook:
-            self.hookmessage("Running pre-hooks")
+            self._hookmessage("Running pre-hooks")
             for h,spec in iteritems(self.preHookInstances):
-                self.executeHook(h,spec)
+                self._executeHook(h,spec)
         else:
-            self.hookmessage("Pre-hooks disabled")
+            self._hookmessage("Pre-hooks disabled")
 
     def runPostHooks(self):
         """Run the hooks after the execution of the solver"""
         if self.opts.runPostHook:
-            self.hookmessage("Running post-hooks")
+            self._hookmessage("Running post-hooks")
             for h,spec in iteritems(self.postHookInstances):
-                self.executeHook(h,spec)
+                self._executeHook(h,spec)
         else:
-            self.hookmessage("Post-hooks disabled")
+            self._hookmessage("Post-hooks disabled")
         pass
 
-    def executeHook(self,name,hDict):
+    def _executeHook(self,name,hDict):
         try:
             passed=self.getData()["wallTime"]
         except KeyError:
             passed=0
         if passed<hDict["minRunTime"]:
-            self.hookmessage("Skipping",name,"because passed time",
+            self._hookmessage("Skipping",name,"because passed time",
                              passed,"smaller than",hDict["minRunTime"])
             return
-        self.hookmessage("Executing hook",name)
+        self._hookmessage("Executing hook",name)
         try:
              hDict["instance"]()
         except FatalErrorPyFoamException:
@@ -101,44 +113,44 @@ class CommonPrePostHooks(object):
         except Exception:
              self.warning("Problem while executing",
                           name,":",traceback.format_exc())
-             self.stopExecutionOnHookError(hDict["stopOnError"])
+             self._stopExecutionOnHookError(hDict["stopOnError"])
 
     def prepareHooks(self):
         """Prepare the hooks and output additional info if wanted"""
-        self.hookmessage("Preparing hooks")
+        self._hookmessage("Preparing hooks")
         if self.opts.disableAllHooks:
-            self.hookmessage("Disabling all hooks")
+            self._hookmessage("Disabling all hooks")
             self.opts.runPreHook=False
             self.opts.runPostHook=False
 
         if self.opts.listHooks:
             print_("Hooks to execute before run")
             print_("---------------------------")
-            self.dumpHooks(self.getHooksWithPrefix("preRunHook"))
+            self._dumpHooks(self._getHooksWithPrefix("preRunHook"))
             print_()
             print_("Hooks to execute after run")
             print_("--------------------------")
-            self.dumpHooks(self.getHooksWithPrefix("postRunHook"))
+            self._dumpHooks(self._getHooksWithPrefix("postRunHook"))
 
         self.preHookInstances={}
         self.postHookInstances={}
 
-        self.hookmessage("Creating pre-hooks")
+        self._hookmessage("Creating pre-hooks")
         if self.opts.runPreHook:
-            self.checkAndCreateHookInstances(
+            self._checkAndCreateHookInstances(
                 self.preHookInstances,
                 "preRunHook"
             )
-        self.hookmessage("Creating post-hooks")
+        self._hookmessage("Creating post-hooks")
         if self.opts.runPostHook:
-            self.checkAndCreateHookInstances(
+            self._checkAndCreateHookInstances(
                 self.postHookInstances,
                 "postRunHook"
             )
 
-    def checkAndCreateHookInstances(self,toDict,prefix):
-        for h in self.getHooksWithPrefix(prefix):
-            self.hookmessage("Checking",h)
+    def _checkAndCreateHookInstances(self,toDict,prefix):
+        for h in self._getHooksWithPrefix(prefix):
+            self._hookmessage("Checking",h)
             if configuration().getboolean(h,"enabled",default=True):
                 subdict={}
                 modName=configuration().get(h,"module",default="")
@@ -151,7 +163,7 @@ class CommonPrePostHooks(object):
                 subdict["stopOnError"]=configuration().getboolean(h,
                                                                   "stopOnError",
                                                                   default=False)
-                self.hookmessage("Trying to import",modName)
+                self._hookmessage("Trying to import",modName)
 
                 module=None
                 modNames=[modName,
@@ -159,16 +171,16 @@ class CommonPrePostHooks(object):
                           "PyFoam.Infrastructure.RunHooks."+modName]
                 for mod in modNames:
                     try:
-                        self.hookmessage("Trying module:",mod)
+                        self._hookmessage("Trying module:",mod)
                         module=__import__(mod,globals(),locals(),["dummy"])
-                        self.hookmessage("Got module:",mod)
+                        self._hookmessage("Got module:",mod)
                         break
                     except ImportError:
                         e = sys.exc_info()[1] # Needed because python 2.5 does not support 'as e'
-                        self.hookmessage("ImportError:",e,"for",modName)
+                        self._hookmessage("ImportError:",e,"for",modName)
                     except SyntaxError:
                         e = sys.exc_info()[1] # Needed because python 2.5 does not support 'as e'
-                        self.hookmessage("SyntaxError:",e)
+                        self._hookmessage("SyntaxError:",e)
                         self.warning("Syntax error when trying to import",mod)
                         break
                 if module is None:
@@ -180,8 +192,8 @@ class CommonPrePostHooks(object):
                     theClass=getattr(module,mod.split(".")[-1])
                 except AttributeError:
                     e = sys.exc_info()[1] # Needed because python 2.5 does not support 'as e'
-                    self.hookmessage("AttributeError:",e)
-                    self.hookmessage("Attributes:",dir(module))
+                    self._hookmessage("AttributeError:",e)
+                    self._hookmessage("Attributes:",dir(module))
                     self.warning("Class",mod.split(".")[-1],"missing form",
                              mod)
                     continue
@@ -190,13 +202,13 @@ class CommonPrePostHooks(object):
                 except Exception:
                     self.warning("Problem while creating instance of",
                                  theClass,":",traceback.format_exc())
-                    self.stopExecutionOnHookError(subdict["stopOnError"])
+                    self._stopExecutionOnHookError(subdict["stopOnError"])
                     continue
                 toDict[h]=subdict
             else:
-                self.hookmessage(h,"is disabled")
+                self._hookmessage(h,"is disabled")
 
-    def dumpHooks(self,lst):
+    def _dumpHooks(self,lst):
         for h in lst:
             print_(h)
             try:
@@ -215,7 +227,7 @@ class CommonPrePostHooks(object):
                 e = sys.exc_info()[1] # Needed because python 2.5 does not support 'as e'
                 self.error("Hook",h,"incompletely defined (",e,")")
 
-    def getHooksWithPrefix(self,prefix):
+    def _getHooksWithPrefix(self,prefix):
         lst=[]
         for h in configuration().sections():
             if h.find(prefix+"_")==0:

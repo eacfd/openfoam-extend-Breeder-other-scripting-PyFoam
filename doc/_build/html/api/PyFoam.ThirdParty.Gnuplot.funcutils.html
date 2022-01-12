@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.ThirdParty.Gnuplot package" href="PyFoam.ThirdParty.Gnuplot.html"/>
-        <link rel="next" title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites module" href="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.html"/>
-        <link rel="prev" title="PyFoam.ThirdParty.Gnuplot.demo module" href="PyFoam.ThirdParty.Gnuplot.demo.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites module" href="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.html" />
+    <link rel="prev" title="PyFoam.ThirdParty.Gnuplot.demo module" href="PyFoam.ThirdParty.Gnuplot.demo.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -192,12 +186,12 @@
 points and tabulate the output to be used with Gnuplot.</p>
 <dl class="function">
 <dt id="PyFoam.ThirdParty.Gnuplot.funcutils.GridFunc">
-<code class="descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="descname">GridFunc</code><span class="sig-paren">(</span><em>f</em>, <em>xvals</em>, <em>yvals</em>, <em>**keyw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/funcutils.html#GridFunc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.GridFunc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="sig-name descname">GridFunc</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">xvals</em>, <em class="sig-param">yvals</em>, <em class="sig-param">**keyw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/funcutils.html#GridFunc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.GridFunc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.ThirdParty.Gnuplot.funcutils.compute_Data">
-<code class="descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="descname">compute_Data</code><span class="sig-paren">(</span><em>xvals</em>, <em>f</em>, <em>ufunc=0</em>, <em>**keyw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/funcutils.html#compute_Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.compute_Data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="sig-name descname">compute_Data</code><span class="sig-paren">(</span><em class="sig-param">xvals</em>, <em class="sig-param">f</em>, <em class="sig-param">ufunc=0</em>, <em class="sig-param">**keyw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/funcutils.html#compute_Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.compute_Data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate a function of 1 variable and store the results in a Data.</p>
 <p>Computes a function f of one variable on a set of specified points
 using ‘tabulate_function’, then store the results into a ‘Data’ so
@@ -208,9 +202,9 @@ function).</p>
 <p>Arguments:</p>
 <blockquote>
 <div><p>‘xvals’ – a 1-d array with dimension ‘numx’</p>
-<dl class="docutils">
-<dt>‘f’ – the function to plot–a callable object for which</dt>
-<dd>f(x) returns a number.</dd>
+<dl class="simple">
+<dt>‘f’ – the function to plot–a callable object for which</dt><dd><p>f(x) returns a number.</p>
+</dd>
 </dl>
 <p>‘ufunc=&lt;bool&gt;’ – evaluate ‘f’ as a ufunc?</p>
 </div></blockquote>
@@ -228,7 +222,7 @@ instance called ‘g’, you can plot the function by typing
 
 <dl class="function">
 <dt id="PyFoam.ThirdParty.Gnuplot.funcutils.compute_GridData">
-<code class="descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="descname">compute_GridData</code><span class="sig-paren">(</span><em>xvals</em>, <em>yvals</em>, <em>f</em>, <em>ufunc=0</em>, <em>**keyw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/funcutils.html#compute_GridData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.compute_GridData" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="sig-name descname">compute_GridData</code><span class="sig-paren">(</span><em class="sig-param">xvals</em>, <em class="sig-param">yvals</em>, <em class="sig-param">f</em>, <em class="sig-param">ufunc=0</em>, <em class="sig-param">**keyw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/funcutils.html#compute_GridData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.compute_GridData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate a function of 2 variables and store the results in a GridData.</p>
 <p>Computes a function ‘f’ of two variables on a rectangular grid
 using ‘tabulate_function’, then store the results into a
@@ -241,9 +235,9 @@ the function).</p>
 <div><blockquote>
 <div><p>‘xvals’ – a 1-d array with dimension ‘numx’</p>
 <p>‘yvals’ – a 1-d array with dimension ‘numy’</p>
-<dl class="docutils">
-<dt>‘f’ – the function to plot–a callable object for which</dt>
-<dd>‘f(x,y)’ returns a number.</dd>
+<dl class="simple">
+<dt>‘f’ – the function to plot–a callable object for which</dt><dd><p>‘f(x,y)’ returns a number.</p>
+</dd>
 </dl>
 <p>‘ufunc=&lt;bool&gt;’ – evaluate ‘f’ as a ufunc?</p>
 </div></blockquote>
@@ -262,7 +256,7 @@ function by typing ‘g.splot(compute_GridData(f, xvals, yvals))’.</p>
 
 <dl class="function">
 <dt id="PyFoam.ThirdParty.Gnuplot.funcutils.grid_function">
-<code class="descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="descname">grid_function</code><span class="sig-paren">(</span><em>f</em>, <em>xvals</em>, <em>yvals=None</em>, <em>dtype=None</em>, <em>ufunc=0</em><span class="sig-paren">)</span><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.grid_function" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="sig-name descname">grid_function</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">xvals</em>, <em class="sig-param">yvals=None</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">ufunc=0</em><span class="sig-paren">)</span><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.grid_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate and tabulate a function on a 1- or 2-D grid of points.</p>
 <p>f should be a function taking one or two floating-point
 parameters.</p>
@@ -286,7 +280,7 @@ xvals and yvals as rectangular matrices.</p>
 
 <dl class="function">
 <dt id="PyFoam.ThirdParty.Gnuplot.funcutils.tabulate_function">
-<code class="descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="descname">tabulate_function</code><span class="sig-paren">(</span><em>f</em>, <em>xvals</em>, <em>yvals=None</em>, <em>dtype=None</em>, <em>ufunc=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/funcutils.html#tabulate_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.tabulate_function" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.ThirdParty.Gnuplot.funcutils.</code><code class="sig-name descname">tabulate_function</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">xvals</em>, <em class="sig-param">yvals=None</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">ufunc=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/ThirdParty/Gnuplot/funcutils.html#tabulate_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.ThirdParty.Gnuplot.funcutils.tabulate_function" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate and tabulate a function on a 1- or 2-D grid of points.</p>
 <p>f should be a function taking one or two floating-point
 parameters.</p>
@@ -312,9 +306,7 @@ xvals and yvals as rectangular matrices.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -323,7 +315,7 @@ xvals and yvals as rectangular matrices.</p>
         <a href="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.html" class="btn btn-neutral float-right" title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.ThirdParty.Gnuplot.demo.html" class="btn btn-neutral" title="PyFoam.ThirdParty.Gnuplot.demo module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.ThirdParty.Gnuplot.demo.html" class="btn btn-neutral float-left" title="PyFoam.ThirdParty.Gnuplot.demo module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -332,11 +324,11 @@ xvals and yvals as rectangular matrices.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -349,36 +341,15 @@ xvals and yvals as rectangular matrices.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

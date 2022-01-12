@@ -61,8 +61,13 @@ class GeneralPlotTimelines(object):
         :param showWindow: whether or not to show a window. Doesn't affect all implementations
         """
 
-        self.data=timelines
-        self.spec=custom
+        self.data = timelines
+        self.spec = custom
+
+        self._label_tags = {}
+
+        if self.spec.xvalue is not None:
+            self.data.is_parametric = True
 
         self.alternate=getattr(self.spec,"alternateAxis",[])
         self.forbidden=getattr(self.spec,"forbidden",[])
@@ -73,12 +78,23 @@ class GeneralPlotTimelines(object):
             registry=allPlots()
         self.nr=registry.add(self)
 
+    def get_label_tag(self, name):
+        try:
+            return self._label_tags[name]
+        except KeyError:
+            if len(self._label_tags) == 0:
+                new_tag = 1
+            else:
+                new_tag = max(self._label_tags.values()) + 1
+            self._label_tags[name] = new_tag
+            return new_tag
+
     def testAlternate(self,name):
         if name in self.alternate:
             return True
 
-        if name.find("-slave")>0 and re.compile(r".+-slave[0-9]*").match(name):
-            return self.testAlternate(name[:name.find("-slave")])
+        if name.find("-collector")>0 and re.compile(r".+-collector[0-9]*").match(name):
+            return self.testAlternate(name[:name.find("-collector")])
 
         for a in self.alternate:
             try:
@@ -132,24 +148,36 @@ class GeneralPlotTimelines(object):
             if self.spec.xvalue is not None and self.spec.xvalue == n:
                 continue
 
-            title=n
+            title = n
 
-            if title.rfind("-slave")>=0:
-                title=title[: title.rfind("-slave")]
-                slaveNr=int(n[n.rfind("-slave")+len("-slave"):])
-                lastValid=self.data.slaves[slaveNr].lastValid[title]
+            collectorExtension = ""
+
+            if title.rfind("-collector") >= 0:
+                collectorExtension = title[title.rfind("-collector"):]
+
+                title = title[: title.rfind("-collector")]
+                collectorNr = int(n[n.rfind("-collector")+len("-collector"):])
+                lastValid = self.data.collectors[collectorNr].lastValid[title]
+                if self.spec.xvalue and self.spec.xvalue == title:
+                    continue
             else:
                 lastValid=self.data.lastValid[title]
             if self.spec.xvalue:
-                times = self.data.getValues(self.spec.xvalue)
+                times = self.data.getValues(self.spec.xvalue + collectorExtension)
             else:
                 times = self.data.getTimes(title)
-            self.buildData(times,n,title,lastValid)
+
+            if self.spec.xvalue:
+                tag = self.get_label_tag(n + "_last")
+            else:
+                tag = None
+
+            self.buildData(times,n,title,lastValid, tag=tag)
 
         if len(names)>0 and len(times)>0:
             self.doReplot()
 
-    def buildData(self,times,name,title,lastValid):
+    def buildData(self, times, name, title, lastValid, tag=None):
         """Build the implementation specific data
         :param times: The vector of times for which data exists
         :param name: the name under which the data is stored in the timeline

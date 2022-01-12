@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -164,17 +156,17 @@
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.TableData</span> <span class="k">import</span> <span class="n">TableData</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.TableData</span> <span class="kn">import</span> <span class="n">TableData</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span>
 
-<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">collections</span>
 
 <div class="viewcode-block" id="Data2DStatistics"><a class="viewcode-back" href="../../../api/PyFoam.Basics.Data2DStatistics.html#PyFoam.Basics.Data2DStatistics.Data2DStatistics">[docs]</a><span class="k">class</span> <span class="nc">Data2DStatistics</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Oranize statistics about data in 2D-Tables and do basic</span>
 <span class="sd">    calculations on it&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">metrics</span><span class="p">,</span>
+<div class="viewcode-block" id="Data2DStatistics.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.Data2DStatistics.html#PyFoam.Basics.Data2DStatistics.Data2DStatistics.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">metrics</span><span class="p">,</span>
                  <span class="n">compare</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">small</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span>
                  <span class="n">noStrings</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -190,23 +182,23 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__compare</span><span class="o">=</span><span class="n">compare</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">small</span><span class="o">=</span><span class="n">small</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">noStrings</span><span class="o">=</span><span class="n">noStrings</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">failureValue</span><span class="o">=</span><span class="n">failureValue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failureValue</span><span class="o">=</span><span class="n">failureValue</span></div>
 
-    <span class="k">def</span> <span class="nf">_getLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Data2DStatistics._getLabels"><a class="viewcode-back" href="../../../api/PyFoam.Basics.Data2DStatistics.html#PyFoam.Basics.Data2DStatistics.Data2DStatistics._getLabels">[docs]</a>    <span class="k">def</span> <span class="nf">_getLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a tuple with the names of the rows and the</span>
 <span class="sd">        columns. Assumes that the names for the first data-set are</span>
 <span class="sd">        valid for all&quot;&quot;&quot;</span>
         <span class="n">colNames</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__metrics</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="n">rowNames</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__metrics</span><span class="p">[</span><span class="n">colNames</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="n">rowNames</span><span class="p">,</span><span class="n">colNames</span>
+        <span class="k">return</span> <span class="n">rowNames</span><span class="p">,</span><span class="n">colNames</span></div>
 
-    <span class="k">def</span> <span class="nf">_makeEmptyTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Data2DStatistics._makeEmptyTable"><a class="viewcode-back" href="../../../api/PyFoam.Basics.Data2DStatistics.html#PyFoam.Basics.Data2DStatistics.Data2DStatistics._makeEmptyTable">[docs]</a>    <span class="k">def</span> <span class="nf">_makeEmptyTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create an empty table to fill the data in&quot;&quot;&quot;</span>
         <span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_getLabels</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">TableData</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">TableData</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_extractTable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Data2DStatistics._extractTable"><a class="viewcode-back" href="../../../api/PyFoam.Basics.Data2DStatistics.html#PyFoam.Basics.Data2DStatistics.Data2DStatistics._extractTable">[docs]</a>    <span class="k">def</span> <span class="nf">_extractTable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Extract data and fill it into a data-table</span>
 <span class="sd">        :param name: name of the entry that should be got</span>
 <span class="sd">        :param data: the dataset. If unset then self.__metrics is used&quot;&quot;&quot;</span>
@@ -219,7 +211,7 @@
             <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">col</span><span class="p">:</span>
                 <span class="n">tab</span><span class="p">[(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)]</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">r</span><span class="p">][</span><span class="n">name</span><span class="p">]</span>
 
-        <span class="k">return</span> <span class="n">tab</span>
+        <span class="k">return</span> <span class="n">tab</span></div>
 
 <div class="viewcode-block" id="Data2DStatistics.names"><a class="viewcode-back" href="../../../api/PyFoam.Basics.Data2DStatistics.html#PyFoam.Basics.Data2DStatistics.Data2DStatistics.names">[docs]</a>    <span class="k">def</span> <span class="nf">names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="s2">&quot;Valid data names&quot;</span>
@@ -233,8 +225,8 @@
             <span class="n">error</span><span class="p">(</span><span class="s2">&quot;No compare data present&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data2DStatistics</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__compare</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractTable</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<div class="viewcode-block" id="Data2DStatistics.__getitem__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.Data2DStatistics.html#PyFoam.Basics.Data2DStatistics.Data2DStatistics.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extractTable</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Data2DStatistics.func"><a class="viewcode-back" href="../../../api/PyFoam.Basics.Data2DStatistics.html#PyFoam.Basics.Data2DStatistics.Data2DStatistics.func">[docs]</a>    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">func</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Evaluate a function on the data</span>
@@ -321,9 +313,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -332,11 +322,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -349,36 +339,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../../PyFoam.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -143,8 +137,6 @@
     
     
       <li class="wy-breadcrumbs-aside">
-        
-            
         
       </li>
     
@@ -266,8 +258,8 @@
 <span class="c1"># it into PLY.</span>
 
 <div class="viewcode-block" id="PlyLogger"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.PlyLogger">[docs]</a><span class="k">class</span> <span class="nc">PlyLogger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
+<div class="viewcode-block" id="PlyLogger.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.PlyLogger.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span></div>
 
 <div class="viewcode-block" id="PlyLogger.debug"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.PlyLogger.debug">[docs]</a>    <span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="n">msg</span> <span class="o">%</span> <span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
@@ -284,11 +276,11 @@
 
 <span class="c1"># Null logger is used when no output is generated. Does nothing.</span>
 <div class="viewcode-block" id="NullLogger"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.NullLogger">[docs]</a><span class="k">class</span> <span class="nc">NullLogger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span>
-
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="NullLogger.__getattribute__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.NullLogger.__getattribute__">[docs]</a>    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="NullLogger.__call__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.NullLogger.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 
 <span class="c1"># Exception raised for yacc-related errors</span>
 <div class="viewcode-block" id="YaccError"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccError">[docs]</a><span class="k">class</span> <span class="nc">YaccError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
@@ -374,11 +366,11 @@
 <span class="c1">#        .endlexpos  = Ending lex position (optional, set automatically)</span>
 
 <div class="viewcode-block" id="YaccSymbol"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccSymbol">[docs]</a><span class="k">class</span> <span class="nc">YaccSymbol</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span>
+<div class="viewcode-block" id="YaccSymbol.__str__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccSymbol.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span></div>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+<div class="viewcode-block" id="YaccSymbol.__repr__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccSymbol.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
 
 <span class="c1"># This class is a wrapper around the objects actually passed to each</span>
 <span class="c1"># grammar rule.   Index lookup and assignment actually assign the</span>
@@ -390,28 +382,28 @@
 <span class="c1"># representing the range of positional information for a symbol.</span>
 
 <div class="viewcode-block" id="YaccProduction"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccProduction">[docs]</a><span class="k">class</span> <span class="nc">YaccProduction</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="YaccProduction.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccProduction.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">slice</span> <span class="o">=</span> <span class="n">s</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="n">stack</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lexer</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="kc">None</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="YaccProduction.__getitem__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccProduction.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span>
         <span class="k">elif</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">value</span></div>
 
-    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">v</span>
+<div class="viewcode-block" id="YaccProduction.__setitem__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccProduction.__setitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">v</span></div>
 
-    <span class="k">def</span> <span class="nf">__getslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]]</span>
+<div class="viewcode-block" id="YaccProduction.__getslice__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccProduction.__getslice__">[docs]</a>    <span class="k">def</span> <span class="nf">__getslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]]</span></div>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">)</span>
+<div class="viewcode-block" id="YaccProduction.__len__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccProduction.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="YaccProduction.lineno"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.YaccProduction.lineno">[docs]</a>    <span class="k">def</span> <span class="nf">lineno</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slice</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="s1">&#39;lineno&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
@@ -442,13 +434,13 @@
 <span class="c1"># -----------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="LRParser"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRParser">[docs]</a><span class="k">class</span> <span class="nc">LRParser</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lrtab</span><span class="p">,</span> <span class="n">errorf</span><span class="p">):</span>
+<div class="viewcode-block" id="LRParser.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRParser.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lrtab</span><span class="p">,</span> <span class="n">errorf</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">productions</span> <span class="o">=</span> <span class="n">lrtab</span><span class="o">.</span><span class="n">lr_productions</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">lrtab</span><span class="o">.</span><span class="n">lr_action</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">goto</span> <span class="o">=</span> <span class="n">lrtab</span><span class="o">.</span><span class="n">lr_goto</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">errorfunc</span> <span class="o">=</span> <span class="n">errorf</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_defaulted_states</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">errorok</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">errorok</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="LRParser.errok"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRParser.errok">[docs]</a>    <span class="k">def</span> <span class="nf">errok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">errorok</span> <span class="o">=</span> <span class="kc">True</span></div>
@@ -521,7 +513,7 @@
 
         <span class="c1"># If no lexer was given, we will try to use the lex module</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lexer</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">lex</span>
+            <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lex</span>
             <span class="n">lexer</span> <span class="o">=</span> <span class="n">lex</span><span class="o">.</span><span class="n">lexer</span>
 
         <span class="c1"># Set up the lexer and parser objects on pslice</span>
@@ -865,7 +857,7 @@
 
         <span class="c1"># If no lexer was given, we will try to use the lex module</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lexer</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">lex</span>
+            <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lex</span>
             <span class="n">lexer</span> <span class="o">=</span> <span class="n">lex</span><span class="o">.</span><span class="n">lexer</span>
 
         <span class="c1"># Set up the lexer and parser objects on pslice</span>
@@ -1171,7 +1163,7 @@
 
         <span class="c1"># If no lexer was given, we will try to use the lex module</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">lexer</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">lex</span>
+            <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lex</span>
             <span class="n">lexer</span> <span class="o">=</span> <span class="n">lex</span><span class="o">.</span><span class="n">lexer</span>
 
         <span class="c1"># Set up the lexer and parser objects on pslice</span>
@@ -1467,7 +1459,7 @@
 
 <div class="viewcode-block" id="Production"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Production">[docs]</a><span class="k">class</span> <span class="nc">Production</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">reduced</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">prod</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="Production.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Production.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">prod</span><span class="p">,</span> <span class="n">precedence</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span>     <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prod</span>     <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">prod</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">number</span>   <span class="o">=</span> <span class="n">number</span>
@@ -1495,22 +1487,22 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> -&gt; </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> -&gt; &lt;empty&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> -&gt; &lt;empty&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">str</span>
+<div class="viewcode-block" id="Production.__str__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Production.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">str</span></div>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;Production(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+<div class="viewcode-block" id="Production.__repr__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Production.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;Production(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span></div>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span>
+<div class="viewcode-block" id="Production.__len__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Production.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__nonzero__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mi">1</span>
+<div class="viewcode-block" id="Production.__nonzero__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Production.__nonzero__">[docs]</a>    <span class="k">def</span> <span class="nf">__nonzero__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<div class="viewcode-block" id="Production.__getitem__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Production.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">[</span><span class="n">index</span><span class="p">]</span></div>
 
     <span class="c1"># Return the nth lr_item from the production (or None if at the end)</span>
 <div class="viewcode-block" id="Production.lr_item"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Production.lr_item">[docs]</a>    <span class="k">def</span> <span class="nf">lr_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -1538,20 +1530,20 @@
 <span class="c1"># actually used by the LR parsing engine, plus some additional</span>
 <span class="c1"># debugging information.</span>
 <div class="viewcode-block" id="MiniProduction"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.MiniProduction">[docs]</a><span class="k">class</span> <span class="nc">MiniProduction</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+<div class="viewcode-block" id="MiniProduction.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.MiniProduction.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span>     <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">len</span>      <span class="o">=</span> <span class="nb">len</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">func</span>     <span class="o">=</span> <span class="n">func</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">callable</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">file</span>     <span class="o">=</span> <span class="n">file</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">line</span>     <span class="o">=</span> <span class="n">line</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">str</span>      <span class="o">=</span> <span class="nb">str</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">str</span>      <span class="o">=</span> <span class="nb">str</span></div>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">str</span>
+<div class="viewcode-block" id="MiniProduction.__str__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.MiniProduction.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">str</span></div>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;MiniProduction(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">str</span>
+<div class="viewcode-block" id="MiniProduction.__repr__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.MiniProduction.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;MiniProduction(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">str</span></div>
 
     <span class="c1"># Bind the production function name to a callable</span>
 <div class="viewcode-block" id="MiniProduction.bind"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.MiniProduction.bind">[docs]</a>    <span class="k">def</span> <span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pdict</span><span class="p">):</span>
@@ -1584,7 +1576,7 @@
 <span class="c1"># -----------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="LRItem"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRItem">[docs]</a><span class="k">class</span> <span class="nc">LRItem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="LRItem.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRItem.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span>       <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prod</span>       <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">number</span>     <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">number</span>
@@ -1593,17 +1585,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prod</span>       <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">len</span>        <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">usyms</span>      <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">usyms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usyms</span>      <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">usyms</span></div>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LRItem.__str__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRItem.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">:</span>
             <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> -&gt; </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> -&gt; &lt;empty&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
-        <span class="k">return</span> <span class="n">s</span>
+        <span class="k">return</span> <span class="n">s</span></div>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;LRItem(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span></div>
+<div class="viewcode-block" id="LRItem.__repr__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRItem.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;LRItem(&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span></div></div>
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1"># rightmost_terminal()</span>
@@ -1630,7 +1622,7 @@
     <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="Grammar"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Grammar">[docs]</a><span class="k">class</span> <span class="nc">Grammar</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">terminals</span><span class="p">):</span>
+<div class="viewcode-block" id="Grammar.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Grammar.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">terminals</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Productions</span>  <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>  <span class="c1"># A list of all of the productions.  The first</span>
                                     <span class="c1"># entry is always reserved for the purpose of</span>
                                     <span class="c1"># building an augmented grammar</span>
@@ -1663,14 +1655,14 @@
                                     <span class="c1"># This is only used to provide error checking and to generate</span>
                                     <span class="c1"># a warning about unused precedence rules.</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">Start</span> <span class="o">=</span> <span class="kc">None</span>           <span class="c1"># Starting symbol for the grammar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Start</span> <span class="o">=</span> <span class="kc">None</span>           <span class="c1"># Starting symbol for the grammar</span></div>
 
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Productions</span><span class="p">)</span>
+<div class="viewcode-block" id="Grammar.__len__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Grammar.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Productions</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Productions</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<div class="viewcode-block" id="Grammar.__getitem__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Grammar.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Productions</span><span class="p">[</span><span class="n">index</span><span class="p">]</span></div>
 
     <span class="c1"># -----------------------------------------------------------------------------</span>
     <span class="c1"># set_precedence()</span>
@@ -1957,7 +1949,7 @@
     <span class="c1"># During execution of compute_first1, the result may be incomplete.</span>
     <span class="c1"># Afterward (e.g., when called from compute_follow()), it will be complete.</span>
     <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_first</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+<div class="viewcode-block" id="Grammar._first"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.Grammar._first">[docs]</a>    <span class="k">def</span> <span class="nf">_first</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
 
         <span class="c1"># We are computing First(x1,x2,x3,...,xn)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1985,7 +1977,7 @@
             <span class="c1"># so beta produces empty as well.</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;empty&gt;&#39;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result</span></div>
 
     <span class="c1"># -------------------------------------------------------------------------</span>
     <span class="c1"># compute_first()</span>
@@ -2128,11 +2120,11 @@
     <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="LRTable"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRTable">[docs]</a><span class="k">class</span> <span class="nc">LRTable</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LRTable.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRTable.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lr_action</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lr_goto</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lr_productions</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lr_method</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr_method</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="LRTable.read_table"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRTable.read_table">[docs]</a>    <span class="k">def</span> <span class="nf">read_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">module</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">):</span>
@@ -2256,7 +2248,7 @@
 <span class="c1"># -----------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="LRGeneratedTable"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRGeneratedTable">[docs]</a><span class="k">class</span> <span class="nc">LRGeneratedTable</span><span class="p">(</span><span class="n">LRTable</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grammar</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;LALR&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="LRGeneratedTable.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.LRGeneratedTable.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grammar</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;LALR&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;SLR&#39;</span><span class="p">,</span> <span class="s1">&#39;LALR&#39;</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="n">LALRError</span><span class="p">(</span><span class="s1">&#39;Unsupported method </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">method</span><span class="p">)</span>
 
@@ -2289,7 +2281,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">grammar</span><span class="o">.</span><span class="n">build_lritems</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grammar</span><span class="o">.</span><span class="n">compute_first</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">grammar</span><span class="o">.</span><span class="n">compute_follow</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lr_parse_table</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr_parse_table</span><span class="p">()</span></div>
 
     <span class="c1"># Compute the LR(0) closure operation on I, where I is a set of LR(0) items.</span>
 
@@ -3083,7 +3075,7 @@
 <span class="c1"># etc.</span>
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="ParserReflect"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.ParserReflect">[docs]</a><span class="k">class</span> <span class="nc">ParserReflect</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pdict</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ParserReflect.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.ParserReflect.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pdict</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pdict</span>      <span class="o">=</span> <span class="n">pdict</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">start</span>      <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">error_func</span> <span class="o">=</span> <span class="kc">None</span>
@@ -3095,7 +3087,7 @@
         <span class="k">if</span> <span class="n">log</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">PlyLogger</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">log</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">log</span></div>
 
     <span class="c1"># Get all of the basic information</span>
 <div class="viewcode-block" id="ParserReflect.get_all"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.ParserReflect.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3118,9 +3110,9 @@
     <span class="c1"># Compute a signature over the grammar</span>
 <div class="viewcode-block" id="ParserReflect.signature"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.yacc.html#PyFoam.ThirdParty.ply.yacc.ParserReflect.signature">[docs]</a>    <span class="k">def</span> <span class="nf">signature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">hashlib</span> <span class="k">import</span> <span class="n">md5</span>
+            <span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
         <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">md5</span> <span class="k">import</span> <span class="n">md5</span>
+            <span class="kn">from</span> <span class="nn">md5</span> <span class="kn">import</span> <span class="n">md5</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">sig</span> <span class="o">=</span> <span class="n">md5</span><span class="p">()</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
@@ -3655,9 +3647,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -3666,11 +3656,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -3683,36 +3673,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -77,8 +77,8 @@ if PyFoam.FoamInformation.oldAppConvention():
 print_()
 print_("pyFoam-Version:",PyFoam.versionString())
 
-# hardcodedVersion=(2020, 5, "development") # Change in PyFoam/__init__.py as well
-hardcodedVersion=(2020, 5)
+# hardcodedVersion=(2021, 6, "development") # Change in PyFoam/__init__.py as well
+hardcodedVersion=(2021, 6)
 
 if PyFoam.version()!=hardcodedVersion:
     print_("ALERT: Reported version",PyFoam.version(),

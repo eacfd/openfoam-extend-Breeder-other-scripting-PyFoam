@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.LogAnalysis package" href="PyFoam.LogAnalysis.html"/>
-        <link rel="next" title="PyFoam.Paraview package" href="PyFoam.Paraview.html"/>
-        <link rel="prev" title="PyFoam.LogAnalysis.UtilityAnalyzer module" href="PyFoam.LogAnalysis.UtilityAnalyzer.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.Paraview package" href="PyFoam.Paraview.html" />
+    <link rel="prev" title="PyFoam.LogAnalysis.UtilityAnalyzer module" href="PyFoam.LogAnalysis.UtilityAnalyzer.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,13 +182,31 @@
 <p>Do analysis for a line with values</p>
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.ValueLineAnalyzer.</code><code class="descname">ValueLineAnalyzer</code><span class="sig-paren">(</span><em>name</em>, <em>pre</em>, <em>titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.FileLineAnalyzer.html#PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer" title="PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.ValueLineAnalyzer.</code><code class="sig-name descname">ValueLineAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">pre</em>, <em class="sig-param">titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.FileLineAnalyzer.html#PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer" title="PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer</span></code></a></p>
 <p>Parses lines for numeric values</p>
 <p>The line starts with a predefined string</p>
 <dl class="method">
+<dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">pre</em>, <em class="sig-param">titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – name of the expression (needed for output)</p></li>
+<li><p><strong>pre</strong> – the string that starts the line</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.ValueLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.doAnalysis">
-<code class="descname">doAnalysis</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueLineAnalyzer.doAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.doAnalysis" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">doAnalysis</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueLineAnalyzer.doAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.doAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Analyzes line and writes the data</p>
 </dd></dl>
 
@@ -202,13 +214,35 @@
 
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.ValueLineAnalyzer.</code><code class="descname">ValueNameFinderLineAnalyzer</code><span class="sig-paren">(</span><em>trigger</em>, <em>analyze</em>, <em>val</em>, <em>idNr=1</em>, <em>nr=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueNameFinderLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.NameFinderLineAnalyzer.html#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer" title="PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.ValueLineAnalyzer.</code><code class="sig-name descname">ValueNameFinderLineAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">trigger</em>, <em class="sig-param">analyze</em>, <em class="sig-param">val</em>, <em class="sig-param">idNr=1</em>, <em class="sig-param">nr=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueNameFinderLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.NameFinderLineAnalyzer.html#PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer" title="PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer</span></code></a></p>
 <p>Finds the names and notifies it’s ValueLineAnalyzer</p>
 <dl class="method">
-<dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.callOnChange">
-<code class="descname">callOnChange</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueNameFinderLineAnalyzer.callOnChange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.callOnChange" title="Permalink to this definition">¶</a></dt>
+<dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">trigger</em>, <em class="sig-param">analyze</em>, <em class="sig-param">val</em>, <em class="sig-param">idNr=1</em>, <em class="sig-param">nr=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueNameFinderLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trigger</strong> – The regular expression that has to match before data is collected</p></li>
+<li><p><strong>nr</strong> – The number of lines after the match that data is collected</p></li>
+<li><p><strong>analyze</strong> – The regular expression that is used for analysis</p></li>
+<li><p><strong>idNr</strong> – The id of the group that is used for analysis</p></li>
+<li><p><strong>val</strong> – The ValueLineAnalyzer that needs the names</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.ValueLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.callOnChange">
+<code class="sig-name descname">callOnChange</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ValueLineAnalyzer.html#ValueNameFinderLineAnalyzer.callOnChange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.callOnChange" title="Permalink to this definition">¶</a></dt>
+<dd><p>To be called if the name list changes</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -216,9 +250,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -227,7 +259,7 @@
         <a href="PyFoam.Paraview.html" class="btn btn-neutral float-right" title="PyFoam.Paraview package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.LogAnalysis.UtilityAnalyzer.html" class="btn btn-neutral" title="PyFoam.LogAnalysis.UtilityAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.LogAnalysis.UtilityAnalyzer.html" class="btn btn-neutral float-left" title="PyFoam.LogAnalysis.UtilityAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -236,11 +268,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -253,36 +285,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

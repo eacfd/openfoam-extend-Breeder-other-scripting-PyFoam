@@ -15,6 +15,7 @@ class StepAnalyzedCommon(AnalyzedCommon):
                  filename,
                  analyzer,
                  splitThres=2048,
+                 split_fraction_unchanged=0.2,
                  writePickled=True,
                  smallestFreq=0,
                  adaptFrequency=True):
@@ -23,6 +24,7 @@ class StepAnalyzedCommon(AnalyzedCommon):
                                 filename,
                                 analyzer,
                                 splitThres=splitThres,
+                                split_fraction_unchanged=split_fraction_unchanged,
                                 doPickling=writePickled)
 
         analyzer.addTimeListener(self)

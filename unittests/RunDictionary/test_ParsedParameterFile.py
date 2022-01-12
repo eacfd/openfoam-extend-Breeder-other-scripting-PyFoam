@@ -6,7 +6,10 @@ from os import path,remove
 from tempfile import mktemp,mkdtemp
 from shutil import copyfile,rmtree,copytree
 
-from PyFoam.RunDictionary.ParsedParameterFile import FoamStringParser,ParsedParameterFile,ParsedBoundaryDict,DictProxy,TupleProxy,PyFoamParserError,WriteParameterFile
+from PyFoam.RunDictionary.ParsedParameterFile import FoamStringParser, \
+    ParsedParameterFile, ParsedBoundaryDict, DictProxy, TupleProxy, \
+    PyFoamParserError, WriteParameterFile, FoamFileParser
+
 from PyFoam.Error import FatalErrorPyFoamException
 
 from PyFoam.Basics.FoamFileGenerator import Vector,Dimension,Field,Tensor,SymmTensor,Codestream
@@ -569,6 +572,66 @@ c ${${b}}; // returns 10, since $b returns 'a', and $a returns 10
         self.assertEqual(p1["c"],"${${b}}")
 
 
+class FoamFileParser_FileHeaderTest(unittest.TestCase):
+    def testRegularOpenFOAMHeader(self):
+        p = FoamFileParser("""/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     laplacianFoam;
+
+""")
+        assert len(p.getData()) == 1
+        assert p.getData() == { "application": "laplacianFoam" }
+
+        assert len(p.getHeader()) == 5
+        assert p.getHeader()["object"] == "controlDict"
+
+    def testExtendedOpenFOAMHeader(self):
+        p = FoamFileParser("""/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+    meta {
+        nProcs 4;
+        collated yes;
+    }
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     laplacianFoam;
+
+""")
+        assert len(p.getData()) == 1
+        assert p.getData() == { "application": "laplacianFoam" }
+
+        assert len(p.getHeader()) == 6
+        assert p.getHeader()["object"] == "controlDict"
+        assert p.getHeader()["meta"] == { "nProcs": 4, "collated": True}
+
 class ParsedBoundaryDictTest(unittest.TestCase):
     def setUp(self):
         self.theFile=mktemp()
@@ -632,7 +695,10 @@ class ParsedParameterFileTest2(unittest.TestCase):
             extension=".orig"
         else:
             extension=".org"
-        copyfile(path.join(damBreakTutorial(),"0",gammaName()+extension),self.theFile)
+        try:
+            copyfile(path.join(damBreakTutorial(),"0",gammaName()+extension),self.theFile)
+        except IOError:
+            copyfile(path.join(damBreakTutorial(),"0"+extension,gammaName()),self.theFile)
 
     def tearDown(self):
         remove(self.theFile)

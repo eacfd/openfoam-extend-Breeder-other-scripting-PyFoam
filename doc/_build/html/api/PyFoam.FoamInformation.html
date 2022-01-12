@@ -17,42 +17,35 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam package" href="PyFoam.html"/>
-        <link rel="prev" title="PyFoam.Error module" href="PyFoam.Error.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="PyFoam.Error module" href="PyFoam.Error.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -115,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -123,9 +116,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -176,15 +170,31 @@
 <p>Getting Information about the Foam-Installation (like the installation directory)</p>
 <dl class="class">
 <dt id="PyFoam.FoamInformation.VersionTuple">
-<em class="property">class </em><code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">VersionTuple</code><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#VersionTuple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.VersionTuple" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">tuple</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">VersionTuple</code><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#VersionTuple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.VersionTuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
 <p>Wrapper around the regular tuple that is printed in a way that
 can be parsed as a tuple in a OF-dictionary</p>
+<dl class="attribute">
+<dt id="PyFoam.FoamInformation.VersionTuple.__dict__">
+<code class="sig-name descname">__dict__</code><em class="property"> = mappingproxy({'__module__': 'PyFoam.FoamInformation', '__doc__': 'Wrapper around the regular tuple that is printed in a way that\n    can be parsed as a tuple in a OF-dictionary\n\n    ', '__str__': &lt;function VersionTuple.__str__&gt;, '__dict__': &lt;attribute '__dict__' of 'VersionTuple' objects&gt;})</em><a class="headerlink" href="#PyFoam.FoamInformation.VersionTuple.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.FoamInformation.VersionTuple.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.FoamInformation'</em><a class="headerlink" href="#PyFoam.FoamInformation.VersionTuple.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.FoamInformation.VersionTuple.__str__">
+<code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#VersionTuple.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.VersionTuple.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.changeFoamVersion">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">changeFoamVersion</code><span class="sig-paren">(</span><em>new</em>, <em>force64=False</em>, <em>force32=False</em>, <em>compileOption=None</em>, <em>foamCompiler=None</em>, <em>wmCompiler=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#changeFoamVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.changeFoamVersion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">changeFoamVersion</code><span class="sig-paren">(</span><em class="sig-param">new</em>, <em class="sig-param">force64=False</em>, <em class="sig-param">force32=False</em>, <em class="sig-param">compileOption=None</em>, <em class="sig-param">foamCompiler=None</em>, <em class="sig-param">wmCompiler=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#changeFoamVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.changeFoamVersion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes the used FoamVersion. Only valid during the runtime of
 the interpreter (the script or the Python session)
 :param new: The new Version
@@ -197,155 +207,133 @@ the interpreter (the script or the Python session)
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.ensureDynamicLibraries">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">ensureDynamicLibraries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#ensureDynamicLibraries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.ensureDynamicLibraries" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">ensureDynamicLibraries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#ensureDynamicLibraries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.ensureDynamicLibraries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ensure that the dynamic library path is set for systems where it
 was erased for security rasons (for instance Mac OS X 10.11)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.findInstallationDir">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">findInstallationDir</code><span class="sig-paren">(</span><em>newVersion</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#findInstallationDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.findInstallationDir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">findInstallationDir</code><span class="sig-paren">(</span><em class="sig-param">newVersion</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#findInstallationDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.findInstallationDir" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.findInstalledVersions">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">findInstalledVersions</code><span class="sig-paren">(</span><em>basedir</em>, <em>valid</em>, <em>forkName='openfoam'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#findInstalledVersions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.findInstalledVersions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">findInstalledVersions</code><span class="sig-paren">(</span><em class="sig-param">basedir</em>, <em class="sig-param">valid</em>, <em class="sig-param">forkName='openfoam'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#findInstalledVersions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.findInstalledVersions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="PyFoam.FoamInformation.findThirdPartyDir">
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">findThirdPartyDir</code><span class="sig-paren">(</span><em class="sig-param">newVersion</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#findThirdPartyDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.findThirdPartyDir" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamCaseDicts">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamCaseDicts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamCaseDicts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamCaseDicts" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the caseDicts-directory of the distro</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamCaseDicts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamCaseDicts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamCaseDicts" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the caseDicts-directory of the distro</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamEtc">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamEtc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamEtc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamEtc" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the etc-directory of the distro</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamEtc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamEtc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamEtc" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the etc-directory of the distro</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamFork">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamFork</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamFork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamFork" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamFork</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamFork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamFork" title="Permalink to this definition">¶</a></dt>
 <dd><p>The currently used fork of OpenFOAM/Foam</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamInstalledVersions">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamInstalledVersions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamInstalledVersions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamInstalledVersions" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list with the installed versions of OpenFOAM</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamInstalledVersions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamInstalledVersions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamInstalledVersions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list with the installed versions of OpenFOAM</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamMPI">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamMPI</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamMPI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamMPI" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the used MPI-Implementation</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamMPI</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamMPI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamMPI" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the used MPI-Implementation</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamPostProcessing">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamPostProcessing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamPostProcessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamPostProcessing" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the caseDicts/postProcessing-directory of the distro</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamPostProcessing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamPostProcessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamPostProcessing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the caseDicts/postProcessing-directory of the distro</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamTutorials">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamTutorials</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamTutorials"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamTutorials" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">directory in which the tutorials reside</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamTutorials</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamTutorials"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamTutorials" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>directory in which the tutorials reside</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamVersion">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamVersion</code><span class="sig-paren">(</span><em>useConfigurationIfNoInstallation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamVersion" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">tuple that represents the Foam-version as found</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamVersion</code><span class="sig-paren">(</span><em class="sig-param">useConfigurationIfNoInstallation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamVersion" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple that represents the Foam-version as found</p>
+</dd>
+</dl>
 <p>in $WM_PROJECT_VERSION</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamVersionNumber">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamVersionNumber</code><span class="sig-paren">(</span><em>useConfigurationIfNoInstallation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamVersionNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamVersionNumber" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">tuple that represents the Foam-Version-Number (without</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamVersionNumber</code><span class="sig-paren">(</span><em class="sig-param">useConfigurationIfNoInstallation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamVersionNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamVersionNumber" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>tuple that represents the Foam-Version-Number (without</p>
+</dd>
+</dl>
 <p>strings</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.foamVersionString">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">foamVersionString</code><span class="sig-paren">(</span><em>useConfigurationIfNoInstallation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamVersionString"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamVersionString" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string for the  Foam-version as found</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">foamVersionString</code><span class="sig-paren">(</span><em class="sig-param">useConfigurationIfNoInstallation=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#foamVersionString"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.foamVersionString" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>string for the  Foam-version as found</p>
+</dd>
+</dl>
 <p>in $WM_PROJECT_VERSION</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.getAuthenticatedKeys">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">getAuthenticatedKeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getAuthenticatedKeys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getAuthenticatedKeys" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">getAuthenticatedKeys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getAuthenticatedKeys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getAuthenticatedKeys" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.getPathFromEnviron">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">getPathFromEnviron</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getPathFromEnviron"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getPathFromEnviron" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">getPathFromEnviron</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getPathFromEnviron"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getPathFromEnviron" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a path from an environment variable
 :return: the path
 :rtype: string
@@ -354,24 +342,24 @@ was erased for security rasons (for instance Mac OS X 10.11)</p>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.getPublicKey">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">getPublicKey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getPublicKey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getPublicKey" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">getPublicKey</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getPublicKey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getPublicKey" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.getUserName">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">getUserName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getUserName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getUserName" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">getUserName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getUserName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getUserName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the current username</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.getUserTempDir">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">getUserTempDir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getUserTempDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getUserTempDir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">getUserTempDir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#getUserTempDir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.getUserTempDir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return path to a user-specific private directory. Create directory if not existing</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.injectVariables">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">injectVariables</code><span class="sig-paren">(</span><em>script</em>, <em>forceArchOption=None</em>, <em>compileOption=None</em>, <em>foamCompiler=None</em>, <em>wmCompiler=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#injectVariables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.injectVariables" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">injectVariables</code><span class="sig-paren">(</span><em class="sig-param">script</em>, <em class="sig-param">forceArchOption=None</em>, <em class="sig-param">compileOption=None</em>, <em class="sig-param">foamCompiler=None</em>, <em class="sig-param">wmCompiler=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#injectVariables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.injectVariables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Executes a script in a subshell and changes the current
 environment with the enivironment after the execution
 :param script: the script that is executed
@@ -383,27 +371,27 @@ environment with the enivironment after the execution
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.installationPath">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">installationPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#installationPath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.installationPath" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">installationPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#installationPath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.installationPath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path to the installation</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.oldAppConvention">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">oldAppConvention</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#oldAppConvention"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.oldAppConvention" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">oldAppConvention</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#oldAppConvention"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.oldAppConvention" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if the version of OpenFOAM is older than 1.5 and
 it therefor uses the ‘old’ convention to call utilities (“dot, case”)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.oldTutorialStructure">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">oldTutorialStructure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#oldTutorialStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.oldTutorialStructure" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">oldTutorialStructure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#oldTutorialStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.oldTutorialStructure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns true if the version of OpenFOAM is older than 1.6 and
 it therefor uses the ‘old’ (flat) structure for the tutorials</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.FoamInformation.shellExecutionPrefix">
-<code class="descclassname">PyFoam.FoamInformation.</code><code class="descname">shellExecutionPrefix</code><span class="sig-paren">(</span><em>ensureDynamic=True</em>, <em>asList=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#shellExecutionPrefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.shellExecutionPrefix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.FoamInformation.</code><code class="sig-name descname">shellExecutionPrefix</code><span class="sig-paren">(</span><em class="sig-param">ensureDynamic=True</em>, <em class="sig-param">asList=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/FoamInformation.html#shellExecutionPrefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.FoamInformation.shellExecutionPrefix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stuff to prefix to a call that is passed to the shell. Main
 application is currently to work around a security feature of Mac OS X
 10.11 that doesn’t pass the load paths for the dynamic libraries to a
@@ -414,16 +402,14 @@ shell</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="PyFoam.Error.html" class="btn btn-neutral" title="PyFoam.Error module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.Error.html" class="btn btn-neutral float-left" title="PyFoam.Error module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -432,11 +418,11 @@ shell</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -449,36 +435,15 @@ shell</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

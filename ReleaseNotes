@@ -1,4 +1,141 @@
 # -*- mode: org -*-
+* Version 2021.06 - 2021-06-08
+  A minor bugfix release
+** Bug fixes
+*** Switching =WM_COMPILE_OPTION= doesn't work
+    The =--force-debug= option doesn't work because of some changes to
+    the init-scripts. This has been fixed
+*** =pyFoamPrepareCase.py= reports about 1 processor directory
+    Because of a change in the way processor directories are detected
+    there was a warning at the end of =pyFoamPrepareCase.py= about 1
+    processor directory being present even if there is none. This has
+    been fixed
+* Version 2021.05 - 2021-05-30
+** Nomenclature change
+*** Renaming of =master= / =slave= plots to =collector= / =publisher=
+    As the termonology of =master= / =slave= -processes (which has
+    been common in programming for processes where one does the work
+    and the other consumes the products of that work) is increasingly
+    seen as offensive it was decided to change this terminology for
+    plots which got their data from two or more sources.
+
+    Instead of the previously used =type slave= in =customRegexp=
+    which was used for plots that sent their data to another plot to
+    be displayed in that plots window now the =type collector= should
+    be used. Instead of the entry =master= now an entry =publisher= is
+    used.
+
+    This new nomenclature also describes the relationship of the two
+    plots more accurately. The previous names were inaccurate as the
+    "master" was doing the work of displaying the data while the
+    "slave" was doing nothing
+
+    In order to keep the transition painless for users the old
+    =master= / =slave= keywords still work so old =customRegexp=-files
+    don't have to be changed
+** Enhancements to the utilities
+*** =pyFoamListCases.py= indicates if the simulation ran to the end
+    Now if the first timestep is the =startTime= and the last time is
+    the =endTime= then it is indicated by a ~=~ between them (instead
+    of the usual ~-~) in the list
+*** =pyFoamBinarySize.py= now reports the size of =ThirdParty= as well
+    The utility now looks for the corresponding =ThirdPArty=-directory
+    of an installation and sums that as well. This can be switched off
+*** =pyFoamPlotRunner.py= now also supports pre- and post-hooks
+    The utility now also supports the pre- and post-hooks that
+    =pyFoamRunner.py= supports. But they have to be enabled explicitly
+*** =pyFoamListProfilingInfo.py= now removes nodes with little computation time
+    With the option =--threshold-low= it is now possible to remove
+    nodes with little computation time that would clutter up the
+    output. Input is a number between 0 and 100 and nodes whose total
+    computation time (including children) is less percent (compared to
+    the overall computation time) then the node is removed
+*** =pyFoamListProfilingInfo.py= now allows generation of graphs
+    With the option =graphviz-dot= the utility produces output that
+    can be piped into the =dot=-utility of the [[https://graphviz.org/][GraphViz]] suite.
+
+    The nodes are colored by the amount of computation time they use
+    (without their child nodes). The edges are colored by the fraction
+    of computation time the child node uses of the parent node. The
+    thickness of the edges corresponds to the percentage of the
+    overall computation all child nodes use
+
+    The utility has options to change the title of the plot and the
+    color theme
+*** Enhanced algorithm for the splitting of data
+    The algorithm to reduce the amount of data plotted has now been
+    improved. The previous algorithm produced "coarse" artefacts in
+    the beginning of the plot because the actual time (and thus the
+    resolution of the x-axis) was not considered. The new algorithm
+    tries to distribute the reduction evenly over time so that "every"
+    pixel of the x-axis has at least one value.
+
+    The most recent data points are not coarsened. The fraction of
+    points that is not coarsened can be set with the option
+    =--fraction-unchanged-by-splitting= with a default of 0.2
+** Enhancements to the library
+*** Speedup of plotting of long timelines
+    For large arrays the preparation of the data to plot in =gnuplot=
+    was very inefficiently implemented in the original =Gnuplot=-library.
+
+    The code now uses =numpy= and speeds up that part of the code by
+    10-20 times (for large arrays)
+
+    These changes have been reverted and replaced by a different
+    implementation as the =numpy=-implementation was slower than
+    expected
+*** Number of processors now correctly for  runs with collated data
+    Now the number of processors in a case is now detected in such a way:
+    1. If directories with the names =processor= followed by numbers
+       are found then it is assumed that the number of processors is
+       the number of those directories
+    2. If *one* directory named =processors= followed by a number is
+       found then it is assumed that this number is the number of
+       processors (this is the case for runs with collated data
+       writing)
+    3. Otherwise the number of processors is assumed to be 1
+    This is honored by the running utilities with the
+    =--autosense-parallel= option as well as the =--clear=-option
+** Bug fixes
+*** OpenFOAM v2006 not detected as a valid OpenFOAM-version
+    Because this is the first version with a leading $2$ the pattern
+    (which assumed a leading $1$ did not find it. This has been
+    adapted that until =v3912= all versions will be adapted
+*** For a parameter variation without a =0= directory in the template
+    Reported by David Blacher at
+    https://www.cfd-online.com/Forums/openfoam-community-contributions/60683-first-discussion-thread-about-pyfoam-33.html#post786352
+    that the handling of the =0=-directory is broken for parameter
+    variation runs where no =0= exists in the template case. This is
+    fixed according to his suggestion
+*** Auto-plotting of markers causes problem with =snappyHexMesh=
+    As reported on
+    https://sourceforge.net/p/openfoam-extend/ticketspyfoam/227/ by
+    Guillaume Broggi the auto-plotting of markers for =snappyHexMesh=
+    causes problems with =pyFoamRunner.py= because the =Dummy=-plotter
+    does not implement the appropriate methods. This has been fixed
+*** Single parameter makes =pyFoamPrepareCase= fail
+    This was reported on the MessageBoard
+
+    If only one parameter is defined then the routine for formatting
+    the parameters failed
+
+    Fixed
+*** Unmatched values are plotted as 0
+    Currently if a =customRegexp= is not matched at *one* time-step
+    then a data line with the values 0 is added. The solution is to
+    set this default to =NaN=
+** Incompatibilities
+*** Default value for undefined plot values changed to /Not a number/
+    The default value if a custom plot value was not found at a
+    time-step used to be =0= and was plotted as such. In the current
+    release this has been changed to =NaN= (Not a Number). Gnuplot
+    interprets this correctly as "missing value". For other plotting
+    interfaces this might lead to undefined behaviour
+** Infrastructure
+*** =error= method of =PyFoamApplicationClass= now reports the location it was called
+    Until now the report only printed the location of the method
+    (which was only of limited usefulness). Now it prints the location
+    where the method was called
 * Version 2020.05 - 2020-05-31
   This is the first version of /PyFoam/ where the version numbers
   change from pseudo-semantic versioning to date-based versions
@@ -1142,8 +1279,7 @@ highspeedLocation {
     For certain solvers the plot utilities issued a warning during a
     phase when no information about the current time is
     available. This is now fixed
-*** Redirected values
-not used when iterating over dictionaries
+*** Redirected values not used when iterating over dictionaries
     When iterating over dictionaries with redirects the values in the
     redirected dictionaries were not used. This is now fixed
 *** Behavior of Template-engine not consistent in Python3 and Python2

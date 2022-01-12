@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.Applications package" href="PyFoam.Applications.html"/>
-        <link rel="next" title="PyFoam.Applications.CommonTemplateBehaviour module" href="PyFoam.Applications.CommonTemplateBehaviour.html"/>
-        <link rel="prev" title="PyFoam.Applications.CommonServer module" href="PyFoam.Applications.CommonServer.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.Applications.CommonTemplateBehaviour module" href="PyFoam.Applications.CommonTemplateBehaviour.html" />
+    <link rel="prev" title="PyFoam.Applications.CommonServer module" href="PyFoam.Applications.CommonServer.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,23 +182,39 @@
 <p>Class that implements the common functionality for treatment of the standard output</p>
 <dl class="class">
 <dt id="PyFoam.Applications.CommonStandardOutput.CommonStandardOutput">
-<em class="property">class </em><code class="descclassname">PyFoam.Applications.CommonStandardOutput.</code><code class="descname">CommonStandardOutput</code><a class="reference internal" href="../_modules/PyFoam/Applications/CommonStandardOutput.html#CommonStandardOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Applications.CommonStandardOutput.</code><code class="sig-name descname">CommonStandardOutput</code><a class="reference internal" href="../_modules/PyFoam/Applications/CommonStandardOutput.html#CommonStandardOutput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The class that defines options for standard output</p>
+<dl class="attribute">
+<dt id="PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.__dict__">
+<code class="sig-name descname">__dict__</code><em class="property"> = mappingproxy({'__module__': 'PyFoam.Applications.CommonStandardOutput', '__doc__': ' The class that defines options for standard output\n    ', 'addOptions': &lt;function CommonStandardOutput.addOptions&gt;, 'getRunParameters': &lt;function CommonStandardOutput.getRunParameters&gt;, 'setLogname': &lt;function CommonStandardOutput.setLogname&gt;, '__dict__': &lt;attribute '__dict__' of 'CommonStandardOutput' objects&gt;, '__weakref__': &lt;attribute '__weakref__' of 'CommonStandardOutput' objects&gt;})</em><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Applications.CommonStandardOutput'</em><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.addOptions">
-<code class="descname">addOptions</code><span class="sig-paren">(</span><em>logname=None</em>, <em>longProgress=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Applications/CommonStandardOutput.html#CommonStandardOutput.addOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.addOptions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">addOptions</code><span class="sig-paren">(</span><em class="sig-param">logname=None</em>, <em class="sig-param">longProgress=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Applications/CommonStandardOutput.html#CommonStandardOutput.addOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.addOptions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.getRunParameters">
-<code class="descname">getRunParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Applications/CommonStandardOutput.html#CommonStandardOutput.getRunParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.getRunParameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">getRunParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Applications/CommonStandardOutput.html#CommonStandardOutput.getRunParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.getRunParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a dictionary with the parameters</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.setLogname">
-<code class="descname">setLogname</code><span class="sig-paren">(</span><em>default='PyFoamRunner'</em>, <em>useApplication=True</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Applications/CommonStandardOutput.html#CommonStandardOutput.setLogname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.setLogname" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setLogname</code><span class="sig-paren">(</span><em class="sig-param">default='PyFoamRunner'</em>, <em class="sig-param">useApplication=True</em>, <em class="sig-param">force=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Applications/CommonStandardOutput.html#CommonStandardOutput.setLogname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.setLogname" title="Permalink to this definition">¶</a></dt>
 <dd><p>Builds a logfile-name
 :param default: Default value if no prefix for the logfile-has been defined
 :param useApplication: append the name of the application to the prefix</p>
@@ -216,9 +226,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -227,7 +235,7 @@
         <a href="PyFoam.Applications.CommonTemplateBehaviour.html" class="btn btn-neutral float-right" title="PyFoam.Applications.CommonTemplateBehaviour module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.Applications.CommonServer.html" class="btn btn-neutral" title="PyFoam.Applications.CommonServer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.Applications.CommonServer.html" class="btn btn-neutral float-left" title="PyFoam.Applications.CommonServer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -236,11 +244,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -253,36 +261,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

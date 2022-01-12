@@ -937,7 +937,7 @@ The used parameters are written to a file 'PyFoamPrepareCaseParameters' and are 
         if self.opts.verbose and len(vals)>0:
             print_("\nUsed values\n")
             nameLen=max(len("Name"),
-                        max(*[len(k) for k in vals.keys()]))
+                        max([len(k) for k in vals.keys()]))
             format="%%%ds - %%s" % nameLen
             print_(format % ("Name","Value"))
             print_("-"*40)
@@ -987,7 +987,7 @@ The used parameters are written to a file 'PyFoamPrepareCaseParameters' and are 
                 if self.opts.verbose and len(vals)>0:
                     print("\nDerived Values\n")
                     nameLen=max(len("Name"),
-                                max(*[len(k) for k in derived]))
+                                max([len(k) for k in derived]))
                     format="%%%ds - %%s" % nameLen
                     print_(format % ("Name","Value"))
                     print_("-"*40)
@@ -1155,7 +1155,8 @@ cd ${0%/*} || exit 1                        # Run from this directory
 
         if not hasOrig or self.opts.keepZero:
             self.info("Not going to clean '0'")
-            self.opts.cleanDirectories.remove("0")
+            if "0" in self.opts.cleanDirectories:
+                self.opts.cleanDirectories.remove("0")
             cleanZero=False
         elif allrun:
             allrun.write("\nrm -rf 0\n")
@@ -1437,7 +1438,7 @@ cd ${0%/*} || exit 1                        # Run from this directory
             self.info("")
 
         sol.reread(force=True)
-        nProcs=len(sol.processorDirs())
+        nProcs = sol.nrProcs()
 
         if vals["numberOfProcessors"]>1 and not didDecompose:
             if nProcs!=vals["numberOfProcessors"]:
@@ -1451,9 +1452,8 @@ cd ${0%/*} || exit 1                        # Run from this directory
             if nProcs!=vals["numberOfProcessors"] and not self.opts.buildExample:
                 self.error("Requested",vals["numberOfProcessors"],"but",nProcs,
                            "processor directories present")
-        else:
-            if nProcs>0:
-                self.error(nProcs,"processor directories present although no decomposition was requested")
+        elif nProcs>1:
+            self.error(nProcs,"processor directories present although no decomposition was requested")
         self.info("Case setup finished")
 
         if allrun:

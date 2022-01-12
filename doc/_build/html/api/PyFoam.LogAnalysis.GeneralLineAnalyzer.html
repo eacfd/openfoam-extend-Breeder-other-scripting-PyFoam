@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.LogAnalysis package" href="PyFoam.LogAnalysis.html"/>
-        <link rel="next" title="PyFoam.LogAnalysis.LinearSolverLineAnalyzer module" href="PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html"/>
-        <link rel="prev" title="PyFoam.LogAnalysis.FoamLogAnalyzer module" href="PyFoam.LogAnalysis.FoamLogAnalyzer.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.LogAnalysis.LinearSolverLineAnalyzer module" href="PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html" />
+    <link rel="prev" title="PyFoam.LogAnalysis.FoamLogAnalyzer module" href="PyFoam.LogAnalysis.FoamLogAnalyzer.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,131 +182,154 @@
 <p>Line analyzer with output and the capability to store lines</p>
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.GeneralLineAnalyzer.</code><code class="descname">GeneralLineAnalyzer</code><span class="sig-paren">(</span><em>doTimelines=False</em>, <em>doFiles=False</em>, <em>titles=[]</em>, <em>accumulation=None</em>, <em>singleFile=False</em>, <em>progressTemplate=None</em>, <em>plotIterations=False</em>, <em>startTime=None</em>, <em>endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.LogLineAnalyzer.html#PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer" title="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.GeneralLineAnalyzer.</code><code class="sig-name descname">GeneralLineAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">doTimelines=False</em>, <em class="sig-param">doFiles=False</em>, <em class="sig-param">titles=[]</em>, <em class="sig-param">accumulation=None</em>, <em class="sig-param">singleFile=False</em>, <em class="sig-param">progressTemplate=None</em>, <em class="sig-param">plotIterations=False</em>, <em class="sig-param">startTime=None</em>, <em class="sig-param">endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.LogLineAnalyzer.html#PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer" title="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer</span></code></a></p>
 <p>Base class for analyzers that write data to files and store time-lines</p>
 <p>Combines the capabilities of TimeLineLineAnalyzer and FileLineAnalyzer</p>
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer._GeneralLineAnalyzer__phase">
+<code class="sig-name descname">_GeneralLineAnalyzer__phase</code><em class="property"> = ''</em><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer._GeneralLineAnalyzer__phase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">doTimelines=False</em>, <em class="sig-param">doFiles=False</em>, <em class="sig-param">titles=[]</em>, <em class="sig-param">accumulation=None</em>, <em class="sig-param">singleFile=False</em>, <em class="sig-param">progressTemplate=None</em>, <em class="sig-param">plotIterations=False</em>, <em class="sig-param">startTime=None</em>, <em class="sig-param">endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>titles</strong> – The titles of the data elements</p></li>
+<li><p><strong>progressTemplate</strong> – Progress output to be reported</p></li>
+<li><p><strong>plotIterations</strong> – plot iterations instead of the real time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.GeneralLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.addToFiles">
-<code class="descname">addToFiles</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.addToFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.addToFiles" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">addToFiles</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.addToFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.addToFiles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method that adds matched data to files</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>match</strong> – data matched by a regular expression</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>match</strong> – data matched by a regular expression</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.addToTimelines">
-<code class="descname">addToTimelines</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.addToTimelines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.addToTimelines" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">addToTimelines</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.addToTimelines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.addToTimelines" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method that adds matched data to timelines</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>match</strong> – data matched by a regular expression</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>match</strong> – data matched by a regular expression</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.doAnalysis">
-<code class="descname">doAnalysis</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.doAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.doAnalysis" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">doAnalysis</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.doAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.doAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>General analysis method. Derived classes should instead override callbacks</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.doMatch">
-<code class="descname">doMatch</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.doMatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.doMatch" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">doMatch</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.doMatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.doMatch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.endAnalysis">
-<code class="descname">endAnalysis</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.endAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.endAnalysis" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">endAnalysis</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.endAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.endAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method at the end of a successfull match</p>
 </dd></dl>
 
-<dl class="staticmethod">
+<dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.fName">
-<em class="property">static </em><code class="descname">fName</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.fName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.fName" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">fName</code><span class="sig-paren">(</span><em class="sig-param">n</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.fName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.fName" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.getCurrentData">
-<code class="descname">getCurrentData</code><span class="sig-paren">(</span><em>structured=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.getCurrentData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.getCurrentData" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">getCurrentData</code><span class="sig-paren">(</span><em class="sig-param">structured=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.getCurrentData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.getCurrentData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give back the current analyzed data in a dictionary</p>
+<p>To be overwritten by subclasses</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.getTimeline">
-<code class="descname">getTimeline</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.getTimeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.getTimeline" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – Name of the timeline to return</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the timeline as two list: the times and the values</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">getTimeline</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.getTimeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.getTimeline" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the timeline to return</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the timeline as two list: the times and the values</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.processProgressTemplate">
-<code class="descname">processProgressTemplate</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.processProgressTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.processProgressTemplate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">processProgressTemplate</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.processProgressTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.processProgressTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add progress information</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setDirectory">
-<code class="descname">setDirectory</code><span class="sig-paren">(</span><em>oDir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setDirectory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setDirectory" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setDirectory</code><span class="sig-paren">(</span><em class="sig-param">oDir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setDirectory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setDirectory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates the OutFileCollection-object</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setMaster">
-<code class="descname">setMaster</code><span class="sig-paren">(</span><em>master</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setMaster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setMaster" title="Permalink to this definition">¶</a></dt>
-<dd><p>Assign another line-analyzer that will do the actual data gathering</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setPhase">
-<em class="property">static </em><code class="descname">setPhase</code><span class="sig-paren">(</span><em>p=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setPhase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setPhase" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setMaster</code><span class="sig-paren">(</span><em class="sig-param">master</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setMaster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setMaster" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setPhase">
+<em class="property">static </em><code class="sig-name descname">setPhase</code><span class="sig-paren">(</span><em class="sig-param">p=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setPhase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setPhase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setPublisher">
+<code class="sig-name descname">setPublisher</code><span class="sig-paren">(</span><em class="sig-param">publisher</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setPublisher"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setPublisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assign another line-analyzer that will do the actual data gathering</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setTitles">
-<code class="descname">setTitles</code><span class="sig-paren">(</span><em>titles</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setTitles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setTitles" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setTitles</code><span class="sig-paren">(</span><em class="sig-param">titles</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.setTitles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.setTitles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the titles anew
 :param titles: the new titles</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.startAnalysis">
-<code class="descname">startAnalysis</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.startAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.startAnalysis" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">startAnalysis</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.startAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.startAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method at the start of a successfull match</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.stringToMatch">
-<code class="descname">stringToMatch</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.stringToMatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.stringToMatch" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stringToMatch</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.stringToMatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.stringToMatch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns string to match. To be overriden for multi-line expressions</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.tearDown">
-<code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.tearDown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.tearDown" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.tearDown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.tearDown" title="Permalink to this definition">¶</a></dt>
 <dd><p>Closes files</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.timeChanged">
-<code class="descname">timeChanged</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.timeChanged"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.timeChanged" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timeChanged</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/GeneralLineAnalyzer.html#GeneralLineAnalyzer.timeChanged"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.timeChanged" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets the current time in the timelines</p>
 </dd></dl>
 
@@ -322,9 +339,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -333,7 +348,7 @@
         <a href="PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html" class="btn btn-neutral float-right" title="PyFoam.LogAnalysis.LinearSolverLineAnalyzer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.LogAnalysis.FoamLogAnalyzer.html" class="btn btn-neutral" title="PyFoam.LogAnalysis.FoamLogAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.LogAnalysis.FoamLogAnalyzer.html" class="btn btn-neutral float-left" title="PyFoam.LogAnalysis.FoamLogAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -342,11 +357,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -359,36 +374,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

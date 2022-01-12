@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../../../index.html"/>
-        <link rel="up" title="PyFoam.ThirdParty.tqdm.tqdm" href="../tqdm.html"/> 
-
-  
-  <script src="../../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -146,8 +140,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -168,15 +160,15 @@
 <span class="sd">  &gt;&gt;&gt; for i in trange(10): #same as: for i in tqdm(xrange(10))</span>
 <span class="sd">  ...     ...</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 <span class="c1"># future division is important to divide integers and get as</span>
 <span class="c1"># a result precise floating numbers (instead of truncated int)</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="c1"># import compatibility functions and utilities</span>
-<span class="kn">from</span> <span class="nn">._utils</span> <span class="k">import</span> <span class="n">_supports_unicode</span><span class="p">,</span> <span class="n">_environ_cols_wrapper</span><span class="p">,</span> <span class="n">_range</span><span class="p">,</span> <span class="n">_unich</span><span class="p">,</span> \
+<span class="kn">from</span> <span class="nn">._utils</span> <span class="kn">import</span> <span class="n">_supports_unicode</span><span class="p">,</span> <span class="n">_environ_cols_wrapper</span><span class="p">,</span> <span class="n">_range</span><span class="p">,</span> <span class="n">_unich</span><span class="p">,</span> \
     <span class="n">_term_move_up</span><span class="p">,</span> <span class="n">_unicode</span><span class="p">,</span> <span class="n">WeakSet</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;github.com/&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;noamraph&quot;</span><span class="p">,</span> <span class="s2">&quot;obiwanus&quot;</span><span class="p">,</span> <span class="s2">&quot;kmike&quot;</span><span class="p">,</span> <span class="s2">&quot;hadim&quot;</span><span class="p">,</span>
@@ -195,11 +187,11 @@
 
 <div class="viewcode-block" id="TqdmDeprecationWarning"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.TqdmDeprecationWarning">[docs]</a><span class="k">class</span> <span class="nc">TqdmDeprecationWarning</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="c1"># not suppressed if raised</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">fp_write</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">):</span>
+<div class="viewcode-block" id="TqdmDeprecationWarning.__init__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.TqdmDeprecationWarning.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">fp_write</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">fp_write</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">fp_write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">TqdmDeprecationWarning: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">super</span><span class="p">(</span><span class="n">TqdmDeprecationWarning</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span></div>
+            <span class="nb">super</span><span class="p">(</span><span class="n">TqdmDeprecationWarning</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="tqdm"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm">[docs]</a><span class="k">class</span> <span class="nc">tqdm</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -444,7 +436,7 @@
             <span class="k">return</span> <span class="p">(</span><span class="n">prefix</span> <span class="k">if</span> <span class="n">prefix</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1"> [</span><span class="si">{2}</span><span class="s1">, </span><span class="si">{3}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">n_fmt</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">elapsed_str</span><span class="p">,</span> <span class="n">rate_fmt</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="tqdm.__new__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__new__">[docs]</a>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># Create a new instance</span>
         <span class="n">instance</span> <span class="o">=</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
         <span class="c1"># Add to the list of instances</span>
@@ -452,9 +444,9 @@
             <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span> <span class="o">=</span> <span class="n">WeakSet</span><span class="p">()</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">_instances</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
         <span class="c1"># Return the instance</span>
-        <span class="k">return</span> <span class="n">instance</span>
+        <span class="k">return</span> <span class="n">instance</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="tqdm._get_free_pos"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm._get_free_pos">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_get_free_pos</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Skips specified instance &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -463,9 +455,9 @@
         <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">if</span> <span class="s2">&quot;arg is an empty sequence&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
                 <span class="k">return</span> <span class="mi">0</span>
-            <span class="k">raise</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span>  <span class="c1"># pragma: no cover</span></div>
 
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="tqdm._decr_instances"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm._decr_instances">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_decr_instances</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Remove from list and reposition other bars</span>
@@ -477,7 +469,7 @@
                 <span class="k">if</span> <span class="n">inst</span><span class="o">.</span><span class="n">pos</span> <span class="o">&gt;</span> <span class="n">instance</span><span class="o">.</span><span class="n">pos</span><span class="p">:</span>
                     <span class="n">inst</span><span class="o">.</span><span class="n">pos</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">pass</span>
+            <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="tqdm.write"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.write">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
@@ -538,13 +530,13 @@
 <span class="sd">        https://stackoverflow.com/questions/18603270/</span>
 <span class="sd">        progress-indicator-during-pandas-operations-python</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">pandas.core.frame</span> <span class="k">import</span> <span class="n">DataFrame</span>
-        <span class="kn">from</span> <span class="nn">pandas.core.series</span> <span class="k">import</span> <span class="n">Series</span>
-        <span class="kn">from</span> <span class="nn">pandas.core.groupby</span> <span class="k">import</span> <span class="n">DataFrameGroupBy</span>
-        <span class="kn">from</span> <span class="nn">pandas.core.groupby</span> <span class="k">import</span> <span class="n">SeriesGroupBy</span>
-        <span class="kn">from</span> <span class="nn">pandas.core.groupby</span> <span class="k">import</span> <span class="n">GroupBy</span>
-        <span class="kn">from</span> <span class="nn">pandas.core.groupby</span> <span class="k">import</span> <span class="n">PanelGroupBy</span>
-        <span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">Panel</span>
+        <span class="kn">from</span> <span class="nn">pandas.core.frame</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+        <span class="kn">from</span> <span class="nn">pandas.core.series</span> <span class="kn">import</span> <span class="n">Series</span>
+        <span class="kn">from</span> <span class="nn">pandas.core.groupby</span> <span class="kn">import</span> <span class="n">DataFrameGroupBy</span>
+        <span class="kn">from</span> <span class="nn">pandas.core.groupby</span> <span class="kn">import</span> <span class="n">SeriesGroupBy</span>
+        <span class="kn">from</span> <span class="nn">pandas.core.groupby</span> <span class="kn">import</span> <span class="n">GroupBy</span>
+        <span class="kn">from</span> <span class="nn">pandas.core.groupby</span> <span class="kn">import</span> <span class="n">PanelGroupBy</span>
+        <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Panel</span>
 
         <span class="n">deprecated_t</span> <span class="o">=</span> <span class="p">[</span><span class="n">tkwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;deprecated_t&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)]</span>
 
@@ -607,7 +599,7 @@
         <span class="n">GroupBy</span><span class="o">.</span><span class="n">progress_aggregate</span> <span class="o">=</span> <span class="n">inner_generator</span><span class="p">(</span><span class="s1">&#39;aggregate&#39;</span><span class="p">)</span>
         <span class="n">GroupBy</span><span class="o">.</span><span class="n">progress_transform</span> <span class="o">=</span> <span class="n">inner_generator</span><span class="p">(</span><span class="s1">&#39;transform&#39;</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<div class="viewcode-block" id="tqdm.__init__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">leave</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mininterval</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
                  <span class="n">maxinterval</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">miniters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="n">unit_scale</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dynamic_ncols</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -788,52 +780,52 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">moveto</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
 
         <span class="c1"># Init the time counter</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_print_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_print_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="tqdm.__len__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterable</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterable</span><span class="p">,</span> <span class="s1">&#39;shape&#39;</span><span class="p">)</span>
                 <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterable</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> \
-            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span></div>
 
-    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span>
+<div class="viewcode-block" id="tqdm.__enter__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__enter__">[docs]</a>    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
 
-    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">exc</span><span class="p">):</span>
+<div class="viewcode-block" id="tqdm.__exit__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__exit__">[docs]</a>    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">exc</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
-    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="viewcode-block" id="tqdm.__del__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__del__">[docs]</a>    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="tqdm.__repr__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_meter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="p">,</span>
                                  <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_print_t</span><span class="p">,</span>
                                  <span class="bp">self</span><span class="o">.</span><span class="n">ncols</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">desc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ascii</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span>
                                  <span class="bp">self</span><span class="o">.</span><span class="n">unit_scale</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg_time</span>
-                                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg_time</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bar_format</span><span class="p">)</span>
+                                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">avg_time</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bar_format</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">pos</span>
+<div class="viewcode-block" id="tqdm.__lt__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__lt__">[docs]</a>    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">pos</span></div>
 
-    <span class="k">def</span> <span class="nf">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span>
+<div class="viewcode-block" id="tqdm.__le__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__le__">[docs]</a>    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">pos</span>
+<div class="viewcode-block" id="tqdm.__eq__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__eq__">[docs]</a>    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">pos</span></div>
 
-    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span>
+<div class="viewcode-block" id="tqdm.__ne__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__ne__">[docs]</a>    <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">==</span> <span class="n">other</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="p">)</span>
+<div class="viewcode-block" id="tqdm.__gt__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__gt__">[docs]</a>    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">)</span>
+<div class="viewcode-block" id="tqdm.__ge__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__ge__">[docs]</a>    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<div class="viewcode-block" id="tqdm.__hash__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__hash__">[docs]</a>    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="tqdm.__iter__"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39; Backward-compatibility to use: for x in tqdm(iterable) &#39;&#39;&#39;</span>
 
         <span class="c1"># Inlining instance variables as locals (speed optimisation)</span>
@@ -927,7 +919,7 @@
             <span class="c1"># Update some internal variables for close().</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">last_print_n</span> <span class="o">=</span> <span class="n">last_print_n</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="tqdm.update"><a class="viewcode-back" href="../../../../../api/PyFoam.ThirdParty.tqdm.tqdm.html#PyFoam.ThirdParty.tqdm.tqdm.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1115,9 +1107,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1126,11 +1116,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1143,36 +1133,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

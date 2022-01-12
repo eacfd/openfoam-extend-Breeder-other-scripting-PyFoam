@@ -376,7 +376,10 @@ class FoamFileGeneratorRoundtripLongList(unittest.TestCase):
             alphaName="alpha.air"
         elif foamVersionNumber()>=(2,):
             alphaName="alpha1"
-        copyfile(path.join(bubbleColumnTutorial(),"0",alphaName),self.theFile)
+        try:
+            copyfile(path.join(bubbleColumnTutorial(),"0",alphaName),self.theFile)
+        except IOError:
+            copyfile(path.join(bubbleColumnTutorial(),"0.orig",alphaName),self.theFile)
 
     def tearDown(self):
         remove(self.theFile)
@@ -399,7 +402,10 @@ class FoamFileGeneratorRoundtripLongList2(unittest.TestCase):
         elif foamVersionNumber()>=(2,):
             UName="U1"
 
-        copyfile(path.join(bubbleColumnTutorial(),"0",UName),self.theFile)
+        try:
+            copyfile(path.join(bubbleColumnTutorial(),"0",UName),self.theFile)
+        except IOError:
+            copyfile(path.join(bubbleColumnTutorial(),"0.orig",UName),self.theFile)
 
     def tearDown(self):
         remove(self.theFile)

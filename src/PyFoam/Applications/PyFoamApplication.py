@@ -25,10 +25,11 @@ from copy import deepcopy
 from PyFoam.ThirdParty.six import print_
 from PyFoam.ThirdParty.six import iteritems,string_types
 
+
 class PyFoamApplicationException(FatalErrorPyFoamException):
-     def __init__(self,app,*text):
+     def __init__(self,app, *text):
           self.app=app
-          FatalErrorPyFoamException.__init__(self,*text)
+          FatalErrorPyFoamException.__init__(self, *text, up=3)
 
      def __str__(self):
           return FatalErrorPyFoamException.__str__(self)+" in Application-class: "+self.app.__class__.__name__
@@ -614,7 +615,7 @@ with these option for commands that generate a lot of output""")
          """Raise a error exception. How it will be handled is a different story
         :param args: Arguments to the exception
          """
-         raise PyFoamApplicationException(self,*args)
+         raise PyFoamApplicationException(self, *args)
 
     def errorPrint(self,*args):
         """

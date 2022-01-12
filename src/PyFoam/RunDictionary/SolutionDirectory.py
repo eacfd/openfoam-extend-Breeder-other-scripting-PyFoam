@@ -557,8 +557,14 @@ class SolutionDirectory(Utilities):
         self.first=None
         self.firstParallel=None
         self.last=None
+
         procDirs = self.processorDirs()
-        self.procNr=len(procDirs)
+        if len(procDirs) > 1:
+            self.procNr = len(procDirs)
+        elif len(procDirs) == 1:
+            self.procNr = int(procDirs[0][len("processors"):])
+        else:
+            self.procNr = 1
 
         if procDirs and self.parallel:
             timesDir = path.join(self.name, procDirs[0])
@@ -601,6 +607,13 @@ class SolutionDirectory(Utilities):
             if re.compile("processor[0-9]+").match(f):
                 self.procDirs.append(f)
         self.procDirs.sort(key=lambda x:int(x[len("processor"):]))
+        if len(self.procDirs) == 0:
+            tmp = []
+            for f in listdir(self.name):
+                if re.compile("processors[0-9]+").match(f):
+                    tmp.append(f)
+            if len(tmp) == 1:
+                self.procDirs = tmp
         return self.procDirs
 
     def nrProcs(self):
@@ -723,7 +736,7 @@ class SolutionDirectory(Utilities):
             lastKeptIndex=int(-1e5)
             time=max(time,float(self.firstParallel))
             for f in listdir(self.name):
-                if re.compile("processor[0-9]+").match(f):
+                if re.compile("processor(|s)[0-9]+").match(f):
                     if removeProcs:
                         if verbose:
                             print_("Clearing",path.join(self.name,f))

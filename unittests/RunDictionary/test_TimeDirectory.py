@@ -7,7 +7,7 @@ from PyFoam.RunDictionary.SolutionFile import SolutionFile
 from PyFoam.RunDictionary.FileBasis import FileBasis
 
 from PyFoam.FoamInformation import oldTutorialStructure,foamTutorials,foamVersionNumber,foamFork
-from os import path,environ,remove,system
+from os import path, environ, remove, system, rename
 from shutil import copytree,rmtree,copyfile
 from tempfile import mktemp,mkdtemp
 
@@ -40,8 +40,14 @@ class TimeDirectoryTest(unittest.TestCase):
                 extension=".orig"
             else:
                 extension=".org"
-            copyfile(path.join(self.theFile,"0",gammaName()+extension),
-                     path.join(self.theFile,"0",gammaName()))
+            try:
+                copyfile(path.join(self.theFile,"0",gammaName()+extension),
+                         path.join(self.theFile,"0",gammaName()))
+            except IOError:
+                rename(path.join(self.theFile, "0"+extension),
+                       path.join(self.theFile, "0"))
+                copyfile(path.join(self.theFile,"0",gammaName()),
+                         path.join(self.theFile,"0",gammaName()+extension))
 
     def tearDown(self):
         rmtree(self.theDir)
@@ -94,8 +100,15 @@ class TimeDirectoryTestZipped(unittest.TestCase):
                 extension=".orig"
             else:
                 extension=".org"
-            copyfile(path.join(self.theFile,"0",gammaName()+extension),
-                     path.join(self.theFile,"0",gammaName()))
+            try:
+                copyfile(path.join(self.theFile,"0",gammaName()+extension),
+                         path.join(self.theFile,"0",gammaName()))
+            except IOError:
+                rename(path.join(self.theFile, "0"+extension),
+                       path.join(self.theFile, "0"))
+                copyfile(path.join(self.theFile,"0",gammaName()),
+                         path.join(self.theFile,"0",gammaName()+extension))
+
         system("gzip "+path.join(self.theFile,"0",gammaName()))
 
     def tearDown(self):
@@ -123,8 +136,14 @@ class TimeDirectoryTestCopy(unittest.TestCase):
                 extension=".orig"
             else:
                 extension=".org"
-            copyfile(path.join(self.theFile,"0",gammaName()+extension),
-                     path.join(self.theFile,"0",gammaName()))
+            try:
+                copyfile(path.join(self.theFile,"0",gammaName()+extension),
+                         path.join(self.theFile,"0",gammaName()))
+            except IOError:
+                rename(path.join(self.theFile, "0"+extension),
+                       path.join(self.theFile, "0"))
+                copyfile(path.join(self.theFile,"0",gammaName()),
+                         path.join(self.theFile,"0",gammaName()+extension))
 
     def tearDown(self):
         rmtree(self.theDir)

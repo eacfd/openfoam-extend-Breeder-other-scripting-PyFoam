@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../../PyFoam.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -143,8 +137,6 @@
     
     
       <li class="wy-breadcrumbs-aside">
-        
-            
         
       </li>
     
@@ -214,26 +206,26 @@
 <span class="c1"># Exception thrown when invalid token encountered and no default error</span>
 <span class="c1"># handler is defined.</span>
 <div class="viewcode-block" id="LexError"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.LexError">[docs]</a><span class="k">class</span> <span class="nc">LexError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<div class="viewcode-block" id="LexError.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.LexError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">message</span><span class="p">,)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">s</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">s</span></div></div>
 
 
 <span class="c1"># Token class.  This class is used to represent the tokens produced.</span>
 <div class="viewcode-block" id="LexToken"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.LexToken">[docs]</a><span class="k">class</span> <span class="nc">LexToken</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;LexToken(</span><span class="si">%s</span><span class="s1">,</span><span class="si">%r</span><span class="s1">,</span><span class="si">%d</span><span class="s1">,</span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lexpos</span><span class="p">)</span>
+<div class="viewcode-block" id="LexToken.__str__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.LexToken.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;LexToken(</span><span class="si">%s</span><span class="s1">,</span><span class="si">%r</span><span class="s1">,</span><span class="si">%d</span><span class="s1">,</span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lexpos</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+<div class="viewcode-block" id="LexToken.__repr__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.LexToken.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
 
 
 <span class="c1"># This object is a stand-in for a logging object created by the</span>
 <span class="c1"># logging module.</span>
 
 <div class="viewcode-block" id="PlyLogger"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.PlyLogger">[docs]</a><span class="k">class</span> <span class="nc">PlyLogger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
+<div class="viewcode-block" id="PlyLogger.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.PlyLogger.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span></div>
 
 <div class="viewcode-block" id="PlyLogger.critical"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.PlyLogger.critical">[docs]</a>    <span class="k">def</span> <span class="nf">critical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="n">msg</span> <span class="o">%</span> <span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
@@ -250,11 +242,11 @@
 
 <span class="c1"># Null logger is used when no output is generated. Does nothing.</span>
 <div class="viewcode-block" id="NullLogger"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.NullLogger">[docs]</a><span class="k">class</span> <span class="nc">NullLogger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span>
-
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="NullLogger.__getattribute__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.NullLogger.__getattribute__">[docs]</a>    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="NullLogger.__call__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.NullLogger.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
@@ -272,7 +264,7 @@
 <span class="c1"># -----------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="Lexer"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.Lexer">[docs]</a><span class="k">class</span> <span class="nc">Lexer</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Lexer.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.Lexer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lexre</span> <span class="o">=</span> <span class="kc">None</span>             <span class="c1"># Master regular expression. This is a list of</span>
                                       <span class="c1"># tuples (re, findex) where re is a compiled</span>
                                       <span class="c1"># regular expression and findex is a list</span>
@@ -298,7 +290,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">lexliterals</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>         <span class="c1"># Literal characters that can be passed through</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lexmodule</span> <span class="o">=</span> <span class="kc">None</span>         <span class="c1"># Module</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lineno</span> <span class="o">=</span> <span class="mi">1</span>               <span class="c1"># Current line number</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lexoptimize</span> <span class="o">=</span> <span class="kc">False</span>      <span class="c1"># Optimized mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lexoptimize</span> <span class="o">=</span> <span class="kc">False</span>      <span class="c1"># Optimized mode</span></div>
 
 <div class="viewcode-block" id="Lexer.clone"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.Lexer.clone">[docs]</a>    <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
@@ -571,8 +563,8 @@
         <span class="k">return</span> <span class="kc">None</span></div>
 
     <span class="c1"># Iterator interface</span>
-    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span>
+<div class="viewcode-block" id="Lexer.__iter__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.Lexer.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="Lexer.next"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.Lexer.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">()</span>
@@ -595,8 +587,8 @@
 <span class="c1"># Returns the regular expression assigned to a function either as a doc string</span>
 <span class="c1"># or as a .regex attribute attached by the @TOKEN decorator.</span>
 <span class="c1"># -----------------------------------------------------------------------------</span>
-<span class="k">def</span> <span class="nf">_get_regex</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;regex&#39;</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<div class="viewcode-block" id="_get_regex"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex._get_regex">[docs]</a><span class="k">def</span> <span class="nf">_get_regex</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;regex&#39;</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span></div>
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1"># get_caller_module_dict()</span>
@@ -618,14 +610,14 @@
 <span class="c1"># Given a list of regular expression functions, this converts it to a list</span>
 <span class="c1"># suitable for output to a table file</span>
 <span class="c1"># -----------------------------------------------------------------------------</span>
-<span class="k">def</span> <span class="nf">_funcs_to_names</span><span class="p">(</span><span class="n">funclist</span><span class="p">,</span> <span class="n">namelist</span><span class="p">):</span>
+<div class="viewcode-block" id="_funcs_to_names"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex._funcs_to_names">[docs]</a><span class="k">def</span> <span class="nf">_funcs_to_names</span><span class="p">(</span><span class="n">funclist</span><span class="p">,</span> <span class="n">namelist</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">funclist</span><span class="p">,</span> <span class="n">namelist</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">f</span> <span class="ow">and</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">result</span></div>
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1"># _names_to_funcs()</span>
@@ -633,14 +625,14 @@
 <span class="c1"># Given a list of regular expression function names, this converts it back to</span>
 <span class="c1"># functions.</span>
 <span class="c1"># -----------------------------------------------------------------------------</span>
-<span class="k">def</span> <span class="nf">_names_to_funcs</span><span class="p">(</span><span class="n">namelist</span><span class="p">,</span> <span class="n">fdict</span><span class="p">):</span>
+<div class="viewcode-block" id="_names_to_funcs"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex._names_to_funcs">[docs]</a><span class="k">def</span> <span class="nf">_names_to_funcs</span><span class="p">(</span><span class="n">namelist</span><span class="p">,</span> <span class="n">fdict</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">namelist</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">fdict</span><span class="p">[</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">result</span></div>
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1"># _form_master_re()</span>
@@ -649,7 +641,7 @@
 <span class="c1"># form the master regular expression.  Given limitations in the Python re</span>
 <span class="c1"># module, it may be necessary to break the master regex into separate expressions.</span>
 <span class="c1"># -----------------------------------------------------------------------------</span>
-<span class="k">def</span> <span class="nf">_form_master_re</span><span class="p">(</span><span class="n">relist</span><span class="p">,</span> <span class="n">reflags</span><span class="p">,</span> <span class="n">ldict</span><span class="p">,</span> <span class="n">toknames</span><span class="p">):</span>
+<div class="viewcode-block" id="_form_master_re"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex._form_master_re">[docs]</a><span class="k">def</span> <span class="nf">_form_master_re</span><span class="p">(</span><span class="n">relist</span><span class="p">,</span> <span class="n">reflags</span><span class="p">,</span> <span class="n">ldict</span><span class="p">,</span> <span class="n">toknames</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">relist</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[]</span>
     <span class="n">regex</span> <span class="o">=</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">relist</span><span class="p">)</span>
@@ -679,7 +671,7 @@
             <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">llist</span><span class="p">,</span> <span class="n">lre</span><span class="p">,</span> <span class="n">lnames</span> <span class="o">=</span> <span class="n">_form_master_re</span><span class="p">(</span><span class="n">relist</span><span class="p">[:</span><span class="n">m</span><span class="p">],</span> <span class="n">reflags</span><span class="p">,</span> <span class="n">ldict</span><span class="p">,</span> <span class="n">toknames</span><span class="p">)</span>
         <span class="n">rlist</span><span class="p">,</span> <span class="n">rre</span><span class="p">,</span> <span class="n">rnames</span> <span class="o">=</span> <span class="n">_form_master_re</span><span class="p">(</span><span class="n">relist</span><span class="p">[</span><span class="n">m</span><span class="p">:],</span> <span class="n">reflags</span><span class="p">,</span> <span class="n">ldict</span><span class="p">,</span> <span class="n">toknames</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">llist</span><span class="o">+</span><span class="n">rlist</span><span class="p">),</span> <span class="p">(</span><span class="n">lre</span><span class="o">+</span><span class="n">rre</span><span class="p">),</span> <span class="p">(</span><span class="n">lnames</span><span class="o">+</span><span class="n">rnames</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">llist</span><span class="o">+</span><span class="n">rlist</span><span class="p">),</span> <span class="p">(</span><span class="n">lre</span><span class="o">+</span><span class="n">rre</span><span class="p">),</span> <span class="p">(</span><span class="n">lnames</span><span class="o">+</span><span class="n">rnames</span><span class="p">)</span></div>
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="c1"># def _statetoken(s,names)</span>
@@ -689,7 +681,7 @@
 <span class="c1"># is a tuple of state names and tokenname is the name of the token.  For example,</span>
 <span class="c1"># calling this with s = &quot;t_foo_bar_SPAM&quot; might return ((&#39;foo&#39;,&#39;bar&#39;),&#39;SPAM&#39;)</span>
 <span class="c1"># -----------------------------------------------------------------------------</span>
-<span class="k">def</span> <span class="nf">_statetoken</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+<div class="viewcode-block" id="_statetoken"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex._statetoken">[docs]</a><span class="k">def</span> <span class="nf">_statetoken</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
     <span class="n">nonstate</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">parts</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">part</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="mi">1</span><span class="p">):</span>
@@ -705,7 +697,7 @@
         <span class="n">states</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
 
     <span class="n">tokenname</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">tokenname</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">tokenname</span><span class="p">)</span></div>
 
 
 <span class="c1"># -----------------------------------------------------------------------------</span>
@@ -715,7 +707,7 @@
 <span class="c1"># user&#39;s input file.</span>
 <span class="c1"># -----------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="LexerReflect"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.LexerReflect">[docs]</a><span class="k">class</span> <span class="nc">LexerReflect</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ldict</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reflags</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="LexerReflect.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.LexerReflect.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ldict</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reflags</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ldict</span>      <span class="o">=</span> <span class="n">ldict</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">error_func</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tokens</span>     <span class="o">=</span> <span class="p">[]</span>
@@ -723,7 +715,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">stateinfo</span>  <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;INITIAL&#39;</span><span class="p">:</span> <span class="s1">&#39;inclusive&#39;</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">modules</span>    <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">error</span>      <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span>        <span class="o">=</span> <span class="n">PlyLogger</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span> <span class="k">if</span> <span class="n">log</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">log</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span>        <span class="o">=</span> <span class="n">PlyLogger</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span> <span class="k">if</span> <span class="n">log</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">log</span></div>
 
     <span class="c1"># Get all of the basic information</span>
 <div class="viewcode-block" id="LexerReflect.get_all"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.ply.lex.html#PyFoam.ThirdParty.ply.lex.LexerReflect.get_all">[docs]</a>    <span class="k">def</span> <span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1260,9 +1252,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1271,11 +1261,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1288,36 +1278,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

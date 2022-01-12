@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -160,15 +152,15 @@
 <span></span><span class="c1">#  ICE Revision: $Id: GnuplotTimelines.py,v 3f8df529776e 2020-02-28 20:07:20Z bgschaid $</span>
 <span class="sd">&quot;&quot;&quot;Plots a collection of timelines&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.Gnuplot</span> <span class="k">import</span> <span class="n">Gnuplot</span><span class="p">,</span><span class="n">Data</span><span class="p">,</span><span class="n">gp</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.Gnuplot</span> <span class="kn">import</span> <span class="n">Gnuplot</span><span class="p">,</span><span class="n">Data</span><span class="p">,</span><span class="n">gp</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">warning</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">warning</span>
 
-<span class="kn">from</span> <span class="nn">.GeneralPlotTimelines</span> <span class="k">import</span> <span class="n">GeneralPlotTimelines</span>
+<span class="kn">from</span> <span class="nn">.GeneralPlotTimelines</span> <span class="kn">import</span> <span class="n">GeneralPlotTimelines</span>
 
-<span class="kn">from</span> <span class="nn">platform</span> <span class="k">import</span> <span class="n">uname</span>
+<span class="kn">from</span> <span class="nn">platform</span> <span class="kn">import</span> <span class="n">uname</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
 
 <div class="viewcode-block" id="validTerminals"><a class="viewcode-back" href="../../../api/PyFoam.Basics.GnuplotTimelines.html#PyFoam.Basics.GnuplotTimelines.validTerminals">[docs]</a><span class="k">def</span> <span class="nf">validTerminals</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Returns a list with the valid Gnuplot terminals&quot;&quot;&quot;</span>
@@ -177,12 +169,12 @@
         <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;aqua&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">terms</span></div>
 
-<div class="viewcode-block" id="GnuplotTimelines"><a class="viewcode-back" href="../../../api/PyFoam.Basics.GnuplotTimelines.html#PyFoam.Basics.GnuplotTimelines.GnuplotTimelines">[docs]</a><span class="k">class</span> <span class="nc">GnuplotTimelines</span><span class="p">(</span><span class="n">GeneralPlotTimelines</span><span class="p">,</span><span class="n">Gnuplot</span><span class="p">):</span>
+<div class="viewcode-block" id="GnuplotTimelines"><a class="viewcode-back" href="../../../api/PyFoam.Basics.GnuplotTimelines.html#PyFoam.Basics.GnuplotTimelines.GnuplotTimelines">[docs]</a><span class="k">class</span> <span class="nc">GnuplotTimelines</span><span class="p">(</span><span class="n">GeneralPlotTimelines</span><span class="p">,</span> <span class="n">Gnuplot</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This class opens a gnuplot window and plots a timelines-collection in it&quot;&quot;&quot;</span>
 
     <span class="n">terminalNr</span><span class="o">=</span><span class="mi">1</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="GnuplotTimelines.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.GnuplotTimelines.html#PyFoam.Basics.GnuplotTimelines.GnuplotTimelines.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">timelines</span><span class="p">,</span>
                  <span class="n">custom</span><span class="p">,</span>
                  <span class="n">terminal</span><span class="o">=</span><span class="s2">&quot;x11&quot;</span><span class="p">,</span>
@@ -277,31 +269,38 @@
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="k">pass</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">redo</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redo</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="GnuplotTimelines.buildData"><a class="viewcode-back" href="../../../api/PyFoam.Basics.GnuplotTimelines.html#PyFoam.Basics.GnuplotTimelines.GnuplotTimelines.buildData">[docs]</a>    <span class="k">def</span> <span class="nf">buildData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">times</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="n">lastValid</span><span class="p">):</span>
+<div class="viewcode-block" id="GnuplotTimelines.buildData"><a class="viewcode-back" href="../../../api/PyFoam.Basics.GnuplotTimelines.html#PyFoam.Basics.GnuplotTimelines.GnuplotTimelines.buildData">[docs]</a>    <span class="k">def</span> <span class="nf">buildData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">lastValid</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Build the implementation specific data</span>
 <span class="sd">        :param times: The vector of times for which data exists</span>
 <span class="sd">        :param name: the name under which the data is stored in the timeline</span>
 <span class="sd">        :param title: the title under which this will be displayed&quot;&quot;&quot;</span>
 
-        <span class="n">tm</span><span class="o">=</span><span class="n">times</span>
-        <span class="n">dt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">getValues</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tm</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">lastValid</span><span class="p">:</span>
-            <span class="n">tm</span><span class="o">=</span><span class="n">tm</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">tm</span> <span class="o">=</span> <span class="n">times</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">getValues</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tm</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">lastValid</span><span class="p">:</span>
+            <span class="n">tm</span> <span class="o">=</span> <span class="n">tm</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">tm</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># dt = dt[:-1]</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
-            <span class="n">with_</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">with_</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">with_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_</span>
             <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">specialwith</span><span class="p">:</span>
-                <span class="n">with_</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">specialwith</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+                <span class="n">with_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">specialwith</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
 
-            <span class="n">it</span><span class="o">=</span><span class="n">Data</span><span class="p">(</span><span class="n">tm</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span><span class="n">with_</span><span class="o">=</span><span class="n">with_</span><span class="p">)</span>
+            <span class="n">it</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">tm</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">with_</span><span class="o">=</span><span class="n">with_</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">testAlternate</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
                 <span class="n">it</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="s2">&quot;x1y2&quot;</span><span class="p">)</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">itemlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">it</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">itemlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">tag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">txt</span> <span class="o">=</span> <span class="s1">&#39;label </span><span class="si">{}</span><span class="s1"> &quot;</span><span class="si">{}</span><span class="s1">&quot; at first </span><span class="si">{}</span><span class="s1">, first </span><span class="si">{}</span><span class="s1"> point pt 2 ps 2&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">tag</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">tm</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dt</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_string</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GnuplotTimelines.preparePlot"><a class="viewcode-back" href="../../../api/PyFoam.Basics.GnuplotTimelines.html#PyFoam.Basics.GnuplotTimelines.GnuplotTimelines.preparePlot">[docs]</a>    <span class="k">def</span> <span class="nf">preparePlot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Prepare the plotting window&quot;&quot;&quot;</span>
@@ -389,9 +388,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -400,11 +397,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -417,36 +414,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

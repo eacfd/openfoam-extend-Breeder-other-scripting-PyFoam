@@ -135,6 +135,7 @@ variables
                                                    doTimelines=True),
                                silent=self.opts.progress or self.opts.silent,
                                splitThres=self.opts.splitDataPointsThreshold if self.opts.doSplitDataPoints else None,
+                               split_fraction_unchanged=self.opts.split_fraction_unchanged,
                                argv=self.replaceAutoInArgs(args),
                                server=self.opts.server,
                                lam=lam,
@@ -150,6 +151,7 @@ variables
 
             run.createPlots(customRegexp=self.lines_,
                             splitThres=self.opts.splitDataPointsThreshold if self.opts.doSplitDataPoints else None,
+                            split_fraction_unchanged=self.opts.split_fraction_unchanged,
                             writeFiles=self.opts.writeFiles)
 
             if self.cursesWindow:

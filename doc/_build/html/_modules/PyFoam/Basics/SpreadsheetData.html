@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -174,21 +166,21 @@
 <span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span><span class="p">,</span><span class="n">FatalErrorPyFoamException</span><span class="p">,</span><span class="n">warning</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span><span class="n">FatalErrorPyFoamException</span><span class="p">,</span><span class="n">warning</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">PY3</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">b</span> <span class="k">as</span> <span class="n">toByte</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">PY3</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">b</span> <span class="k">as</span> <span class="n">toByte</span>
 
 <div class="viewcode-block" id="WrongDataSize"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.WrongDataSize">[docs]</a><span class="k">class</span> <span class="nc">WrongDataSize</span><span class="p">(</span><span class="n">FatalErrorPyFoamException</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">txt</span><span class="o">=</span><span class="s2">&quot;Size of the arrays differs&quot;</span><span class="p">):</span>
-        <span class="n">FatalErrorPyFoamException</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">txt</span><span class="p">)</span></div>
+<div class="viewcode-block" id="WrongDataSize.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.WrongDataSize.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">txt</span><span class="o">=</span><span class="s2">&quot;Size of the arrays differs&quot;</span><span class="p">):</span>
+        <span class="n">FatalErrorPyFoamException</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">txt</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="SpreadsheetData"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.SpreadsheetData">[docs]</a><span class="k">class</span> <span class="nc">SpreadsheetData</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Collects data that could go into a spreadsheet. The focus of this class is on</span>
 <span class="sd">    storing all the data at once</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="SpreadsheetData.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.SpreadsheetData.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">timeName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">validData</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">validMatchRegexp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -264,7 +256,7 @@
         <span class="k">elif</span> <span class="n">txtName</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">isSampleFile</span><span class="p">:</span>
-                    <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
+                    <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 
                     <span class="n">raw</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">recfromtxt</span><span class="p">(</span><span class="n">filterChars</span><span class="p">(</span><span class="n">txtName</span><span class="p">))</span>
                     <span class="n">rawName</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">txtName</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
@@ -362,7 +354,7 @@
             <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">index</span><span class="p">]]</span><span class="o">+</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span><span class="o">+</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">:]]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">index</span><span class="p">]]</span><span class="o">+</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span><span class="o">+</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">:]]</span></div>
 
 <div class="viewcode-block" id="SpreadsheetData.validName"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.SpreadsheetData.validName">[docs]</a>    <span class="k">def</span> <span class="nf">validName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">validData</span><span class="p">,</span><span class="n">validMatchRegexp</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">validData</span><span class="p">:</span>
@@ -469,9 +461,9 @@
         <span class="k">return</span> <span class="n">SpreadsheetData</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span>
                                <span class="n">data</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span></div>
 
-    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="SpreadsheetData.__add__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.SpreadsheetData.__add__">[docs]</a>    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convinience function for joining data&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SpreadsheetData.recalcData"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.SpreadsheetData.recalcData">[docs]</a>    <span class="k">def</span> <span class="nf">recalcData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">expr</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Recalc or add a column to the data</span>
@@ -518,7 +510,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">newrec</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="SpreadsheetData.__call__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.SpreadsheetData.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">t</span><span class="p">,</span>
                  <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -588,7 +580,7 @@
             <span class="k">if</span> <span class="n">isString</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="n">iLow</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">iLow</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">iHigh</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">iLow</span><span class="p">])</span><span class="o">&lt;</span><span class="mf">0.5</span> <span class="k">else</span> <span class="n">y</span><span class="p">[</span><span class="n">iHigh</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="n">iLow</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">iHigh</span><span class="p">]</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">iLow</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">iLow</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">iHigh</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">iLow</span><span class="p">])</span>
+                <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="n">iLow</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">iHigh</span><span class="p">]</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">iLow</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">iLow</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">iHigh</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">iLow</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="SpreadsheetData.addTimes"><a class="viewcode-back" href="../../../api/PyFoam.Basics.SpreadsheetData.html#PyFoam.Basics.SpreadsheetData.SpreadsheetData.addTimes">[docs]</a>    <span class="k">def</span> <span class="nf">addTimes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">times</span><span class="p">,</span><span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">interpolate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">invalidExtend</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Extend the data so that all new times are represented (add rows</span>
@@ -879,7 +871,7 @@
         <span class="sd">&quot;&quot;&quot;Return a dictionary of the data in the DataFrame format of pandas</span>
 <span class="sd">        :param: drop duplicate times (setting it to False might break certain Pandas-operations)&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">PyFoam.Wrappers.Pandas</span> <span class="k">import</span> <span class="n">PyFoamDataFrame</span>
+            <span class="kn">from</span> <span class="nn">PyFoam.Wrappers.Pandas</span> <span class="kn">import</span> <span class="n">PyFoamDataFrame</span>
         <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
             <span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No pandas-library installed. Returning None&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -919,9 +911,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -930,11 +920,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -947,36 +937,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

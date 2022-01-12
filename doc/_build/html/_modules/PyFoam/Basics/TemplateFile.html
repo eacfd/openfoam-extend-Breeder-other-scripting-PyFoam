@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -160,23 +152,23 @@
 <span></span><span class="c1">#  ICE Revision: $Id: TemplateFile.py,v de6dbd122d11 2020-02-25 11:02:08Z bgschaid $</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.pyratemp</span> <span class="k">import</span> <span class="n">Template</span> <span class="k">as</span> <span class="n">PyratempTemplate</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.pyratemp</span> <span class="k">import</span> <span class="n">EvalPseudoSandbox</span><span class="p">,</span><span class="n">TemplateRenderError</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.pyratemp</span> <span class="k">import</span> <span class="n">Renderer</span> <span class="k">as</span> <span class="n">PyratempRenderer</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.pyratemp</span> <span class="kn">import</span> <span class="n">Template</span> <span class="k">as</span> <span class="n">PyratempTemplate</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.pyratemp</span> <span class="kn">import</span> <span class="n">EvalPseudoSandbox</span><span class="p">,</span><span class="n">TemplateRenderError</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.pyratemp</span> <span class="kn">import</span> <span class="n">Renderer</span> <span class="k">as</span> <span class="n">PyratempRenderer</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">iteritems</span><span class="p">,</span><span class="n">exec_</span><span class="p">,</span><span class="n">print_</span><span class="p">,</span><span class="n">PY3</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">iteritems</span><span class="p">,</span><span class="n">exec_</span><span class="p">,</span><span class="n">print_</span><span class="p">,</span><span class="n">PY3</span>
 
 <div class="viewcode-block" id="RendererWithFilename"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.RendererWithFilename">[docs]</a><span class="k">class</span> <span class="nc">RendererWithFilename</span><span class="p">(</span><span class="n">PyratempRenderer</span><span class="p">):</span>
      <span class="sd">&quot;&quot;&quot;Usual renderer but report a filename&quot;&quot;&quot;</span>
 
-     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="RendererWithFilename.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.RendererWithFilename.__init__">[docs]</a>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
           <span class="n">PyratempRenderer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">)</span>
 
-          <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span> <span class="o">=</span> <span class="n">filename</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">fileName</span> <span class="o">=</span> <span class="n">filename</span></div>
 
 <div class="viewcode-block" id="RendererWithFilename.reportString"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.RendererWithFilename.reportString">[docs]</a>     <span class="k">def</span> <span class="nf">reportString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">expr</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
           <span class="n">result</span><span class="o">=</span><span class="s2">&quot;Cannot eval expression &#39;</span><span class="si">%s</span><span class="s2">&#39;. (</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
@@ -184,28 +176,28 @@
                <span class="n">result</span><span class="o">+=</span><span class="s2">&quot; in file &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">fileName</span>
           <span class="k">return</span> <span class="n">result</span></div>
 
-     <span class="k">def</span> <span class="nf">_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="RendererWithFilename._eval"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.RendererWithFilename._eval">[docs]</a>     <span class="k">def</span> <span class="nf">_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
           <span class="sd">&quot;&quot;&quot;evalfunc with error-messages&quot;&quot;&quot;</span>
           <span class="k">try</span><span class="p">:</span>
                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evalfunc</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
           <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span><span class="ne">NameError</span><span class="p">,</span><span class="ne">IndexError</span><span class="p">,</span><span class="ne">KeyError</span><span class="p">,</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">SyntaxError</span><span class="p">):</span>
               <span class="n">err</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Needed because python 2.5 does not support &#39;as e&#39;</span>
-              <span class="k">raise</span> <span class="n">TemplateRenderError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reportString</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span><span class="n">err</span><span class="p">))</span></div>
+              <span class="k">raise</span> <span class="n">TemplateRenderError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reportString</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span><span class="n">err</span><span class="p">))</span></div></div>
 
 <div class="viewcode-block" id="TolerantRenderer"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TolerantRenderer">[docs]</a><span class="k">class</span> <span class="nc">TolerantRenderer</span><span class="p">(</span><span class="n">RendererWithFilename</span><span class="p">):</span>
      <span class="sd">&quot;&quot;&quot;Variant of the renderer that doesn&#39;t choke on problems with evaluations&quot;&quot;&quot;</span>
 
-     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-          <span class="n">RendererWithFilename</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+<div class="viewcode-block" id="TolerantRenderer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TolerantRenderer.__init__">[docs]</a>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+          <span class="n">RendererWithFilename</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span></div>
 
-     <span class="k">def</span> <span class="nf">_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="TolerantRenderer._eval"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TolerantRenderer._eval">[docs]</a>     <span class="k">def</span> <span class="nf">_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
           <span class="sd">&quot;&quot;&quot;evalfunc with error-messages&quot;&quot;&quot;</span>
           <span class="k">try</span><span class="p">:</span>
                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evalfunc</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
           <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span><span class="ne">NameError</span><span class="p">,</span><span class="ne">IndexError</span><span class="p">,</span><span class="ne">KeyError</span><span class="p">,</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">SyntaxError</span><span class="p">):</span>
               <span class="n">err</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Needed because python 2.5 does not support &#39;as e&#39;</span>
               <span class="n">warning</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reportString</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span><span class="n">err</span><span class="p">))</span>
-              <span class="k">return</span> <span class="s2">&quot;Template evaluation ERROR: &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">reportString</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span><span class="n">err</span><span class="p">)</span></div>
+              <span class="k">return</span> <span class="s2">&quot;Template evaluation ERROR: &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">reportString</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span><span class="n">err</span><span class="p">)</span></div></div>
 
 <span class="n">execIdString</span><span class="o">=</span><span class="s2">&quot;this is meant to be executed:&quot;</span>
 <span class="n">substituteIdString</span><span class="o">=</span><span class="s2">&quot;substitute current values into this string:&quot;</span>
@@ -215,7 +207,7 @@
 <span class="sd">    way that the old format (using $$ at the line beginnings and $</span>
 <span class="sd">    .. $ for expressions) is reworked into something that pyratemp understands</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="PyratempPreprocessor.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.PyratempPreprocessor.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">dovarline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">doexpr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">expressionDelimiter</span><span class="o">=</span><span class="s2">&quot;$&quot;</span><span class="p">,</span>
@@ -254,9 +246,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">dovarline</span><span class="o">=</span><span class="n">dovarline</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">doexpr</span><span class="o">=</span><span class="n">doexpr</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">allowExec</span><span class="o">=</span><span class="n">allowExec</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allowExec</span><span class="o">=</span><span class="n">allowExec</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">original</span><span class="p">):</span>
+<div class="viewcode-block" id="PyratempPreprocessor.__call__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.PyratempPreprocessor.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">original</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This does the actual work&quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">original</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
@@ -328,13 +320,13 @@
         <span class="k">if</span> <span class="n">original</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">and</span> <span class="n">result</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
             <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-        <span class="k">return</span> <span class="n">result</span></div>
+        <span class="k">return</span> <span class="n">result</span></div></div>
 
 <div class="viewcode-block" id="TemplateFileOldFormat"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TemplateFileOldFormat">[docs]</a><span class="k">class</span> <span class="nc">TemplateFileOldFormat</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Works on template files. Does calculations between $$.</span>
 <span class="sd">    Lines that start with $$ contain definitions&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">content</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="TemplateFileOldFormat.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TemplateFileOldFormat.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">content</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Exactly one of the parameters must be specified</span>
 <span class="sd">        :param name: name of the template file.</span>
 <span class="sd">        :param content: Content of the template&quot;&quot;&quot;</span>
@@ -346,7 +338,7 @@
             <span class="n">template</span><span class="o">=</span><span class="n">content</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">template</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buildTemplate</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buildTemplate</span><span class="p">(</span><span class="n">template</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TemplateFileOldFormat.buildTemplate"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TemplateFileOldFormat.buildTemplate">[docs]</a>    <span class="k">def</span> <span class="nf">buildTemplate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">template</span><span class="p">):</span>
         <span class="n">lines</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -369,7 +361,7 @@
 <span class="sd">        :param vals: dictionary with the values</span>
 <span class="sd">        :param gzip: Zip the file (and add a .gz to the name)&quot;&quot;&quot;</span>
 
-        <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
+        <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 
         <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getString</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
 
@@ -390,7 +382,7 @@
             <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">unzipped</span><span class="p">):</span>
                  <span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Removing&quot;</span><span class="p">,</span><span class="n">unzipped</span><span class="p">,</span><span class="s2">&quot;because it might shadow generated&quot;</span><span class="p">,</span>
                          <span class="n">outfile</span><span class="p">)</span>
-                 <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">unlink</span>
+                 <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">unlink</span>
                  <span class="n">unlink</span><span class="p">(</span><span class="n">unzipped</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
@@ -445,19 +437,19 @@
 
 <div class="viewcode-block" id="EvalPseudoSandboxWithMath"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.EvalPseudoSandboxWithMath">[docs]</a><span class="k">class</span> <span class="nc">EvalPseudoSandboxWithMath</span><span class="p">(</span><span class="n">EvalPseudoSandbox</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Add mathematical functions to the valid functons&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">allowExec</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="EvalPseudoSandboxWithMath.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.EvalPseudoSandboxWithMath.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">allowExec</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">EvalPseudoSandbox</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="kn">import</span> <span class="nn">math</span>
         <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">math</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">o</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">!=</span><span class="s2">&quot;_&quot;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">o</span><span class="p">,</span><span class="nb">getattr</span><span class="p">(</span><span class="n">math</span><span class="p">,</span><span class="n">o</span><span class="p">))</span>
 
-        <span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="k">import</span> <span class="n">builtins</span> <span class="k">as</span> <span class="n">__builtin__</span>
+        <span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="kn">import</span> <span class="n">builtins</span> <span class="k">as</span> <span class="n">__builtin__</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;set&quot;</span><span class="p">,</span><span class="n">__builtin__</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">allowExec</span><span class="p">:</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_allowed_globals</span><span class="p">[</span><span class="s2">&quot;__import__&quot;</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;__import__&quot;</span><span class="p">,</span><span class="n">__builtins__</span><span class="p">[</span><span class="s2">&quot;__import__&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;__import__&quot;</span><span class="p">,</span><span class="n">__builtins__</span><span class="p">[</span><span class="s2">&quot;__import__&quot;</span><span class="p">])</span></div>
 
 <div class="viewcode-block" id="EvalPseudoSandboxWithMath.compile"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.EvalPseudoSandboxWithMath.compile">[docs]</a>    <span class="k">def</span> <span class="nf">compile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;eval&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Compile a python-eval-expression. Overrides the default implementation</span>
@@ -522,14 +514,14 @@
 
 <div class="viewcode-block" id="EvalPseudoSandboxWithMathWithImport"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.EvalPseudoSandboxWithMathWithImport">[docs]</a><span class="k">class</span> <span class="nc">EvalPseudoSandboxWithMathWithImport</span><span class="p">(</span><span class="n">EvalPseudoSandboxWithMath</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class that allows the import of packages&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">EvalPseudoSandboxWithMath</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">allowExec</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+<div class="viewcode-block" id="EvalPseudoSandboxWithMathWithImport.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.EvalPseudoSandboxWithMathWithImport.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">EvalPseudoSandboxWithMath</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">allowExec</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="TemplateFile"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TemplateFile">[docs]</a><span class="k">class</span> <span class="nc">TemplateFile</span><span class="p">(</span><span class="n">TemplateFileOldFormat</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Works on template files. Does calculations between $$.</span>
 <span class="sd">    Lines that start with $$ contain definitions&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="TemplateFile.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TemplateFile.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">content</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
@@ -563,7 +555,7 @@
         <span class="k">if</span> <span class="n">renderer_class</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">tolerantRender</span><span class="p">:</span>
                  <span class="k">class</span> <span class="nc">ConcreteTolerantRenderer</span><span class="p">(</span><span class="n">TolerantRenderer</span><span class="p">):</span>
-                      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">):</span>
+                      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">):</span>
                            <span class="n">TolerantRenderer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                                                      <span class="n">evalfunc</span><span class="p">,</span>
                                                      <span class="n">escapefunc</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
@@ -571,7 +563,7 @@
                  <span class="n">renderer_class</span><span class="o">=</span><span class="n">ConcreteTolerantRenderer</span>
             <span class="k">else</span><span class="p">:</span>
                  <span class="k">class</span> <span class="nc">ConcreteRenderWithFileName</span><span class="p">(</span><span class="n">RendererWithFilename</span><span class="p">):</span>
-                      <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">):</span>
+                      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">):</span>
                            <span class="n">RendererWithFilename</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                                                          <span class="n">evalfunc</span><span class="p">,</span>
                                                          <span class="n">escapefunc</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
@@ -588,7 +580,7 @@
                                         <span class="n">renderer_class</span><span class="o">=</span><span class="n">renderer_class</span><span class="p">,</span>
                                         <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
                                         <span class="n">escape</span><span class="o">=</span><span class="kc">None</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="TemplateFile.buildTemplate"><a class="viewcode-back" href="../../../api/PyFoam.Basics.TemplateFile.html#PyFoam.Basics.TemplateFile.TemplateFile.buildTemplate">[docs]</a>    <span class="k">def</span> <span class="nf">buildTemplate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">template</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">=</span><span class="n">PyratempPreprocessor</span><span class="p">(</span><span class="n">assignmentLineStart</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">assignmentLineStart</span><span class="p">,</span>
@@ -610,9 +602,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -621,11 +611,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -638,36 +628,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

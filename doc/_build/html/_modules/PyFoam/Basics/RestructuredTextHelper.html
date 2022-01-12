@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -162,8 +154,8 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">iteritems</span>
 
 <div class="viewcode-block" id="RestructuredTextHelper"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.RestructuredTextHelper">[docs]</a><span class="k">class</span> <span class="nc">RestructuredTextHelper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Helper class that formats stuff for restructured text&quot;&quot;&quot;</span>
@@ -175,8 +167,8 @@
     <span class="n">LevelSubSubSection</span>  <span class="o">=</span> <span class="mi">4</span>
     <span class="n">LevelParagraph</span>      <span class="o">=</span> <span class="mi">5</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">defaultHeading</span><span class="o">=</span><span class="n">LevelSection</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">defaultHeading</span><span class="o">=</span><span class="n">defaultHeading</span>
+<div class="viewcode-block" id="RestructuredTextHelper.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.RestructuredTextHelper.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">defaultHeading</span><span class="o">=</span><span class="n">LevelSection</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">defaultHeading</span><span class="o">=</span><span class="n">defaultHeading</span></div>
 
 <div class="viewcode-block" id="RestructuredTextHelper.buildHeading"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.RestructuredTextHelper.buildHeading">[docs]</a>    <span class="k">def</span> <span class="nf">buildHeading</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">text</span><span class="p">,</span><span class="o">**</span><span class="n">keywords</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;General method to build a heading</span>
@@ -276,10 +268,10 @@
     <span class="sd">&quot;&quot;&quot;Class that administrates a two-dimensional table and prints it as</span>
 <span class="sd">    a restructured text-table when asked&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ReSTTable.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.ReSTTable.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="p">[[]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">=</span><span class="nb">set</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">=-</span><span class="mi">1</span><span class="p">;</span></div>
 
 <div class="viewcode-block" id="ReSTTable.addLine"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.ReSTTable.addLine">[docs]</a>    <span class="k">def</span> <span class="nf">addLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">head</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a line after that row</span>
@@ -293,7 +285,7 @@
         <span class="k">if</span> <span class="n">head</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">=</span><span class="n">now</span></div>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ReSTTable.__str__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.ReSTTable.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Output the actual table&quot;&quot;&quot;</span>
         <span class="n">widths</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
@@ -340,9 +332,9 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">txt</span><span class="o">+=</span><span class="n">inter</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">txt</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">txt</span></div>
 
-    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="ReSTTable.__setitem__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.ReSTTable.__setitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets an item of the table</span>
 <span class="sd">        :param index: a tuple with a row and a column. If it is a single integer then the</span>
 <span class="sd">        row is assumed</span>
@@ -355,7 +347,7 @@
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
             <span class="n">row</span><span class="o">=</span><span class="n">index</span>
             <span class="k">for</span> <span class="n">col</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">setElement</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">v</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ReSTTable.setElement"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.ReSTTable.setElement">[docs]</a>    <span class="k">def</span> <span class="nf">setElement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Sets a specific element</span>
@@ -373,10 +365,10 @@
 
 <div class="viewcode-block" id="LabledReSTTable"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.LabledReSTTable">[docs]</a><span class="k">class</span> <span class="nc">LabledReSTTable</span><span class="p">(</span><span class="n">ReSTTable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A ReSTTable that has rownames in the first column and column-names in the first row&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="LabledReSTTable.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.LabledReSTTable.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ReSTTable</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addLine</span><span class="p">(</span><span class="n">head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addLine</span><span class="p">(</span><span class="n">head</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LabledReSTTable.addRow"><a class="viewcode-back" href="../../../api/PyFoam.Basics.RestructuredTextHelper.html#PyFoam.Basics.RestructuredTextHelper.LabledReSTTable.addRow">[docs]</a>    <span class="k">def</span> <span class="nf">addRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rowName</span><span class="p">):</span>
         <span class="n">newRow</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -415,9 +407,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -426,11 +416,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -443,36 +433,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -375,6 +375,7 @@ One case for every variation and start with the 4th variant
                                                    doTimelines=True),
                                silent=self.opts.progress or self.opts.silent,
                                splitThres=self.opts.splitDataPointsThreshold if self.opts.doSplitDataPoints else None,
+                               split_fraction_unchanged=self.opts.split_fraction_unchanged,
                                argv=[usedVals["solver"],"-case",workCase.name],
                                server=self.opts.server,
                                lam=lam,
@@ -389,6 +390,7 @@ One case for every variation and start with the 4th variant
 
             run.createPlots(customRegexp=self.lines_,
                             splitThres=self.opts.splitDataPointsThreshold if self.opts.doSplitDataPoints else None,
+                            split_fraction_unchanged=self.opts.split_fraction_unchanged,
                             writeFiles=self.opts.writeFiles)
 
             self.runPreHooks()

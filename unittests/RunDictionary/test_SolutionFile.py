@@ -20,7 +20,10 @@ class SolutionFileTest(unittest.TestCase):
             extension=".orig"
         else:
             extension=".org"
-        copyfile(path.join(damBreakTutorial(),"0",gammaName()+extension),self.theFile)
+        try:
+            copyfile(path.join(damBreakTutorial(),"0",gammaName()+extension),self.theFile)
+        except IOError:
+            copyfile(path.join(damBreakTutorial(),"0"+extension,gammaName()),self.theFile)
 
     def tearDown(self):
         remove(self.theFile)
@@ -46,7 +49,10 @@ class SolutionFileTestZipped(unittest.TestCase):
             extension=".orig"
         else:
             extension=".org"
-        copyfile(path.join(damBreakTutorial(),"0",gammaName()+extension),self.theFile)
+        try:
+            copyfile(path.join(damBreakTutorial(),"0",gammaName()+extension),self.theFile)
+        except IOError:
+            copyfile(path.join(damBreakTutorial(),"0"+extension,gammaName()),self.theFile)
         system("gzip -f "+self.theFile)
 
     def tearDown(self):

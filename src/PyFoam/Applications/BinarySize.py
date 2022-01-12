@@ -79,6 +79,12 @@ switching.
                         default=True,
                         help="Do not process the amount of memory needed by the documentation")
 
+        what.add_option("--no-third-party",
+                        action="store_false",
+                        dest="doThirdParty",
+                        default=True,
+                        help="Do not process the amount of memory needed by the Third-party directory")
+
         display=OptionGroup(self.parser,
                             "Display",
                             "Output on the screen")
@@ -101,7 +107,7 @@ switching.
         else:
             print_(*args)
 
-    def scanDir(self,dPath,usages,depth=1):
+    def scanDir(self, dPath, usages, depth=1, thirdParty=False):
         dName=path.basename(dPath)
         dirs= ["Make","platform","bin","platforms","build"]
         if self.opts.doDocumentation:
@@ -125,6 +131,10 @@ switching.
                             isBin=True
                     if f in ["html"] and self.opts.doDocumentation:
                         isBin=True
+                    if thirdParty:
+                        for c in ["Gcc", "Clang", "linux"]:
+                            if f.find(c)>=0:
+                                isBin = True
                     if isBin:
                         sz=diskUsage(nPath)
                         try:
@@ -140,21 +150,22 @@ switching.
                               desc=path.basename(dPath)):
                     nPath=path.join(dPath,f)
                     if path.isdir(nPath) and not path.islink(nPath):
-                        self.scanDir(nPath,usages,depth=depth+1)
+                        self.scanDir(nPath,usages,depth=depth+1, thirdParty=thirdParty)
             except OSError:
                 self.warning("Can't process",dPath)
 
-    def reportInstallation(self,fName):
+    def reportInstallation(self, fName, thirdParty=False):
         """Report the usages of a OpenFOAM-installation"""
-
         self.output("\nScanning",fName)
+        totalSize = diskUsage(fName)
+        self.output("  Total size:",humanReadableSize(totalSize))
         if path.islink(fName):
             self.output("Symlinked to",path.realpath(fName))
             if not self.opts.symlinkInstallations:
                 self.output("Skipping symlinked installation")
                 return 0
         usages={}
-        self.scanDir(fName,usages)
+        self.scanDir(fName, usages, thirdParty=thirdParty)
         if len(usages)>0:
             nameLength=max([len(k) for k in usages.keys()])
             sizeLength=max([len(str(k)) for k in usages.values()])
@@ -165,25 +176,46 @@ switching.
                 total+=v
                 self.output(formatString % (k,v,humanReadableSize(v)))
             self.output("Sum of binaries",humanReadableSize(total))
-            return total
+            return total, totalSize
         else:
             self.output("    No binaries found")
-            return 0
+            return 0, totalSize
 
     def run(self):
         self.out=""
         if self.opts.allInstallations:
-             installed=FI.foamInstalledVersions()
-             total=0
-             for k in tqdm(sorted(installed.keys()),
-                           desc="Distro",
-                           unit="distro"):
-                 instPath=installed[k]
-                 total+=self.reportInstallation(instPath)
-             self.output("\nTotal disk space used by binaries:"+humanReadableSize(total))
+            installed=FI.foamInstalledVersions()
+            total, size = 0, 0
+            for k in tqdm(sorted(installed.keys()),
+                          desc="Distro",
+                          unit="distro"):
+                instPath=installed[k]
+                t, s = self.reportInstallation(instPath)
+                total += t
+                size += s
+                if self.opts.doThirdParty:
+                    thirdPartyDir = FI.findThirdPartyDir(k)
+                    if thirdPartyDir is not None:
+                        t, s = self.reportInstallation(thirdPartyDir, thirdParty=True)
+                        total += t
+                        size += s
+
+            self.output("\nTotal disk space used by binaries: {} (Complete size: {})".format(
+                humanReadableSize(total),
+                humanReadableSize(size)))
         else:
             try:
                 self.reportInstallation(FI.installationPath())
+                if self.opts.doThirdParty:
+                    installed = FI.foamInstalledVersions()
+                    version = None
+                    for k in installed:
+                        if installed[k] == FI.installationPath():
+                            version = k
+                            break
+                    if k is not None:
+                        self.reportInstallation(FI.findThirdPartyDir(version), thirdParty=True)
+
             except KeyError:
                 self.error("No Foam-installation active. Specify one")
         if len(self.out)>0:

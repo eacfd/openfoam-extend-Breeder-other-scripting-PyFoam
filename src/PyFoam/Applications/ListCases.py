@@ -235,7 +235,6 @@ etc). Currently doesn't honor the parallel data
             dirs=[path.curdir]
 
         cData=[]
-        totalDiskusage=0
         useSolverInData=False
 
         self.hasState=False
@@ -286,6 +285,7 @@ etc). Currently doesn't honor the parallel data
                                 data["last"]=times[-1]
                             except IndexError:
                                 data["last"]="None"
+                            data[" - "] = " - "
                             data["nrSteps"]=len(times)
                             data["procs"]=sol.nrProcs()
                             data["pFirst"]=-1
@@ -301,7 +301,6 @@ etc). Currently doesn't honor the parallel data
                             data["diskusage"]=-1
                             if self.opts.diskusage:
                                 data["diskusage"]=diskUsage(cName)
-                                totalDiskusage+=data["diskusage"]
                             if self.opts.parallel:
                                 for f in listdir(cName):
                                     if re.compile("processor[0-9]+").match(f):
@@ -335,21 +334,25 @@ etc). Currently doesn't honor the parallel data
                                     except TypeError:
                                         pass
 
-                            if self.opts.startEndTime or self.opts.estimateEndTime:
+                            try:
+                                ctrlDict=ParsedParameterFile(sol.controlDict(),doMacroExpansion=True)
+                            except PyFoamParserError:
+                                # Didn't work with Macro expansion. Let's try without
                                 try:
-                                    ctrlDict=ParsedParameterFile(sol.controlDict(),doMacroExpansion=True)
+                                    ctrlDict=ParsedParameterFile(sol.controlDict())
                                 except PyFoamParserError:
-                                    # Didn't work with Macro expansion. Let's try without
-                                    try:
-                                        ctrlDict=ParsedParameterFile(sol.controlDict())
-                                    except PyFoamParserError:
-                                        ctrlDict=None
-                                if ctrlDict:
-                                    data["startTime"]=ctrlDict["startTime"]
-                                    data["endTime"]=ctrlDict["endTime"]
-                                else:
-                                    data["startTime"]=None
-                                    data["endTime"]=None
+                                    ctrlDict=None
+                            if ctrlDict:
+                                data["startTime"]=ctrlDict["startTime"]
+                                data["endTime"]=ctrlDict["endTime"]
+                                try:
+                                    if data["endTime"] == float(data["last"]):
+                                        data[" - "] = " = "
+                                except ValueError:
+                                    pass
+                            else:
+                                data["startTime"]=None
+                                data["endTime"]=None
 
                             if self.opts.estimateEndTime:
                                 data["endTimeEstimate"]=None
@@ -474,6 +477,8 @@ etc). Currently doesn't honor the parallel data
             return
 
         lens={}
+        totalDiskusage = 0
+
         for k in list(cData[0].keys()):
             lens[k]=len(k)
         for c in cData:
@@ -492,6 +497,7 @@ etc). Currently doesn't honor the parallel data
                     c[k]=None
 
             try:
+                totalDiskusage += c["diskusage"]
                 c["diskusage"]=humanReadableSize(c["diskusage"])
             except KeyError:
                 pass

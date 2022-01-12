@@ -32,6 +32,7 @@ class AnalyzedCommon(object):
                  filenames,
                  analyzer,
                  splitThres=2048,
+                 split_fraction_unchanged=0.2,
                  doPickling=True):
         """:param filename: name of the file that is being analyzed
         :param analyzer: the analyzer itself
@@ -72,6 +73,7 @@ class AnalyzedCommon(object):
         self.raiseit=False
         self.writeFiles=False
         self.splitThres=splitThres
+        self.split_fraction_unchanged=split_fraction_unchanged
         self.plottingImplementation="dummy"
         self.gnuplotTerminal=None
 
@@ -193,6 +195,7 @@ class AnalyzedCommon(object):
                                                          raiseit=self.raiseit,
                                                          writeFiles=self.writeFiles,
                                                          splitThres=self.splitThres,
+                                                         split_fraction_unchanged=self.split_fraction_unchanged,
                                                          gnuplotTerminal=self.gnuplotTerminal,
                                                          plottingImplementation=self.plottingImplementation)
                 self.reset()
@@ -227,6 +230,7 @@ class AnalyzedCommon(object):
                     quiet=False,
                     raiseit=False,
                     splitThres=2048,
+                    split_fraction_unchanged=0.2,
                     plotLinear=True,
                     plotCont=True,
                     plotBound=True,
@@ -266,6 +270,7 @@ class AnalyzedCommon(object):
                                                       gnuplotTerminal=gnuplotTerminal,
                                                       implementation=plottingImplementation)
             self.getAnalyzer("Linear").lines.setSplitting(splitThres=splitThres,
+                                                          split_fraction_unchanged=split_fraction_unchanged,
                                                           splitFun=max,
                                                           advancedSplit=True)
 
@@ -286,6 +291,7 @@ class AnalyzedCommon(object):
             plots["cont"].setYLabel("Cumulative")
             plots["cont"].setYLabel2("Global")
             self.getAnalyzer("Continuity").lines.setSplitting(splitThres=splitThres,
+                                                              split_fraction_unchanged=split_fraction_unchanged,
                                                               advancedSplit=True)
 
             plots["cont"].setTitle("Continuity")
@@ -301,6 +307,7 @@ class AnalyzedCommon(object):
                                                      gnuplotTerminal=gnuplotTerminal,
                                                      implementation=plottingImplementation)
             self.getAnalyzer("Bounding").lines.setSplitting(splitThres=splitThres,
+                                                            split_fraction_unchanged=split_fraction_unchanged,
                                                             splitFun=signedMax,
                                                             advancedSplit=True)
             plots["bound"].setTitle("Bounded variables")
@@ -317,6 +324,7 @@ class AnalyzedCommon(object):
                                                     gnuplotTerminal=gnuplotTerminal,
                                                     implementation=plottingImplementation)
             self.getAnalyzer("Iterations").lines.setSplitting(splitThres=splitThres,
+                                                              split_fraction_unchanged=split_fraction_unchanged,
                                                               advancedSplit=True)
 
             plots["iter"].setTitle("Iterations")
@@ -333,6 +341,7 @@ class AnalyzedCommon(object):
                                                        gnuplotTerminal=gnuplotTerminal,
                                                        implementation=plottingImplementation)
             self.getAnalyzer("Courant").lines.setSplitting(splitThres=splitThres,
+                                                           split_fraction_unchanged=split_fraction_unchanged,
                                                            advancedSplit=True)
 
             plots["courant"].setTitle("Courant")
@@ -350,6 +359,7 @@ class AnalyzedCommon(object):
                                                       gnuplotTerminal=gnuplotTerminal,
                                                       implementation=plottingImplementation)
             self.getAnalyzer("DeltaT").lines.setSplitting(splitThres=splitThres,
+                                                          split_fraction_unchanged=split_fraction_unchanged,
                                                           advancedSplit=True)
 
             plots["deltaT"].setTitle("DeltaT")
@@ -367,6 +377,7 @@ class AnalyzedCommon(object):
                                                          gnuplotTerminal=gnuplotTerminal,
                                                          implementation=plottingImplementation)
             self.getAnalyzer("Execution").lines.setSplitting(splitThres=splitThres,
+                                                             split_fraction_unchanged=split_fraction_unchanged,
                                                              advancedSplit=True)
 
             plots["execution"].setTitle("Execution Time")
@@ -383,6 +394,7 @@ class AnalyzedCommon(object):
                                                   raiseit=raiseit,
                                                   writeFiles=writeFiles,
                                                   splitThres=splitThres,
+                                                  split_fraction_unchanged=split_fraction_unchanged,
                                                   gnuplotTerminal=gnuplotTerminal,
                                                   plottingImplementation=plottingImplementation)
             plots.update(customPlots)
@@ -399,21 +411,25 @@ class AnalyzedCommon(object):
                              raiseit=False,
                              writeFiles=False,
                              splitThres=2048,
+                             split_fraction_unchanged=0.2,
                              gnuplotTerminal=None,
                              plottingImplementation="dummy"):
         plots={}
-        masters={}
-        slaves=[]
+        publishers={}
+        collectors=[]
         canonical={}
         marks=[]
 
         plotTypes= [
             ("regular"    , "Matches regular expression and plots"),
-            ("slave"      , "Plot data on a different plot (the 'master')"),
+            ("collector"  , "Plot data on a different plot (the 'publisher')"),
+            ("slave"      , "Old (deprecated) terminology for 'collector'"),
             ("dynamic"    , "Dynamically creates lines depending on the match found at 'idNr'"),
-            ("dynamicslave" , "Combination of 'dynamic' and 'slave'"),
+            ("dynamiccollector" , "Combination of 'dynamic' and 'collector'"),
+            ("dynamicslave" , "Old (deprecated) terminology for 'dynamiccollector'"),
             ("data"       , "Reads data from a file and plots it"),
-            ("dataslave"  , "Combination of 'data' and 'slave'"),
+            ("datacollector"  , "Combination of 'data' and 'collector'"),
+            ("dataslave"  , "Old (deprecated) terminology for 'datacollector'"),
             ("count"      , "Counts how often an expression occured (no plotting but used for 'alternateTime')"),
             ("mark"       , "If the expression matches then a vertical marker is drawn on the 'targets'"),
             ("phase"      , "Changes the phase prefix (for multi-region cases)")
@@ -452,7 +468,7 @@ class AnalyzedCommon(object):
                                  a)
                 marks.append((custom,a))
                 createPlot=False
-            elif custom.type in ["dynamic","dynamicslave"]:
+            elif custom.type in ["dynamic", "dynamicslave", "dynamiccollector"]:
                 self.addAnalyzer(custom.name,
                                  RegExpLineAnalyzer(custom.name.lower(),
                                                     custom.expr,
@@ -468,7 +484,7 @@ class AnalyzedCommon(object):
                                                     startTime=custom.start,
                                                     endTime=custom.end))
 
-            elif custom.type in ["regular","slave"]:
+            elif custom.type in ["regular", "slave", "collector"]:
                 self.addAnalyzer(custom.name,
                                  RegExpLineAnalyzer(custom.name.lower(),
                                                     custom.expr,
@@ -482,7 +498,7 @@ class AnalyzedCommon(object):
                                                     singleFile=True,
                                                     startTime=custom.start,
                                                     endTime=custom.end))
-            elif custom.type in ["data","dataslave"]:
+            elif custom.type in ["data", "dataslave", "datacollector"]:
                 self.addAnalyzer(custom.name,
                                  ReplayDataFileAnalyzer(timeName=custom.timeName,
                                                         validData=custom.validData,
@@ -503,27 +519,29 @@ class AnalyzedCommon(object):
             canonical[custom.id]=custom.name
 
             if createPlot:
-                if custom.master==None:
-                    if custom.type in ["slave","dynamicslave","dataslave"]:
-                        error("Custom expression",custom.name,"is supposed to be a 'slave' but no master is defined")
-                    masters[custom.id]=custom
-                    plotCustom=createPlotTimelines(self.getAnalyzer(custom.name).lines,
-                                                   quiet=quiet,
-                                                   custom=custom,
-                                                   gnuplotTerminal=gnuplotTerminal,
-                                                   implementation=plottingImplementation)
+                if custom.publisher==None:
+                    if custom.type in ["slave", "dynamicslave", "dataslave", "collector", "dynamiccollector", "datacollector"]:
+                        error("Custom expression", custom.name,
+                              "is supposed to be a 'collector' but no publisher is defined")
+                    publishers[custom.id] = custom
+                    plotCustom = createPlotTimelines(self.getAnalyzer(custom.name).lines,
+                                                     quiet=quiet,
+                                                     custom=custom,
+                                                     gnuplotTerminal=gnuplotTerminal,
+                                                     implementation=plottingImplementation)
                     self.getAnalyzer(custom.name).lines.setSplitting(splitThres=splitThres,
-                                                                 advancedSplit=True)
+                                                                     split_fraction_unchanged=split_fraction_unchanged,
+                                                                     advancedSplit=True)
                     plotCustom.setTitle(custom.theTitle)
                     plots["custom%04d" % i]=plotCustom
                     self.plots[custom.id]=plotCustom
                 else:
-                    if custom.type not in ["slave","dynamicslave","dataslave"]:
-                        error("'master' only makes sense if type is 'slave' or 'dynamicslave' for",custom.name)
+                    if custom.type not in ["slave", "dynamicslave", "dataslave", "collector", "dynamiccollector", "datacollector"]:
+                        error("'publisher' only makes sense if type is 'collector' or 'dynamiccollector' for",custom.name)
                     if getattr(custom,"alternateAxis",None):
-                        error("Specify alternate values in 'alternateAxis' of master",
-                              custom.master,"for",custom.name)
-                    slaves.append(custom)
+                        error("Specify alternate values in 'alternateAxis' of publisher",
+                              custom.publisher, "for", custom.name)
+                    collectors.append(custom)
 
         for custom in customRegexp:
             if custom.alternateTime:
@@ -532,15 +550,23 @@ class AnalyzedCommon(object):
                 )
                 self.getAnalyzer(canonical[custom.alternateTime]).addTimeListener(self.getAnalyzer(custom.name))
 
-        for s in slaves:
-            if s.master not in masters:
-                error("The custom plot",s.id,"wants the master plot",
-                      s.master,"but it is not found in the list of masters",
-                      list(masters.keys()))
+        for s in collectors:
+            if s.publisher not in publishers:
+                error("The custom plot", s.id, "wants the publisher plot",
+                      s.publisher, "but it is not found in the list of publishers",
+                      list(publishers.keys()))
             else:
-                slave=self.getAnalyzer(s.name)
-                master=self.getAnalyzer(masters[s.master].name)
-                slave.setMaster(master)
+                collector=self.getAnalyzer(s.name)
+                m = publishers[s.publisher]
+                if m.xvalue is not None and s.xvalue is None:
+                    error("Publisher plot", m.id, "is parameteric with xvalue",
+                          m.xvalue, "so", s.id, "has to be parameteric as well")
+                if m.xvalue is None and s.xvalue is not None:
+                    error("Collector plot", s.id, "is parameteric with xvalue",
+                          s.xvalue, "so", m.id, "has to be parameteric as well")
+
+                publisher=self.getAnalyzer(m.name)
+                collector.setPublisher(publisher)
 
         for custom,analyzer in marks:
             for pName in custom.targets:

@@ -161,20 +161,20 @@
 <span class="sd">New implementation of DisplayBlockMesh using PyQT4</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParsedBlockMeshDict</span> <span class="k">import</span> <span class="n">ParsedBlockMeshDict</span>
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParsedParameterFile</span> <span class="k">import</span> <span class="n">ParsedParameterFile</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.PyFoamApplicationQt4</span> <span class="k">import</span> <span class="n">PyFoamApplicationQt4</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="k">import</span> <span class="n">NoTouchSolutionDirectory</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Execution.BasicRunner</span> <span class="k">import</span> <span class="n">BasicRunner</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.TemplateFile</span> <span class="k">import</span> <span class="n">TemplateFile</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParsedBlockMeshDict</span> <span class="kn">import</span> <span class="n">ParsedBlockMeshDict</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParsedParameterFile</span> <span class="kn">import</span> <span class="n">ParsedParameterFile</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.PyFoamApplicationQt4</span> <span class="kn">import</span> <span class="n">PyFoamApplicationQt4</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="kn">import</span> <span class="n">NoTouchSolutionDirectory</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Execution.BasicRunner</span> <span class="kn">import</span> <span class="n">BasicRunner</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.TemplateFile</span> <span class="kn">import</span> <span class="n">TemplateFile</span>
 
-<span class="kn">from</span> <span class="nn">.CommonTemplateFormat</span> <span class="k">import</span> <span class="n">CommonTemplateFormat</span>
+<span class="kn">from</span> <span class="nn">.CommonTemplateFormat</span> <span class="kn">import</span> <span class="n">CommonTemplateFormat</span>
 
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">optparse</span> <span class="k">import</span> <span class="n">OptionGroup</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionGroup</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">print_</span><span class="p">,</span><span class="n">PY3</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">print_</span><span class="p">,</span><span class="n">PY3</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -183,7 +183,7 @@
         <span class="n">error</span><span class="p">(</span><span class="s2">&quot;This utility does not support Python 2.x&quot;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">global</span> <span class="n">QtGui</span><span class="p">,</span><span class="n">QtCore</span>
-        <span class="kn">from</span> <span class="nn">PyQt4</span> <span class="k">import</span> <span class="n">QtGui</span><span class="p">,</span><span class="n">QtCore</span>
+        <span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtGui</span><span class="p">,</span><span class="n">QtCore</span>
         <span class="k">global</span> <span class="n">vtk</span>
 
         <span class="k">global</span> <span class="n">usedVTK</span>
@@ -193,7 +193,7 @@
             <span class="n">usedVTK</span><span class="o">=</span><span class="s2">&quot;Using system-VTK&quot;</span>
         <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
             <span class="n">usedVTK</span><span class="o">=</span><span class="s2">&quot;Trying VTK implementation from Paraview&quot;</span>
-            <span class="kn">from</span> <span class="nn">paraview</span> <span class="k">import</span> <span class="n">vtk</span>
+            <span class="kn">from</span> <span class="nn">paraview</span> <span class="kn">import</span> <span class="n">vtk</span>
 
         <span class="k">global</span> <span class="n">vtkVersion</span>
         <span class="n">vtkVersion</span><span class="o">=</span><span class="n">vtk</span><span class="o">.</span><span class="n">VTK_MAJOR_VERSION</span>
@@ -207,7 +207,7 @@
             <span class="n">warning</span><span class="p">(</span><span class="s2">&quot;VTK version&quot;</span><span class="p">,</span><span class="n">vtkVersion</span><span class="p">,</span><span class="s2">&quot;currently unsupported (tested with VTK7)&quot;</span><span class="p">)</span>
 
         <span class="k">global</span> <span class="n">QVTKRenderWindowInteractor</span>
-        <span class="kn">from</span> <span class="nn">vtk.qt4</span> <span class="k">import</span> <span class="n">QVTKRenderWindowInteractor</span>
+        <span class="kn">from</span> <span class="nn">vtk.qt4</span> <span class="kn">import</span> <span class="n">QVTKRenderWindowInteractor</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="n">e</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Needed because python 2.5 does not support &#39;as e&#39;</span>
         <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error while importing modules:&quot;</span><span class="p">,</span><span class="n">e</span><span class="p">)</span></div>
@@ -215,7 +215,7 @@
 <span class="n">doImports</span><span class="p">()</span>
 
 <div class="viewcode-block" id="ReportToThreadRunner"><a class="viewcode-back" href="../../../api/PyFoam.Applications.DisplayBlockMeshQt.html#PyFoam.Applications.DisplayBlockMeshQt.ReportToThreadRunner">[docs]</a><span class="k">class</span> <span class="nc">ReportToThreadRunner</span><span class="p">(</span><span class="n">BasicRunner</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">argv</span><span class="p">,</span>
                  <span class="n">thread</span><span class="p">):</span>
         <span class="n">BasicRunner</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -228,7 +228,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="UtilityThread"><a class="viewcode-back" href="../../../api/PyFoam.Applications.DisplayBlockMeshQt.html#PyFoam.Applications.DisplayBlockMeshQt.UtilityThread">[docs]</a><span class="k">class</span> <span class="nc">UtilityThread</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QThread</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">argv</span><span class="p">,</span>
                  <span class="n">parent</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">UtilityThread</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
@@ -249,7 +249,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">SIGNAL</span><span class="p">(</span><span class="s2">&quot;newLine(QString)&quot;</span><span class="p">),</span><span class="n">line</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="DisplayBlockMeshDialog"><a class="viewcode-back" href="../../../api/PyFoam.Applications.DisplayBlockMeshQt.html#PyFoam.Applications.DisplayBlockMeshQt.DisplayBlockMeshDialog">[docs]</a><span class="k">class</span> <span class="nc">DisplayBlockMeshDialog</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">fName</span><span class="p">,</span>
                  <span class="n">valuesFile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">opts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1520,7 +1520,7 @@
 
 <div class="viewcode-block" id="DisplayBlockMesh"><a class="viewcode-back" href="../../../api/PyFoam.Applications.DisplayBlockMeshQt.html#PyFoam.Applications.DisplayBlockMeshQt.DisplayBlockMesh">[docs]</a><span class="k">class</span> <span class="nc">DisplayBlockMesh</span><span class="p">(</span><span class="n">PyFoamApplicationQt4</span><span class="p">,</span>
                        <span class="n">CommonTemplateFormat</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
 <span class="s2">Reads the contents of a blockMeshDict-file and displays the vertices</span>
 <span class="s2">as spheres (with numbers). The blocks are sketched by lines. One block</span>

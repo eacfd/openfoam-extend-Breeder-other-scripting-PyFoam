@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../../PyFoam.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -175,8 +167,8 @@
 
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">string</span><span class="o">,</span> <span class="nn">tempfile</span><span class="o">,</span> <span class="nn">types</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="k">import</span> <span class="n">StringIO</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">string_types</span><span class="p">,</span><span class="n">integer_types</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">string_types</span><span class="p">,</span><span class="n">integer_types</span>
 
 <span class="c1">#try:</span>
 <span class="c1">#    from cStringIO import StringIO</span>
@@ -190,13 +182,13 @@
     <span class="kn">import</span> <span class="nn">numpypy</span>
     <span class="kn">import</span> <span class="nn">numpy</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">gp</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">Errors</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">gp</span><span class="p">,</span> <span class="n">utils</span><span class="p">,</span> <span class="n">Errors</span>
 
 
-<span class="k">class</span> <span class="nc">_unset</span><span class="p">:</span>
+<div class="viewcode-block" id="_unset"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._unset">[docs]</a><span class="k">class</span> <span class="nc">_unset</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Used to represent unset keyword arguments.&quot;&quot;&quot;</span>
 
-    <span class="k">pass</span>
+    <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="PlotItem"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem">[docs]</a><span class="k">class</span> <span class="nc">PlotItem</span><span class="p">:</span>
@@ -264,7 +256,7 @@
         <span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;with&#39;</span>
         <span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="PlotItem.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Construct a &#39;PlotItem&#39;.</span>
 
 <span class="sd">        Keyword options:</span>
@@ -284,7 +276,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="o">**</span><span class="n">keyw</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="o">**</span><span class="n">keyw</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PlotItem.get_option"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem.get_option">[docs]</a>    <span class="k">def</span> <span class="nf">get_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the setting of an option.  May be overridden.&quot;&quot;&quot;</span>
@@ -392,15 +384,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="Func.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems.Func.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
         <span class="n">PlotItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span></div>
 
 <div class="viewcode-block" id="Func.get_base_command_string"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems.Func.get_base_command_string">[docs]</a>    <span class="k">def</span> <span class="nf">get_base_command_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span></div></div>
 
 
-<span class="k">class</span> <span class="nc">_FileItem</span><span class="p">(</span><span class="n">PlotItem</span><span class="p">):</span>
+<div class="viewcode-block" id="_FileItem"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem">[docs]</a><span class="k">class</span> <span class="nc">_FileItem</span><span class="p">(</span><span class="n">PlotItem</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A PlotItem representing a file that contains gnuplot data.</span>
 
 <span class="sd">    This class is not meant for users but rather as a base class for</span>
@@ -419,7 +411,7 @@
             <span class="p">),</span>
         <span class="p">})</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="_FileItem.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Represent a PlotItem that gnuplot treates as a file.</span>
 
 <span class="sd">        This class holds the information that is needed to construct</span>
@@ -468,12 +460,12 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
 
-        <span class="n">PlotItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">)</span>
+        <span class="n">PlotItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">get_base_command_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">gp</span><span class="o">.</span><span class="n">double_quote_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+<div class="viewcode-block" id="_FileItem.get_base_command_string"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem.get_base_command_string">[docs]</a>    <span class="k">def</span> <span class="nf">get_base_command_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">gp</span><span class="o">.</span><span class="n">double_quote_string</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">set_option_colonsep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="_FileItem.set_option_colonsep"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem.set_option_colonsep">[docs]</a>    <span class="k">def</span> <span class="nf">set_option_colonsep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clear_option</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,(</span><span class="n">string_types</span><span class="o">+</span><span class="n">integer_types</span><span class="p">)):</span>
@@ -490,20 +482,20 @@
                 <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subopts</span><span class="p">),),</span>
                 <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">Errors</span><span class="o">.</span><span class="n">OptionError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,))</span>
+            <span class="k">raise</span> <span class="n">Errors</span><span class="o">.</span><span class="n">OptionError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,))</span></div>
 
-    <span class="k">def</span> <span class="nf">set_option_binary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary</span><span class="p">):</span>
+<div class="viewcode-block" id="_FileItem.set_option_binary"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem.set_option_binary">[docs]</a>    <span class="k">def</span> <span class="nf">set_option_binary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">binary</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">gp</span><span class="o">.</span><span class="n">GnuplotOpts</span><span class="o">.</span><span class="n">recognizes_binary_splot</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">Errors</span><span class="o">.</span><span class="n">OptionError</span><span class="p">(</span>
                     <span class="s1">&#39;Gnuplot.py is currently configured to reject binary data&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;binary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;binary&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;binary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_options</span><span class="p">[</span><span class="s1">&#39;binary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div></div>
 
 
-<span class="k">class</span> <span class="nc">_NewFileItem</span><span class="p">(</span><span class="n">_FileItem</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="_NewFileItem"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._NewFileItem">[docs]</a><span class="k">class</span> <span class="nc">_NewFileItem</span><span class="p">(</span><span class="n">_FileItem</span><span class="p">):</span>
+<div class="viewcode-block" id="_NewFileItem.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._NewFileItem.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
 
         <span class="n">binary</span> <span class="o">=</span> <span class="n">keyw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">binary</span><span class="p">:</span>
@@ -536,19 +528,19 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp</span> <span class="ow">and</span> <span class="s1">&#39;title&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keyw</span><span class="p">:</span>
             <span class="n">keyw</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-        <span class="n">_FileItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">)</span>
+        <span class="n">_FileItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="_NewFileItem.__del__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._NewFileItem.__del__">[docs]</a>    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span></div></div>
 
 
-<span class="k">class</span> <span class="nc">_InlineFileItem</span><span class="p">(</span><span class="n">_FileItem</span><span class="p">):</span>
+<div class="viewcode-block" id="_InlineFileItem"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem">[docs]</a><span class="k">class</span> <span class="nc">_InlineFileItem</span><span class="p">(</span><span class="n">_FileItem</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A _FileItem that actually indicates inline data.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="_InlineFileItem.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
         <span class="c1"># If the user hasn&#39;t specified a title, set it to None so that</span>
         <span class="c1"># &#39;-&#39; is not used:</span>
         <span class="k">if</span> <span class="s1">&#39;title&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keyw</span><span class="p">:</span>
@@ -562,16 +554,16 @@
         <span class="k">if</span> <span class="n">content</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span></div>
 
-    <span class="k">def</span> <span class="nf">pipein</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">+</span> <span class="s1">&#39;e</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="_InlineFileItem.pipein"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem.pipein">[docs]</a>    <span class="k">def</span> <span class="nf">pipein</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">+</span> <span class="s1">&#39;e</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div></div>
 
 
 <span class="k">if</span> <span class="n">gp</span><span class="o">.</span><span class="n">GnuplotOpts</span><span class="o">.</span><span class="n">support_fifo</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">threading</span>
 
-    <span class="k">class</span> <span class="nc">_FIFOWriter</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+<div class="viewcode-block" id="_FIFOWriter"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter">[docs]</a>    <span class="k">class</span> <span class="nc">_FIFOWriter</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a FIFO (named pipe), write to it, then delete it.</span>
 
 <span class="sd">        The writing takes place in a separate thread so that the main</span>
@@ -589,7 +581,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="_FIFOWriter.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter.__init__">[docs]</a>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">content</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">tempfile</span><span class="p">,</span> <span class="s1">&#39;mkdtemp&#39;</span><span class="p">):</span>
@@ -607,18 +599,18 @@
                 <span class="n">name</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;FIFO Writer for </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,)),</span>
                 <span class="p">)</span>
             <span class="n">os</span><span class="o">.</span><span class="n">mkfifo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
 
-        <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="_FIFOWriter.run"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter.run">[docs]</a>        <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
             <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
             <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dirname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirname</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dirname</span><span class="p">)</span></div></div>
 
 
-    <span class="k">class</span> <span class="nc">_FIFOFileItem</span><span class="p">(</span><span class="n">_FileItem</span><span class="p">):</span>
+<div class="viewcode-block" id="_FIFOFileItem"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOFileItem">[docs]</a>    <span class="k">class</span> <span class="nc">_FIFOFileItem</span><span class="p">(</span><span class="n">_FileItem</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;A _FileItem based on a FIFO (named pipe).</span>
 
 <span class="sd">        This class depends on the availablity of os.mkfifo(), which only</span>
@@ -626,7 +618,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
+<div class="viewcode-block" id="_FIFOFileItem.__init__"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOFileItem.__init__">[docs]</a>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
             <span class="c1"># If the user hasn&#39;t specified a title, set it to None so that</span>
             <span class="c1"># the name of the temporary FIFO is not used:</span>
             <span class="k">if</span> <span class="s1">&#39;title&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keyw</span><span class="p">:</span>
@@ -637,9 +629,9 @@
             <span class="k">if</span> <span class="n">keyw</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;wb&#39;</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;w&#39;</span></div>
 
-        <span class="k">def</span> <span class="nf">get_base_command_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="_FIFOFileItem.get_base_command_string"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOFileItem.get_base_command_string">[docs]</a>        <span class="k">def</span> <span class="nf">get_base_command_string</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="sd">&quot;&quot;&quot;Create the gnuplot command for plotting this item.</span>
 
 <span class="sd">            The basecommand is different each time because each FIFOWriter</span>
@@ -650,7 +642,7 @@
             <span class="c1"># Create a new FIFO and a thread to write to it.  Retrieve the</span>
             <span class="c1"># filename of the FIFO to be used in the basecommand.</span>
             <span class="n">fifo</span> <span class="o">=</span> <span class="n">_FIFOWriter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">gp</span><span class="o">.</span><span class="n">double_quote_string</span><span class="p">(</span><span class="n">fifo</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">gp</span><span class="o">.</span><span class="n">double_quote_string</span><span class="p">(</span><span class="n">fifo</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="File"><a class="viewcode-back" href="../../../../api/PyFoam.ThirdParty.Gnuplot.PlotItems.html#PyFoam.ThirdParty.Gnuplot.PlotItems.File">[docs]</a><span class="k">def</span> <span class="nf">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">keyw</span><span class="p">):</span>
@@ -920,9 +912,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -931,11 +921,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -948,36 +938,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -162,12 +154,12 @@
 
 <span class="sd">Also hardcodes defaults for the settings&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="k">import</span> <span class="n">configparser</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">iteritems</span><span class="p">,</span><span class="n">PY3</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="kn">import</span> <span class="n">configparser</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">iteritems</span><span class="p">,</span><span class="n">PY3</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Hardcoded</span> <span class="k">import</span> <span class="n">globalConfigFile</span><span class="p">,</span><span class="n">userConfigFile</span><span class="p">,</span><span class="n">globalDirectory</span><span class="p">,</span><span class="n">userDirectory</span><span class="p">,</span><span class="n">globalConfigDir</span><span class="p">,</span><span class="n">userConfigDir</span><span class="p">,</span><span class="n">pyFoamSiteVar</span><span class="p">,</span><span class="n">siteConfigDir</span><span class="p">,</span><span class="n">siteConfigFile</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Hardcoded</span> <span class="kn">import</span> <span class="n">globalConfigFile</span><span class="p">,</span><span class="n">userConfigFile</span><span class="p">,</span><span class="n">globalDirectory</span><span class="p">,</span><span class="n">userDirectory</span><span class="p">,</span><span class="n">globalConfigDir</span><span class="p">,</span><span class="n">userConfigDir</span><span class="p">,</span><span class="n">pyFoamSiteVar</span><span class="p">,</span><span class="n">siteConfigDir</span><span class="p">,</span><span class="n">siteConfigFile</span>
 
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span><span class="p">,</span><span class="n">environ</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span><span class="n">environ</span>
 <span class="kn">import</span> <span class="nn">glob</span><span class="o">,</span><span class="nn">re</span>
 
 <span class="n">_defaults</span><span class="o">=</span><span class="p">{</span>
@@ -206,7 +198,7 @@
         <span class="s2">&quot;Forks&quot;</span> <span class="p">:</span> <span class="s1">&#39;openfoam,extend,openfoamplus&#39;</span><span class="p">,</span>
         <span class="s2">&quot;DirPatterns-openfoam&quot;</span> <span class="p">:</span> <span class="s1">&#39;&quot;^OpenFOAM-(([0-9]\.([0-9]|x)|dev).*)$&quot;,&quot;^OpenFOAM-([0-9]+)$&quot;,&quot;^openfoam([0-9]+)$&quot;&#39;</span><span class="p">,</span>
         <span class="s2">&quot;DirPatterns-extend&quot;</span> <span class="p">:</span> <span class="s1">&#39;&quot;^foam-extend-([0-9]\.[0-9].*)$&quot;&#39;</span><span class="p">,</span>
-        <span class="s2">&quot;DirPatterns-openfoamplus&quot;</span> <span class="p">:</span> <span class="s1">&#39;&quot;^OpenFOAM-((v[0-9]\.[0-9]\+|plus|v1[0-9]+(\+|)).*)$&quot;&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;DirPatterns-openfoamplus&quot;</span> <span class="p">:</span> <span class="s1">&#39;&quot;^OpenFOAM-((v[0-9]\.[0-9]\+|plus|v[123][0-9]+(\+|)).*)$&quot;&#39;</span><span class="p">,</span>
         <span class="s2">&quot;Installation-openfoam&quot;</span> <span class="p">:</span> <span class="s2">&quot;~/OpenFOAM&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Installation-openfoamplus&quot;</span> <span class="p">:</span> <span class="s2">&quot;~/OpenFOAM&quot;</span><span class="p">,</span>
         <span class="s2">&quot;Installation-extend&quot;</span> <span class="p">:</span> <span class="s2">&quot;~/foam&quot;</span><span class="p">,</span>
@@ -485,7 +477,7 @@
         <span class="s2">&quot;chtSolidTemperature&quot;</span> <span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;solvers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;chtMultiRegion.*Foam&quot;</span> <span class="p">],</span>
             <span class="s2">&quot;plotinfo&quot;</span> <span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;slave&quot;</span> <span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;collector&quot;</span> <span class="p">,</span>
                 <span class="s2">&quot;master&quot;</span> <span class="p">:</span> <span class="s2">&quot;chtfluidtemperature&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;expr&quot;</span> <span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;Min/max T:min\(T\) \[0 0 0 1 0 0 0\] (.+) max\(T\) \[0 0 0 1 0 0 0\] (.+)&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;titles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;solid min&quot;</span> <span class="p">,</span> <span class="s2">&quot;solid max&quot;</span><span class="p">]</span>
@@ -539,7 +531,7 @@
         <span class="s2">&quot;aspectRatioDynamicMesh&quot;</span> <span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;solvers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;move.*Mesh&quot;</span> <span class="p">,</span> <span class="s2">&quot;.*DyM.*&quot;</span> <span class="p">],</span>
             <span class="s2">&quot;plotinfo&quot;</span> <span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;slave&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;collector&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;master&quot;</span> <span class="p">:</span> <span class="s2">&quot;nonorhogonalitydynamicmesh&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;expr&quot;</span> <span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;Max aspect ratio = (\S+)&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;titles&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;max aspect&quot;</span><span class="p">]</span>
@@ -548,7 +540,7 @@
         <span class="s2">&quot;interfaceCourant&quot;</span> <span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;solvers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;inter.*&quot;</span> <span class="p">],</span>
             <span class="s2">&quot;plotinfo&quot;</span> <span class="p">:</span> <span class="p">{</span>
-<span class="c1">#                &quot;type&quot; : &quot;slave&quot;,</span>
+<span class="c1">#                &quot;type&quot; : &quot;collector&quot;,</span>
 <span class="c1">#                &quot;master&quot; : &quot;courant&quot;,</span>
                 <span class="s2">&quot;theTitle&quot;</span> <span class="p">:</span> <span class="s2">&quot;Interface courant number&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;expr&quot;</span> <span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;Interface Courant Number mean: (.+) max: (.+)&quot;</span><span class="p">,</span>
@@ -606,7 +598,7 @@
         <span class="s2">&quot;foamyTotalDisplacement&quot;</span> <span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;solvers&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;foamyHexMesh&quot;</span><span class="p">],</span>
             <span class="s2">&quot;plotinfo&quot;</span> <span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;slave&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;collector&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;master&quot;</span> <span class="p">:</span> <span class="s2">&quot;foamytotaldistance&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;expr&quot;</span> <span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;Total displacement = \((.+) (.+) (.+)\)&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;titles&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">]</span>
@@ -630,21 +622,21 @@
     <span class="sd">&quot;&quot;&quot;Wraps a Confguration so that the section automatically becomes the</span>
 <span class="sd">    first argument&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">conf</span><span class="p">,</span><span class="n">section</span><span class="p">):</span>
+<div class="viewcode-block" id="ConfigurationSectionProxy.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.Configuration.html#PyFoam.Infrastructure.Configuration.ConfigurationSectionProxy.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">conf</span><span class="p">,</span><span class="n">section</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="o">=</span><span class="n">conf</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="o">=</span><span class="n">section</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="o">=</span><span class="n">section</span></div>
 
-    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="ConfigurationSectionProxy.__getattr__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.Configuration.html#PyFoam.Infrastructure.Configuration.ConfigurationSectionProxy.__getattr__">[docs]</a>    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
         <span class="n">f</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf</span><span class="p">,</span><span class="n">name</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">curried</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">section</span><span class="p">,)</span><span class="o">+</span><span class="n">args</span><span class="p">),</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">curried</span></div>
+        <span class="k">return</span> <span class="n">curried</span></div></div>
 
 <div class="viewcode-block" id="Configuration"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.Configuration.html#PyFoam.Infrastructure.Configuration.Configuration">[docs]</a><span class="k">class</span> <span class="nc">Configuration</span><span class="p">(</span><span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Reads the settings from files (if existing). Otherwise uses hardcoded</span>
 <span class="sd">    defaults&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Configuration.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.Configuration.html#PyFoam.Infrastructure.Configuration.Configuration.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs the ConfigParser and fills it with the hardcoded defaults&quot;&quot;&quot;</span>
         <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -673,7 +665,7 @@
 
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span><span class="n">sections</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">validSections</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">sections</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid configuration for&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="s2">&quot;there is no default section for it in&quot;</span><span class="p">,</span><span class="n">sections</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid configuration for&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="s2">&quot;there is no default section for it in&quot;</span><span class="p">,</span><span class="n">sections</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Configuration.sectionProxy"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.Configuration.html#PyFoam.Infrastructure.Configuration.Configuration.sectionProxy">[docs]</a>    <span class="k">def</span> <span class="nf">sectionProxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">section</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a proxy object that makes it possible to avoid the section</span>
@@ -683,7 +675,7 @@
 <div class="viewcode-block" id="Configuration.bestSection"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.Configuration.html#PyFoam.Infrastructure.Configuration.Configuration.bestSection">[docs]</a>    <span class="k">def</span> <span class="nf">bestSection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">section</span><span class="p">,</span><span class="n">option</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the best-fitting section that has that option&quot;&quot;&quot;</span>
 
-        <span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">foamVersionString</span>
+        <span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">foamVersionString</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">validSections</span><span class="p">[</span><span class="n">section</span><span class="p">])</span><span class="o">==</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">foamVersionString</span><span class="p">()</span><span class="o">==</span><span class="s2">&quot;&quot;</span><span class="p">:</span>
@@ -892,9 +884,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -903,11 +893,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -920,36 +910,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

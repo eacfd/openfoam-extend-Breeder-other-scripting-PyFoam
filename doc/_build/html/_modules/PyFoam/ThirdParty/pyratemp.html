@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -143,8 +137,6 @@
     
     
       <li class="wy-breadcrumbs-aside">
-        
-            
         
       </li>
     
@@ -339,12 +331,12 @@
 <span class="c1">#=========================================</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="k">import</span> <span class="n">builtins</span> <span class="k">as</span> <span class="n">__builtin__</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="kn">import</span> <span class="n">builtins</span> <span class="k">as</span> <span class="n">__builtin__</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">iteritems</span><span class="p">,</span><span class="n">text_type</span><span class="p">,</span><span class="n">string_types</span><span class="p">,</span><span class="n">PY3</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">u</span> <span class="k">as</span> <span class="n">toUni</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">iteritems</span><span class="p">,</span><span class="n">text_type</span><span class="p">,</span><span class="n">string_types</span><span class="p">,</span><span class="n">PY3</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">u</span> <span class="k">as</span> <span class="n">toUni</span>
 
 <span class="c1"># convert to unicode (independent of python3)</span>
 <div class="viewcode-block" id="toUniCode"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.toUniCode">[docs]</a><span class="k">def</span> <span class="nf">toUniCode</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
@@ -482,7 +474,7 @@
 
 <div class="viewcode-block" id="TemplateParseError"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.TemplateParseError">[docs]</a><span class="k">class</span> <span class="nc">TemplateParseError</span><span class="p">(</span><span class="n">TemplateException</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Template parsing failed.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">errpos</span><span class="p">):</span>
+<div class="viewcode-block" id="TemplateParseError.__init__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.TemplateParseError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">errpos</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :Parameters:</span>
 <span class="sd">            - `err`:    error-message or exception to wrap</span>
@@ -490,12 +482,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">err</span> <span class="o">=</span> <span class="n">err</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">errpos</span>
-        <span class="n">TemplateException</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">TemplateException</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+<div class="viewcode-block" id="TemplateParseError.__str__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.TemplateParseError.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;line </span><span class="si">%d</span><span class="s2">, col </span><span class="si">%d</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">&quot;file </span><span class="si">%s</span><span class="s2">, line </span><span class="si">%d</span><span class="s2">, col </span><span class="si">%d</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">))</span></div>
+            <span class="k">return</span> <span class="s2">&quot;file </span><span class="si">%s</span><span class="s2">, line </span><span class="si">%d</span><span class="s2">, col </span><span class="si">%d</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">err</span><span class="p">))</span></div></div>
 
 <div class="viewcode-block" id="TemplateSyntaxError"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.TemplateSyntaxError">[docs]</a><span class="k">class</span> <span class="nc">TemplateSyntaxError</span><span class="p">(</span><span class="n">TemplateParseError</span><span class="p">,</span> <span class="ne">SyntaxError</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Template syntax-error.&quot;&quot;&quot;</span>
@@ -517,8 +509,8 @@
 
 <span class="sd">    Note that &#39;include&#39; is not possible in such templates.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+<div class="viewcode-block" id="LoaderString.__init__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.LoaderString.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span></div>
 
 <div class="viewcode-block" id="LoaderString.load"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.LoaderString.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return template-string as unicode.</span>
@@ -537,7 +529,7 @@
 <span class="sd">    and security, all included templates have to be in the same directory!</span>
 <span class="sd">    (see ``allowed_path``)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allowed_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="LoaderFile.__init__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.LoaderFile.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allowed_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Init the loader.</span>
 
 <span class="sd">        :Parameters:</span>
@@ -549,7 +541,7 @@
         <span class="k">if</span> <span class="n">allowed_path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">allowed_path</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;allowed_path&#39; has to be a directory.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span>     <span class="o">=</span> <span class="n">allowed_path</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span></div>
 
 <div class="viewcode-block" id="LoaderFile.load"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.LoaderFile.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Load a template from a file.</span>
@@ -659,7 +651,7 @@
     <span class="n">_reMacroParam</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;^\w+$&quot;&quot;&quot;</span><span class="p">)</span>
 
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loadfunc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">testexpr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">escape</span><span class="o">=</span><span class="n">HTML</span><span class="p">):</span>
+<div class="viewcode-block" id="Parser.__init__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Parser.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loadfunc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">testexpr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">escape</span><span class="o">=</span><span class="n">HTML</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Init the parser.</span>
 
 <span class="sd">        :Parameters:</span>
@@ -689,7 +681,7 @@
         <span class="k">if</span> <span class="n">escape</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ESCAPE_SUPPORTED</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported &#39;escape&#39; (</span><span class="si">%s</span><span class="s2">).&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">escape</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">escape</span> <span class="o">=</span> <span class="n">escape</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_includestack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_includestack</span> <span class="o">=</span> <span class="p">[]</span></div>
 
 <div class="viewcode-block" id="Parser.parse"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Parser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parse a template.</span>
@@ -705,20 +697,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_includestack</span> <span class="o">=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span> <span class="n">template</span><span class="p">)]</span>   <span class="c1"># for error-messages (_errpos)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">template</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_errpos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpos</span><span class="p">):</span>
+<div class="viewcode-block" id="Parser._errpos"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Parser._errpos">[docs]</a>    <span class="k">def</span> <span class="nf">_errpos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpos</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert `fpos` to ``(filename,row,column)`` for error-messages.&quot;&quot;&quot;</span>
         <span class="n">filename</span><span class="p">,</span> <span class="n">string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_includestack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">filename</span><span class="p">,</span> <span class="n">srow</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">fpos</span><span class="p">),</span> <span class="n">scol</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">fpos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">filename</span><span class="p">,</span> <span class="n">srow</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">fpos</span><span class="p">),</span> <span class="n">scol</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">fpos</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_testexpr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span>  <span class="n">fpos</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="Parser._testexpr"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Parser._testexpr">[docs]</a>    <span class="k">def</span> <span class="nf">_testexpr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span>  <span class="n">fpos</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Test a template-expression to detect errors.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_testexprfunc</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">SyntaxError</span><span class="p">:</span>
             <span class="n">err</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Needed because python 2.5 does not support &#39;as e&#39;</span>
-            <span class="k">raise</span> <span class="n">TemplateSyntaxError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_errpos</span><span class="p">(</span><span class="n">fpos</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">TemplateSyntaxError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_errpos</span><span class="p">(</span><span class="n">fpos</span><span class="p">))</span></div>
 
-    <span class="k">def</span> <span class="nf">_parse_sub</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsetree</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fpos</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="Parser._parse_sub"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Parser._parse_sub">[docs]</a>    <span class="k">def</span> <span class="nf">_parse_sub</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsetree</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fpos</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Parse substitutions, and append them to the parse-tree.</span>
 
 <span class="sd">        Additionally, remove comments.</span>
@@ -748,9 +740,9 @@
             <span class="n">curr</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">curr</span><span class="p">:</span>
-            <span class="n">parsetree</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reComment</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="n">curr</span><span class="p">:])))</span>
+            <span class="n">parsetree</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reComment</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="n">curr</span><span class="p">:])))</span></div>
 
-    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">fpos</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="Parser._parse"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Parser._parse">[docs]</a>    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">fpos</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Recursive part of `parse()`.</span>
 
 <span class="sd">        :Parameters:</span>
@@ -913,7 +905,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">template</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">curr</span><span class="p">:</span>            <span class="c1"># process template-part after last block</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_parse_sub</span><span class="p">(</span><span class="n">parsetree</span><span class="p">,</span> <span class="n">template</span><span class="p">[</span><span class="n">curr</span><span class="p">:],</span> <span class="n">fpos</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">parsetree</span></div>
+        <span class="k">return</span> <span class="n">parsetree</span></div></div>
 
 <span class="c1">#-----------------------------------------</span>
 <span class="c1"># Evaluation</span>
@@ -991,7 +983,7 @@
         <span class="s2">&quot;True&quot;</span>      <span class="p">:</span> <span class="s2">&quot;__builtin__.True&quot;</span><span class="p">,</span>
         <span class="s2">&quot;False&quot;</span>     <span class="p">:</span> <span class="s2">&quot;__builtin__.False&quot;</span><span class="p">,</span>
     <span class="p">}</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="EvalPseudoSandbox.__init__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.EvalPseudoSandbox.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_compile_cache</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">locals_ptr</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">eval_allowed_globals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">safe_builtins</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1001,7 +993,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;__import__&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_import</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;exists&quot;</span><span class="p">,</span>  <span class="bp">self</span><span class="o">.</span><span class="n">f_exists</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_default</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;setvar&quot;</span><span class="p">,</span>  <span class="bp">self</span><span class="o">.</span><span class="n">f_setvar</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;setvar&quot;</span><span class="p">,</span>  <span class="bp">self</span><span class="o">.</span><span class="n">f_setvar</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="EvalPseudoSandbox.register"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.EvalPseudoSandbox.register">[docs]</a>    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add an object to the &quot;allowed eval-globals&quot;.</span>
@@ -1139,7 +1131,7 @@
 <span class="sd">    the template.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsetree</span><span class="p">,</span> <span class="n">renderfunc</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="TemplateBase.__init__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.TemplateBase.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsetree</span><span class="p">,</span> <span class="n">renderfunc</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create the Template/Subtemplate/Macro.</span>
 
 <span class="sd">        :Parameters:</span>
@@ -1159,9 +1151,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;&quot;data&quot; must be a dict (or None).&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_data</span> <span class="o">=</span> <span class="n">data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_render</span> <span class="o">=</span> <span class="n">renderfunc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_render</span> <span class="o">=</span> <span class="n">renderfunc</span></div>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">override</span><span class="p">):</span>
+<div class="viewcode-block" id="TemplateBase.__call__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.TemplateBase.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">override</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fill out/render the template.</span>
 
 <span class="sd">        :Parameters:</span>
@@ -1175,19 +1167,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">current_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">override</span><span class="p">)</span>
         <span class="n">u</span> <span class="o">=</span> <span class="n">toUniCode</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_render</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parsetree</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_data</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>       <span class="c1"># restore current_data</span>
-        <span class="k">return</span> <span class="n">_dontescape</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>               <span class="c1"># (see class _dontescape)</span>
+        <span class="k">return</span> <span class="n">_dontescape</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>               <span class="c1"># (see class _dontescape)</span></div>
 
-    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="TemplateBase.__unicode__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.TemplateBase.__unicode__">[docs]</a>    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Alias for __call__().&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__call__</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Only here for completeness. Use __unicode__ instead!&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__call__</span><span class="p">()</span></div>
+<div class="viewcode-block" id="TemplateBase.__str__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.TemplateBase.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Only here for completeness. Use __unicode__ instead!&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__call__</span><span class="p">()</span></div></div>
 
 <span class="c1">#-----------------------------------------</span>
 <span class="c1"># Renderer</span>
 
-<span class="k">class</span> <span class="nc">_dontescape</span><span class="p">(</span><span class="n">text_type</span><span class="p">):</span>
+<div class="viewcode-block" id="_dontescape"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp._dontescape">[docs]</a><span class="k">class</span> <span class="nc">_dontescape</span><span class="p">(</span><span class="n">text_type</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Unicode-string which should not be escaped.</span>
 
 <span class="sd">    If ``isinstance(object,_dontescape)``, then don&#39;t escape the object in</span>
@@ -1197,7 +1189,7 @@
 <span class="sd">    :Note: This only works if the object is used on its own in ``@!...!@``.</span>
 <span class="sd">           It i.e. does not work in ``@!object*2!@`` or ``@!object + &quot;hi&quot;!@``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[]</span></div>
 
 
 <div class="viewcode-block" id="Renderer"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Renderer">[docs]</a><span class="k">class</span> <span class="nc">Renderer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1206,7 +1198,7 @@
 <span class="sd">    :Uses: `TemplateBase` for macros</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">):</span>
+<div class="viewcode-block" id="Renderer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Renderer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evalfunc</span><span class="p">,</span> <span class="n">escapefunc</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Init the renderer.</span>
 
 <span class="sd">        :Parameters:</span>
@@ -1217,16 +1209,16 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#TODO: test evalfunc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evalfunc</span> <span class="o">=</span> <span class="n">evalfunc</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">escapefunc</span> <span class="o">=</span> <span class="n">escapefunc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">escapefunc</span> <span class="o">=</span> <span class="n">escapefunc</span></div>
 
-    <span class="k">def</span> <span class="nf">_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="Renderer._eval"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Renderer._eval">[docs]</a>    <span class="k">def</span> <span class="nf">_eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;evalfunc with error-messages&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evalfunc</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="c1">#TODO: any other errors to catch here?</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span><span class="ne">NameError</span><span class="p">,</span><span class="ne">IndexError</span><span class="p">,</span><span class="ne">KeyError</span><span class="p">,</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">SyntaxError</span><span class="p">):</span>
             <span class="n">err</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Needed because python 2.5 does not support &#39;as e&#39;</span>
-            <span class="k">raise</span> <span class="n">TemplateRenderError</span><span class="p">(</span><span class="s2">&quot;Cannot eval expression &#39;</span><span class="si">%s</span><span class="s2">&#39;. (</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">TemplateRenderError</span><span class="p">(</span><span class="s2">&quot;Cannot eval expression &#39;</span><span class="si">%s</span><span class="s2">&#39;. (</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Renderer.render"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Renderer.render">[docs]</a>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsetree</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Render a parse-tree of a template.</span>
@@ -1305,7 +1297,7 @@
 <span class="sd">        see module-docstring</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">parsetree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">escape</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>
+<div class="viewcode-block" id="Template.__init__"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp.Template.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">parsetree</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">escape</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>
             <span class="n">loader_class</span><span class="o">=</span><span class="n">LoaderFile</span><span class="p">,</span>
             <span class="n">parser_class</span><span class="o">=</span><span class="n">Parser</span><span class="p">,</span>
             <span class="n">renderer_class</span><span class="o">=</span><span class="n">Renderer</span><span class="p">,</span>
@@ -1353,16 +1345,16 @@
         <span class="n">renderfunc</span> <span class="o">=</span> <span class="n">renderer_class</span><span class="p">(</span><span class="n">templateeval</span><span class="o">.</span><span class="n">eval</span><span class="p">,</span> <span class="n">escape_func</span><span class="p">)</span><span class="o">.</span><span class="n">render</span>
 
         <span class="c1">#create template</span>
-        <span class="n">TemplateBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsetree</span><span class="p">,</span> <span class="n">renderfunc</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div>
+        <span class="n">TemplateBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsetree</span><span class="p">,</span> <span class="n">renderfunc</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div></div>
 
 
 <span class="c1">#=========================================</span>
 <span class="c1">#doctest</span>
 
-<span class="k">def</span> <span class="nf">_doctest</span><span class="p">():</span>
+<div class="viewcode-block" id="_doctest"><a class="viewcode-back" href="../../../api/PyFoam.ThirdParty.pyratemp.html#PyFoam.ThirdParty.pyratemp._doctest">[docs]</a><span class="k">def</span> <span class="nf">_doctest</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;doctest this module.&quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
-    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span></div>
 
 <span class="c1">#----------------------</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -1374,9 +1366,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1385,11 +1375,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1402,36 +1392,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

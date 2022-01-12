@@ -57,7 +57,7 @@ class GeneralLineAnalyzer(LogLineAnalyzer):
         self.startTime=startTime
         self.endTime=endTime
 
-        self.master=None
+        self.publisher = None
 
         self.didProgress=False
         self.progressTemplate=progressTemplate
@@ -79,11 +79,14 @@ class GeneralLineAnalyzer(LogLineAnalyzer):
         else:
             return {}
 
-    def setMaster(self,master):
+    def setMaster(self, master):
+        self.setPublisher(master)
+
+    def setPublisher(self, publisher):
         """Assign another line-analyzer that will do the actual data gathering"""
-        self.master=master
-        if self.lines and self.master.lines:
-            self.master.lines.addSlave(self.lines)
+        self.publisher = publisher
+        if self.lines and self.publisher.lines:
+            self.publisher.lines.addCollector(self.lines)
 
     def setTitles(self,titles):
         """

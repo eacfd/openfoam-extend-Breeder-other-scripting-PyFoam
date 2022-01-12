@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.Basics package" href="PyFoam.Basics.html"/>
-        <link rel="next" title="PyFoam.Basics.GnuplotTimelines module" href="PyFoam.Basics.GnuplotTimelines.html"/>
-        <link rel="prev" title="PyFoam.Basics.GnuplotCompare module" href="PyFoam.Basics.GnuplotCompare.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.Basics.GnuplotTimelines module" href="PyFoam.Basics.GnuplotTimelines.html" />
+    <link rel="prev" title="PyFoam.Basics.GnuplotCompare module" href="PyFoam.Basics.GnuplotCompare.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,11 +182,37 @@
 <p>Analyze a file with GNUPLOT-Data</p>
 <dl class="class">
 <dt id="PyFoam.Basics.GnuplotFile.GnuplotFile">
-<em class="property">class </em><code class="descclassname">PyFoam.Basics.GnuplotFile.</code><code class="descname">GnuplotFile</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/GnuplotFile.html#GnuplotFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Basics.GnuplotFile.</code><code class="sig-name descname">GnuplotFile</code><span class="sig-paren">(</span><em class="sig-param">fname</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/GnuplotFile.html#GnuplotFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="PyFoam.Basics.GnuplotFile.GnuplotFile.__dict__">
+<code class="sig-name descname">__dict__</code><em class="property"> = mappingproxy({'__module__': 'PyFoam.Basics.GnuplotFile', '__init__': &lt;function GnuplotFile.__init__&gt;, 'analyze': &lt;function GnuplotFile.analyze&gt;, 'writePlotFile': &lt;function GnuplotFile.writePlotFile&gt;, '__dict__': &lt;attribute '__dict__' of 'GnuplotFile' objects&gt;, '__weakref__': &lt;attribute '__weakref__' of 'GnuplotFile' objects&gt;, '__doc__': None})</em><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.Basics.GnuplotFile.GnuplotFile.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">fname</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/GnuplotFile.html#GnuplotFile.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fname</strong> – The filename</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.GnuplotFile.GnuplotFile.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Basics.GnuplotFile'</em><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.GnuplotFile.GnuplotFile.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="PyFoam.Basics.GnuplotFile.GnuplotFile.analyze">
-<code class="descname">analyze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/GnuplotFile.html#GnuplotFile.analyze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile.analyze" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">analyze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/GnuplotFile.html#GnuplotFile.analyze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile.analyze" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find out how many columns there are and what their names are</p>
 <p>There are two cases:</p>
 <blockquote>
@@ -207,16 +227,13 @@ is analyzed and used as names</p>
 
 <dl class="method">
 <dt id="PyFoam.Basics.GnuplotFile.GnuplotFile.writePlotFile">
-<code class="descname">writePlotFile</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/GnuplotFile.html#GnuplotFile.writePlotFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile.writePlotFile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">writePlotFile</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/GnuplotFile.html#GnuplotFile.writePlotFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.GnuplotFile.GnuplotFile.writePlotFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes a file that can be used by Gnuplot</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> – name of the file</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – name of the file</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -225,9 +242,7 @@ is analyzed and used as names</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -236,7 +251,7 @@ is analyzed and used as names</p>
         <a href="PyFoam.Basics.GnuplotTimelines.html" class="btn btn-neutral float-right" title="PyFoam.Basics.GnuplotTimelines module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.Basics.GnuplotCompare.html" class="btn btn-neutral" title="PyFoam.Basics.GnuplotCompare module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.Basics.GnuplotCompare.html" class="btn btn-neutral float-left" title="PyFoam.Basics.GnuplotCompare module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -245,11 +260,11 @@ is analyzed and used as names</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -262,36 +277,15 @@ is analyzed and used as names</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

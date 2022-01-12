@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.LogAnalysis package" href="PyFoam.LogAnalysis.html"/>
-        <link rel="next" title="PyFoam.LogAnalysis.StandardLogAnalyzer module" href="PyFoam.LogAnalysis.StandardLogAnalyzer.html"/>
-        <link rel="prev" title="PyFoam.LogAnalysis.ReplayDataFileAnalyzer module" href="PyFoam.LogAnalysis.ReplayDataFileAnalyzer.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.LogAnalysis.StandardLogAnalyzer module" href="PyFoam.LogAnalysis.StandardLogAnalyzer.html" />
+    <link rel="prev" title="PyFoam.LogAnalysis.ReplayDataFileAnalyzer module" href="PyFoam.LogAnalysis.ReplayDataFileAnalyzer.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,44 +182,115 @@
 <p>Do analysis for simple expressions</p>
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.SimpleLineAnalyzer.</code><code class="descname">GeneralSimpleLineAnalyzer</code><span class="sig-paren">(</span><em>name</em>, <em>exp</em>, <em>idNr=None</em>, <em>idList=None</em>, <em>titles=[]</em>, <em>doTimelines=True</em>, <em>doFiles=True</em>, <em>singleFile=False</em>, <em>startTime=None</em>, <em>endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#GeneralSimpleLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.GeneralLineAnalyzer.html#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer" title="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.SimpleLineAnalyzer.</code><code class="sig-name descname">GeneralSimpleLineAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">exp</em>, <em class="sig-param">idNr=None</em>, <em class="sig-param">idList=None</em>, <em class="sig-param">titles=[]</em>, <em class="sig-param">doTimelines=True</em>, <em class="sig-param">doFiles=True</em>, <em class="sig-param">singleFile=False</em>, <em class="sig-param">startTime=None</em>, <em class="sig-param">endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#GeneralSimpleLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.GeneralLineAnalyzer.html#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer" title="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer</span></code></a></p>
 <p>Parses lines for an arbitrary regular expression</p>
 <p>Differs from RegExpLineAnalyzer because it doesn’t store its data</p>
 <dl class="method">
-<dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.addToFiles">
-<code class="descname">addToFiles</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#GeneralSimpleLineAnalyzer.addToFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.addToFiles" title="Permalink to this definition">¶</a></dt>
+<dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">exp</em>, <em class="sig-param">idNr=None</em>, <em class="sig-param">idList=None</em>, <em class="sig-param">titles=[]</em>, <em class="sig-param">doTimelines=True</em>, <em class="sig-param">doFiles=True</em>, <em class="sig-param">singleFile=False</em>, <em class="sig-param">startTime=None</em>, <em class="sig-param">endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#GeneralSimpleLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – name of the expression (needed for output)</p></li>
+<li><p><strong>exp</strong> – the regular expression</p></li>
+<li><p><strong>idNr</strong> – number of the pattern group that is used as an identifier</p></li>
+<li><p><strong>idList</strong> – numbers of the pattern group that are used from the expression</p></li>
+<li><p><strong>titles</strong> – titles for the data items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.SimpleLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.addToFiles">
+<code class="sig-name descname">addToFiles</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#GeneralSimpleLineAnalyzer.addToFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.addToFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that adds matched data to files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>match</strong> – data matched by a regular expression</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.addToTimelines">
-<code class="descname">addToTimelines</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#GeneralSimpleLineAnalyzer.addToTimelines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.addToTimelines" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">addToTimelines</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#GeneralSimpleLineAnalyzer.addToTimelines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.addToTimelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that adds matched data to timelines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>match</strong> – data matched by a regular expression</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.SimpleLineAnalyzer.</code><code class="descname">SimpleLineAnalyzer</code><span class="sig-paren">(</span><em>name</em>, <em>exp</em>, <em>idNr=None</em>, <em>titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#SimpleLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer" title="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.SimpleLineAnalyzer.</code><code class="sig-name descname">SimpleLineAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">exp</em>, <em class="sig-param">idNr=None</em>, <em class="sig-param">titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#SimpleLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer" title="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer</span></code></a></p>
 <p>Parses lines for an arbitrary regular expression</p>
 <p>Differs from RegExpLineAnalyzer because it doesn’t store its data</p>
+<dl class="method">
+<dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">exp</em>, <em class="sig-param">idNr=None</em>, <em class="sig-param">titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#SimpleLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – name of the expression (needed for output)</p></li>
+<li><p><strong>exp</strong> – the regular expression</p></li>
+<li><p><strong>idNr</strong> – number of the pattern group that is used as an identifier</p></li>
+<li><p><strong>titles</strong> – titles for the data items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.SimpleLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.SimpleLineAnalyzer.</code><code class="descname">TimeLineSimpleLineAnalyzer</code><span class="sig-paren">(</span><em>name</em>, <em>exp</em>, <em>idList=None</em>, <em>titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#TimeLineSimpleLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer" title="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.SimpleLineAnalyzer.</code><code class="sig-name descname">TimeLineSimpleLineAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">exp</em>, <em class="sig-param">idList=None</em>, <em class="sig-param">titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#TimeLineSimpleLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer" title="PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer</span></code></a></p>
 <p>Parses lines for an arbitrary regular expression</p>
+<dl class="method">
+<dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">exp</em>, <em class="sig-param">idList=None</em>, <em class="sig-param">titles=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/SimpleLineAnalyzer.html#TimeLineSimpleLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – name of the expression (needed for output)</p></li>
+<li><p><strong>exp</strong> – the regular expression</p></li>
+<li><p><strong>idList</strong> – numbers of the pattern group that are used from the expression</p></li>
+<li><p><strong>titles</strong> – titles for the data items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.SimpleLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -234,7 +299,7 @@
         <a href="PyFoam.LogAnalysis.StandardLogAnalyzer.html" class="btn btn-neutral float-right" title="PyFoam.LogAnalysis.StandardLogAnalyzer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.LogAnalysis.ReplayDataFileAnalyzer.html" class="btn btn-neutral" title="PyFoam.LogAnalysis.ReplayDataFileAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.LogAnalysis.ReplayDataFileAnalyzer.html" class="btn btn-neutral float-left" title="PyFoam.LogAnalysis.ReplayDataFileAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -243,11 +308,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -260,36 +325,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

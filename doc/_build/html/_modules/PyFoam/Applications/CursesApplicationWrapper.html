@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -167,13 +159,13 @@
     <span class="n">hasCurses</span><span class="o">=</span><span class="kc">False</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">as</span> <span class="nn">six</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
 
-<span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
 
 <span class="n">rexpr</span><span class="o">=</span><span class="p">[]</span>
 
@@ -196,7 +188,7 @@
     <span class="n">REGEX_COLOR</span>   <span class="o">=</span> <span class="mi">3</span>
     <span class="n">GROUP_COLOR</span>   <span class="o">=</span> <span class="mi">4</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">wind</span><span class="p">,</span><span class="n">app</span><span class="p">,</span>
+<div class="viewcode-block" id="CWindow.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">wind</span><span class="p">,</span><span class="n">app</span><span class="p">,</span>
                  <span class="n">bufflen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                  <span class="n">powerline</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">handleKeyboard</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -250,7 +242,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">keyMessage</span><span class="o">=</span><span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__staticBuffer</span><span class="o">=</span><span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__staticOffset</span><span class="o">=</span><span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__staticOffset</span><span class="o">=</span><span class="mi">0</span></div>
 
 <div class="viewcode-block" id="CWindow.incrOffset"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow.incrOffset">[docs]</a>    <span class="k">def</span> <span class="nf">incrOffset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">incr</span><span class="p">):</span>
         <span class="n">my</span><span class="p">,</span><span class="n">mx</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
@@ -301,7 +293,7 @@
 
 <div class="viewcode-block" id="CWindow.updateHeaderText"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow.updateHeaderText">[docs]</a>    <span class="k">def</span> <span class="nf">updateHeaderText</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">headerText</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">FoamInformation</span> <span class="k">as</span> <span class="n">FI</span>
+            <span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">FoamInformation</span> <span class="k">as</span> <span class="n">FI</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">headerText</span><span class="o">=</span><span class="p">[(</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
                               <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">getApplication</span><span class="p">(),</span>
                               <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">FI</span><span class="o">.</span><span class="n">foamFork</span><span class="p">(),</span><span class="n">FI</span><span class="o">.</span><span class="n">foamVersionString</span><span class="p">()))]</span>
@@ -328,7 +320,7 @@
         <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">:</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">oldStderr</span></div>
 
-    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CWindow._update"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow._update">[docs]</a>    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">maxy</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">maxx</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wind</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">wind</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">headerLen</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">headerText</span><span class="p">),</span><span class="bp">self</span><span class="o">.</span><span class="n">maxy</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
@@ -355,7 +347,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">footer</span><span class="o">.</span><span class="n">bkgd</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="n">curses</span><span class="o">.</span><span class="n">A_REVERSE</span><span class="o">|</span><span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HEADER_COLOR</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">footer</span><span class="o">.</span><span class="n">attrset</span><span class="p">(</span><span class="n">curses</span><span class="o">.</span><span class="n">A_REVERSE</span><span class="o">|</span><span class="n">curses</span><span class="o">.</span><span class="n">color_pair</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">HEADER_COLOR</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">footer</span><span class="o">=</span><span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">footer</span><span class="o">=</span><span class="kc">None</span></div>
 
 <div class="viewcode-block" id="CWindow.update"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">resize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">onlyHeader</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
@@ -364,7 +356,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_reprint</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">_reprint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CWindow._reprint"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow._reprint">[docs]</a>    <span class="k">def</span> <span class="nf">_reprint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="o">.</span><span class="n">erase</span><span class="p">()</span>
@@ -375,7 +367,7 @@
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">my</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineBuffer</span><span class="p">)))):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_writeLine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineBuffer</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">off</span><span class="p">)])</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CWindow.drawHeadFoot"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow.drawHeadFoot">[docs]</a>    <span class="k">def</span> <span class="nf">drawHeadFoot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">subwin</span><span class="p">,</span><span class="n">textIn</span><span class="p">):</span>
         <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">textIn</span> <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
@@ -480,12 +472,12 @@
 
         <span class="n">subwin</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">_ensureSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CWindow._ensureSize"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow._ensureSize">[docs]</a>    <span class="k">def</span> <span class="nf">_ensureSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">maxy</span><span class="p">,</span><span class="n">maxx</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wind</span><span class="o">.</span><span class="n">getmaxyx</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">maxx</span><span class="o">!=</span><span class="bp">self</span><span class="o">.</span><span class="n">maxx</span> <span class="ow">or</span> <span class="n">maxy</span><span class="o">!=</span><span class="bp">self</span><span class="o">.</span><span class="n">maxy</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">_checkHeaders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="CWindow._checkHeaders"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow._checkHeaders">[docs]</a>    <span class="k">def</span> <span class="nf">_checkHeaders</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ensureSize</span><span class="p">()</span>
 
         <span class="n">oldHeaderLenght</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">headerText</span><span class="p">)</span>
@@ -501,7 +493,7 @@
         <span class="k">if</span> <span class="n">newHeaderText</span> <span class="ow">or</span> <span class="n">force</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">drawHeadFoot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">headerText</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">newFooterText</span> <span class="ow">or</span> <span class="n">force</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">drawHeadFoot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">footer</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">footerText</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">drawHeadFoot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">footer</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">footerText</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CWindow.handleKey"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow.handleKey">[docs]</a>    <span class="k">def</span> <span class="nf">handleKey</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">key</span><span class="o">==</span><span class="nb">ord</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">isStatic</span><span class="p">():</span>
@@ -567,7 +559,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">_writeLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
+<div class="viewcode-block" id="CWindow._writeLine"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow._writeLine">[docs]</a>    <span class="k">def</span> <span class="nf">_writeLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">l</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
 
@@ -587,13 +579,13 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">():])</span>
                 <span class="k">break</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tout</span><span class="o">.</span><span class="n">addstr</span><span class="p">(</span><span class="n">l</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CWindow.buffer"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindow.buffer">[docs]</a>    <span class="k">def</span> <span class="nf">buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineBuffer</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="CWindowAnalyzed"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindowAnalyzed">[docs]</a><span class="k">class</span> <span class="nc">CWindowAnalyzed</span><span class="p">(</span><span class="n">CWindow</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">wind</span><span class="p">,</span><span class="n">app</span><span class="p">,</span><span class="n">bufflen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">powerline</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="CWindowAnalyzed.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindowAnalyzed.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">wind</span><span class="p">,</span><span class="n">app</span><span class="p">,</span><span class="n">bufflen</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">powerline</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">CWindow</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">wind</span><span class="p">,</span><span class="n">app</span><span class="p">,</span><span class="n">bufflen</span><span class="o">=</span><span class="n">bufflen</span><span class="p">,</span><span class="n">powerline</span><span class="o">=</span><span class="n">powerline</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__contentGenerators</span><span class="o">=</span><span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currTime</span><span class="o">=</span><span class="mi">0</span>
@@ -605,7 +597,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">=</span><span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">restartCount</span><span class="o">=</span><span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="CWindowAnalyzed.isStatic"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindowAnalyzed.isStatic">[docs]</a>    <span class="k">def</span> <span class="nf">isStatic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__contentGenerators</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">or</span> <span class="n">CWindow</span><span class="o">.</span><span class="n">isStatic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
@@ -621,7 +613,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">runner</span><span class="o">=</span><span class="n">runner</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="CWindowAnalyzed._reset"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindowAnalyzed._reset">[docs]</a>    <span class="k">def</span> <span class="nf">_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currTime</span><span class="o">=</span><span class="mi">0</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nSteps</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">restartCount</span><span class="o">+=</span><span class="mi">1</span>
@@ -634,7 +626,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">caseName</span><span class="o">=</span><span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">execName</span><span class="o">=</span><span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">headerChanged</span><span class="o">=</span><span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">headerChanged</span><span class="o">=</span><span class="kc">False</span></div>
 
 <div class="viewcode-block" id="CWindowAnalyzed.timeChanged"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindowAnalyzed.timeChanged">[docs]</a>    <span class="k">def</span> <span class="nf">timeChanged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nSteps</span><span class="o">+=</span><span class="mi">1</span>
@@ -658,10 +650,10 @@
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyzer</span><span class="o">.</span><span class="n">hasAnalyzer</span><span class="p">(</span><span class="s2">&quot;ExecName&quot;</span><span class="p">):</span>
                     <span class="n">caseName</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">analyzer</span><span class="o">.</span><span class="n">getAnalyzer</span><span class="p">(</span><span class="s2">&quot;ExecName&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">caseName</span>
                     <span class="k">if</span> <span class="n">caseName</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">caseName</span><span class="p">):</span>
-                        <span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="k">import</span> <span class="n">SolutionDirectory</span>
+                        <span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="kn">import</span> <span class="n">SolutionDirectory</span>
                         <span class="n">sol</span><span class="o">=</span><span class="n">SolutionDirectory</span><span class="p">(</span><span class="n">caseName</span><span class="p">,</span><span class="n">paraviewLink</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">sol</span><span class="p">:</span>
-                <span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParameterFile</span> <span class="k">import</span> <span class="n">ParameterFile</span>
+                <span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParameterFile</span> <span class="kn">import</span> <span class="n">ParameterFile</span>
                 <span class="n">control</span><span class="o">=</span><span class="n">ParameterFile</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">controlDict</span><span class="p">())</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">endTime</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">control</span><span class="o">.</span><span class="n">readParameter</span><span class="p">(</span><span class="s2">&quot;endTime&quot;</span><span class="p">))</span>
@@ -674,7 +666,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">execName</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">analyzer</span><span class="o">.</span><span class="n">getAnalyzer</span><span class="p">(</span><span class="s2">&quot;ExecName&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">execName</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">headerChanged</span><span class="o">=</span><span class="kc">True</span>
 
-        <span class="kn">from</span> <span class="nn">PyFoam.LogAnalysis.LogLineAnalyzer</span> <span class="k">import</span> <span class="n">LogLineAnalyzer</span>
+        <span class="kn">from</span> <span class="nn">PyFoam.LogAnalysis.LogLineAnalyzer</span> <span class="kn">import</span> <span class="n">LogLineAnalyzer</span>
         <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">LogLineAnalyzer</span><span class="o">.</span><span class="n">allRegexp</span><span class="p">:</span>
             <span class="n">addExpr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 
@@ -704,7 +696,7 @@
         <span class="k">return</span> <span class="n">update</span></div>
 
 <div class="viewcode-block" id="CWindowAnalyzed.updateFooterText"><a class="viewcode-back" href="../../../api/PyFoam.Applications.CursesApplicationWrapper.html#PyFoam.Applications.CursesApplicationWrapper.CWindowAnalyzed.updateFooterText">[docs]</a>    <span class="k">def</span> <span class="nf">updateFooterText</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">PyFoam.LogAnalysis.LogLineAnalyzer</span> <span class="k">import</span> <span class="n">LogLineAnalyzer</span>
+        <span class="kn">from</span> <span class="nn">PyFoam.LogAnalysis.LogLineAnalyzer</span> <span class="kn">import</span> <span class="n">LogLineAnalyzer</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">footerText</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;Lines: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lineCount</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">analyzer</span><span class="o">.</span><span class="n">analyzedLines</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyzer</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
                           <span class="s2">&quot;Time </span><span class="si">{}</span><span class="s2"> to </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">startTime</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">endTime</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">startTime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
@@ -726,7 +718,7 @@
 <span class="c1">#                                    &quot;Now: %f&quot; % self.currTime,</span>
 <span class="c1">#                                    &quot;Clock: %f&quot; % self.clockTime ])</span>
 
-            <span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+            <span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
             <span class="n">targetLen</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">maxx</span><span class="o">-</span><span class="mi">1</span>
             <span class="n">progString</span><span class="o">=</span><span class="n">tqdm</span><span class="o">.</span><span class="n">format_meter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nSteps</span><span class="p">,</span>
                                          <span class="n">total</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">nSteps</span><span class="p">),</span>
@@ -766,9 +758,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -777,11 +767,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -794,36 +784,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

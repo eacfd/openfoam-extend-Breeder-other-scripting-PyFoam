@@ -47,7 +47,7 @@ _defaults={
         "Forks" : 'openfoam,extend,openfoamplus',
         "DirPatterns-openfoam" : '"^OpenFOAM-(([0-9]\.([0-9]|x)|dev).*)$","^OpenFOAM-([0-9]+)$","^openfoam([0-9]+)$"',
         "DirPatterns-extend" : '"^foam-extend-([0-9]\.[0-9].*)$"',
-        "DirPatterns-openfoamplus" : '"^OpenFOAM-((v[0-9]\.[0-9]\+|plus|v1[0-9]+(\+|)).*)$"',
+        "DirPatterns-openfoamplus" : '"^OpenFOAM-((v[0-9]\.[0-9]\+|plus|v[123][0-9]+(\+|)).*)$"',
         "Installation-openfoam" : "~/OpenFOAM",
         "Installation-openfoamplus" : "~/OpenFOAM",
         "Installation-extend" : "~/foam",
@@ -326,7 +326,7 @@ Full command: |-commandLine-|""",
         "chtSolidTemperature" : {
             "solvers" : [ "chtMultiRegion.*Foam" ],
             "plotinfo" : {
-                "type" : "slave" ,
+                "type" : "collector" ,
                 "master" : "chtfluidtemperature",
                 "expr" : r"Min/max T:min\(T\) \[0 0 0 1 0 0 0\] (.+) max\(T\) \[0 0 0 1 0 0 0\] (.+)",
                 "titles" : [ "solid min" , "solid max"]
@@ -380,7 +380,7 @@ Full command: |-commandLine-|""",
         "aspectRatioDynamicMesh" : {
             "solvers" : [ "move.*Mesh" , ".*DyM.*" ],
             "plotinfo" : {
-                "type" : "slave",
+                "type" : "collector",
                 "master" : "nonorhogonalitydynamicmesh",
                 "expr" : r"Max aspect ratio = (\S+)",
                 "titles" : ["max aspect"]
@@ -389,7 +389,7 @@ Full command: |-commandLine-|""",
         "interfaceCourant" : {
             "solvers" : [ "inter.*" ],
             "plotinfo" : {
-#                "type" : "slave",
+#                "type" : "collector",
 #                "master" : "courant",
                 "theTitle" : "Interface courant number",
                 "expr" : r"Interface Courant Number mean: (.+) max: (.+)",
@@ -447,7 +447,7 @@ Full command: |-commandLine-|""",
         "foamyTotalDisplacement" : {
             "solvers" : ["foamyHexMesh"],
             "plotinfo" : {
-                "type" : "slave",
+                "type" : "collector",
                 "master" : "foamytotaldistance",
                 "expr" : r"Total displacement = \((.+) (.+) (.+)\)",
                 "titles" : ["x","y","z"]

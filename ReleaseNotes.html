@@ -1,7 +1,69 @@
+<h1 id="version-2021.06---2021-06-08">Version 2021.06 - 2021-06-08</h1>
+<p>A minor bugfix release</p>
+<h2 id="bug-fixes">Bug fixes</h2>
+<h3 id="switching-wm_compile_option-doesnt-work">Switching <code>WM_COMPILE_OPTION</code> doesn't work</h3>
+<p>The <code>--force-debug</code> option doesn't work because of some changes to the init-scripts. This has been fixed</p>
+<h3 id="pyfoampreparecase.py-reports-about-1-processor-directory"><code>pyFoamPrepareCase.py</code> reports about 1 processor directory</h3>
+<p>Because of a change in the way processor directories are detected there was a warning at the end of <code>pyFoamPrepareCase.py</code> about 1 processor directory being present even if there is none. This has been fixed</p>
+<h1 id="version-2021.05---2021-05-30">Version 2021.05 - 2021-05-30</h1>
+<h2 id="nomenclature-change">Nomenclature change</h2>
+<h3 id="renaming-of-master-slave-plots-to-collector-publisher">Renaming of <code>master</code> / <code>slave</code> plots to <code>collector</code> / <code>publisher</code></h3>
+<p>As the termonology of <code>master</code> / <code>slave</code> -processes (which has been common in programming for processes where one does the work and the other consumes the products of that work) is increasingly seen as offensive it was decided to change this terminology for plots which got their data from two or more sources.</p>
+<p>Instead of the previously used <code>type slave</code> in <code>customRegexp</code> which was used for plots that sent their data to another plot to be displayed in that plots window now the <code>type collector</code> should be used. Instead of the entry <code>master</code> now an entry <code>publisher</code> is used.</p>
+<p>This new nomenclature also describes the relationship of the two plots more accurately. The previous names were inaccurate as the "master" was doing the work of displaying the data while the "slave" was doing nothing</p>
+<p>In order to keep the transition painless for users the old <code>master</code> / <code>slave</code> keywords still work so old <code>customRegexp</code>-files don't have to be changed</p>
+<h2 id="enhancements-to-the-utilities">Enhancements to the utilities</h2>
+<h3 id="pyfoamlistcases.py-indicates-if-the-simulation-ran-to-the-end"><code>pyFoamListCases.py</code> indicates if the simulation ran to the end</h3>
+<p>Now if the first timestep is the <code>startTime</code> and the last time is the <code>endTime</code> then it is indicated by a <code>=</code> between them (instead of the usual <code>-</code>) in the list</p>
+<h3 id="pyfoambinarysize.py-now-reports-the-size-of-thirdparty-as-well"><code>pyFoamBinarySize.py</code> now reports the size of <code>ThirdParty</code> as well</h3>
+<p>The utility now looks for the corresponding <code>ThirdPArty</code>-directory of an installation and sums that as well. This can be switched off</p>
+<h3 id="pyfoamplotrunner.py-now-also-supports-pre--and-post-hooks"><code>pyFoamPlotRunner.py</code> now also supports pre- and post-hooks</h3>
+<p>The utility now also supports the pre- and post-hooks that <code>pyFoamRunner.py</code> supports. But they have to be enabled explicitly</p>
+<h3 id="pyfoamlistprofilinginfo.py-now-removes-nodes-with-little-computation-time"><code>pyFoamListProfilingInfo.py</code> now removes nodes with little computation time</h3>
+<p>With the option <code>--threshold-low</code> it is now possible to remove nodes with little computation time that would clutter up the output. Input is a number between 0 and 100 and nodes whose total computation time (including children) is less percent (compared to the overall computation time) then the node is removed</p>
+<h3 id="pyfoamlistprofilinginfo.py-now-allows-generation-of-graphs"><code>pyFoamListProfilingInfo.py</code> now allows generation of graphs</h3>
+<p>With the option <code>graphviz-dot</code> the utility produces output that can be piped into the <code>dot</code>-utility of the <a href="https://graphviz.org/">GraphViz</a> suite.</p>
+<p>The nodes are colored by the amount of computation time they use (without their child nodes). The edges are colored by the fraction of computation time the child node uses of the parent node. The thickness of the edges corresponds to the percentage of the overall computation all child nodes use</p>
+<p>The utility has options to change the title of the plot and the color theme</p>
+<h3 id="enhanced-algorithm-for-the-splitting-of-data">Enhanced algorithm for the splitting of data</h3>
+<p>The algorithm to reduce the amount of data plotted has now been improved. The previous algorithm produced "coarse" artefacts in the beginning of the plot because the actual time (and thus the resolution of the x-axis) was not considered. The new algorithm tries to distribute the reduction evenly over time so that "every" pixel of the x-axis has at least one value.</p>
+<p>The most recent data points are not coarsened. The fraction of points that is not coarsened can be set with the option <code>--fraction-unchanged-by-splitting</code> with a default of 0.2</p>
+<h2 id="enhancements-to-the-library">Enhancements to the library</h2>
+<h3 id="speedup-of-plotting-of-long-timelines">Speedup of plotting of long timelines</h3>
+<p>For large arrays the preparation of the data to plot in <code>gnuplot</code> was very inefficiently implemented in the original <code>Gnuplot</code>-library.</p>
+<p>The code now uses <code>numpy</code> and speeds up that part of the code by 10-20 times (for large arrays)</p>
+<p>These changes have been reverted and replaced by a different implementation as the <code>numpy</code>-implementation was slower than expected</p>
+<h3 id="number-of-processors-now-correctly-for-runs-with-collated-data">Number of processors now correctly for runs with collated data</h3>
+<p>Now the number of processors in a case is now detected in such a way:</p>
+<ol>
+<li>If directories with the names <code>processor</code> followed by numbers are found then it is assumed that the number of processors is the number of those directories</li>
+<li>If <strong>one</strong> directory named <code>processors</code> followed by a number is found then it is assumed that this number is the number of processors (this is the case for runs with collated data writing)</li>
+<li>Otherwise the number of processors is assumed to be 1</li>
+</ol>
+<p>This is honored by the running utilities with the <code>--autosense-parallel</code> option as well as the <code>--clear</code>-option</p>
+<h2 id="bug-fixes-1">Bug fixes</h2>
+<h3 id="openfoam-v2006-not-detected-as-a-valid-openfoam-version">OpenFOAM v2006 not detected as a valid OpenFOAM-version</h3>
+<p>Because this is the first version with a leading <span class="math inline">2</span> the pattern (which assumed a leading <span class="math inline">1</span> did not find it. This has been adapted that until <code>v3912</code> all versions will be adapted</p>
+<h3 id="for-a-parameter-variation-without-a-0-directory-in-the-template">For a parameter variation without a <code>0</code> directory in the template</h3>
+<p>Reported by David Blacher at <a href="https://www.cfd-online.com/Forums/openfoam-community-contributions/60683-first-discussion-thread-about-pyfoam-33.html#post786352">https://www.cfd-online.com/Forums/openfoam-community-contributions/60683-first-discussion-thread-about-pyfoam-33.html#post786352</a> that the handling of the <code>0</code>-directory is broken for parameter variation runs where no <code>0</code> exists in the template case. This is fixed according to his suggestion</p>
+<h3 id="auto-plotting-of-markers-causes-problem-with-snappyhexmesh">Auto-plotting of markers causes problem with <code>snappyHexMesh</code></h3>
+<p>As reported on <a href="https://sourceforge.net/p/openfoam-extend/ticketspyfoam/227/">https://sourceforge.net/p/openfoam-extend/ticketspyfoam/227/</a> by Guillaume Broggi the auto-plotting of markers for <code>snappyHexMesh</code> causes problems with <code>pyFoamRunner.py</code> because the <code>Dummy</code>-plotter does not implement the appropriate methods. This has been fixed</p>
+<h3 id="single-parameter-makes-pyfoampreparecase-fail">Single parameter makes <code>pyFoamPrepareCase</code> fail</h3>
+<p>This was reported on the MessageBoard</p>
+<p>If only one parameter is defined then the routine for formatting the parameters failed</p>
+<p>Fixed</p>
+<h3 id="unmatched-values-are-plotted-as-0">Unmatched values are plotted as 0</h3>
+<p>Currently if a <code>customRegexp</code> is not matched at <strong>one</strong> time-step then a data line with the values 0 is added. The solution is to set this default to <code>NaN</code></p>
+<h2 id="incompatibilities">Incompatibilities</h2>
+<h3 id="default-value-for-undefined-plot-values-changed-to-not-a-number">Default value for undefined plot values changed to <em>Not a number</em></h3>
+<p>The default value if a custom plot value was not found at a time-step used to be <code>0</code> and was plotted as such. In the current release this has been changed to <code>NaN</code> (Not a Number). Gnuplot interprets this correctly as "missing value". For other plotting interfaces this might lead to undefined behaviour</p>
+<h2 id="infrastructure">Infrastructure</h2>
+<h3 id="error-method-of-pyfoamapplicationclass-now-reports-the-location-it-was-called"><code>error</code> method of <code>PyFoamApplicationClass</code> now reports the location it was called</h3>
+<p>Until now the report only printed the location of the method (which was only of limited usefulness). Now it prints the location where the method was called</p>
 <h1 id="version-2020.05---2020-05-31">Version 2020.05 - 2020-05-31</h1>
 <p>This is the first version of <em>PyFoam</em> where the version numbers change from pseudo-semantic versioning to date-based versions</p>
 <h2 id="new-featuresutilities">New features/utilities</h2>
-<h2 id="enhancements-to-the-utilities">Enhancements to the utilities</h2>
+<h2 id="enhancements-to-the-utilities-1">Enhancements to the utilities</h2>
 <h3 id="paraview-utilities-now-work-in-paraviews-that-use-python-3">Paraview-utilities now work in Paraviews that use Python 3</h3>
 <p>Newer versions of Paraview may use Python 3 as the Python-interpreter which made <code>pyFoamPVSnapshot.py</code> fail.</p>
 <p>The Paraview-utiliies (and the library as well) have been adapted to work with Python 3 <strong>and</strong> 2</p>
@@ -47,7 +109,7 @@
 }
 </code></pre>
 <p>plots the location of the highest speed</p>
-<h2 id="enhancements-to-the-library">Enhancements to the library</h2>
+<h2 id="enhancements-to-the-library-1">Enhancements to the library</h2>
 <h3 id="paraview-classes-now-work-with-python-3">Paraview-classes now work with Python 3</h3>
 <p>See above: <em>Paraview-utilities now work in Paraviews that use Python 3</em></p>
 <h3 id="templatefile-now-can-write-the-result-as-zipped"><code>TemplateFile</code> now can write the result as zipped</h3>
@@ -65,7 +127,7 @@
 <p>The <code>--update</code> switch allows updating the data for runs. Otherwise if the run already exists in the database the utility will fail</p>
 <h3 id="rundatabase-gets-method-modify"><code>RunDatabase</code> gets method <code>modify</code></h3>
 <p>This method allows updating a run with a unique id by specifying a (nested) dictionary with the values</p>
-<h2 id="bug-fixes">Bug fixes</h2>
+<h2 id="bug-fixes-2">Bug fixes</h2>
 <h3 id="auto-for-the-solver-does-not-work-with-compressed-controldict"><code>auto</code> for the solver does not work with compressed <code>controlDict</code></h3>
 <p>If the <code>controlDict</code> was compressed the value of the <code>application</code>-entry could not be read. This has been fixed</p>
 <h3 id="filebasisbackup-now-works-with-zipped-file"><code>FileBasisBackup</code> now works with zipped file</h3>
@@ -74,7 +136,7 @@
 <p>If the <code>controlDict</code> was zipped for some reason then PyFoam (and therefor utilities like <code>pyFoamListCase.py</code>) did not recognize it as a valid case</p>
 <h3 id="pyfoamdisplayblockmesh.py-not-working-with-newer-vtk-versions"><code>pyFoamDisplayBlockMesh.py</code> not working with newer VTK-versions</h3>
 <p>The utility did not work with newer versions of VTK. This has been fixed. In the process support for Python 2.x has been broken</p>
-<h2 id="incompatibilities">Incompatibilities</h2>
+<h2 id="incompatibilities-1">Incompatibilities</h2>
 <h3 id="templatefile-writes-to-zipped-file-if-it-exists"><code>TemplateFile</code> writes to zipped file if it exists</h3>
 <p>The method <code>writeFile</code> looks for a file o the same name with <code>.gz</code> added. If this exists then it is assumed that this should be written (in zipped form)</p>
 <h3 id="pyfoamdisplayblockmesh.py-not-working-with-python-2.x-anymore"><code>pyFoamDisplayBlockMesh.py</code> not working with Python 2.x anymore</h3>
@@ -93,7 +155,7 @@
 <p>If a dataset with the same unique ID is added with <code>add</code> for a second time the method fails with a <code>KeyError</code> unless the <code>update_existing</code>-flag is set</p>
 <p>This has the potential to beak old code (which probably wouldn't work correctly anyway as the old behaviour was to add the data for the rum for a second time)</p>
 <h2 id="code-structure">Code structure</h2>
-<h2 id="infrastructure">Infrastructure</h2>
+<h2 id="infrastructure-1">Infrastructure</h2>
 <h2 id="thirdparty">ThirdParty</h2>
 <h3 id="modification-to-gnuplot-library">Modification to <code>Gnuplot</code>-library</h3>
 <p>There has been a <code>quiet</code>-option added that swallows all terminal output of <code>gnuplot</code>. This only works in the Unix/Linux-implementation. All others ignore it</p>
@@ -103,7 +165,7 @@
 <p>To make sure that the <code>tox</code>-tests are not affected the library is moved into the <code>src</code>-subdirectory</p>
 <h3 id="added-developer-notes">Added Developer notes</h3>
 <p>Added a file <code>DeveloperNotes</code> with hints for people who want to contribute</p>
-<h2 id="incompatibilities-1">Incompatibilities</h2>
+<h2 id="incompatibilities-2">Incompatibilities</h2>
 <h3 id="behaviour-reading-customregexp">Behaviour reading <code>customRegexp</code></h3>
 <p>Macro expansion in the <code>customRegexp</code> might break it for some cases</p>
 <h3 id="gnuplot-does-not-use-fifo-as-the-default-anymore">Gnuplot does not use <code>FIFO</code> as the default anymore</h3>
@@ -171,14 +233,14 @@
 <p>If there is <code>html</code> documentation then this is counted as well</p>
 <h3 id="pyfoamcomparedictionary.py-allows-specification-of-significant-digits"><code>pyFoamCompareDictionary.py</code> allows specification of significant digits</h3>
 <p>When comparing numbers now the number of significant digits can be specified. This only works for single numbers. Not compound types like lists and vectors</p>
-<h2 id="enhancements-to-the-library-1">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-2">Enhancements to the Library</h2>
 <h3 id="progress-data-is-automatically-converted-to-float"><code>progress</code>-data is automatically converted to <code>float</code></h3>
 <p>When using format-strings for the <code>progress</code>-entry then the library automatically attempts to convert the data to <code>float</code> (otherwise it keeps it as <code>str</code>)</p>
 <h3 id="additional-directories-in-foaminformation">Additional directories in <code>FoamInformation</code></h3>
 <p>Two functions <code>foamCaseDicts()</code> and <code>foamPostProcessing()</code> have been added that return the paths to these directories inside <code>$FOAM_ETC</code></p>
 <h3 id="boolproxy-now-works-correctly-with"><code>BoolProxy</code> now works correctly with <code>!=</code></h3>
 <p>Added a method <code>__ne__</code> so that the results of the <code>!=</code> operator are consistent with <code>==</code></p>
-<h2 id="bug-fixes-1">Bug fixes</h2>
+<h2 id="bug-fixes-3">Bug fixes</h2>
 <h3 id="with-dynamic-plots-names-with-_slave-are-problematic">With dynamic plots names with <code>_slave</code> are problematic</h3>
 <p>This made the slave plots that had <code>_slave</code> in the name fail</p>
 <h3 id="new-style-dimensioned-scalars-fail">New-style dimensioned scalars fail</h3>
@@ -199,7 +261,7 @@
 <p>Parts of the <code>FileBasis</code> class were not working correctly in Python 3 because there strings are no longer 'lists of bytes'. This has been adapted so that these parts work correctly in Python 2 <strong>and</strong> 3 and unit tests have been added</p>
 <h1 id="version-0.6.10---2018-08-12">Version 0.6.10 - 2018-08-12</h1>
 <p>This is only a minor release with the main purpose to recognize OpenFOAM 6 installations with their new numbering scheme</p>
-<h2 id="incompatibilities-2">Incompatibilities</h2>
+<h2 id="incompatibilities-3">Incompatibilities</h2>
 <h3 id="pyfoampreparecase.py-does-not-execute-decomposition-scripts-for-single-processor-cases"><code>pyFoamPrepareCase.py</code> does not execute decomposition scripts for single processor cases</h3>
 <p>If <code>numberOfProcessors</code> is smaller than 2 then the decomposition scripts are ignored. This may cause problems in the unlikely case that the setup process relied on these scripts being always executed</p>
 <h2 id="new-featureutilities">New feature/utilities</h2>
@@ -218,16 +280,16 @@
 <h3 id="pyfoamplotwatcher.py-automatically-uses-newest-logfile"><code>pyFoamPlotWatcher.py</code> automatically uses newest logfile</h3>
 <p>If a logfile <code>auto</code> is specified then the utility uses the newest file with the extension <code>.logfile</code> in the current directory.</p>
 <p>Like any automatism this might produce unexpected results. So use with care</p>
-<h2 id="enhancements-to-the-library-2">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-3">Enhancements to the Library</h2>
 <h3 id="foamfilegenerator-handles-ordereddict"><code>FoamFileGenerator</code> handles <code>OrderedDict</code></h3>
 <p>The class now preserves the order if an instance of <code>OrderedDict</code> is found (instead of the usual behaviour of sorting the keys to always get the same output)</p>
 <h3 id="sinclude-handled-as-an-alias-to-includeifpresent"><code>#sinclude</code> handled as an alias to <code>#includeIfPresent</code></h3>
 <p>OpenFOAM v1812 introduces this as an alias. It is now handled by the parser similarly</p>
 <h3 id="openfoam-6-correctly-recognized">OpenFOAM 6 correctly recognized</h3>
 <p>With OpenFOAM 6 the naming scheme changed again. Instead of 6.0 (which PyFoam would have recognized) it is now plain 6. PyFoam now recognizes both forms in the directory name</p>
-<h2 id="bug-fixes-2">Bug fixes</h2>
+<h2 id="bug-fixes-4">Bug fixes</h2>
 <h3 id="pyfoampreparecase.py-did-not-remove-processor-directories"><code>pyFoamPrepareCase.py</code> did not remove <code>processor</code>-directories</h3>
-<h2 id="infrastructure-1">Infrastructure</h2>
+<h2 id="infrastructure-2">Infrastructure</h2>
 <h3 id="single-digit-version-numbers-supported">Single digit version numbers supported</h3>
 <p>Now installations with names like <code>OpenFOAM-6</code> are recognized</p>
 <h1 id="version-0.6.9---2018-02-25">Version 0.6.9 - 2018-02-25</h1>
@@ -237,7 +299,7 @@
 <p>Some utilities enhance the output event further: the Runner and Watches utilities color lines that match regular expressions that are sought for: the line is colored differently and data items (which are usually plotted) are colored even more differently. There is also an additional footer-line with the string that is usally printed by the <code>--progress</code>-option</p>
 <p>Output can be paused by pressing <code>space</code> and resumed by pressing <code>space</code> again. This behavior may be overridden by some utilities</p>
 <p>Caution: on some terminal implementations resizing the terminal causes a segmentation fault of Python which may stop your simulation</p>
-<h2 id="incompatibilities-3">Incompatibilities</h2>
+<h2 id="incompatibilities-4">Incompatibilities</h2>
 <h3 id="pyfoampreparecase.py-creates-.foam-file"><code>pyFoamPrepareCase.py</code> creates <code>.foam</code>-file</h3>
 <p>The utility now automatically creates a file that allows Paraview to open the case</p>
 <h3 id="hardcoded-foam-version-upgraded-to-4.0">Hardcoded Foam-Version upgraded to <code>4.0</code></h3>
@@ -296,12 +358,12 @@
 <p>Instead of a stack trace there is now an output of the template string and the available values</p>
 <h3 id="customregexp-now-searched-in-parent-directories"><code>customRegexp</code> now searched in parent directories</h3>
 <p>If in the directory of the log-file no <code>customRegexp</code> and the log-file is not in the current directory then PyFoam looks for it in all directories up to the current directories</p>
-<h2 id="enhancements-to-the-library-3">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-4">Enhancements to the Library</h2>
 <h3 id="paraview.statefile-extended"><code>Paraview.StateFile</code> extended</h3>
 <p>This module has been extended to allow more flexible manipulations of the state-file</p>
 <h3 id="basicrunner-now-checks-for-regular-end"><code>BasicRunner</code> now checks for regular End</h3>
 <p>The <code>BasicRunner</code> now checks whether the string <code>End</code> was seen and <strong>no</strong> time-information after that. This means that the simulation reached its "regular" end and is also reported in the <code>PyFoamState.TheState</code>-file</p>
-<h2 id="bug-fixes-3">Bug fixes</h2>
+<h2 id="bug-fixes-5">Bug fixes</h2>
 <h3 id="pyfoampreparecaser.py-ran-out-of-memory-for-large-script-outputs"><code>pyFoamPrepareCaser.py</code> ran out of memory for large script outputs</h3>
 <p>Because all the output from scripts was stored in memory before being written to a log it was possible that the utility ran out of memory when there was much output. The output is now written directly to disk</p>
 <h3 id="no-courant-number-plottet-if-wm_project_version-is-unset">No Courant number plottet if <code>WM_PROJECT_VERSION</code> is unset</h3>
@@ -311,7 +373,7 @@
 <h3 id="server-not-correctly-running-on-python-2.7-with-socketserver">Server not correctly running on Python 2.7 with <code>socketserver</code></h3>
 <p>Some installations of Python 2.7 already have the <code>socketserver</code>-module which does not have the required <code>BaseServer</code>-module. Fixed</p>
 <h1 id="version-0.6.8.1---2017-08-03">Version 0.6.8.1 - 2017-08-03</h1>
-<h2 id="bug-fixes-4">Bug fixes</h2>
+<h2 id="bug-fixes-6">Bug fixes</h2>
 <h3 id="fork-not-correctly-detected-for-v1706">Fork not correctly detected for <code>v1706</code></h3>
 <p>As the <code>+</code> is not present in the <code>WM_PROJECT_VERSION</code> this distro was detected as the Foundation fork</p>
 <h1 id="version-0.6.8---2017-07-06">Version 0.6.8 - 2017-07-06</h1>
@@ -330,26 +392,26 @@
 <p>This option (which can be specified more than once) allows specifying single time-steps that should be kept</p>
 <h3 id="pyfoamnetlist.py-no-longer-needs-a-meta-server-to-work"><code>pyFoamNetList.py</code> no longer needs a meta-server to work</h3>
 <p>Due to the addition of <code>ZeroConf</code> this utility no longer needs a Meta-Server to find running calculations in the same subnet</p>
-<h2 id="enhancements-to-the-library-4">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-5">Enhancements to the Library</h2>
 <h3 id="better-calculation-of-used-memory-in-runs">Better calculation of used memory in runs</h3>
 <p>If the <code>psutil</code>-library is installed then the memory used by parallel runs is calculated as well</p>
 <h3 id="pre-and-post-hooks-are-now-also-searched-in-pyfoam.site">Pre and post-hooks are now also searched in <code>PyFoam.Site</code></h3>
 <p><code>module</code> specified in <code>preRunHook_</code> and <code>postRunHook_</code> is now searched in <code>PyFoam.Site.</code> as well. This module is the <code>lib</code>-directory in the directory specified by the environment variable <code>PYFOAM_SITE_DIR</code> (which allows adding user-scripts and modules)</p>
 <h3 id="adapted-to-correctly-detect-openfoam-v1706">Adapted to correctly detect <code>OpenFOAM+ v1706</code></h3>
 <p>This fork has changed its numbering scheme (dropped the <code>+</code> in the version string). This broke a regular expression and a function to detect the number</p>
-<h2 id="infrastructure-2">Infrastructure</h2>
+<h2 id="infrastructure-3">Infrastructure</h2>
 <h3 id="the-runner-utilities-now-register-as-zeroconf-services">The <code>Runner</code>-utilities now register as <code>ZeroConf</code>-services</h3>
 <p>Unless switched off every <code>pyFoam(Plot)Runner.py</code>-controlled run already had a server process that allowed controlling the process. Now the process also advertises itself via <code>ZeroConf</code> (aka <code>Avahi</code>, <code>Bonjour</code>, <code>mDNS</code>. See <a href="https://www.wikiwand.com/en/Zero-configuration_networking">https://www.wikiwand.com/en/Zero-configuration_networking</a>)</p>
 <p>This allows the <code>Net</code>-utilities to operate without a meta-server.</p>
 <p>Due to the limitation of the protocol this only works reliable in the same broadcast-subnet</p>
-<h2 id="bug-fixes-5">Bug fixes</h2>
+<h2 id="bug-fixes-7">Bug fixes</h2>
 <h3 id="keep-interval-in-pyfoamclearcase.py-not-working-for-parallel-cases"><code>--keep-interval</code> in <code>pyFoamClearCase.py</code> not working for parallel-cases</h3>
 <p>Due to a copy/past error this option did not work for parallel cases. This is now fixed</p>
 <h1 id="version-0.6.7---2017-06-04">Version 0.6.7 - 2017-06-04</h1>
 <h2 id="requirements">Requirements</h2>
 <h3 id="now-at-least-python-2.6-required">Now at least Python 2.6 required</h3>
 <p>The new <code>PLY</code>-version and <code>six</code> now at least requires this Python-version. If your system has Python 2.5 or older stick with PyFoam 0.6.6</p>
-<h2 id="incompatibilities-4">Incompatibilities</h2>
+<h2 id="incompatibilities-5">Incompatibilities</h2>
 <h3 id="names-of-files-generated-by-pyfoampvsnapshot.py-differ">Names of files generated by <code>pyFoamPVSnapshot.py</code> differ</h3>
 <p>Due to changes in the time-step numbering the names of the generated files differ. If your work-flow depends on the old names add the options <code>--consecutive-index-for-timesteps</code> and <code>--duplicate-times</code></p>
 <h2 id="new-featuresutilities-3">New features/utilities</h2>
@@ -391,7 +453,7 @@
 <p>Whether or not plots are plotted automatically (for instance the execution time) can be set in the <code>[Plotting]</code>-section of the configuration. So it can be set per-case in the <code>LocalConfigPyFoam</code>-file. If a plot is on by default it can be switched off with the corresponding <code>--no</code>-option. If off by default the <code>--with</code>-option switches it on</p>
 <h3 id="derivedparameters.py-script-called-from-pyfoampreparecase.py-allows-error-reporting"><code>derivedParameters.py</code>-script called from <code>pyFoamPrepareCase.py</code> allows error reporting</h3>
 <p>In that script that calculates new parameters and also can do parameter checking there now is a function <code>error</code> available that makes the script and the complete execution fail</p>
-<h2 id="enhancements-to-the-library-5">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-6">Enhancements to the Library</h2>
 <h3 id="detection-of-new-versions-of-openfoam-foundation-and-openfoam">Detection of new versions of OpenFOAM-foundation and OpenFOAM+</h3>
 <p>Both distros changed their scheme for the version numbers and the regular expressions have been adapted to detect them</p>
 <h3 id="spreadsheetdata-now-handles-string-data"><code>SpreadsheetData</code> now handles string data</h3>
@@ -421,10 +483,10 @@ setCurrentTimeline(self.GetOutput(),&quot;swakExpression_pseudoTime&quot;,&quot;
 <p>This function in <code>PyFoam.Basics.Utilities</code> looks recursively for a file in a directory</p>
 <h3 id="humandreadableduration-added-to-pyfoam.basics.utilities"><code>humandReadableDuration</code> added to <code>PyFoam.Basics.Utilities</code></h3>
 <p>This function takes a duration (in seconds) and prints it in a human-readable form</p>
-<h2 id="infrastructure-3">Infrastructure</h2>
+<h2 id="infrastructure-4">Infrastructure</h2>
 <h3 id="pyfoamversion.py-now-reports-the-versions-of-the-thirdparty-packages"><code>pyFoamVersion.py</code> now reports the versions of the <code>ThirdParty</code>-packages</h3>
 <p>Now these versions are reported as well for quick reference</p>
-<h2 id="bug-fixes-6">Bug Fixes</h2>
+<h2 id="bug-fixes-8">Bug Fixes</h2>
 <h3 id="application-classes-fail-in-paraview">Application classes fail in Paraview</h3>
 <p>The class <code>PyFoamApplication</code> assumes that the module <code>sys</code> has an element <code>argv</code>. This is not the case inside Paraview</p>
 <h3 id="scripts-in-pyfoampreparecaseparameters.sh-not-working-on-mac-os-x">Scripts in <code>pyFoamPrepareCaseParameters.sh</code> not working on Mac OS X</h3>
@@ -445,7 +507,7 @@ setCurrentTimeline(self.GetOutput(),&quot;swakExpression_pseudoTime&quot;,&quot;
 <h3 id="updated-six-to-1.10.0">Updated <code>six</code> to 1.10.0</h3>
 <p>This also breaks compatibiliy with Python 2.5 or older</p>
 <h1 id="version-0.6.6---2016-07-15">Version 0.6.6 - 2016-07-15</h1>
-<h2 id="incompatibilities-5">Incompatibilities</h2>
+<h2 id="incompatibilities-6">Incompatibilities</h2>
 <h3 id="changes-in-ipython-notebooks-3.0">Changes in <code>IPython</code>-notebooks 3.0</h3>
 <p>With IPython 3.0 the names of the Widget classes lost the <code>Widget</code> in the name (for instance <code>DropdownWidget</code> becomes <code>Dropdown</code>). <code>PyFoam</code> has been changed to conform with this but as a consequence won't work with old version of the <code>IPython</code> notebooks</p>
 <h2 id="enhancements-to-utilities-5">Enhancements to Utilities</h2>
@@ -532,7 +594,7 @@ autoplots: cloudNumberMass
 <dd>Replaces the first line (for instance if the header does not match the data
 </dd>
 </dl>
-<h2 id="enhancements-to-the-library-6">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-7">Enhancements to the Library</h2>
 <h3 id="detection-of-openfoam-dev">Detection of <code>OpenFOAM-dev</code></h3>
 <p>A development installation is now also detected and it is assumed that this uses the new calling convention. Also: PyFoam reports this as version <code>9.9.9</code> (as this is larger than any version in the foreseeable future</p>
 <h3 id="add-openfoam-as-a-fork">Add <code>OpenFOAM+</code> as a fork</h3>
@@ -585,7 +647,7 @@ autoplots: cloudNumberMass
 <p>Newer OpenFOAM-versions allow dimensions in symbolic format (for example <code>[ m s^-1 ]</code>). These are now correctly parsed</p>
 <h3 id="parsedparameterfiel-now-parses-uniform-fields-correctly"><code>ParsedParameterFiel</code> now parses uniform fields correctly</h3>
 <p>Fields of the form <code>23 { 4.2 }</code> (meaning "23 times 4.2") are now correctly parsed</p>
-<h2 id="infrastructure-4">Infrastructure</h2>
+<h2 id="infrastructure-5">Infrastructure</h2>
 <h3 id="change-of-documentation-from-epydoc-to-sphinx">Change of documentation from <code>epydoc</code> to <code>sphinx</code></h3>
 <p>As <code>expydoc</code> is discontinued the API-documentation is now generated with <code>sphinx</code>. Just run</p>
 <pre class="example"><code>make docu
@@ -597,7 +659,7 @@ autoplots: cloudNumberMass
 <p>a document set for offline searching with <code>Dash</code> (for Mac OS X) or clones (on other OSes) can be generated</p>
 <h3 id="adaptions-to-the-unittests">Adaptions to the unittests</h3>
 <p>Untitests only used to run correctly if the OpenFOAM-version was 1.7. Are changed to run with OF 3.0. No effort has been made to support intermediate versions as the changes are mainly about changed tutorials</p>
-<h2 id="bug-fixes-7">Bug fixes</h2>
+<h2 id="bug-fixes-9">Bug fixes</h2>
 <h3 id="wrong-format-of-executiontime-breaks-plotting-utilities">Wrong format of <code>ExecutionTime</code> breaks plotting utilities</h3>
 <p>If the <code>ExecutionTime</code> is not as expected <code>pyFoamPlotWatcher.py</code> and <code>pyFoamPlotRunner.py</code> finish with an error. This is now more robust</p>
 <h3 id="phases-not-working-with-dynamic-plots"><code>phases</code> not working with dynamic plots</h3>
@@ -636,7 +698,7 @@ autoplots: cloudNumberMass
 <pre class="example"><code>pip install PyFoam
 </code></pre>
 <p>This will also make sure that the required <code>numpy</code>-package is installed</p>
-<h2 id="incompatibilities-6">Incompatibilities</h2>
+<h2 id="incompatibilities-7">Incompatibilities</h2>
 <h3 id="archivedir-in-solutiondirectory-discouraged"><code>ArchiveDir</code> in <code>SolutionDirectory</code> discouraged</h3>
 <p>As this was never really used it is discouraged (the option is still there).</p>
 <p>If you don't understand what this means it probably doesn't concern you</p>
@@ -681,8 +743,8 @@ autoplots: cloudNumberMass
 <p>This was due to actions being on the same level as the debug-output. Fixed</p>
 <h3 id="annoying-warning-at-the-start-of-the-run">Annoying warning at the start of the run</h3>
 <p>For certain solvers the plot utilities issued a warning during a phase when no information about the current time is available. This is now fixed</p>
-<h3 id="redirected-values">Redirected values</h3>
-<p>not used when iterating over dictionaries When iterating over dictionaries with redirects the values in the redirected dictionaries were not used. This is now fixed</p>
+<h3 id="redirected-values-not-used-when-iterating-over-dictionaries">Redirected values not used when iterating over dictionaries</h3>
+<p>When iterating over dictionaries with redirects the values in the redirected dictionaries were not used. This is now fixed</p>
 <h3 id="behavior-of-template-engine-not-consistent-in-python3-and-python2">Behavior of Template-engine not consistent in Python3 and Python2</h3>
 <p>Due to a difference in the behavior of the <code>eval</code>-function in Python 3 certain expressions (especially with list comprehension) failed. Fixed</p>
 <h3 id="braces-brackets-parentheses-in-column-name-broke-rundatabase">Braces, brackets, parentheses in column name broke <code>RunDatabase</code></h3>
@@ -802,7 +864,7 @@ values {
 <p>The utility tries to determine from the pickled data the host the simulation was run on and prints it (can be switched off with an option)</p>
 <h3 id="pyfoampreparecase.py-allows-cloning"><code>pyFoamPrepareCase.py</code> allows cloning</h3>
 <p>The utility now has an option <code>--clone-case</code> to clone a new case before starting instead of working in the specified directory (in this case the case will be cloned to this directory). The name of the created directory <strong>can</strong> be constructed from the specified parameters with the <code>--automatic-casename</code>-option</p>
-<h2 id="enhancements-to-the-library-7">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-8">Enhancements to the Library</h2>
 <h3 id="solutiondirectory-detects-multiple-regions"><code>SolutionDirectory</code> detects multiple regions</h3>
 <p>Valid regions are sub-directories of <code>constant</code> that have a <code>polyMesh</code>-directory</p>
 <h3 id="boolproxy-now-compares-like-builtin-bool"><code>BoolProxy</code> now compares like builtin <code>bool</code></h3>
@@ -828,7 +890,7 @@ values {
 <p>The methods <code>bulletList</code>, <code>enumerateList</code> and <code>definitionList</code> take lists or dictionaries and mark them as lists</p>
 <h3 id="spreadsheetdata-can-now-read-files-produced-by-the-sets-functionobject"><code>SpreadsheetData</code> can now read files produced by the <code>sets</code>-functionObject</h3>
 <p>If the option <code>isSampleFile</code> is set then it is assumed that the field names are in the filename and there is no header with field names in the file</p>
-<h2 id="infrastructure-5">Infrastructure</h2>
+<h2 id="infrastructure-6">Infrastructure</h2>
 <h3 id="adaption-of-debian-packaging-to-new-conventions">Adaption of Debian packaging to new conventions</h3>
 <p>By Oliver Borm. The building of Debian packages for Python libraries has changes. Necessary adaptions were done by Oliver Borm</p>
 <h2 id="development-changes">Development changes</h2>
@@ -865,7 +927,7 @@ values {
 </dd>
 </dl>
 <p>Purpose of <code>PYFOAM_SITE_DIR</code> is to allow administrators to provide site-wide scripts and settings for all users on a site</p>
-<h2 id="incompatibilities-7">Incompatibilities</h2>
+<h2 id="incompatibilities-8">Incompatibilities</h2>
 <h3 id="option---silent-removed-from-pyfoampreparecase.py">Option <code>--silent</code> removed from <code>pyFoamPrepareCase.py</code></h3>
 <p>Option has been renamed to <code>--no-complain</code></p>
 <h3 id="keys-in-rundatabase-with-column-names-that-contain-upper-case-letters-change">Keys in <code>RunDatabase</code> with column-names that contain upper-case letters change</h3>
@@ -955,7 +1017,7 @@ values {
 <p>The two utilities now can add columns or recalculate columns based on the existing column values</p>
 <h3 id="testing-for-numeric-removed-from-pyfoamversion.py">Testing for <code>Numeric</code> removed from <code>pyFoamVersion.py</code></h3>
 <p>Testing for the library <code>Numeric</code> library removed as it is no longer supported as a fallback for <code>numpy</code>. Test also removed from <code>setup.py</code></p>
-<h2 id="enhancements-to-the-library-8">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-9">Enhancements to the Library</h2>
 <h3 id="subclass-of-clusterjob-that-support-preparecase">Subclass of <code>ClusterJob</code> that support <code>PrepareCase</code></h3>
 <p>The class <code>PrepareCaseJob</code> supports cases that are set up with <code>pyFoamPrepareCase.py</code>. Additional parameters to the constructor are</p>
 <ul>
@@ -1010,7 +1072,7 @@ values {
 <h3 id="version-changing-supports-forks-of-openfoam">Version changing supports forks of OpenFOAM</h3>
 <p>Now <code>pyFoam</code> supports different versions of OpenFOAM for switching. Out of the box <code>openfoam</code> and <code>extend</code> are supported. If only the version number is specified (for instance by <code>--foamVersion=1.7.x</code>) and such a version exists only for one fork it is correctly expanded with the correct fork( in the example with <code>openfoam-1.7.x</code>). If more than one fork has the same version then the fork name has to be specified as well</p>
 <p>Note: additional forks can be easily specified with the configurations. In section <code>OpenFOAM</code> the parameter <code>forks</code> has to be extended. For each new fork a <code>dirpatterns</code> and <code>installation</code>-parameter has to be specified</p>
-<h2 id="incompatibilities-8">Incompatibilities</h2>
+<h2 id="incompatibilities-9">Incompatibilities</h2>
 <h3 id="change-of-command-interface-of-pyfoamstlutility.py">Change of command interface of <code>pyFoamSTLUtility.py</code></h3>
 <p>The selection of what is to be done is now selected by subcommands instead of options. This will break scripts using this</p>
 <h3 id="if-0.org-is-present-pyfoamclonecase.py-and-pyfoampackcase.py-ignore-0">If <code>0.org</code> is present <code>pyFoamCloneCase.py</code> and <code>pyFoamPackCase.py</code> ignore <code>0</code></h3>
@@ -1136,7 +1198,7 @@ values {
 <p>This now automatically happens for OF-versions that support it (2.0 and greater). They can be switched on again</p>
 <h3 id="pyfoamclonecase.py-clones-more-stuff"><code>pyFoamCloneCase.py</code> clones more stuff</h3>
 <p>Files that are assumed to be used by <code>pyFoamPrepareCase.py</code> are automatically added to the clone. This includes all files (and directories) with the extensions <code>.sh</code>, <code>.template</code> and <code>.org</code>. Also IPython notebooks (extension <code>.ipynb</code> are added)</p>
-<h2 id="enhancements-to-the-library-9">Enhancements to the Library</h2>
+<h2 id="enhancements-to-the-library-10">Enhancements to the Library</h2>
 <h3 id="basicrunner-now-can-print-the-command-line-that-is-actually-used"><code>BasicRunner</code> now can print the command line that is actually used</h3>
 <p>This should help with diagnosing problems with MPI etc.</p>
 <p>Can be switched on in some utilities with <code>--echo-command-prefix</code></p>
@@ -1210,7 +1272,7 @@ values {
 <li><code>SpreadsheetData</code> now has methods to return <code>Series</code> and <code>DataFrame</code> objects</li>
 </ul>
 <p>It is not necessary to install <code>pandas</code> if these classes are not used (and even then most of their functionality works)</p>
-<h2 id="incompatibilities-9">Incompatibilities</h2>
+<h2 id="incompatibilities-10">Incompatibilities</h2>
 <h3 id="different-separator-for-databases-in-csv-files">Different separator for databases in CSV-files</h3>
 <p>The class <code>RunDatabase</code> (and therefor also the utility <code>pyFoamDumpRunDatabaseToCSV.py</code>) now write as a separator for data from sub-tables a <code>//</code> instead of the space. This especially means that scripts that rely on a data-item <code>foo</code> in <code>analyzed</code> might break because this is now called <code>analyzed//foo</code> instead of <code>analyzed foo</code>. On the other hand this makes the names more consistent and easier to parse as <code>//</code> is the saperator for other levels of dictionaries</p>
 <h3 id="change-of-independent-variable-name-in-sample-data">Change of independent variable name in sample data</h3>
@@ -1401,7 +1463,7 @@ values {
 <h2 id="third-party">Third-Party</h2>
 <h3 id="upgraded-ply-to-3.4">Upgraded <code>ply</code> to 3.4</h3>
 <p>This brings virtually no changes. <code>README</code> with copyright information has been added</p>
-<h2 id="infrastructure-6">Infrastructure</h2>
+<h2 id="infrastructure-7">Infrastructure</h2>
 <h3 id="parameters-cant-be-modified-in-ctestrun-after-initialization">Parameters can't be modified in <code>CTestRun</code> after initialization</h3>
 <p>This should help to avoid side-effects</p>
 <h3 id="treat-timeouts-in-the-metaserver-right">Treat timeouts in the <code>MetaServer</code> right</h3>

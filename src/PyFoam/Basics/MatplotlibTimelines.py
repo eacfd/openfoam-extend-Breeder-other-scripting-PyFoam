@@ -83,7 +83,7 @@ class MatplotlibTimelines(GeneralPlotTimelines):
             self.with_='lines'
         self.redo()
 
-    def buildData(self,times,name,title,lastValid):
+    def buildData(self, times, name, title, lastValid, tag=None):
         """Build the implementation specific data
         :param times: The vector of times for which data exists
         :param name: the name under which the data is stored in the timeline

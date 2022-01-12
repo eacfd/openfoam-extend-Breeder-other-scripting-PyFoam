@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.RunDictionary package" href="PyFoam.RunDictionary.html"/>
-        <link rel="next" title="PyFoam.RunDictionary.BlockMesh2D module" href="PyFoam.RunDictionary.BlockMesh2D.html"/>
-        <link rel="prev" title="PyFoam.RunDictionary package" href="PyFoam.RunDictionary.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.RunDictionary.BlockMesh2D module" href="PyFoam.RunDictionary.BlockMesh2D.html" />
+    <link rel="prev" title="PyFoam.RunDictionary package" href="PyFoam.RunDictionary.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,31 +182,66 @@
 <p>Manipulate a C{blockMeshDict}</p>
 <dl class="class">
 <dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh">
-<em class="property">class </em><code class="descclassname">PyFoam.RunDictionary.BlockMesh.</code><code class="descname">BlockMesh</code><span class="sig-paren">(</span><em>name</em>, <em>backup=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.RunDictionary.FileBasis.html#PyFoam.RunDictionary.FileBasis.FileBasisBackup" title="PyFoam.RunDictionary.FileBasis.FileBasisBackup"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.RunDictionary.FileBasis.FileBasisBackup</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.RunDictionary.BlockMesh.</code><code class="sig-name descname">BlockMesh</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">backup=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.RunDictionary.FileBasis.html#PyFoam.RunDictionary.FileBasis.FileBasisBackup" title="PyFoam.RunDictionary.FileBasis.FileBasisBackup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.RunDictionary.FileBasis.FileBasisBackup</span></code></a></p>
 <p>Represents a C{blockMeshDict}-file</p>
 <dl class="method">
+<dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh._BlockMesh__endProcess">
+<code class="sig-name descname">_BlockMesh__endProcess</code><span class="sig-paren">(</span><em class="sig-param">newMesh</em>, <em class="sig-param">getContent=True</em><span class="sig-paren">)</span><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh._BlockMesh__endProcess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh._BlockMesh__startProcess">
+<code class="sig-name descname">_BlockMesh__startProcess</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh._BlockMesh__startProcess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">backup=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – The name of the parameter file</p></li>
+<li><p><strong>backup</strong> – create a backup-copy of the file</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.RunDictionary.BlockMesh'</em><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh._getVertexes">
+<code class="sig-name descname">_getVertexes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh._getVertexes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh._getVertexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a dictionary with the 3 components of each vertex as keys
+and the ‘raw’ line as the value</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh.mergeVertices">
-<code class="descname">mergeVertices</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.mergeVertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.mergeVertices" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">mergeVertices</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.mergeVertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.mergeVertices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge in the vertexes from another mesh after our own vertexes</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh.normalizePatches">
-<code class="descname">normalizePatches</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.normalizePatches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.normalizePatches" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">normalizePatches</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.normalizePatches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.normalizePatches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rotate patches so that they start with the lowest number vertex</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh.numberVertices">
-<code class="descname">numberVertices</code><span class="sig-paren">(</span><em>prefix=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.numberVertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.numberVertices" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">numberVertices</code><span class="sig-paren">(</span><em class="sig-param">prefix=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.numberVertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.numberVertices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add comments with the number of the vertex after them
 :param prefix: a string to add before the number</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh.refineMesh">
-<code class="descname">refineMesh</code><span class="sig-paren">(</span><em>factors</em>, <em>offset=(0</em>, <em>0</em>, <em>0)</em>, <em>getContent=False</em>, <em>addOld=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.refineMesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.refineMesh" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">refineMesh</code><span class="sig-paren">(</span><em class="sig-param">factors</em>, <em class="sig-param">offset=(0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">getContent=False</em>, <em class="sig-param">addOld=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.refineMesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.refineMesh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refine the Mesh by multiplying the number of cells in the blocks
 :param factors: either a scalar to scale in all directions or a
 tuple with the value for each direction
@@ -224,14 +253,14 @@ of this parameter is not to break compatibility with old versions</p>
 
 <dl class="method">
 <dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh.renumberVertices">
-<code class="descname">renumberVertices</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.renumberVertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.renumberVertices" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">renumberVertices</code><span class="sig-paren">(</span><em class="sig-param">other</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.renumberVertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.renumberVertices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renumber the vertices in the current mesh according to another
 mesh</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.RunDictionary.BlockMesh.BlockMesh.stripVertexNumber">
-<code class="descname">stripVertexNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.stripVertexNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.stripVertexNumber" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stripVertexNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/BlockMesh.html#BlockMesh.stripVertexNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.BlockMesh.BlockMesh.stripVertexNumber" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove comments after vertices</p>
 </dd></dl>
 
@@ -241,9 +270,7 @@ mesh</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -252,7 +279,7 @@ mesh</p>
         <a href="PyFoam.RunDictionary.BlockMesh2D.html" class="btn btn-neutral float-right" title="PyFoam.RunDictionary.BlockMesh2D module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.RunDictionary.html" class="btn btn-neutral" title="PyFoam.RunDictionary package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.RunDictionary.html" class="btn btn-neutral float-left" title="PyFoam.RunDictionary package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -261,11 +288,11 @@ mesh</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -278,36 +305,15 @@ mesh</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -165,6 +165,7 @@ the extension '.logfile' in the directory and uses that
                            persist=self.opts.persist,
                            quiet=self.opts.quietPlot,
                            splitThres=self.opts.splitDataPointsThreshold if self.opts.doSplitDataPoints else None,
+                           split_fraction_unchanged=self.opts.split_fraction_unchanged,
                            tailLength=self.opts.tail,
                            silent=self.opts.silent or (self.opts.longProgress and self.cursesWindow),
                            hardcopy=self.opts.hardcopy,

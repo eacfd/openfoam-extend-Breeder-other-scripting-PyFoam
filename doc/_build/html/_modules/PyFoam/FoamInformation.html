@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../index.html"/>
-        <link rel="up" title="PyFoam" href="../PyFoam.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -160,19 +152,19 @@
 <span></span><span class="c1">#  ICE Revision: $Id$</span>
 <span class="sd">&quot;&quot;&quot;Getting Information about the Foam-Installation (like the installation directory)&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">environ</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="n">listdir</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">environ</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="n">listdir</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">&lt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">popen2</span> <span class="k">import</span> <span class="n">popen4</span>
+    <span class="kn">from</span> <span class="nn">popen2</span> <span class="kn">import</span> <span class="n">popen4</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span><span class="n">PIPE</span><span class="p">,</span><span class="n">STDOUT</span>
+    <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span><span class="p">,</span><span class="n">PIPE</span><span class="p">,</span><span class="n">STDOUT</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
 
 <div class="viewcode-block" id="getPathFromEnviron"><a class="viewcode-back" href="../../api/PyFoam.FoamInformation.html#PyFoam.FoamInformation.getPathFromEnviron">[docs]</a><span class="k">def</span> <span class="nf">getPathFromEnviron</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Gets a path from an environment variable</span>
@@ -241,8 +233,8 @@
 <span class="c1">#    def __init__(self,data):</span>
 <span class="c1">#        tuple.__init__(self,data)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">])</span></div>
+<div class="viewcode-block" id="VersionTuple.__str__"><a class="viewcode-back" href="../../api/PyFoam.FoamInformation.html#PyFoam.FoamInformation.VersionTuple.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">])</span></div></div>
 
 <div class="viewcode-block" id="foamVersion"><a class="viewcode-back" href="../../api/PyFoam.FoamInformation.html#PyFoam.FoamInformation.foamVersion">[docs]</a><span class="k">def</span> <span class="nf">foamVersion</span><span class="p">(</span><span class="n">useConfigurationIfNoInstallation</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;:return: tuple that represents the Foam-version as found</span>
@@ -347,6 +339,23 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Requested version:&quot;</span><span class="p">,</span><span class="n">newVersion</span><span class="p">,</span><span class="s2">&quot;Matches found:&quot;</span><span class="p">,</span>
               <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;-&quot;</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">found</span> <span class="p">]))</span></div>
+
+
+<div class="viewcode-block" id="findThirdPartyDir"><a class="viewcode-back" href="../../api/PyFoam.FoamInformation.html#PyFoam.FoamInformation.findThirdPartyDir">[docs]</a><span class="k">def</span> <span class="nf">findThirdPartyDir</span><span class="p">(</span><span class="n">newVersion</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">newVersion</span><span class="p">,</span><span class="nb">tuple</span><span class="p">):</span>
+        <span class="n">newVersion</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">newVersion</span><span class="p">)</span>
+
+    <span class="n">fork</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">installation</span> <span class="o">=</span> <span class="n">findInstallationDir</span><span class="p">(</span><span class="n">newVersion</span><span class="p">)</span>
+
+    <span class="n">thirdPartyDir</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">installation</span><span class="p">,</span>
+                              <span class="n">path</span><span class="o">.</span><span class="n">pardir</span><span class="p">,</span>
+                              <span class="s2">&quot;ThirdParty-</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">thirdPartyDir</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">thirdPartyDir</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
 
 <div class="viewcode-block" id="foamInstalledVersions"><a class="viewcode-back" href="../../api/PyFoam.FoamInformation.html#PyFoam.FoamInformation.foamInstalledVersions">[docs]</a><span class="k">def</span> <span class="nf">foamInstalledVersions</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;:return: A list with the installed versions of OpenFOAM&quot;&quot;&quot;</span>
@@ -512,7 +521,7 @@
             <span class="n">shell</span><span class="o">=</span><span class="n">config</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Paths&quot;</span><span class="p">,</span><span class="s2">&quot;bash&quot;</span><span class="p">)</span>
             <span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SHELL&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">shell</span>
 
-        <span class="n">allowedShells</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;bash&quot;</span><span class="p">,</span> <span class="s2">&quot;zsh&quot;</span><span class="p">]</span>
+        <span class="n">allowedShells</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;bash&quot;</span><span class="p">,</span> <span class="s2">&quot;zsh&quot;</span><span class="p">,</span> <span class="s2">&quot;sh&quot;</span><span class="p">,</span> <span class="s2">&quot;dash&quot;</span><span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">shell</span><span class="p">)</span> <span class="ow">in</span> <span class="n">allowedShells</span><span class="p">:</span>
             <span class="n">error</span><span class="p">(</span><span class="s2">&quot;Currently only implemented for the shells&quot;</span><span class="p">,</span><span class="n">allowedShells</span><span class="p">,</span><span class="s2">&quot;, not for&quot;</span><span class="p">,</span><span class="n">shell</span><span class="p">)</span>
 
@@ -530,7 +539,7 @@
         <span class="k">if</span> <span class="n">wmCompiler</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
             <span class="n">cmd</span><span class="o">+=</span><span class="s2">&quot;export WM_COMPILER=&quot;</span><span class="o">+</span><span class="n">wmCompiler</span><span class="o">+</span><span class="s2">&quot;; &quot;</span>
             <span class="n">postCmd</span><span class="o">+=</span><span class="s2">&quot; WM_COMPILER=&quot;</span><span class="o">+</span><span class="n">wmCompiler</span>
-        <span class="n">cmd</span><span class="o">+=</span><span class="s2">&quot;. &quot;</span><span class="o">+</span><span class="n">script</span><span class="o">+</span><span class="n">postCmd</span><span class="o">+</span><span class="s1">&#39;; echo &quot;Starting The Dump Of Variables&quot;; export&#39;</span>
+        <span class="n">cmd</span><span class="o">+=</span><span class="s2">&quot; . &quot;</span><span class="o">+</span><span class="n">script</span><span class="o">+</span><span class="n">postCmd</span><span class="o">+</span><span class="s1">&#39;; echo &quot;Starting The Dump Of Variables&quot;; export&#39;</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="c1"># Instead of &#39;KeyError as name&#39;. This is compatible with 2.4-3.2</span>
         <span class="c1"># http://docs.pythonsprints.com/python3_porting/py-porting.html#handling-exceptions</span>
@@ -540,10 +549,9 @@
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">&lt;</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
         <span class="n">raus</span><span class="p">,</span><span class="n">rein</span> <span class="o">=</span> <span class="n">popen4</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;bash -c &#39;&quot;</span><span class="o">+</span><span class="n">cmd</span><span class="o">+</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                   <span class="n">stdin</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">close_fds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="p">(</span><span class="n">rein</span><span class="p">,</span><span class="n">raus</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stdin</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
-
     <span class="n">lines</span><span class="o">=</span><span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">raus</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
     <span class="n">rein</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">raus</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -551,6 +559,7 @@
     <span class="c1"># clumsy but avoids more complicated expressions</span>
     <span class="n">exp</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;export (.+)=&quot;(.*)&quot;$&#39;</span><span class="p">)</span>
     <span class="n">exp2</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;export (.+)=&#39;(.*)&#39;$&quot;</span><span class="p">)</span>
+    <span class="n">exp3</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;declare -x (.+)=&quot;(.*)&quot;$&#39;</span><span class="p">)</span>
 
     <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span>
 
@@ -558,6 +567,8 @@
         <span class="n">m</span><span class="o">=</span><span class="n">exp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
             <span class="n">m</span><span class="o">=</span><span class="n">exp2</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">m</span><span class="o">=</span><span class="n">exp3</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
             <span class="n">cnt</span><span class="o">+=</span><span class="mi">1</span>
             <span class="n">environ</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span></div>
@@ -568,18 +579,18 @@
     <span class="k">return</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="getPublicKey"><a class="viewcode-back" href="../../api/PyFoam.FoamInformation.html#PyFoam.FoamInformation.getPublicKey">[docs]</a><span class="k">def</span> <span class="nf">getPublicKey</span><span class="p">():</span>
-    <span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Authentication</span> <span class="k">import</span> <span class="n">myPublicKeyText</span><span class="p">,</span><span class="n">ensureKeyPair</span>
+    <span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Authentication</span> <span class="kn">import</span> <span class="n">myPublicKeyText</span><span class="p">,</span><span class="n">ensureKeyPair</span>
     <span class="n">ensureKeyPair</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">myPublicKeyText</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="getAuthenticatedKeys"><a class="viewcode-back" href="../../api/PyFoam.FoamInformation.html#PyFoam.FoamInformation.getAuthenticatedKeys">[docs]</a><span class="k">def</span> <span class="nf">getAuthenticatedKeys</span><span class="p">():</span>
-    <span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Authentication</span> <span class="k">import</span> <span class="n">authenticatedKeys</span><span class="p">,</span><span class="n">ensureKeyPair</span>
+    <span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Authentication</span> <span class="kn">import</span> <span class="n">authenticatedKeys</span><span class="p">,</span><span class="n">ensureKeyPair</span>
     <span class="n">ensureKeyPair</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">authenticatedKeys</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="getUserTempDir"><a class="viewcode-back" href="../../api/PyFoam.FoamInformation.html#PyFoam.FoamInformation.getUserTempDir">[docs]</a><span class="k">def</span> <span class="nf">getUserTempDir</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Return path to a user-specific private directory. Create directory if not existing&quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
+    <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
     <span class="kn">import</span> <span class="nn">tempfile</span><span class="o">,</span><span class="nn">os</span>
 
     <span class="n">tempDir</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">(),</span>
@@ -595,9 +606,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -606,11 +615,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -623,36 +632,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

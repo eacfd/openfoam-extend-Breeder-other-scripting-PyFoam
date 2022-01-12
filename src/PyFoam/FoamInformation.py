@@ -189,6 +189,23 @@ def findInstallationDir(newVersion):
         error("Requested version:",newVersion,"Matches found:",
               ", ".join([ a[0]+"-"+a[1] for a in found ]))
 
+
+def findThirdPartyDir(newVersion):
+    if isinstance(newVersion,tuple):
+        newVersion = "{}-{}".format(*newVersion)
+
+    fork, version, installation = findInstallationDir(newVersion)
+
+    thirdPartyDir = path.join(installation,
+                              path.pardir,
+                              "ThirdParty-{}".format(version))
+
+    if path.isdir(thirdPartyDir):
+        return thirdPartyDir
+    else:
+        return None
+
+
 def foamInstalledVersions():
     """:return: A list with the installed versions of OpenFOAM"""
     global __foamInstallations
@@ -353,7 +370,7 @@ def injectVariables(script,
             shell=config().get("Paths","bash")
             environ["SHELL"]=shell
 
-        allowedShells = [ "bash", "zsh"]
+        allowedShells = [ "bash", "zsh", "sh", "dash"]
         if not path.basename(shell) in allowedShells:
             error("Currently only implemented for the shells",allowedShells,", not for",shell)
 
@@ -371,7 +388,7 @@ def injectVariables(script,
         if wmCompiler!=None:
             cmd+="export WM_COMPILER="+wmCompiler+"; "
             postCmd+=" WM_COMPILER="+wmCompiler
-        cmd+=". "+script+postCmd+'; echo "Starting The Dump Of Variables"; export'
+        cmd+=" . "+script+postCmd+'; echo "Starting The Dump Of Variables"; export'
     except KeyError:
         # Instead of 'KeyError as name'. This is compatible with 2.4-3.2
         # http://docs.pythonsprints.com/python3_porting/py-porting.html#handling-exceptions
@@ -381,10 +398,9 @@ def injectVariables(script,
     if sys.version_info<(2,6):
         raus,rein = popen4(cmd)
     else:
-        p = Popen(cmd, shell=True,
+        p = Popen("bash -c '"+cmd+"'", shell=True,
                   stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
         (rein,raus)=(p.stdin,p.stdout)
-
     lines=[l.strip().decode() for l in raus.readlines()]
     rein.close()
     raus.close()
@@ -392,6 +408,7 @@ def injectVariables(script,
     # clumsy but avoids more complicated expressions
     exp=re.compile('export (.+)="(.*)"$')
     exp2=re.compile("export (.+)='(.*)'$")
+    exp3=re.compile('declare -x (.+)="(.*)"$')
 
     cnt=0
 
@@ -399,6 +416,8 @@ def injectVariables(script,
         m=exp.match(str(l))
         if not m:
             m=exp2.match(str(l))
+        if not m:
+            m=exp3.match(str(l))
         if m:
             cnt+=1
             environ[m.groups()[0]]=m.groups()[1]

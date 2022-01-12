@@ -9,8 +9,8 @@ from PyFoam.Infrastructure.Configuration import Configuration
 
 def version():
     """:return: Version number as a tuple"""
-    return (2020, 5)
-    # return (2020, 5, "development")  # Change in bin/pyFoamVersion.py as well !!!!
+    return (2021, 6)
+    # return (2021, 6, "development")  # Change in bin/pyFoamVersion.py as well !!!!
 
 
 def versionString():

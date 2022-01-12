@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.RunDictionary package" href="PyFoam.RunDictionary.html"/>
-        <link rel="next" title="PyFoam.RunDictionary.MeshInformation module" href="PyFoam.RunDictionary.MeshInformation.html"/>
-        <link rel="prev" title="PyFoam.RunDictionary.LagrangianPatchData module" href="PyFoam.RunDictionary.LagrangianPatchData.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.RunDictionary.MeshInformation module" href="PyFoam.RunDictionary.MeshInformation.html" />
+    <link rel="prev" title="PyFoam.RunDictionary.LagrangianPatchData module" href="PyFoam.RunDictionary.LagrangianPatchData.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,20 +182,35 @@
 <p>File that contains only a list (for instance points)</p>
 <dl class="class">
 <dt id="PyFoam.RunDictionary.ListFile.ListFile">
-<em class="property">class </em><code class="descclassname">PyFoam.RunDictionary.ListFile.</code><code class="descname">ListFile</code><span class="sig-paren">(</span><em>place</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ListFile.html#ListFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ListFile.ListFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.RunDictionary.SolutionFile.html#PyFoam.RunDictionary.SolutionFile.SolutionFile" title="PyFoam.RunDictionary.SolutionFile.SolutionFile"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.RunDictionary.SolutionFile.SolutionFile</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.RunDictionary.ListFile.</code><code class="sig-name descname">ListFile</code><span class="sig-paren">(</span><em class="sig-param">place</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ListFile.html#ListFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ListFile.ListFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.RunDictionary.SolutionFile.html#PyFoam.RunDictionary.SolutionFile.SolutionFile" title="PyFoam.RunDictionary.SolutionFile.SolutionFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.RunDictionary.SolutionFile.SolutionFile</span></code></a></p>
 <p>Represents a OpenFOAM file with only a list</p>
 <dl class="method">
+<dt id="PyFoam.RunDictionary.ListFile.ListFile.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">place</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ListFile.html#ListFile.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ListFile.ListFile.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>place</strong> – directory of the file</p></li>
+<li><p><strong>name</strong> – The name of the list file</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.RunDictionary.ListFile.ListFile.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.RunDictionary.ListFile'</em><a class="headerlink" href="#PyFoam.RunDictionary.ListFile.ListFile.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.RunDictionary.ListFile.ListFile.getSize">
-<code class="descname">getSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ListFile.html#ListFile.getSize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ListFile.ListFile.getSize" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the size of the list</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">getSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ListFile.html#ListFile.getSize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ListFile.ListFile.getSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the size of the list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -210,9 +219,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -221,7 +228,7 @@
         <a href="PyFoam.RunDictionary.MeshInformation.html" class="btn btn-neutral float-right" title="PyFoam.RunDictionary.MeshInformation module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.RunDictionary.LagrangianPatchData.html" class="btn btn-neutral" title="PyFoam.RunDictionary.LagrangianPatchData module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.RunDictionary.LagrangianPatchData.html" class="btn btn-neutral float-left" title="PyFoam.RunDictionary.LagrangianPatchData module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -230,11 +237,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -247,36 +254,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

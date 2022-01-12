@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.Basics package" href="PyFoam.Basics.html"/>
-        <link rel="next" title="PyFoam.Basics.GeneralPlotTimelines module" href="PyFoam.Basics.GeneralPlotTimelines.html"/>
-        <link rel="prev" title="PyFoam.Basics.FoamFileGenerator module" href="PyFoam.Basics.FoamFileGenerator.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.Basics.GeneralPlotTimelines module" href="PyFoam.Basics.GeneralPlotTimelines.html" />
+    <link rel="prev" title="PyFoam.Basics.FoamFileGenerator module" href="PyFoam.Basics.FoamFileGenerator.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,54 +182,90 @@
 <p>Parse options for the PyFoam-Scripts</p>
 <dl class="class">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamHelpFormatter">
-<em class="property">class </em><code class="descclassname">PyFoam.Basics.FoamOptionParser.</code><code class="descname">FoamHelpFormatter</code><span class="sig-paren">(</span><em>indent_increment=0</em>, <em>max_help_position=24</em>, <em>width=None</em>, <em>short_first=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamHelpFormatter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamHelpFormatter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">optparse.TitledHelpFormatter</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Basics.FoamOptionParser.</code><code class="sig-name descname">FoamHelpFormatter</code><span class="sig-paren">(</span><em class="sig-param">indent_increment=0</em>, <em class="sig-param">max_help_position=24</em>, <em class="sig-param">width=None</em>, <em class="sig-param">short_first=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamHelpFormatter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamHelpFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">optparse.TitledHelpFormatter</span></code></p>
 <p>For description and epilog preserve double newlines as one newline</p>
+<dl class="attribute">
+<dt id="PyFoam.Basics.FoamOptionParser.FoamHelpFormatter.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Basics.FoamOptionParser'</em><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamHelpFormatter.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamHelpFormatter.format_description">
-<code class="descname">format_description</code><span class="sig-paren">(</span><em>description</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamHelpFormatter.format_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamHelpFormatter.format_description" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">format_description</code><span class="sig-paren">(</span><em class="sig-param">description</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamHelpFormatter.format_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamHelpFormatter.format_description" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamHelpFormatter.format_epilog">
-<code class="descname">format_epilog</code><span class="sig-paren">(</span><em>epilog</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamHelpFormatter.format_epilog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamHelpFormatter.format_epilog" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">format_epilog</code><span class="sig-paren">(</span><em class="sig-param">epilog</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamHelpFormatter.format_epilog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamHelpFormatter.format_epilog" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser">
-<em class="property">class </em><code class="descclassname">PyFoam.Basics.FoamOptionParser.</code><code class="descname">FoamOptionParser</code><span class="sig-paren">(</span><em>args=None</em>, <em>usage=None</em>, <em>version=None</em>, <em>description=None</em>, <em>epilog=None</em>, <em>examples=None</em>, <em>interspersed=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">optparse.OptionParser</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Basics.FoamOptionParser.</code><code class="sig-name descname">FoamOptionParser</code><span class="sig-paren">(</span><em class="sig-param">args=None</em>, <em class="sig-param">usage=None</em>, <em class="sig-param">version=None</em>, <em class="sig-param">description=None</em>, <em class="sig-param">epilog=None</em>, <em class="sig-param">examples=None</em>, <em class="sig-param">interspersed=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">optparse.OptionParser</span></code></p>
 <p>Wrapper to the usual OptionParser to honor the conventions of OpenFOAM-utilities</p>
 <p>Options that are not used by the script are passed to the OpenFOAM-application</p>
 <dl class="method">
+<dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">args=None</em>, <em class="sig-param">usage=None</em>, <em class="sig-param">version=None</em>, <em class="sig-param">description=None</em>, <em class="sig-param">epilog=None</em>, <em class="sig-param">examples=None</em>, <em class="sig-param">interspersed=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>usage</strong> – usage string. If missing a default is used</p></li>
+<li><p><strong>version</strong> – if missing the PyFoam-version is used</p></li>
+<li><p><strong>description</strong> – description of the utility</p></li>
+<li><p><strong>epilog</strong> – Text to be displayed in the help after the options</p></li>
+<li><p><strong>examples</strong> – Usage examples to be displayed after the epilog</p></li>
+<li><p><strong>interspersed</strong> – needs to be false if options should be passed to an OpenFOAM-utility</p></li>
+<li><p><strong>args</strong> – Command line arguments. If unset sys.argv[1:] is used.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Can be a string: it will be splitted then unsing the spaces (very primitive), or a list of strings (prefered)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Basics.FoamOptionParser'</em><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser._buildKeyordArgumentList">
+<code class="sig-name descname">_buildKeyordArgumentList</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser._buildKeyordArgumentList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser._buildKeyordArgumentList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Go through the lists of options and build a dictionary of keyword
+arguments (in CamelCase)</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.casePath">
-<code class="descname">casePath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.casePath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.casePath" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">casePath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.casePath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.casePath" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the path to the case (if applicable)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getApplication">
-<code class="descname">getApplication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.getApplication"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.getApplication" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">getApplication</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.getApplication"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.getApplication" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the OpenFOAM-Application to be run</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs">
-<code class="descname">getArgs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.getArgs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">getArgs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.getArgs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the arguments left after parsing</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getOptions">
-<code class="descname">getOptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.getOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.getOptions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">getOptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.getOptions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.getOptions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the options</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><em>nr=None</em>, <em>exactNr=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.parse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">nr=None</em>, <em class="sig-param">exactNr=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>parse the options
 :param nr: minimum number of arguments that are to be passed to the application
 3 is default for pre-1.5 versions of OpenFOAM</p>
@@ -243,12 +273,12 @@
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.processKeywordArguments">
-<code class="descname">processKeywordArguments</code><span class="sig-paren">(</span><em>kw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.processKeywordArguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.processKeywordArguments" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">processKeywordArguments</code><span class="sig-paren">(</span><em class="sig-param">kw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.processKeywordArguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.processKeywordArguments" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.FoamOptionParser.restoreEnvironment">
-<code class="descname">restoreEnvironment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.restoreEnvironment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.restoreEnvironment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">restoreEnvironment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#FoamOptionParser.restoreEnvironment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser.restoreEnvironment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Restore the environment to its old glory… if it was changed</p>
 </dd></dl>
 
@@ -256,39 +286,100 @@
 
 <dl class="class">
 <dt id="PyFoam.Basics.FoamOptionParser.Subcommand">
-<em class="property">class </em><code class="descclassname">PyFoam.Basics.FoamOptionParser.</code><code class="descname">Subcommand</code><span class="sig-paren">(</span><em>name</em>, <em>parser=None</em>, <em>help=''</em>, <em>aliases=()</em>, <em>nr=None</em>, <em>exactNr=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#Subcommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.Subcommand" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Basics.FoamOptionParser.</code><code class="sig-name descname">Subcommand</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">parser=None</em>, <em class="sig-param">help=''</em>, <em class="sig-param">aliases=()</em>, <em class="sig-param">nr=None</em>, <em class="sig-param">exactNr=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#Subcommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.Subcommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A subcommand of a root command-line application that may be
 invoked by a SubcommandOptionParser.
 Taken from <a class="reference external" href="https://gist.github.com/sampsyo/462717">https://gist.github.com/sampsyo/462717</a></p>
+<dl class="attribute">
+<dt id="PyFoam.Basics.FoamOptionParser.Subcommand.__dict__">
+<code class="sig-name descname">__dict__</code><em class="property"> = mappingproxy({'__module__': 'PyFoam.Basics.FoamOptionParser', '__doc__': 'A subcommand of a root command-line application that may be\n     invoked by a SubcommandOptionParser.\n     Taken from https://gist.github.com/sampsyo/462717\n     ', '__init__': &lt;function Subcommand.__init__&gt;, '__dict__': &lt;attribute '__dict__' of 'Subcommand' objects&gt;, '__weakref__': &lt;attribute '__weakref__' of 'Subcommand' objects&gt;})</em><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.Subcommand.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.Basics.FoamOptionParser.Subcommand.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">parser=None</em>, <em class="sig-param">help=''</em>, <em class="sig-param">aliases=()</em>, <em class="sig-param">nr=None</em>, <em class="sig-param">exactNr=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#Subcommand.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.Subcommand.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new subcommand. name is the primary way to invoke
+the subcommand; aliases are alternate names. parser is an
+OptionParser responsible for parsing the subcommand’s options.
+help is a short description of the command. If no parser is
+given, it defaults to a new, empty OptionParser.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.FoamOptionParser.Subcommand.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Basics.FoamOptionParser'</em><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.Subcommand.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.FoamOptionParser.Subcommand.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.Subcommand.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser">
-<em class="property">class </em><code class="descclassname">PyFoam.Basics.FoamOptionParser.</code><code class="descname">SubcommandFoamOptionParser</code><span class="sig-paren">(</span><em>args=None</em>, <em>usage=None</em>, <em>version=None</em>, <em>epilog=None</em>, <em>examples=None</em>, <em>description=None</em>, <em>subcommands=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser" title="PyFoam.Basics.FoamOptionParser.FoamOptionParser"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.Basics.FoamOptionParser.FoamOptionParser</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Basics.FoamOptionParser.</code><code class="sig-name descname">SubcommandFoamOptionParser</code><span class="sig-paren">(</span><em class="sig-param">args=None</em>, <em class="sig-param">usage=None</em>, <em class="sig-param">version=None</em>, <em class="sig-param">epilog=None</em>, <em class="sig-param">examples=None</em>, <em class="sig-param">description=None</em>, <em class="sig-param">subcommands=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PyFoam.Basics.FoamOptionParser.FoamOptionParser" title="PyFoam.Basics.FoamOptionParser.FoamOptionParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.Basics.FoamOptionParser.FoamOptionParser</span></code></a></p>
 <p>Subclass of the regular option parser that allows setting subcommands
 Inspired by <a class="reference external" href="https://gist.github.com/sampsyo/462717">https://gist.github.com/sampsyo/462717</a></p>
+<dl class="attribute">
+<dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser._HelpSubcommand">
+<code class="sig-name descname">_HelpSubcommand</code><em class="property"> = &lt;PyFoam.Basics.FoamOptionParser.Subcommand object&gt;</em><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser._HelpSubcommand" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">args=None</em>, <em class="sig-param">usage=None</em>, <em class="sig-param">version=None</em>, <em class="sig-param">epilog=None</em>, <em class="sig-param">examples=None</em>, <em class="sig-param">description=None</em>, <em class="sig-param">subcommands=[]</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>usage</strong> – usage string. If missing a default is used</p></li>
+<li><p><strong>version</strong> – if missing the PyFoam-version is used</p></li>
+<li><p><strong>description</strong> – description of the utility</p></li>
+<li><p><strong>subcommands</strong> – list with subcommands to prepopulate the parser</p></li>
+<li><p><strong>args</strong> – Command line arguments. If unset sys.argv[1:] is used.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Can be a string: it will be splitted then unsing the spaces (very primitive), or a list of strings (prefered)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Basics.FoamOptionParser'</em><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser._subcommand_for_name">
+<code class="sig-name descname">_subcommand_for_name</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser._subcommand_for_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser._subcommand_for_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the subcommand in self.subcommands matching the
+given name. The name may either be the name of a subcommand or
+an alias. If no subcommand matches, returns None.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.addSubcommand">
-<code class="descname">addSubcommand</code><span class="sig-paren">(</span><em>cmd</em>, <em>usage=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.addSubcommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.addSubcommand" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">addSubcommand</code><span class="sig-paren">(</span><em class="sig-param">cmd</em>, <em class="sig-param">usage=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.addSubcommand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.addSubcommand" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.format_help">
-<code class="descname">format_help</code><span class="sig-paren">(</span><em>formatter=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.format_help"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.format_help" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">format_help</code><span class="sig-paren">(</span><em class="sig-param">formatter=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.format_help"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.format_help" title="Permalink to this definition">¶</a></dt>
 <dd><p>Taken from <a class="reference external" href="https://gist.github.com/sampsyo/462717">https://gist.github.com/sampsyo/462717</a></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.getArgs">
-<code class="descname">getArgs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.getArgs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.getArgs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">getArgs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.getArgs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.getArgs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the arguments left after parsing</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><em>nr=None</em>, <em>exactNr=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.parse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">nr=None</em>, <em class="sig-param">exactNr=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/FoamOptionParser.html#SubcommandFoamOptionParser.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.FoamOptionParser.SubcommandFoamOptionParser.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Do the parsing of a subcommand</p>
 </dd></dl>
 
@@ -298,9 +389,7 @@ Inspired by <a class="reference external" href="https://gist.github.com/sampsyo/
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -309,7 +398,7 @@ Inspired by <a class="reference external" href="https://gist.github.com/sampsyo/
         <a href="PyFoam.Basics.GeneralPlotTimelines.html" class="btn btn-neutral float-right" title="PyFoam.Basics.GeneralPlotTimelines module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.Basics.FoamFileGenerator.html" class="btn btn-neutral" title="PyFoam.Basics.FoamFileGenerator module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.Basics.FoamFileGenerator.html" class="btn btn-neutral float-left" title="PyFoam.Basics.FoamFileGenerator module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -318,11 +407,11 @@ Inspired by <a class="reference external" href="https://gist.github.com/sampsyo/
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -335,36 +424,15 @@ Inspired by <a class="reference external" href="https://gist.github.com/sampsyo/
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

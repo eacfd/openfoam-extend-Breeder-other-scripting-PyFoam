@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -160,41 +152,41 @@
 <span></span><span class="c1">#  ICE Revision: $Id$</span>
 <span class="sd">&quot;&quot;&quot;A XMLRPC-Server that answeres about the current state of a Foam-Run&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">PY3</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">PY3</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.ServerBase</span> <span class="k">import</span> <span class="n">ServerBase</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.ServerBase</span> <span class="kn">import</span> <span class="n">ServerBase</span>
 
 <span class="k">if</span> <span class="n">PY3</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">xmlrpc.client</span> <span class="k">import</span> <span class="n">ServerProxy</span>
+    <span class="kn">from</span> <span class="nn">xmlrpc.client</span> <span class="kn">import</span> <span class="n">ServerProxy</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">xmlrpclib</span> <span class="k">import</span> <span class="n">ServerProxy</span>
+    <span class="kn">from</span> <span class="nn">xmlrpclib</span> <span class="kn">import</span> <span class="n">ServerProxy</span>
 
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">random</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
 <span class="kn">import</span> <span class="nn">select</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">versionString</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.RingBuffer</span> <span class="k">import</span> <span class="n">RingBuffer</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.NetworkHelpers</span> <span class="k">import</span> <span class="n">freeServerPort</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Logging</span> <span class="k">import</span> <span class="n">foamLogger</span>
-<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="k">import</span> <span class="n">foamMPI</span>
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParameterFile</span> <span class="k">import</span> <span class="n">ParameterFile</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">warning</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.GeneralPlotTimelines</span> <span class="k">import</span> <span class="n">allPlots</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.TimeLineCollection</span> <span class="k">import</span> <span class="n">allLines</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.ZeroConf</span> <span class="k">import</span> <span class="n">ZeroConfFoamServer</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">versionString</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.RingBuffer</span> <span class="kn">import</span> <span class="n">RingBuffer</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.NetworkHelpers</span> <span class="kn">import</span> <span class="n">freeServerPort</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Logging</span> <span class="kn">import</span> <span class="n">foamLogger</span>
+<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="kn">import</span> <span class="n">foamMPI</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParameterFile</span> <span class="kn">import</span> <span class="n">ParameterFile</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">warning</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.GeneralPlotTimelines</span> <span class="kn">import</span> <span class="n">allPlots</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.TimeLineCollection</span> <span class="kn">import</span> <span class="n">allLines</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.ZeroConf</span> <span class="kn">import</span> <span class="n">ZeroConfFoamServer</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Hardcoded</span> <span class="k">import</span> <span class="n">userName</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Infrastructure.Hardcoded</span> <span class="kn">import</span> <span class="n">userName</span>
 
-<span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Lock</span><span class="p">,</span><span class="n">Thread</span><span class="p">,</span><span class="n">Timer</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">environ</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="n">getpid</span><span class="p">,</span><span class="n">getloadavg</span>
-<span class="kn">from</span> <span class="nn">platform</span> <span class="k">import</span> <span class="n">uname</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Lock</span><span class="p">,</span><span class="n">Thread</span><span class="p">,</span><span class="n">Timer</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">environ</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="n">getpid</span><span class="p">,</span><span class="n">getloadavg</span>
+<span class="kn">from</span> <span class="nn">platform</span> <span class="kn">import</span> <span class="n">uname</span>
 <span class="kn">import</span> <span class="nn">socket</span>
 
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">string</span>
-<span class="kn">from</span> <span class="nn">traceback</span> <span class="k">import</span> <span class="n">extract_tb</span>
+<span class="kn">from</span> <span class="nn">traceback</span> <span class="kn">import</span> <span class="n">extract_tb</span>
 
 <div class="viewcode-block" id="findFreePort"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.findFreePort">[docs]</a><span class="k">def</span> <span class="nf">findFreePort</span><span class="p">(</span><span class="n">useSSL</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Finds a free server port on this machine and returns it</span>
@@ -215,7 +207,7 @@
                                  <span class="n">length</span><span class="o">=</span><span class="n">config</span><span class="p">()</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span><span class="s2">&quot;Network&quot;</span><span class="p">,</span><span class="s2">&quot;nrServerPorts&quot;</span><span class="p">))</span></div>
 
 <span class="c1"># Wrapper that checks if the method was authenticated</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
 <div class="viewcode-block" id="needsAuthentication"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.needsAuthentication">[docs]</a><span class="k">def</span> <span class="nf">needsAuthentication</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -228,7 +220,7 @@
     <span class="sd">&quot;&quot;&quot;The class that handles the actual requests (only needed to hide the</span>
 <span class="sd">    Thread-methods from the world</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">master</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">lines</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">foamserver</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="FoamAnswerer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamAnswerer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">master</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">lines</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">foamserver</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param run: The thread that controls the run</span>
 <span class="sd">        :param master: The Runner-Object that controls everything</span>
@@ -240,9 +232,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">=</span><span class="n">RingBuffer</span><span class="p">(</span><span class="n">nr</span><span class="o">=</span><span class="n">lines</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastTime</span><span class="o">=</span><span class="n">time</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_linesLock</span><span class="o">=</span><span class="n">Lock</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_maxOutputTime</span><span class="o">=</span><span class="n">config</span><span class="p">()</span><span class="o">.</span><span class="n">getfloat</span><span class="p">(</span><span class="s2">&quot;IsAlive&quot;</span><span class="p">,</span><span class="s2">&quot;maxTimeStart&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_maxOutputTime</span><span class="o">=</span><span class="n">config</span><span class="p">()</span><span class="o">.</span><span class="n">getfloat</span><span class="p">(</span><span class="s2">&quot;IsAlive&quot;</span><span class="p">,</span><span class="s2">&quot;maxTimeStart&quot;</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_insertLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">line</span><span class="p">):</span>
+<div class="viewcode-block" id="FoamAnswerer._insertLine"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamAnswerer._insertLine">[docs]</a>    <span class="k">def</span> <span class="nf">_insertLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">line</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Inserts a new line, not to be called via XMLRPC&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_linesLock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lines</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
@@ -250,7 +242,7 @@
         <span class="k">if</span> <span class="p">(</span><span class="n">tmp</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_lastTime</span><span class="p">)</span><span class="o">&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_maxOutputTime</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_maxOutputTime</span><span class="o">=</span><span class="n">tmp</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_lastTime</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lastTime</span><span class="o">=</span><span class="n">tmp</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_linesLock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_linesLock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="FoamAnswerer.isFoamServer"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamAnswerer.isFoamServer">[docs]</a>    <span class="k">def</span> <span class="nf">isFoamServer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;This is a Foam-Server (True by default)&quot;&quot;&quot;</span>
@@ -260,7 +252,7 @@
         <span class="sd">&quot;&quot;&quot;The calculation still generates output and therefor seems to be living&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">elapsedTime</span><span class="p">()</span><span class="o">&lt;</span><span class="bp">self</span><span class="o">.</span><span class="n">_maxOutputTime</span></div>
 
-    <span class="nd">@needsAuthentication</span>
+<div class="viewcode-block" id="FoamAnswerer._kill"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamAnswerer._kill">[docs]</a>    <span class="nd">@needsAuthentication</span>
     <span class="k">def</span> <span class="nf">_kill</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Interrupts the FOAM-process&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">:</span>
@@ -268,7 +260,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="o">.</span><span class="n">interrupt</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="FoamAnswerer.stop"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamAnswerer.stop">[docs]</a>    <span class="nd">@needsAuthentication</span>
     <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -482,12 +474,12 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span></div>
 
-    <span class="k">def</span> <span class="nf">_readParameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="FoamAnswerer._readParameter"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamAnswerer._readParameter">[docs]</a>    <span class="k">def</span> <span class="nf">_readParameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Reads a parametr from the controlDict</span>
 <span class="sd">        :param name: the parameter</span>
 <span class="sd">        :return: The value&quot;&quot;&quot;</span>
         <span class="n">control</span><span class="o">=</span><span class="n">ParameterFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">getSolutionDirectory</span><span class="p">()</span><span class="o">.</span><span class="n">controlDict</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">control</span><span class="o">.</span><span class="n">readParameter</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">control</span><span class="o">.</span><span class="n">readParameter</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FoamAnswerer.startTime"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamAnswerer.startTime">[docs]</a>    <span class="k">def</span> <span class="nf">startTime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;:return: parameter startTime from the controlDict&quot;&quot;&quot;</span>
@@ -597,7 +589,7 @@
 
 <div class="viewcode-block" id="FoamServer"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamServer">[docs]</a><span class="k">class</span> <span class="nc">FoamServer</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the class that serves the requests about the FOAM-Run&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">master</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">lines</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="viewcode-block" id="FoamServer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamServer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">run</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">master</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">lines</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param run: The thread that controls the run</span>
 <span class="sd">        :param master: The Runner-Object that controls everything</span>
@@ -654,7 +646,7 @@
             <span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Did not get a port after </span><span class="si">%d</span><span class="s2"> tries&quot;</span> <span class="o">%</span> <span class="n">tries</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">tries</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-                <span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Got a port after </span><span class="si">%d</span><span class="s2"> tries&quot;</span> <span class="o">%</span> <span class="n">tries</span><span class="p">)</span>
+                <span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Got a port after </span><span class="si">%d</span><span class="s2"> tries&quot;</span> <span class="o">%</span> <span class="n">tries</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FoamServer.run"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamServer.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">foamLogger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Running server at port </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_port</span><span class="p">)</span>
@@ -744,17 +736,15 @@
             <span class="n">foamLogger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Not deregistering, because it seems we were not registered in the first place &quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_server</span><span class="o">.</span><span class="n">server_close</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">_insertLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">line</span><span class="p">):</span>
+<div class="viewcode-block" id="FoamServer._insertLine"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.FoamServer.html#PyFoam.Infrastructure.FoamServer.FoamServer._insertLine">[docs]</a>    <span class="k">def</span> <span class="nf">_insertLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">line</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Inserts a new line, not to be called via XMLRPC&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_answerer</span><span class="o">.</span><span class="n">_insertLine</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_answerer</span><span class="o">.</span><span class="n">_insertLine</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div></div>
 
 <span class="c1"># Should work with Python3 and Python2</span>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -763,11 +753,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -780,36 +770,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

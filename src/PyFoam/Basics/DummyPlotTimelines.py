@@ -28,7 +28,7 @@ class DummyPlotTimelines(GeneralPlotTimelines):
 
         self.redo()
 
-    def buildData(self,times,name,title,lastValid):
+    def buildData(self, times, name, title, lastValid, tag=None):
         """Build the implementation specific data
         :param times: The vector of times for which data exists
         :param name: the name under which the data is stored in the timeline
@@ -43,6 +43,12 @@ class DummyPlotTimelines(GeneralPlotTimelines):
 
     def doReplot(self):
         """Replot the whole data"""
+
+        pass
+
+    def addVerticalMarker(self,colorRGB=None,label=None):
+        """Add a vertical line to the graph at the current time. Optionally
+        color it and add a label"""
 
         pass
 

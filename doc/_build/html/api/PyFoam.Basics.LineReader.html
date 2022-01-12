@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.Basics package" href="PyFoam.Basics.html"/>
-        <link rel="next" title="PyFoam.Basics.MatplotlibTimelines module" href="PyFoam.Basics.MatplotlibTimelines.html"/>
-        <link rel="prev" title="PyFoam.Basics.HgInterface module" href="PyFoam.Basics.HgInterface.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.Basics.MatplotlibTimelines module" href="PyFoam.Basics.MatplotlibTimelines.html" />
+    <link rel="prev" title="PyFoam.Basics.HgInterface module" href="PyFoam.Basics.HgInterface.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,27 +182,51 @@
 <p>Read a file line by line</p>
 <dl class="class">
 <dt id="PyFoam.Basics.LineReader.LineReader">
-<em class="property">class </em><code class="descclassname">PyFoam.Basics.LineReader.</code><code class="descname">LineReader</code><span class="sig-paren">(</span><em>stripAllSpaces=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Basics.LineReader.</code><code class="sig-name descname">LineReader</code><span class="sig-paren">(</span><em class="sig-param">stripAllSpaces=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Read a line from a file</p>
 <p>The line is stripped of whitespaces at the start and the end of
 the line and stored in a variable self.line</p>
+<dl class="attribute">
+<dt id="PyFoam.Basics.LineReader.LineReader.__dict__">
+<code class="sig-name descname">__dict__</code><em class="property"> = mappingproxy({'__module__': 'PyFoam.Basics.LineReader', '__doc__': 'Read a line from a file\n\n    The line is stripped of whitespaces at the start and the end of\n    the line and stored in a variable self.line', '__init__': &lt;function LineReader.__init__&gt;, 'bytesRead': &lt;function LineReader.bytesRead&gt;, 'reset': &lt;function LineReader.reset&gt;, 'userSaidStop': &lt;function LineReader.userSaidStop&gt;, 'read': &lt;function LineReader.read&gt;, '__dict__': &lt;attribute '__dict__' of 'LineReader' objects&gt;, '__weakref__': &lt;attribute '__weakref__' of 'LineReader' objects&gt;})</em><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.Basics.LineReader.LineReader.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">stripAllSpaces=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stripAllSpaces</strong> – remove all spaces from the line (instead of</p>
+</dd>
+</dl>
+<p>only those on the left side)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.LineReader.LineReader.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Basics.LineReader'</em><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.LineReader.LineReader.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="PyFoam.Basics.LineReader.LineReader.bytesRead">
-<code class="descname">bytesRead</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.bytesRead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.bytesRead" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">number of bytes that were already read</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">bytesRead</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.bytesRead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.bytesRead" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of bytes that were already read</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.LineReader.LineReader.read">
-<code class="descname">read</code><span class="sig-paren">(</span><em>fh</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.read" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">fh</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.read" title="Permalink to this definition">¶</a></dt>
 <dd><p>reads the next line</p>
 <p>fh - filehandle to read from</p>
 <p>Return value: False if the end of the file was reached. True
@@ -217,21 +235,18 @@ otherwise</p>
 
 <dl class="method">
 <dt id="PyFoam.Basics.LineReader.LineReader.reset">
-<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the reader</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.LineReader.LineReader.userSaidStop">
-<code class="descname">userSaidStop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.userSaidStop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.userSaidStop" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">whether the reader caught a Keyboard-interrupt</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">userSaidStop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/LineReader.html#LineReader.userSaidStop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.LineReader.LineReader.userSaidStop" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>whether the reader caught a Keyboard-interrupt</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -240,9 +255,7 @@ otherwise</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -251,7 +264,7 @@ otherwise</p>
         <a href="PyFoam.Basics.MatplotlibTimelines.html" class="btn btn-neutral float-right" title="PyFoam.Basics.MatplotlibTimelines module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.Basics.HgInterface.html" class="btn btn-neutral" title="PyFoam.Basics.HgInterface module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.Basics.HgInterface.html" class="btn btn-neutral float-left" title="PyFoam.Basics.HgInterface module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -260,11 +273,11 @@ otherwise</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -277,36 +290,15 @@ otherwise</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

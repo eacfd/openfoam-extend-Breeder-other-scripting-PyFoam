@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -159,10 +151,10 @@
   <h1>Source code for PyFoam.RunDictionary.LagrangianCloudData</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Read a directory of lagrangian cloud data&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span><span class="p">,</span><span class="n">listdir</span>
-<span class="kn">from</span> <span class="nn">.ParsedParameterFile</span> <span class="k">import</span> <span class="n">ParsedParameterFile</span><span class="p">,</span><span class="n">PyFoamParserError</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">warning</span><span class="p">,</span><span class="n">error</span>
-<span class="kn">from</span> <span class="nn">.LagrangianPatchData</span> <span class="k">import</span> <span class="n">globalId</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span><span class="n">listdir</span>
+<span class="kn">from</span> <span class="nn">.ParsedParameterFile</span> <span class="kn">import</span> <span class="n">ParsedParameterFile</span><span class="p">,</span><span class="n">PyFoamParserError</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">warning</span><span class="p">,</span><span class="n">error</span>
+<span class="kn">from</span> <span class="nn">.LagrangianPatchData</span> <span class="kn">import</span> <span class="n">globalId</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
 
@@ -191,7 +183,7 @@
 <div class="viewcode-block" id="LagrangianCloudDataDirectory"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.LagrangianCloudData.html#PyFoam.RunDictionary.LagrangianCloudData.LagrangianCloudDataDirectory">[docs]</a><span class="k">class</span> <span class="nc">LagrangianCloudDataDirectory</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Read all the cloud data in a directory and put it in a Pandas dataframe&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dirPath</span><span class="p">):</span>
+<div class="viewcode-block" id="LagrangianCloudDataDirectory.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.LagrangianCloudData.html#PyFoam.RunDictionary.LagrangianCloudData.LagrangianCloudDataDirectory.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dirPath</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">dirPath</span><span class="p">)</span>
 
         <span class="n">size</span><span class="o">=</span><span class="kc">None</span>
@@ -268,12 +260,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;globalId&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">globalId</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">origProcId</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">origId</span><span class="p">)</span>
             <span class="c1"># self.data[&quot;globalId&quot;]=&quot;p&quot;+self.data.origProcId.apply(lambda x:&quot;%04d&quot;%x)+&quot;i&quot;+self.data.origId.apply(lambda x:&quot;%08d&quot;%x)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;globalId&quot;</span><span class="p">,</span>
-                                  <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+                                  <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="LagrangianCloudData"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.LagrangianCloudData.html#PyFoam.RunDictionary.LagrangianCloudData.LagrangianCloudData">[docs]</a><span class="k">class</span> <span class="nc">LagrangianCloudData</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Read the cloud data from a time-step (serial or parallel)&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">caseName</span><span class="p">,</span><span class="n">cloudName</span><span class="p">,</span><span class="n">timeName</span><span class="p">,</span><span class="n">parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="LagrangianCloudData.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.LagrangianCloudData.html#PyFoam.RunDictionary.LagrangianCloudData.LagrangianCloudData.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">caseName</span><span class="p">,</span><span class="n">cloudName</span><span class="p">,</span><span class="n">timeName</span><span class="p">,</span><span class="n">parallel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">dirs</span><span class="o">=</span><span class="p">[]</span>
         <span class="k">if</span> <span class="n">parallel</span><span class="p">:</span>
             <span class="n">pNums</span><span class="o">=</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;processor&quot;</span><span class="p">):])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="n">caseName</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;processor&quot;</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
@@ -306,13 +298,11 @@
         <span class="k">if</span> <span class="s2">&quot;globalId&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
             <span class="c1"># print(&quot;Sorting&quot;)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;globalId&quot;</span><span class="p">,</span>
-                                  <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+                                  <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -321,11 +311,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -338,36 +328,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

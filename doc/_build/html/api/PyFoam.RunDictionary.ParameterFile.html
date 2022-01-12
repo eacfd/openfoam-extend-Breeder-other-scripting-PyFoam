@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.RunDictionary package" href="PyFoam.RunDictionary.html"/>
-        <link rel="next" title="PyFoam.RunDictionary.ParsedBlockMeshDict module" href="PyFoam.RunDictionary.ParsedBlockMeshDict.html"/>
-        <link rel="prev" title="PyFoam.RunDictionary.MeshInformation module" href="PyFoam.RunDictionary.MeshInformation.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.RunDictionary.ParsedBlockMeshDict module" href="PyFoam.RunDictionary.ParsedBlockMeshDict.html" />
+    <link rel="prev" title="PyFoam.RunDictionary.MeshInformation module" href="PyFoam.RunDictionary.MeshInformation.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,42 +182,56 @@
 <p>Working with parameter-files</p>
 <dl class="class">
 <dt id="PyFoam.RunDictionary.ParameterFile.ParameterFile">
-<em class="property">class </em><code class="descclassname">PyFoam.RunDictionary.ParameterFile.</code><code class="descname">ParameterFile</code><span class="sig-paren">(</span><em>name</em>, <em>backup=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.RunDictionary.FileBasis.html#PyFoam.RunDictionary.FileBasis.FileBasisBackup" title="PyFoam.RunDictionary.FileBasis.FileBasisBackup"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.RunDictionary.FileBasis.FileBasisBackup</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.RunDictionary.ParameterFile.</code><code class="sig-name descname">ParameterFile</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">backup=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.RunDictionary.FileBasis.html#PyFoam.RunDictionary.FileBasis.FileBasisBackup" title="PyFoam.RunDictionary.FileBasis.FileBasisBackup"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.RunDictionary.FileBasis.FileBasisBackup</span></code></a></p>
 <p>Represents a OpenFOAM parameter file</p>
 <dl class="method">
+<dt id="PyFoam.RunDictionary.ParameterFile.ParameterFile.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">backup=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – The name of the parameter file</p></li>
+<li><p><strong>backup</strong> – create a backup-copy of the file</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.RunDictionary.ParameterFile.ParameterFile.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.RunDictionary.ParameterFile'</em><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="PyFoam.RunDictionary.ParameterFile.ParameterFile.parameterPattern">
-<code class="descname">parameterPattern</code><span class="sig-paren">(</span><em>parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile.parameterPattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile.parameterPattern" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parameterPattern</code><span class="sig-paren">(</span><em class="sig-param">parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile.parameterPattern"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile.parameterPattern" title="Permalink to this definition">¶</a></dt>
 <dd><p>creates a regular expression that looks for aparameter</p>
 <p>parameter - name of the parameter</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.RunDictionary.ParameterFile.ParameterFile.readParameter">
-<code class="descname">readParameter</code><span class="sig-paren">(</span><em>parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile.readParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile.readParameter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">readParameter</code><span class="sig-paren">(</span><em class="sig-param">parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile.readParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile.readParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>reads the value of a parameter</p>
 <p>parameter - name of the parameter</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.RunDictionary.ParameterFile.ParameterFile.replaceParameter">
-<code class="descname">replaceParameter</code><span class="sig-paren">(</span><em>parameter</em>, <em>newval</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile.replaceParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile.replaceParameter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">replaceParameter</code><span class="sig-paren">(</span><em class="sig-param">parameter</em>, <em class="sig-param">newval</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/RunDictionary/ParameterFile.html#ParameterFile.replaceParameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.RunDictionary.ParameterFile.ParameterFile.replaceParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>writes the value of a parameter</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>parameter</strong> – name of the parameter</li>
-<li><strong>newval</strong> – the new value</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameter</strong> – name of the parameter</p></li>
+<li><p><strong>newval</strong> – the new value</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">old value of the parameter</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>old value of the parameter</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -232,9 +240,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -243,7 +249,7 @@
         <a href="PyFoam.RunDictionary.ParsedBlockMeshDict.html" class="btn btn-neutral float-right" title="PyFoam.RunDictionary.ParsedBlockMeshDict module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.RunDictionary.MeshInformation.html" class="btn btn-neutral" title="PyFoam.RunDictionary.MeshInformation module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.RunDictionary.MeshInformation.html" class="btn btn-neutral float-left" title="PyFoam.RunDictionary.MeshInformation module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -252,11 +258,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -269,36 +275,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -162,25 +154,25 @@
 <span class="sd">up, running, restarting&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">sys</span><span class="o">,</span><span class="nn">subprocess</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span><span class="p">,</span><span class="n">unlink</span>
-<span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span><span class="p">,</span><span class="n">Lock</span><span class="p">,</span><span class="n">Timer</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span><span class="n">unlink</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span><span class="p">,</span><span class="n">Lock</span><span class="p">,</span><span class="n">Timer</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.Decomposer</span> <span class="k">import</span> <span class="n">Decomposer</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.Runner</span> <span class="k">import</span> <span class="n">Runner</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.SteadyRunner</span> <span class="k">import</span> <span class="n">SteadyRunner</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.CloneCase</span> <span class="k">import</span> <span class="n">CloneCase</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.FromTemplate</span> <span class="k">import</span> <span class="n">FromTemplate</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.PrepareCase</span> <span class="k">import</span> <span class="n">PrepareCase</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.RunParameterVariation</span> <span class="k">import</span> <span class="n">RunParameterVariation</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.Decomposer</span> <span class="kn">import</span> <span class="n">Decomposer</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.Runner</span> <span class="kn">import</span> <span class="n">Runner</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.SteadyRunner</span> <span class="kn">import</span> <span class="n">SteadyRunner</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.CloneCase</span> <span class="kn">import</span> <span class="n">CloneCase</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.FromTemplate</span> <span class="kn">import</span> <span class="n">FromTemplate</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.PrepareCase</span> <span class="kn">import</span> <span class="n">PrepareCase</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.RunParameterVariation</span> <span class="kn">import</span> <span class="n">RunParameterVariation</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="k">import</span> <span class="n">changeFoamVersion</span>
-<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="k">import</span> <span class="n">foamVersion</span> <span class="k">as</span> <span class="n">getFoamVersion</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
-<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="k">import</span> <span class="n">oldAppConvention</span> <span class="k">as</span> <span class="n">oldApp</span>
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="k">import</span> <span class="n">SolutionDirectory</span>
+<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="kn">import</span> <span class="n">changeFoamVersion</span>
+<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="kn">import</span> <span class="n">foamVersion</span> <span class="k">as</span> <span class="n">getFoamVersion</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="kn">import</span> <span class="n">oldAppConvention</span> <span class="k">as</span> <span class="n">oldApp</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="kn">import</span> <span class="n">SolutionDirectory</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">print_</span><span class="p">,</span><span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">print_</span><span class="p">,</span><span class="n">iteritems</span>
 
 <div class="viewcode-block" id="checkForMessageFromAbove"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.checkForMessageFromAbove">[docs]</a><span class="k">def</span> <span class="nf">checkForMessageFromAbove</span><span class="p">(</span><span class="n">job</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">job</span><span class="o">.</span><span class="n">listenToTimer</span><span class="p">:</span>
@@ -205,7 +197,7 @@
 <span class="sd">    There is a number of variables in this class that are used to</span>
 <span class="sd">    &#39;communicate&#39; information between the various stages&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="ClusterJob.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.ClusterJob.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">basename</span><span class="p">,</span>
                  <span class="n">arrayJob</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">hardRestart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -299,7 +291,7 @@
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">config</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ClusterJob&quot;</span><span class="p">,</span><span class="s2">&quot;path&quot;</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;:&quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">config</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ClusterJob&quot;</span><span class="p">,</span><span class="s2">&quot;ldpath&quot;</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;:&quot;</span><span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;LD_LIBRARY_PATH&quot;</span><span class="p">]</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">isDecomposed</span><span class="o">=</span><span class="n">isDecomposed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isDecomposed</span><span class="o">=</span><span class="n">isDecomposed</span></div>
 
 <div class="viewcode-block" id="ClusterJob.fullJobId"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.ClusterJob.fullJobId">[docs]</a>    <span class="k">def</span> <span class="nf">fullJobId</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a string with the full job-ID&quot;&quot;&quot;</span>
@@ -645,7 +637,7 @@
     <span class="sd">&quot;&quot;&quot;A Cluster-Job that executes a solver. It implements the run-function.</span>
 <span class="sd">    If a template-case is specified, the case is copied&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basename</span><span class="p">,</span><span class="n">solver</span><span class="p">,</span>
+<div class="viewcode-block" id="SolverJob.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.SolverJob.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basename</span><span class="p">,</span><span class="n">solver</span><span class="p">,</span>
                  <span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">cloneParameters</span><span class="o">=</span><span class="p">[],</span>
                  <span class="n">arrayJob</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -695,7 +687,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">solverProgress</span><span class="o">=</span><span class="n">solverProgress</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">solverNoLog</span><span class="o">=</span><span class="n">solverNoLog</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">solverLogCompress</span><span class="o">=</span><span class="n">solverLogCompress</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">solverArgs</span><span class="o">=</span><span class="n">solverArgs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">solverArgs</span><span class="o">=</span><span class="n">solverArgs</span></div>
 
 <div class="viewcode-block" id="SolverJob.run"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.SolverJob.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parameters</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">foamRun</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">solver</span><span class="p">,</span>
@@ -713,7 +705,7 @@
 <span class="sd">    name/value-pairs</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basename</span><span class="p">,</span><span class="n">solver</span><span class="p">,</span>
+<div class="viewcode-block" id="PrepareCaseJob.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.PrepareCaseJob.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basename</span><span class="p">,</span><span class="n">solver</span><span class="p">,</span>
                  <span class="n">parameterfile</span><span class="p">,</span>
                  <span class="n">arguments</span><span class="p">,</span>
                  <span class="n">parameters</span><span class="o">=</span><span class="p">{},</span>
@@ -729,7 +721,7 @@
                       <span class="s2">&quot;:&quot;</span><span class="p">,</span><span class="n">arguments</span><span class="p">)</span>
 
             <span class="c1"># make all string arguments that could be boolean boolean values</span>
-            <span class="kn">from</span> <span class="nn">PyFoam.Basics.DataStructures</span> <span class="k">import</span> <span class="n">BoolProxy</span>
+            <span class="kn">from</span> <span class="nn">PyFoam.Basics.DataStructures</span> <span class="kn">import</span> <span class="n">BoolProxy</span>
 
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">arguments</span><span class="p">[::</span><span class="mi">2</span><span class="p">],</span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]))</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="k">try</span><span class="p">:</span>
@@ -759,7 +751,7 @@
 
         <span class="n">SolverJob</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basename</span><span class="p">,</span><span class="n">solver</span><span class="p">,</span>
                            <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
-                           <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                           <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PrepareCaseJob.setup"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.PrepareCaseJob.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parameters</span><span class="p">):</span>
         <span class="n">parameterString</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39;:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
@@ -776,7 +768,7 @@
 <span class="sd">    this. Needs one parameterfile and a variation-file</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basename</span><span class="p">,</span>
+<div class="viewcode-block" id="VariationCaseJob.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.VariationCaseJob.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basename</span><span class="p">,</span>
                  <span class="n">parameterfile</span><span class="p">,</span>
                  <span class="n">variationfile</span><span class="p">,</span>
                  <span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -800,7 +792,7 @@
         <span class="n">SolverJob</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">basename</span><span class="p">,</span><span class="n">solver</span><span class="p">,</span>
                            <span class="n">arrayJob</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                            <span class="n">template</span><span class="o">=</span><span class="n">template</span><span class="p">,</span>
-                           <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                           <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="VariationCaseJob.taskParameters"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.ClusterJob.html#PyFoam.Infrastructure.ClusterJob.VariationCaseJob.taskParameters">[docs]</a>    <span class="k">def</span> <span class="nf">taskParameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">id</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{}</span></div>
@@ -820,9 +812,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -831,11 +821,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -848,36 +838,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

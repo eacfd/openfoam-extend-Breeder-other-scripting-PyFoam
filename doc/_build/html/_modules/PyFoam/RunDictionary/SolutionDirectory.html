@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -160,27 +152,27 @@
 <span></span><span class="c1">#  ICE Revision: $Id$</span>
 <span class="sd">&quot;&quot;&quot;Working with a solution directory&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.Utilities</span> <span class="k">import</span> <span class="n">Utilities</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.BasicFile</span> <span class="k">import</span> <span class="n">BasicFile</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">warning</span><span class="p">,</span><span class="n">error</span>
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">conf</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.Utilities</span> <span class="kn">import</span> <span class="n">Utilities</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.BasicFile</span> <span class="kn">import</span> <span class="n">BasicFile</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">warning</span><span class="p">,</span><span class="n">error</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">conf</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.TimeDirectory</span> <span class="k">import</span> <span class="n">TimeDirectory</span>
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParsedParameterFile</span> <span class="k">import</span> <span class="n">ParsedParameterFile</span><span class="p">,</span><span class="n">WriteParameterFile</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.TimeDirectory</span> <span class="kn">import</span> <span class="n">TimeDirectory</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParsedParameterFile</span> <span class="kn">import</span> <span class="n">ParsedParameterFile</span><span class="p">,</span><span class="n">WriteParameterFile</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.DataStructures</span> <span class="k">import</span> <span class="n">DictProxy</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.DataStructures</span> <span class="kn">import</span> <span class="n">DictProxy</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">print_</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">print_</span>
 
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">listdir</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="n">mkdir</span><span class="p">,</span><span class="n">stat</span><span class="p">,</span><span class="n">environ</span>
-<span class="kn">from</span> <span class="nn">platform</span> <span class="k">import</span> <span class="n">uname</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">asctime</span>
-<span class="kn">from</span> <span class="nn">stat</span> <span class="k">import</span> <span class="n">ST_CTIME</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="n">mkdir</span><span class="p">,</span><span class="n">stat</span><span class="p">,</span><span class="n">environ</span>
+<span class="kn">from</span> <span class="nn">platform</span> <span class="kn">import</span> <span class="n">uname</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">asctime</span>
+<span class="kn">from</span> <span class="nn">stat</span> <span class="kn">import</span> <span class="n">ST_CTIME</span>
 <span class="kn">import</span> <span class="nn">tarfile</span><span class="o">,</span><span class="nn">fnmatch</span><span class="o">,</span><span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">re</span><span class="o">,</span><span class="nn">os</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">getlogin</span>
+    <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getlogin</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">PyFoam.ThirdParty.winhacks</span>
@@ -195,7 +187,7 @@
 <span class="sd">    In the solution directory subdirectories whose names are numbers</span>
 <span class="sd">    are assumed to be solutions for a specific time-step&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="SolutionDirectory.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">name</span><span class="p">,</span>
                  <span class="n">archive</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">paraviewLink</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -268,7 +260,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__postprocDirs</span><span class="o">=</span><span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__postprocInfo</span><span class="o">=</span><span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">addPostprocDir</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">addPostprocDir</span><span class="p">(</span><span class="s2">&quot;postProcessing&quot;</span><span class="p">,</span><span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addPostprocDir</span><span class="p">(</span><span class="s2">&quot;postProcessing&quot;</span><span class="p">,</span><span class="n">fail</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SolutionDirectory.regions"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.regions">[docs]</a>    <span class="k">def</span> <span class="nf">regions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Detect sub-region cases by looking through constant and finding</span>
@@ -304,28 +296,28 @@
         <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fName</span><span class="p">):</span>
             <span class="n">conf</span><span class="p">()</span><span class="o">.</span><span class="n">addFile</span><span class="p">(</span><span class="n">fName</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SolutionDirectory.__len__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">()</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="SolutionDirectory.__contains__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__contains__">[docs]</a>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">item</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeName</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="SolutionDirectory.__getitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">()</span>
 
         <span class="n">ind</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeName</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ind</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">TimeDirectory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fullPath</span><span class="p">(</span><span class="n">ind</span><span class="p">),</span> <span class="n">region</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">TimeDirectory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fullPath</span><span class="p">(</span><span class="n">ind</span><span class="p">),</span> <span class="n">region</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="SolutionDirectory.__setitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__setitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">!=</span><span class="nb">str</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="s2">&quot;is not &#39;str&#39;&quot;</span><span class="p">)</span>
@@ -336,9 +328,9 @@
         <span class="n">dest</span><span class="o">=</span><span class="n">TimeDirectory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fullPath</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">create</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">region</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="p">)</span>
         <span class="n">dest</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="SolutionDirectory.__delitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__delitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">()</span>
         <span class="n">nm</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeName</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">nm</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span>
@@ -346,15 +338,15 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fullPath</span><span class="p">(</span><span class="n">nm</span><span class="p">)),</span><span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SolutionDirectory.__iter__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reread</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">TimeDirectory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                                 <span class="bp">self</span><span class="o">.</span><span class="n">fullPath</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
                                 <span class="n">region</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">region</span><span class="p">,</span>
-                                <span class="n">tolerant</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tolerant</span><span class="p">)</span>
+                                <span class="n">tolerant</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tolerant</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SolutionDirectory.timeName"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.timeName">[docs]</a>    <span class="k">def</span> <span class="nf">timeName</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">item</span><span class="p">,</span><span class="n">minTime</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Finds the name of a directory that corresponds with the given parameter</span>
@@ -716,8 +708,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">first</span><span class="o">=</span><span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">firstParallel</span><span class="o">=</span><span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">last</span><span class="o">=</span><span class="kc">None</span>
+
         <span class="n">procDirs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processorDirs</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">procNr</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">procDirs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">procDirs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">procNr</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">procDirs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">procDirs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">procNr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">procDirs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;processors&quot;</span><span class="p">):])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">procNr</span> <span class="o">=</span> <span class="mi">1</span>
 
         <span class="k">if</span> <span class="n">procDirs</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">parallel</span><span class="p">:</span>
             <span class="n">timesDir</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">procDirs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -760,6 +758,13 @@
             <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;processor[0-9]+&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">procDirs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">procDirs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;processor&quot;</span><span class="p">):]))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">procDirs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;processors[0-9]+&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+                    <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">procDirs</span> <span class="o">=</span> <span class="n">tmp</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">procDirs</span></div>
 
 <div class="viewcode-block" id="SolutionDirectory.nrProcs"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.nrProcs">[docs]</a>    <span class="k">def</span> <span class="nf">nrProcs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -882,7 +887,7 @@
             <span class="n">lastKeptIndex</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mf">1e5</span><span class="p">)</span>
             <span class="n">time</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">firstParallel</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;processor[0-9]+&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;processor(|s)[0-9]+&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">removeProcs</span><span class="p">:</span>
                         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                             <span class="n">print_</span><span class="p">(</span><span class="s2">&quot;Clearing&quot;</span><span class="p">,</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="n">f</span><span class="p">))</span>
@@ -1426,10 +1431,10 @@
 
     <span class="n">chemkinName</span> <span class="o">=</span> <span class="s2">&quot;chemkin&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">archive</span><span class="o">=</span><span class="s2">&quot;ArchiveDir&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="ChemkinSolutionDirectory.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.ChemkinSolutionDirectory.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">archive</span><span class="o">=</span><span class="s2">&quot;ArchiveDir&quot;</span><span class="p">):</span>
         <span class="n">SolutionDirectory</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">archive</span><span class="o">=</span><span class="n">archive</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">addToClone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chemkinName</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addToClone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chemkinName</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ChemkinSolutionDirectory.chemkinDir"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.ChemkinSolutionDirectory.chemkinDir">[docs]</a>    <span class="k">def</span> <span class="nf">chemkinDir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;:rtype: str</span>
@@ -1440,22 +1445,20 @@
 <div class="viewcode-block" id="NoTouchSolutionDirectory"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.NoTouchSolutionDirectory">[docs]</a><span class="k">class</span> <span class="nc">NoTouchSolutionDirectory</span><span class="p">(</span><span class="n">SolutionDirectory</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Convenience class that makes sure that nothing new is created&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="NoTouchSolutionDirectory.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.SolutionDirectory.html#PyFoam.RunDictionary.SolutionDirectory.NoTouchSolutionDirectory.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">name</span><span class="p">,</span>
                  <span class="n">region</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">SolutionDirectory</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                                   <span class="n">name</span><span class="p">,</span>
                                   <span class="n">archive</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                                   <span class="n">paraviewLink</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span></div>
+                                  <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span></div></div>
 
 <span class="c1"># Should work with Python3 and Python2</span>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1464,11 +1467,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1481,36 +1484,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

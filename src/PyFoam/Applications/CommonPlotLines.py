@@ -129,6 +129,12 @@ class CommonPlotLines(object):
                         dest="splitDataPointsThreshold",
                         type="int",
                         help="If the number of data points exceeds the threshold then the number of data points is reduced. Default: %default")
+        grp3.add_option("--fraction-unchanged-by-splitting",
+                        action="store",
+                        default=0.2,
+                        dest="split_fraction_unchanged",
+                        type="float",
+                        help="Fraction of data points (at the end) that are not reduced. Default: %default")
         grp3.add_option("--no-split-data-points",
                         action="store_false",
                         default=True,

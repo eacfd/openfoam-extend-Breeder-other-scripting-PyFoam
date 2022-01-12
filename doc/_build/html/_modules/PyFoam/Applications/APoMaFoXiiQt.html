@@ -160,28 +160,28 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Application-class that implements pyFoamAPoMaFoX.py (A Poor Man&#39;s FoamX)</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.PyFoamApplication</span> <span class="k">import</span> <span class="n">PyFoamApplication</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.CaseBuilderBackend</span> <span class="k">import</span> <span class="n">CaseBuilderFile</span><span class="p">,</span><span class="n">CaseBuilderDescriptionList</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.CommonCaseBuilder</span> <span class="k">import</span> <span class="n">CommonCaseBuilder</span>
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.PyFoamApplication</span> <span class="kn">import</span> <span class="n">PyFoamApplication</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.CaseBuilderBackend</span> <span class="kn">import</span> <span class="n">CaseBuilderFile</span><span class="p">,</span><span class="n">CaseBuilderDescriptionList</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.CommonCaseBuilder</span> <span class="kn">import</span> <span class="n">CommonCaseBuilder</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">configuration</span> <span class="k">as</span> <span class="n">config</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">print_</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">print_</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">PyQt4</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">error</span><span class="p">(</span><span class="s2">&quot;This application needs an installed PyQt4-library&quot;</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">PyQt4</span> <span class="k">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
 
 <div class="viewcode-block" id="APoMaFoXiiQt"><a class="viewcode-back" href="../../../api/PyFoam.Applications.APoMaFoXiiQt.html#PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt">[docs]</a><span class="k">class</span> <span class="nc">APoMaFoXiiQt</span><span class="p">(</span><span class="n">PyFoamApplication</span><span class="p">,</span>
                <span class="n">CommonCaseBuilder</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
 <span class="s2">APoMaFoX is &quot;A Poor Mans FoamX&quot;.</span>
 
@@ -225,14 +225,14 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span></div></div>
 
 <div class="viewcode-block" id="ComboWrapper"><a class="viewcode-back" href="../../../api/PyFoam.Applications.APoMaFoXiiQt.html#PyFoam.Applications.APoMaFoXiiQt.ComboWrapper">[docs]</a><span class="k">class</span> <span class="nc">ComboWrapper</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QComboBox</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ComboWrapper</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
 <div class="viewcode-block" id="ComboWrapper.text"><a class="viewcode-back" href="../../../api/PyFoam.Applications.APoMaFoXiiQt.html#PyFoam.Applications.APoMaFoXiiQt.ComboWrapper.text">[docs]</a>    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currentText</span><span class="p">())</span></div></div>
 
 <div class="viewcode-block" id="FilenameWrapper"><a class="viewcode-back" href="../../../api/PyFoam.Applications.APoMaFoXiiQt.html#PyFoam.Applications.APoMaFoXiiQt.FilenameWrapper">[docs]</a><span class="k">class</span> <span class="nc">FilenameWrapper</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QWidget</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FilenameWrapper</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="n">layout</span><span class="o">=</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QHBoxLayout</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">()</span>
@@ -264,7 +264,7 @@
 
 <div class="viewcode-block" id="CaseBuilderQt"><a class="viewcode-back" href="../../../api/PyFoam.Applications.APoMaFoXiiQt.html#PyFoam.Applications.APoMaFoXiiQt.CaseBuilderQt">[docs]</a><span class="k">class</span> <span class="nc">CaseBuilderQt</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;The common denominator for the windows&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CaseBuilderQt</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="o">=</span><span class="kc">None</span>
 
@@ -278,7 +278,7 @@
 
 <div class="viewcode-block" id="CaseBuilderBrowser"><a class="viewcode-back" href="../../../api/PyFoam.Applications.APoMaFoXiiQt.html#PyFoam.Applications.APoMaFoXiiQt.CaseBuilderBrowser">[docs]</a><span class="k">class</span> <span class="nc">CaseBuilderBrowser</span><span class="p">(</span><span class="n">CaseBuilderQt</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A browser of all the available descriptions&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">CaseBuilderQt</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">descriptions</span><span class="o">=</span><span class="n">CaseBuilderDescriptionList</span><span class="p">()</span>
@@ -335,7 +335,7 @@
 
 <div class="viewcode-block" id="CaseBuilderDialog"><a class="viewcode-back" href="../../../api/PyFoam.Applications.APoMaFoXiiQt.html#PyFoam.Applications.APoMaFoXiiQt.CaseBuilderDialog">[docs]</a><span class="k">class</span> <span class="nc">CaseBuilderDialog</span><span class="p">(</span><span class="n">CaseBuilderQt</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A dialog for a CaswBuilder-dialog&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fName</span><span class="p">,</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fName</span><span class="p">,</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">CaseBuilderQt</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">desc</span><span class="o">=</span><span class="n">CaseBuilderFile</span><span class="p">(</span><span class="n">fName</span><span class="p">)</span>

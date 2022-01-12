@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -167,9 +159,9 @@
 <span class="c1"># from FileLineAnalyzer import FileLineAnalyzer</span>
 <span class="c1"># from TimeLineLineAnalyzer import TimeLineLineAnalyzer</span>
 
-<span class="kn">from</span> <span class="nn">.GeneralLineAnalyzer</span> <span class="k">import</span> <span class="n">GeneralLineAnalyzer</span>
+<span class="kn">from</span> <span class="nn">.GeneralLineAnalyzer</span> <span class="kn">import</span> <span class="n">GeneralLineAnalyzer</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">iteritems</span>
 
 <div class="viewcode-block" id="GeneralLinearSolverLineAnalyzer"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverLineAnalyzer">[docs]</a><span class="k">class</span> <span class="nc">GeneralLinearSolverLineAnalyzer</span><span class="p">(</span><span class="n">GeneralLineAnalyzer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses for information about the linear solver</span>
@@ -177,7 +169,7 @@
 <span class="sd">    Files of the form linear_&lt;var&gt; are written, where &lt;var&gt; is the</span>
 <span class="sd">    variable for which the solver was used&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="GeneralLinearSolverLineAnalyzer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverLineAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">doTimelines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">doFiles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">singleFile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -195,7 +187,7 @@
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">doTimelines</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">setDefault</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">setExtend</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">setExtend</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GeneralLinearSolverLineAnalyzer.addToFiles"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverLineAnalyzer.addToFiles">[docs]</a>    <span class="k">def</span> <span class="nf">addToFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">match</span><span class="p">):</span>
         <span class="n">solver</span><span class="o">=</span><span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
@@ -231,7 +223,7 @@
 <div class="viewcode-block" id="GeneralLinearSolverLineAnalyzer.getCurrentData"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverLineAnalyzer.getCurrentData">[docs]</a>    <span class="k">def</span> <span class="nf">getCurrentData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">structured</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="n">tData</span><span class="o">=</span><span class="n">GeneralLineAnalyzer</span><span class="o">.</span><span class="n">getCurrentData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">structured</span><span class="o">=</span><span class="n">structured</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">structured</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+            <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
             <span class="n">vals</span><span class="o">=</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="n">tData</span><span class="p">):</span>
                 <span class="n">pos</span><span class="o">=</span><span class="n">k</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
@@ -246,7 +238,7 @@
 <div class="viewcode-block" id="GeneralLinearSolverIterationsLineAnalyzer"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverIterationsLineAnalyzer">[docs]</a><span class="k">class</span> <span class="nc">GeneralLinearSolverIterationsLineAnalyzer</span><span class="p">(</span><span class="n">GeneralLinearSolverLineAnalyzer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses information about the linear solver and collects the iterations&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="GeneralLinearSolverIterationsLineAnalyzer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverIterationsLineAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">doTimelines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">doFiles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">singleFile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -257,7 +249,7 @@
                                                  <span class="n">doFiles</span><span class="o">=</span><span class="n">doFiles</span><span class="p">,</span>
                                                  <span class="n">singleFile</span><span class="o">=</span><span class="n">singleFile</span><span class="p">,</span>
                                                  <span class="n">startTime</span><span class="o">=</span><span class="n">startTime</span><span class="p">,</span>
-                                                 <span class="n">endTime</span><span class="o">=</span><span class="n">endTime</span><span class="p">)</span>
+                                                 <span class="n">endTime</span><span class="o">=</span><span class="n">endTime</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GeneralLinearSolverIterationsLineAnalyzer.addToFiles"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverIterationsLineAnalyzer.addToFiles">[docs]</a>    <span class="k">def</span> <span class="nf">addToFiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">match</span><span class="p">):</span>
         <span class="k">pass</span></div>
@@ -278,28 +270,26 @@
 <span class="sd">    Files of the form linear_&lt;var&gt; are written, where &lt;var&gt; is the</span>
 <span class="sd">    variable for which the solver was used&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">GeneralLinearSolverLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doTimelines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+<div class="viewcode-block" id="LinearSolverLineAnalyzer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.LinearSolverLineAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GeneralLinearSolverLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doTimelines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="TimeLineLinearSolverLineAnalyzer"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearSolverLineAnalyzer">[docs]</a><span class="k">class</span> <span class="nc">TimeLineLinearSolverLineAnalyzer</span><span class="p">(</span><span class="n">GeneralLinearSolverLineAnalyzer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses for imformation about the linear solver and collects the residuals in timelines&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">GeneralLinearSolverLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doFiles</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+<div class="viewcode-block" id="TimeLineLinearSolverLineAnalyzer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearSolverLineAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GeneralLinearSolverLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doFiles</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="TimeLineLinearIterationsSolverLineAnalyzer"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearIterationsSolverLineAnalyzer">[docs]</a><span class="k">class</span> <span class="nc">TimeLineLinearIterationsSolverLineAnalyzer</span><span class="p">(</span><span class="n">GeneralLinearSolverIterationsLineAnalyzer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parses for information about the linear solver and collects the iterations in timelines&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">GeneralLinearSolverIterationsLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doFiles</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+<div class="viewcode-block" id="TimeLineLinearIterationsSolverLineAnalyzer.__init__"><a class="viewcode-back" href="../../../api/PyFoam.LogAnalysis.LinearSolverLineAnalyzer.html#PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearIterationsSolverLineAnalyzer.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">GeneralLinearSolverIterationsLineAnalyzer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">doFiles</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
 
 <span class="c1"># Should work with Python3 and Python2</span>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -308,11 +298,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -325,36 +315,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

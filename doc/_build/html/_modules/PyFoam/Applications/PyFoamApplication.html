@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -162,35 +154,36 @@
 
 <span class="sd">Classes can also be called with a command-line string&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">optparse</span> <span class="k">import</span> <span class="n">OptionGroup</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.FoamOptionParser</span> <span class="k">import</span> <span class="n">FoamOptionParser</span><span class="p">,</span><span class="n">SubcommandFoamOptionParser</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">FatalErrorPyFoamException</span><span class="p">,</span><span class="n">PyFoamException</span><span class="p">,</span><span class="n">isatty</span>
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="k">import</span> <span class="n">NoTouchSolutionDirectory</span>
-<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="k">import</span> <span class="n">ensureDynamicLibraries</span>
+<span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionGroup</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.FoamOptionParser</span> <span class="kn">import</span> <span class="n">FoamOptionParser</span><span class="p">,</span><span class="n">SubcommandFoamOptionParser</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">FatalErrorPyFoamException</span><span class="p">,</span><span class="n">PyFoamException</span><span class="p">,</span><span class="n">isatty</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="kn">import</span> <span class="n">NoTouchSolutionDirectory</span>
+<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="kn">import</span> <span class="n">ensureDynamicLibraries</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.TerminalFormatter</span> <span class="k">import</span> <span class="n">TerminalFormatter</span>
-<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="k">import</span> <span class="n">configuration</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.TerminalFormatter</span> <span class="kn">import</span> <span class="n">TerminalFormatter</span>
+<span class="kn">from</span> <span class="nn">PyFoam</span> <span class="kn">import</span> <span class="n">configuration</span>
 
-<span class="kn">from</span> <span class="nn">.CursesApplicationWrapper</span> <span class="k">import</span> <span class="n">cursesWrap</span><span class="p">,</span><span class="n">CWindow</span><span class="p">,</span><span class="n">hasCurses</span>
+<span class="kn">from</span> <span class="nn">.CursesApplicationWrapper</span> <span class="kn">import</span> <span class="n">cursesWrap</span><span class="p">,</span><span class="n">CWindow</span><span class="p">,</span><span class="n">hasCurses</span>
 
 <span class="nb">format</span><span class="o">=</span><span class="n">TerminalFormatter</span><span class="p">()</span>
 <span class="nb">format</span><span class="o">.</span><span class="n">getConfigFormat</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
 <span class="nb">format</span><span class="o">.</span><span class="n">getConfigFormat</span><span class="p">(</span><span class="s2">&quot;warn&quot;</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span><span class="p">,</span><span class="n">getcwd</span><span class="p">,</span><span class="n">environ</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span><span class="n">getcwd</span><span class="p">,</span><span class="n">environ</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">print_</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">iteritems</span><span class="p">,</span><span class="n">string_types</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">print_</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">iteritems</span><span class="p">,</span><span class="n">string_types</span>
+
 
 <div class="viewcode-block" id="PyFoamApplicationException"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplicationException">[docs]</a><span class="k">class</span> <span class="nc">PyFoamApplicationException</span><span class="p">(</span><span class="n">FatalErrorPyFoamException</span><span class="p">):</span>
-     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">app</span><span class="p">,</span><span class="o">*</span><span class="n">text</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFoamApplicationException.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplicationException.__init__">[docs]</a>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">app</span><span class="p">,</span> <span class="o">*</span><span class="n">text</span><span class="p">):</span>
           <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">=</span><span class="n">app</span>
-          <span class="n">FatalErrorPyFoamException</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">text</span><span class="p">)</span>
+          <span class="n">FatalErrorPyFoamException</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">text</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span></div>
 
-     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-          <span class="k">return</span> <span class="n">FatalErrorPyFoamException</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; in Application-class: &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span></div>
+<div class="viewcode-block" id="PyFoamApplicationException.__str__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplicationException.__str__">[docs]</a>     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="k">return</span> <span class="n">FatalErrorPyFoamException</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; in Application-class: &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span></div></div>
 
 
 <div class="viewcode-block" id="pyFoamExceptionHook"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.pyFoamExceptionHook">[docs]</a><span class="k">def</span> <span class="nf">pyFoamExceptionHook</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">tb</span><span class="p">,</span><span class="n">debugOnSyntaxError</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -226,15 +219,15 @@
     <span class="sd">&quot;&quot;&quot;This class is the base for all pyFoam-utilities&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="PyFoamApplication.iDict"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.iDict">[docs]</a>    <span class="k">class</span> <span class="nc">iDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
          <span class="s2">&quot;This class is a quick and dirty wrapper to use a dictionary like a struct&quot;</span>
-         <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFoamApplication.iDict.__getattr__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.iDict.__getattr__">[docs]</a>         <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
               <span class="k">try</span><span class="p">:</span>
                    <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
               <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                   <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+                   <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div></div>
 
     <span class="n">CWindowType</span><span class="o">=</span><span class="n">CWindow</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="PyFoamApplication.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">epilog</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -637,7 +630,7 @@
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opts</span><span class="o">.</span><span class="n">pickleApplicationData</span><span class="o">==</span><span class="s2">&quot;stdout&quot;</span><span class="p">:</span>
                     <span class="c1"># Redirect output to memory</span>
-                    <span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="k">import</span> <span class="n">StringIO</span>
+                    <span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="kn">import</span> <span class="n">StringIO</span>
 
                     <span class="n">oldStdout</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
                     <span class="n">oldStderr</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>
@@ -664,7 +657,7 @@
                     <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">=</span><span class="n">oldStderr</span>
 
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opts</span><span class="o">.</span><span class="n">pickleApplicationData</span><span class="p">:</span>
-                    <span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="k">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
+                    <span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="kn">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opts</span><span class="o">.</span><span class="n">pickleApplicationData</span><span class="o">==</span><span class="s2">&quot;stdout&quot;</span><span class="p">:</span>
                         <span class="n">pick</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">Pickler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
@@ -694,7 +687,7 @@
 
                      <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
                           <span class="n">print_</span><span class="p">(</span><span class="s2">&quot;no IPython -&gt; regular shell</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-                          <span class="kn">from</span> <span class="nn">code</span> <span class="k">import</span> <span class="n">InteractiveConsole</span>
+                          <span class="kn">from</span> <span class="nn">code</span> <span class="kn">import</span> <span class="n">InteractiveConsole</span>
                           <span class="n">c</span><span class="o">=</span><span class="n">InteractiveConsole</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span>
                           <span class="n">c</span><span class="o">.</span><span class="n">interact</span><span class="p">()</span>
                      <span class="n">print_</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ending interactive shell</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -704,26 +697,26 @@
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opts</span><span class="o">.</span><span class="n">traceback</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">calledAsClass</span><span class="p">:</span>
                     <span class="k">raise</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">errorPrint</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">errorPrint</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFoamApplication.__getitem__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get application data&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="n">print_</span><span class="p">(</span><span class="s2">&quot;available keys:&quot;</span><span class="p">,</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-            <span class="k">raise</span>
+            <span class="k">raise</span></div>
 
-    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFoamApplication.__setitem__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.__setitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set data. Only if key does not exist (data can only be set once)&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="s2">&quot;does already exist in app-data&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFoamApplication.__iter__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Iterate over the application data&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">k</span>
+            <span class="k">yield</span> <span class="n">k</span></div>
 
 <div class="viewcode-block" id="PyFoamApplication.iterkeys"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.iterkeys">[docs]</a>    <span class="k">def</span> <span class="nf">iterkeys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span></div>
@@ -731,11 +724,11 @@
 <div class="viewcode-block" id="PyFoamApplication.iteritems"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.iteritems">[docs]</a>    <span class="k">def</span> <span class="nf">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span></div>
 
-    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFoamApplication.__getattr__"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.__getattr__">[docs]</a>    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
          <span class="k">try</span><span class="p">:</span>
               <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__appData</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
          <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-              <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+              <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PyFoamApplication.getData"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.getData">[docs]</a>    <span class="k">def</span> <span class="nf">getData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get the application data&quot;&quot;&quot;</span>
@@ -773,7 +766,7 @@
          <span class="sd">&quot;&quot;&quot;Raise a error exception. How it will be handled is a different story</span>
 <span class="sd">        :param args: Arguments to the exception</span>
 <span class="sd">         &quot;&quot;&quot;</span>
-         <span class="k">raise</span> <span class="n">PyFoamApplicationException</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+         <span class="k">raise</span> <span class="n">PyFoamApplicationException</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="PyFoamApplication.errorPrint"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.errorPrint">[docs]</a>    <span class="k">def</span> <span class="nf">errorPrint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -898,7 +891,7 @@
 
 <div class="viewcode-block" id="PyFoamApplication.getCasePath"><a class="viewcode-back" href="../../../api/PyFoam.Applications.PyFoamApplication.html#PyFoam.Applications.PyFoamApplication.PyFoamApplication.getCasePath">[docs]</a>    <span class="k">def</span> <span class="nf">getCasePath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Try to determine the actual case location from the arguments&quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
+        <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
         <span class="n">val</span><span class="o">=</span><span class="s2">&quot;.&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;-case&quot;</span><span class="p">:</span>
@@ -919,7 +912,7 @@
             <span class="k">return</span> <span class="n">args</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="s2">&quot;_replacedSolver&quot;</span><span class="p">):</span>
-            <span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="k">import</span> <span class="n">SolutionDirectory</span>
+            <span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="kn">import</span> <span class="n">SolutionDirectory</span>
             <span class="n">sol</span><span class="o">=</span><span class="n">SolutionDirectory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getCasePath</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_replacedSolver</span><span class="o">=</span><span class="n">sol</span><span class="o">.</span><span class="n">getDictionaryContents</span><span class="p">(</span><span class="s2">&quot;system&quot;</span><span class="p">,</span><span class="s2">&quot;controlDict&quot;</span><span class="p">)[</span><span class="s2">&quot;application&quot;</span><span class="p">]</span>
@@ -983,9 +976,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -994,11 +985,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1011,36 +1002,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

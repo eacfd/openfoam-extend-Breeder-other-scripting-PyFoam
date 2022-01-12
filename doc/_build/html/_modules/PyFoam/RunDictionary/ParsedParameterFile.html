@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -160,25 +152,25 @@
 <span></span><span class="c1">#  ICE Revision: $Id$</span>
 <span class="sd">&quot;&quot;&quot;Parameter file is read into memory and modified there&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.FileBasis</span> <span class="k">import</span> <span class="n">FileBasisBackup</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.PlyParser</span> <span class="k">import</span> <span class="n">PlyParser</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.FoamFileGenerator</span> <span class="k">import</span> <span class="n">FoamFileGenerator</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.FileBasis</span> <span class="kn">import</span> <span class="n">FileBasisBackup</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.PlyParser</span> <span class="kn">import</span> <span class="n">PlyParser</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.FoamFileGenerator</span> <span class="kn">import</span> <span class="n">FoamFileGenerator</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.DataStructures</span> <span class="k">import</span> <span class="n">Vector</span><span class="p">,</span><span class="n">Field</span><span class="p">,</span><span class="n">Dimension</span><span class="p">,</span><span class="n">DictProxy</span><span class="p">,</span><span class="n">TupleProxy</span><span class="p">,</span><span class="n">Tensor</span><span class="p">,</span><span class="n">SymmTensor</span><span class="p">,</span><span class="n">Unparsed</span><span class="p">,</span><span class="n">UnparsedList</span><span class="p">,</span><span class="n">Codestream</span><span class="p">,</span><span class="n">DictRedirection</span><span class="p">,</span><span class="n">BinaryBlob</span><span class="p">,</span><span class="n">BinaryList</span><span class="p">,</span><span class="n">BoolProxy</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.DataStructures</span> <span class="kn">import</span> <span class="n">Vector</span><span class="p">,</span><span class="n">Field</span><span class="p">,</span><span class="n">Dimension</span><span class="p">,</span><span class="n">DictProxy</span><span class="p">,</span><span class="n">TupleProxy</span><span class="p">,</span><span class="n">Tensor</span><span class="p">,</span><span class="n">SymmTensor</span><span class="p">,</span><span class="n">Unparsed</span><span class="p">,</span><span class="n">UnparsedList</span><span class="p">,</span><span class="n">Codestream</span><span class="p">,</span><span class="n">DictRedirection</span><span class="p">,</span><span class="n">BinaryBlob</span><span class="p">,</span><span class="n">BinaryList</span><span class="p">,</span><span class="n">BoolProxy</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">FatalErrorPyFoamException</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">FatalErrorPyFoamException</span>
 
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">print_</span><span class="p">,</span><span class="n">integer_types</span><span class="p">,</span><span class="n">iteritems</span><span class="p">,</span><span class="n">string_types</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">print_</span><span class="p">,</span><span class="n">integer_types</span><span class="p">,</span><span class="n">iteritems</span><span class="p">,</span><span class="n">string_types</span>
 
 <div class="viewcode-block" id="ParsedParameterFile"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile">[docs]</a><span class="k">class</span> <span class="nc">ParsedParameterFile</span><span class="p">(</span><span class="n">FileBasisBackup</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Parameterfile whose complete representation is read into</span>
 <span class="sd">    memory, can be manipulated and afterwards written to disk&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="ParsedParameterFile.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">name</span><span class="p">,</span>
                  <span class="n">backup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -242,7 +234,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">dictStack</span><span class="o">=</span><span class="n">dictStack</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">dontRead</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">readFile</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">readFile</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="ParsedParameterFile.parse"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">content</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a representation of the file&quot;&quot;&quot;</span>
@@ -290,26 +282,26 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span></div>
 
-    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span>
+<div class="viewcode-block" id="ParsedParameterFile.__contains__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__contains__">[docs]</a>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<div class="viewcode-block" id="ParsedParameterFile.__getitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
-    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
+<div class="viewcode-block" id="ParsedParameterFile.__setitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__setitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span></div>
 
-    <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<div class="viewcode-block" id="ParsedParameterFile.__delitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__delitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<div class="viewcode-block" id="ParsedParameterFile.__len__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ParsedParameterFile.__iter__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">key</span>
+            <span class="k">yield</span> <span class="n">key</span></div>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ParsedParameterFile.__str__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generates a string from the contents in memory</span>
 <span class="sd">        Used to be called makeString&quot;&quot;&quot;</span>
 
@@ -323,7 +315,7 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lastDecoration</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
             <span class="n">string</span><span class="o">+=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">lastDecoration</span>
 
-        <span class="k">return</span> <span class="n">string</span>
+        <span class="k">return</span> <span class="n">string</span></div>
 
 <div class="viewcode-block" id="ParsedParameterFile.getValueDict"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.getValueDict">[docs]</a>    <span class="k">def</span> <span class="nf">getValueDict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get a dictionary with the values with the decorators removed&quot;&quot;&quot;</span>
@@ -336,7 +328,7 @@
 
 <div class="viewcode-block" id="WriteParameterFile"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.WriteParameterFile">[docs]</a><span class="k">class</span> <span class="nc">WriteParameterFile</span><span class="p">(</span><span class="n">ParsedParameterFile</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A specialization that is used to only write to the file&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="WriteParameterFile.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.WriteParameterFile.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">name</span><span class="p">,</span>
                  <span class="n">backup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">className</span><span class="o">=</span><span class="s2">&quot;dictionary&quot;</span><span class="p">,</span>
@@ -357,27 +349,27 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
                      <span class="s2">&quot;format&quot;</span><span class="p">:</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span>
                      <span class="s2">&quot;class&quot;</span><span class="p">:</span><span class="n">className</span><span class="p">,</span>
-                     <span class="s2">&quot;object&quot;</span><span class="p">:</span><span class="n">objectName</span><span class="p">}</span></div>
+                     <span class="s2">&quot;object&quot;</span><span class="p">:</span><span class="n">objectName</span><span class="p">}</span></div></div>
 
 <div class="viewcode-block" id="Enumerate"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.Enumerate">[docs]</a><span class="k">class</span> <span class="nc">Enumerate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+<div class="viewcode-block" id="Enumerate.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.Enumerate.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span></div>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">number</span><span class="p">)</span></div></div>
 
 <span class="n">inputModes</span><span class="o">=</span><span class="n">Enumerate</span><span class="p">([</span><span class="s2">&quot;merge&quot;</span><span class="p">,</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="s2">&quot;warn&quot;</span><span class="p">,</span><span class="s2">&quot;protect&quot;</span><span class="p">,</span><span class="s2">&quot;overwrite&quot;</span><span class="p">,</span><span class="s2">&quot;default&quot;</span><span class="p">])</span>
 
 <div class="viewcode-block" id="NotAPrelist"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.NotAPrelist">[docs]</a><span class="k">class</span> <span class="nc">NotAPrelist</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Class to return if the length of the prelist does not fit the prefix&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+<div class="viewcode-block" id="NotAPrelist.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.NotAPrelist.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">=</span><span class="n">a</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">=</span><span class="n">b</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">=</span><span class="n">b</span></div></div>
 
 <div class="viewcode-block" id="FoamFileParser"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser">[docs]</a><span class="k">class</span> <span class="nc">FoamFileParser</span><span class="p">(</span><span class="n">PlyParser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class that parses a string that contains the contents of an</span>
 <span class="sd">    OpenFOAM-file and builds a nested structure of directories and</span>
 <span class="sd">    lists from it&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="FoamFileParser.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">content</span><span class="p">,</span>
                  <span class="n">fName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -468,23 +460,23 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">emptyCnt</span><span class="o">=</span><span class="mi">0</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">content</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+<div class="viewcode-block" id="FoamFileParser.__contains__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser.__contains__">[docs]</a>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<div class="viewcode-block" id="FoamFileParser.__getitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
-    <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span>
+<div class="viewcode-block" id="FoamFileParser.__setitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser.__setitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">value</span></div>
 
-    <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
-        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<div class="viewcode-block" id="FoamFileParser.__delitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser.__delitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
 
-    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="FoamFileParser.__iter__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">key</span>
+            <span class="k">yield</span> <span class="n">key</span></div>
 
 <span class="c1">##    def __len__(self):</span>
 <span class="c1">##        if self.data==None:</span>
@@ -920,11 +912,11 @@
                     <span class="k">raise</span> <span class="n">PyFoamParserError</span><span class="p">(</span><span class="s2">&quot;Parameters for #includeFunc not implemented&quot;</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;includeEtc&quot;</span><span class="p">:</span>
-                <span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="k">import</span> <span class="n">foamEtc</span>
+                <span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="kn">import</span> <span class="n">foamEtc</span>
                 <span class="n">fName</span><span class="o">=</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">foamEtc</span><span class="p">(),</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">elif</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;includeFunc&quot;</span><span class="ow">and</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fName</span><span class="p">):</span>
-                <span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="k">import</span> <span class="n">foamPostProcessing</span>
-                <span class="kn">from</span> <span class="nn">PyFoam.Basics.Utilities</span> <span class="k">import</span> <span class="n">findFileInDir</span>
+                <span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="kn">import</span> <span class="n">foamPostProcessing</span>
+                <span class="kn">from</span> <span class="nn">PyFoam.Basics.Utilities</span> <span class="kn">import</span> <span class="n">findFileInDir</span>
 
                 <span class="n">fName</span><span class="o">=</span><span class="n">findFileInDir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">(),</span><span class="n">includeName</span><span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fName</span><span class="p">):</span>
@@ -1411,12 +1403,12 @@
         <span class="c1"># self.yacc.errok()</span>
 
 <div class="viewcode-block" id="PyFoamParserError"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.PyFoamParserError">[docs]</a><span class="k">class</span> <span class="nc">PyFoamParserError</span><span class="p">(</span><span class="n">FatalErrorPyFoamException</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">descr</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFoamParserError.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.PyFoamParserError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">descr</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">FatalErrorPyFoamException</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="s2">&quot;Parser Error:&quot;</span><span class="p">,</span><span class="n">descr</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">descr</span><span class="o">=</span><span class="n">descr</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">=</span><span class="n">data</span></div>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PyFoamParserError.__str__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.PyFoamParserError.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">result</span><span class="o">=</span><span class="s2">&quot;Error in PyFoamParser: &#39;&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">descr</span><span class="o">+</span><span class="s2">&quot;&#39;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
             <span class="n">val</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">value</span>
@@ -1430,19 +1422,19 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">result</span><span class="o">+=</span><span class="s2">&quot; NONE&quot;</span>
 
-        <span class="k">return</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result</span></div>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+<div class="viewcode-block" id="PyFoamParserError.__repr__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.PyFoamParserError.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="BinaryParserError"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.BinaryParserError">[docs]</a><span class="k">class</span> <span class="nc">BinaryParserError</span><span class="p">(</span><span class="n">PyFoamParserError</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">descr</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">PyFoamParserError</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">descr</span><span class="p">,</span><span class="n">data</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BinaryParserError.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.BinaryParserError.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">descr</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">PyFoamParserError</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">descr</span><span class="p">,</span><span class="n">data</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="FoamStringParser"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser">[docs]</a><span class="k">class</span> <span class="nc">FoamStringParser</span><span class="p">(</span><span class="n">FoamFileParser</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Convenience class that parses only a headerless OpenFOAM dictionary&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="FoamStringParser.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">content</span><span class="p">,</span>
                  <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">noVectorOrTensor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1462,15 +1454,15 @@
                                 <span class="n">noVectorOrTensor</span><span class="o">=</span><span class="n">noVectorOrTensor</span><span class="p">,</span>
                                 <span class="n">duplicateCheck</span><span class="o">=</span><span class="n">duplicateCheck</span><span class="p">,</span>
                                 <span class="n">doMacroExpansion</span><span class="o">=</span><span class="n">doMacroExpansion</span><span class="p">,</span>
-                                <span class="n">duplicateFail</span><span class="o">=</span><span class="n">duplicateFail</span><span class="p">)</span>
+                                <span class="n">duplicateFail</span><span class="o">=</span><span class="n">duplicateFail</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">FoamFileGenerator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span></div>
+<div class="viewcode-block" id="FoamStringParser.__str__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">FoamFileGenerator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span></div></div>
 
 <div class="viewcode-block" id="ParsedBoundaryDict"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict">[docs]</a><span class="k">class</span> <span class="nc">ParsedBoundaryDict</span><span class="p">(</span><span class="n">ParsedParameterFile</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Convenience class that parses only a OpenFOAM polyMesh-boundaries file&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="ParsedBoundaryDict.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">name</span><span class="p">,</span>
                  <span class="n">treatBinaryAsASCII</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">backup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1483,7 +1475,7 @@
                                      <span class="n">backup</span><span class="o">=</span><span class="n">backup</span><span class="p">,</span>
                                      <span class="n">treatBinaryAsASCII</span><span class="o">=</span><span class="n">treatBinaryAsASCII</span><span class="p">,</span>
                                      <span class="n">debug</span><span class="o">=</span><span class="n">debug</span><span class="p">,</span>
-                                     <span class="n">boundaryDict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                     <span class="n">boundaryDict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ParsedBoundaryDict.parse"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">content</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructs a representation of the file&quot;&quot;&quot;</span>
@@ -1493,7 +1485,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span></div>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ParsedBoundaryDict.__str__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">string</span><span class="o">=</span><span class="s2">&quot;// File generated by PyFoam - sorry for the ugliness</span><span class="se">\n\n</span><span class="s2">&quot;</span>
         <span class="n">temp</span><span class="o">=</span><span class="p">[]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span><span class="p">):</span>
@@ -1510,30 +1502,28 @@
         <span class="n">generator</span><span class="o">=</span><span class="n">FoamFileGenerator</span><span class="p">(</span><span class="n">temp2</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
         <span class="n">string</span><span class="o">+=</span><span class="nb">str</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">string</span></div>
+        <span class="k">return</span> <span class="n">string</span></div></div>
 
 <div class="viewcode-block" id="ParsedFileHeader"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedFileHeader">[docs]</a><span class="k">class</span> <span class="nc">ParsedFileHeader</span><span class="p">(</span><span class="n">ParsedParameterFile</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Only parse the header of a file&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
-        <span class="n">ParsedParameterFile</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">backup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">noBody</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="viewcode-block" id="ParsedFileHeader.__init__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedFileHeader.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="n">ParsedParameterFile</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">backup</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">noBody</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<div class="viewcode-block" id="ParsedFileHeader.__getitem__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedFileHeader.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
 
-    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span>
+<div class="viewcode-block" id="ParsedFileHeader.__contains__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedFileHeader.__contains__">[docs]</a>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">header</span></div>
 
-    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">)</span></div>
+<div class="viewcode-block" id="ParsedFileHeader.__len__"><a class="viewcode-back" href="../../../api/PyFoam.RunDictionary.ParsedParameterFile.html#PyFoam.RunDictionary.ParsedParameterFile.ParsedFileHeader.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">header</span><span class="p">)</span></div></div>
 
 <span class="c1"># Should work with Python3 and Python2</span>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1542,11 +1532,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1559,36 +1549,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -81,24 +81,36 @@ def write_array(f, set,
     if len(set.shape) == 1:
         (columns,) = set.shape
         assert columns > 0
-        fmt = item_sep.join(['%s'] * columns)
+        # fmt = item_sep.join(['%s'] * columns)
+        fmt = item_sep.join(['%g'] * columns) # According zo benchmarks this is 3 times faster
         f.write(nest_prefix)
         f.write(fmt % tuple(set.tolist()))
         f.write(nest_suffix)
     elif len(set.shape) == 2:
+        #        import numpy as np
         # This case could be done with recursion, but `unroll' for
         # efficiency.
         (points, columns) = set.shape
         assert points > 0 and columns > 0
-        fmt = item_sep.join(['%s'] * columns)
-        f.write(nest_prefix + nest_prefix)
-        f.write(fmt % tuple(set[0].tolist()))
-        f.write(nest_suffix)
-        for point in set[1:]:
-            f.write(nest_sep + nest_prefix)
-            f.write(fmt % tuple(point.tolist()))
-            f.write(nest_suffix)
-        f.write(nest_suffix)
+        # this seems to be up to 20 times faster than the code below
+
+        # np.set_printoptions(threshold=1e12, linewidth=1e6)
+        # f.write(np.array2string(set, separator=" ")
+        #        .replace("[", "")
+        #        .replace("]", ""))
+
+        row_fmt = item_sep.join(["%g"] * set.shape[1])
+        f.write(nest_sep.join(nest_prefix + (row_fmt % tuple(row)) + nest_suffix for row in set))
+
+        # fmt = item_sep.join(['%s'] * columns)
+        # f.write(nest_prefix + nest_prefix)
+        # f.write(fmt % tuple(set[0].tolist()))
+        # f.write(nest_suffix)
+        # for point in set[1:]:
+        #     f.write(nest_sep + nest_prefix)
+        #     f.write(fmt % tuple(point.tolist()))
+        #     f.write(nest_suffix)
+        # f.write(nest_suffix)
     else:
         # Use recursion for three or more dimensions:
         assert set.shape[0] > 0

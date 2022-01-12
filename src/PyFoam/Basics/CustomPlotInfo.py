@@ -64,6 +64,7 @@ class CustomPlotInfo(object):
         self.specialwith={}
         #        self.with_="points"
         self.type="regular";
+        self.publisher=None
         self.master=None
         self.alternateTime=None
         self.progress=None
@@ -123,11 +124,14 @@ class CustomPlotInfo(object):
                     k="with_"
                 self.set(k,data)
 
+        if self.master is not None and self.publisher is None:
+            self.publisher = self.master
+
         # Sanity check the data
         if self.accumulation not in TimeLineCollection.possibleAccumulations:
             error("Accumulation",self.accumulation,"not in the possible values",TimeLineCollection.possibleAccumulations)
 
-        if self.type in ["data","dataslave"]:
+        if self.type in ["data", "dataslave", "datacollector"]:
             if self.csvName is None and self.txtName is None and self.excelName is None:
                 error("type 'data' needs either 'csvName' or 'txtName' or 'excelName'",
                       raw)

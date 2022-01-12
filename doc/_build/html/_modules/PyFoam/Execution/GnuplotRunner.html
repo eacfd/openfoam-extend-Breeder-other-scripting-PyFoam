@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -160,26 +152,27 @@
 <span></span><span class="c1">#  ICE Revision: $Id: GnuplotRunner.py,v 2d3659384189 2020-02-27 10:48:04Z bgschaid $</span>
 <span class="sd">&quot;&quot;&quot;Runner that outputs the residuals of the linear solver with Gnuplot&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">.StepAnalyzedCommon</span> <span class="k">import</span> <span class="n">StepAnalyzedCommon</span>
-<span class="kn">from</span> <span class="nn">.BasicRunner</span> <span class="k">import</span> <span class="n">BasicRunner</span>
-<span class="kn">from</span> <span class="nn">.BasicWatcher</span> <span class="k">import</span> <span class="n">BasicWatcher</span>
+<span class="kn">from</span> <span class="nn">.StepAnalyzedCommon</span> <span class="kn">import</span> <span class="n">StepAnalyzedCommon</span>
+<span class="kn">from</span> <span class="nn">.BasicRunner</span> <span class="kn">import</span> <span class="n">BasicRunner</span>
+<span class="kn">from</span> <span class="nn">.BasicWatcher</span> <span class="kn">import</span> <span class="n">BasicWatcher</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.LogAnalysis.BoundingLogAnalyzer</span> <span class="k">import</span> <span class="n">BoundingLogAnalyzer</span>
-<span class="kn">from</span> <span class="nn">PyFoam.LogAnalysis.SteadyConvergedLineAnalyzer</span> <span class="k">import</span> <span class="n">SteadyConvergedLineAnalyzer</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.TimeLineCollection</span> <span class="k">import</span> <span class="n">TimeLineCollection</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="k">import</span> <span class="n">error</span>
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">print_</span>
+<span class="kn">from</span> <span class="nn">PyFoam.LogAnalysis.BoundingLogAnalyzer</span> <span class="kn">import</span> <span class="n">BoundingLogAnalyzer</span>
+<span class="kn">from</span> <span class="nn">PyFoam.LogAnalysis.SteadyConvergedLineAnalyzer</span> <span class="kn">import</span> <span class="n">SteadyConvergedLineAnalyzer</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.TimeLineCollection</span> <span class="kn">import</span> <span class="n">TimeLineCollection</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Error</span> <span class="kn">import</span> <span class="n">error</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">print_</span>
 
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 
 <div class="viewcode-block" id="GnuplotCommon"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotCommon">[docs]</a><span class="k">class</span> <span class="nc">GnuplotCommon</span><span class="p">(</span><span class="n">StepAnalyzedCommon</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class that collects the Gnuplotting-Stuff for two other classes&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="GnuplotCommon.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotCommon.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">fname</span><span class="p">,</span>
                  <span class="n">smallestFreq</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
                  <span class="n">persist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">splitThres</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+                 <span class="n">split_fraction_unchanged</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
                  <span class="n">plotLinear</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">plotCont</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">plotBound</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -229,6 +222,7 @@
                          <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
                          <span class="n">writeFiles</span><span class="o">=</span><span class="n">writeFiles</span><span class="p">,</span>
                          <span class="n">splitThres</span><span class="o">=</span><span class="n">splitThres</span><span class="p">,</span>
+                         <span class="n">split_fraction_unchanged</span><span class="o">=</span><span class="n">split_fraction_unchanged</span><span class="p">,</span>
                          <span class="n">plotLinear</span><span class="o">=</span><span class="n">plotLinear</span><span class="p">,</span>
                          <span class="n">plotCont</span><span class="o">=</span><span class="n">plotCont</span><span class="p">,</span>
                          <span class="n">plotBound</span><span class="o">=</span><span class="n">plotBound</span><span class="p">,</span>
@@ -245,7 +239,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">hardcopyPrefix</span><span class="o">=</span><span class="n">hardcopyPrefix</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hardcopyTerminalOptions</span><span class="o">=</span><span class="n">hardcopyTerminalOptions</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">longProgress</span><span class="o">=</span><span class="n">longProgress</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">longProgress</span><span class="o">=</span><span class="n">longProgress</span></div>
 
 <div class="viewcode-block" id="GnuplotCommon.addPlots"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotCommon.addPlots">[docs]</a>    <span class="k">def</span> <span class="nf">addPlots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">plots</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">:</span>
@@ -294,12 +288,13 @@
 <span class="c1">#        print(&quot;Done handle&quot;)</span>
 
 <div class="viewcode-block" id="GnuplotRunner"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotRunner">[docs]</a><span class="k">class</span> <span class="nc">GnuplotRunner</span><span class="p">(</span><span class="n">GnuplotCommon</span><span class="p">,</span><span class="n">BasicRunner</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="GnuplotRunner.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotRunner.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">argv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">smallestFreq</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
                  <span class="n">persist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">splitThres</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+                 <span class="n">split_fraction_unchanged</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
                  <span class="n">plotLinear</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">plotCont</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">plotBound</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -356,6 +351,7 @@
                                <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span>
                                <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span>
                                <span class="n">splitThres</span><span class="o">=</span><span class="n">splitThres</span><span class="p">,</span>
+                               <span class="n">split_fraction_unchanged</span><span class="o">=</span><span class="n">split_fraction_unchanged</span><span class="p">,</span>
                                <span class="n">plotLinear</span><span class="o">=</span><span class="n">plotLinear</span><span class="p">,</span>
                                <span class="n">plotCont</span><span class="o">=</span><span class="n">plotCont</span><span class="p">,</span>
                                <span class="n">plotBound</span><span class="o">=</span><span class="n">plotBound</span><span class="p">,</span>
@@ -379,7 +375,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">steady</span><span class="o">=</span><span class="n">steady</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">steady</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">steadyAnalyzer</span><span class="o">=</span><span class="n">SteadyConvergedLineAnalyzer</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">addAnalyzer</span><span class="p">(</span><span class="s2">&quot;Convergence&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">steadyAnalyzer</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">addAnalyzer</span><span class="p">(</span><span class="s2">&quot;Convergence&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">steadyAnalyzer</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GnuplotRunner.lineHandle"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotRunner.lineHandle">[docs]</a>    <span class="k">def</span> <span class="nf">lineHandle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">line</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Not to be called: Stops the solver&quot;&quot;&quot;</span>
@@ -395,12 +391,13 @@
         <span class="n">BasicRunner</span><span class="o">.</span><span class="n">stopHandle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="GnuplotWatcher"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotWatcher">[docs]</a><span class="k">class</span> <span class="nc">GnuplotWatcher</span><span class="p">(</span><span class="n">GnuplotCommon</span><span class="p">,</span><span class="n">BasicWatcher</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="GnuplotWatcher.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotWatcher.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">logfile</span><span class="p">,</span>
                  <span class="n">smallestFreq</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
                  <span class="n">persist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">splitThres</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+                 <span class="n">split_fraction_unchanged</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
                  <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">tailLength</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
                  <span class="n">sleep</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
@@ -443,6 +440,7 @@
                                <span class="n">persist</span><span class="o">=</span><span class="n">persist</span><span class="p">,</span>
                                <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span>
                                <span class="n">splitThres</span><span class="o">=</span><span class="n">splitThres</span><span class="p">,</span>
+                               <span class="n">split_fraction_unchanged</span><span class="o">=</span><span class="n">split_fraction_unchanged</span><span class="p">,</span>
                                <span class="n">plotLinear</span><span class="o">=</span><span class="n">plotLinear</span><span class="p">,</span>
                                <span class="n">plotCont</span><span class="o">=</span><span class="n">plotCont</span><span class="p">,</span>
                                <span class="n">plotBound</span><span class="o">=</span><span class="n">plotBound</span><span class="p">,</span>
@@ -471,7 +469,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">replotFrequency</span><span class="o">=</span><span class="n">replotFrequency</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyzer</span><span class="o">.</span><span class="n">hasAnalyzer</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">addChangeFileHook</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">analyzer</span><span class="o">.</span><span class="n">getAnalyzer</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">addChangeFileHook</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">analyzer</span><span class="o">.</span><span class="n">getAnalyzer</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="GnuplotWatcher.startHandle"><a class="viewcode-back" href="../../../api/PyFoam.Execution.GnuplotRunner.html#PyFoam.Execution.GnuplotRunner.GnuplotWatcher.startHandle">[docs]</a>    <span class="k">def</span> <span class="nf">startHandle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -509,9 +507,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -520,11 +516,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -537,36 +533,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

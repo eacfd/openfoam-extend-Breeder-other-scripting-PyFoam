@@ -22,6 +22,7 @@ from .CommonWriteAllTrigger import CommonWriteAllTrigger
 from .CommonLibFunctionTrigger import CommonLibFunctionTrigger
 from .CommonServer import CommonServer
 from .CommonVCSCommit import CommonVCSCommit
+from .CommonPrePostHooks import CommonPrePostHooks
 from .CommonBlink1 import CommonBlink1
 
 from .CursesApplicationWrapper import CWindowAnalyzed
@@ -40,6 +41,7 @@ class PlotRunner(PyFoamApplication,
                  CommonRestart,
                  CommonStandardOutput,
                  CommonVCSCommit,
+                 CommonPrePostHooks,
                  CommonBlink1):
 
     CWindowType=CWindowAnalyzed
@@ -89,6 +91,7 @@ read and the regular expressions in it are displayed
         CommonLibFunctionTrigger.addOptions(self)
         CommonServer.addOptions(self)
         CommonVCSCommit.addOptions(self)
+        CommonPrePostHooks.addOptions(self, auto_enable=False)
         CommonBlink1.addOptions(self)
 
     def run(self):
@@ -97,6 +100,8 @@ read and the regular expressions in it are displayed
         cName=self.parser.casePath()
         self.checkCase(cName)
 #        self.addLocalConfig(cName)
+
+        self.prepareHooks()
 
         self.processPlotLineOptions(autoPath=cName)
 
@@ -119,6 +124,7 @@ read and the regular expressions in it are displayed
                           persist=self.opts.persist,
                           quiet=self.opts.quietPlot,
                           splitThres=self.opts.splitDataPointsThreshold if self.opts.doSplitDataPoints else None,
+                          split_fraction_unchanged=self.opts.split_fraction_unchanged,
                           plotLinear=self.opts.linear,
                           plotCont=self.opts.continuity,
                           plotBound=self.opts.bound,
@@ -165,6 +171,7 @@ read and the regular expressions in it are displayed
         self.addSafeTrigger(run,sol,steady=self.opts.steady)
         self.addWriteAllTrigger(run,sol)
         self.addLibFunctionTrigger(run,sol)
+        self.runPreHooks()
 
         if self.blink1:
             run.addTicker(lambda: self.blink1.ticToc())
@@ -178,6 +185,8 @@ read and the regular expressions in it are displayed
         self.setData(run.data)
 
         self.addToCaseLog(cName,"Ending")
+
+        self.runPostHooks()
 
         self.reportUsage(run)
         self.reportRunnerData(run)

@@ -17,41 +17,34 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../../../index.html"/>
-        <link rel="up" title="PyFoam" href="../../PyFoam.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -102,7 +95,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">PyFoam</a>
@@ -110,9 +103,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -144,8 +138,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -162,27 +154,27 @@
 
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">traceback</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="k">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six.moves</span> <span class="kn">import</span> <span class="n">cPickle</span> <span class="k">as</span> <span class="n">pickle</span>
 
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.CloneCase</span> <span class="k">import</span> <span class="n">CloneCase</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.Runner</span> <span class="k">import</span> <span class="n">Runner</span>
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="k">import</span> <span class="n">SolutionDirectory</span>
-<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParsedParameterFile</span> <span class="k">import</span> <span class="n">ParsedParameterFile</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.SamplePlot</span> <span class="k">import</span> <span class="n">SamplePlot</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.TimelinePlot</span> <span class="k">import</span> <span class="n">TimelinePlot</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Applications.Decomposer</span> <span class="k">import</span> <span class="n">Decomposer</span>
-<span class="kn">from</span> <span class="nn">PyFoam.Basics.Data2DStatistics</span> <span class="k">import</span> <span class="n">Data2DStatistics</span>
-<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="k">import</span> <span class="n">shellExecutionPrefix</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.CloneCase</span> <span class="kn">import</span> <span class="n">CloneCase</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.Runner</span> <span class="kn">import</span> <span class="n">Runner</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.SolutionDirectory</span> <span class="kn">import</span> <span class="n">SolutionDirectory</span>
+<span class="kn">from</span> <span class="nn">PyFoam.RunDictionary.ParsedParameterFile</span> <span class="kn">import</span> <span class="n">ParsedParameterFile</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.SamplePlot</span> <span class="kn">import</span> <span class="n">SamplePlot</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.TimelinePlot</span> <span class="kn">import</span> <span class="n">TimelinePlot</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Applications.Decomposer</span> <span class="kn">import</span> <span class="n">Decomposer</span>
+<span class="kn">from</span> <span class="nn">PyFoam.Basics.Data2DStatistics</span> <span class="kn">import</span> <span class="n">Data2DStatistics</span>
+<span class="kn">from</span> <span class="nn">PyFoam.FoamInformation</span> <span class="kn">import</span> <span class="n">shellExecutionPrefix</span>
 
-<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="k">import</span> <span class="n">print_</span><span class="p">,</span><span class="n">PY3</span><span class="p">,</span><span class="n">iteritems</span>
+<span class="kn">from</span> <span class="nn">PyFoam.ThirdParty.six</span> <span class="kn">import</span> <span class="n">print_</span><span class="p">,</span><span class="n">PY3</span><span class="p">,</span><span class="n">iteritems</span>
 
 <span class="n">callbackMethods</span><span class="o">=</span><span class="p">[]</span>
 
@@ -194,10 +186,10 @@
     <span class="sd">&quot;&quot;&quot;This class runs a solver on a test case, examines the results</span>
 <span class="sd">    and fails if they don&#39;t live up the expectations&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
+<div class="viewcode-block" id="CTestRun.__init__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.CTestRun.html#PyFoam.Infrastructure.CTestRun.CTestRun.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
 
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="CTestRun.__new__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.CTestRun.html#PyFoam.Infrastructure.CTestRun.CTestRun.__new__">[docs]</a>    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">obj</span><span class="o">=</span><span class="nb">super</span><span class="p">(</span><span class="n">CTestRun</span><span class="p">,</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">obj</span><span class="o">.</span><span class="n">__parameters</span><span class="o">=</span><span class="p">{}</span>
@@ -218,7 +210,7 @@
 
         <span class="n">obj</span><span class="o">.</span><span class="n">__parametersClosedForWriting</span><span class="o">=</span><span class="kc">True</span>
 
-        <span class="k">return</span> <span class="n">obj</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
 
     <span class="k">def</span> <span class="nf">__recursiveInit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">theClass</span><span class="p">,</span><span class="n">called</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Automatically call the &#39;init&#39;-method of the whole tree&quot;&quot;&quot;</span>
@@ -271,7 +263,7 @@
             <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parameters</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">__parameters</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s2">&quot;used&quot;</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+<div class="viewcode-block" id="CTestRun.__getitem__"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.CTestRun.html#PyFoam.Infrastructure.CTestRun.CTestRun.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get a parameter&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">parameter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__parameters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
@@ -283,7 +275,7 @@
 
         <span class="n">parameter</span><span class="p">[</span><span class="s2">&quot;used&quot;</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span>
 
-        <span class="k">return</span> <span class="n">parameter</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">parameter</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="CTestRun.shortTestName"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.CTestRun.html#PyFoam.Infrastructure.CTestRun.CTestRun.shortTestName">[docs]</a>    <span class="k">def</span> <span class="nf">shortTestName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span></div>
@@ -449,7 +441,7 @@
 <div class="viewcode-block" id="CTestRun.processOptions"><a class="viewcode-back" href="../../../api/PyFoam.Infrastructure.CTestRun.html#PyFoam.Infrastructure.CTestRun.CTestRun.processOptions">[docs]</a>    <span class="k">def</span> <span class="nf">processOptions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Select which phase of the test should be run&quot;&quot;&quot;</span>
 
-        <span class="kn">from</span> <span class="nn">optparse</span> <span class="k">import</span> <span class="n">OptionParser</span><span class="p">,</span><span class="n">OptionGroup</span>
+        <span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionParser</span><span class="p">,</span><span class="n">OptionGroup</span>
 
         <span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">(</span><span class="n">usage</span><span class="o">=</span><span class="s2">&quot;%prog: [options]&quot;</span><span class="p">)</span>
         <span class="n">phases</span><span class="o">=</span><span class="n">OptionGroup</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span>
@@ -1275,9 +1267,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1286,11 +1276,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1303,36 +1293,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

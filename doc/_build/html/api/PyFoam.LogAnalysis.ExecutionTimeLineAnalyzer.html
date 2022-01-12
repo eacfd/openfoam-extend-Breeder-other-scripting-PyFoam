@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.LogAnalysis package" href="PyFoam.LogAnalysis.html"/>
-        <link rel="next" title="PyFoam.LogAnalysis.FileLineAnalyzer module" href="PyFoam.LogAnalysis.FileLineAnalyzer.html"/>
-        <link rel="prev" title="PyFoam.LogAnalysis.ExecNameLineAnalyzer module" href="PyFoam.LogAnalysis.ExecNameLineAnalyzer.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.LogAnalysis.FileLineAnalyzer module" href="PyFoam.LogAnalysis.FileLineAnalyzer.html" />
+    <link rel="prev" title="PyFoam.LogAnalysis.ExecNameLineAnalyzer module" href="PyFoam.LogAnalysis.ExecNameLineAnalyzer.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,62 +182,115 @@
 <p>Check for Execution-Time information</p>
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.</code><code class="descname">ExecutionTimeLineAnalyzer</code><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#ExecutionTimeLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer" title="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.</code><code class="sig-name descname">ExecutionTimeLineAnalyzer</code><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#ExecutionTimeLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer" title="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer</span></code></a></p>
 <p>Parses lines for the execution time</p>
+<dl class="method">
+<dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#ExecutionTimeLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>titles</strong> – The titles of the data elements</p></li>
+<li><p><strong>progressTemplate</strong> – Progress output to be reported</p></li>
+<li><p><strong>plotIterations</strong> – plot iterations instead of the real time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.</code><code class="descname">GeneralExecutionLineAnalyzer</code><span class="sig-paren">(</span><em>doTimelines=True</em>, <em>doFiles=True</em>, <em>singleFile=False</em>, <em>startTime=None</em>, <em>endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.GeneralLineAnalyzer.html#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer" title="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.</code><code class="sig-name descname">GeneralExecutionLineAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">doTimelines=True</em>, <em class="sig-param">doFiles=True</em>, <em class="sig-param">singleFile=False</em>, <em class="sig-param">startTime=None</em>, <em class="sig-param">endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="PyFoam.LogAnalysis.GeneralLineAnalyzer.html#PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer" title="PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer</span></code></a></p>
 <p>Parses lines for the execution time</p>
 <dl class="method">
-<dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.addToFiles">
-<code class="descname">addToFiles</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.addToFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.addToFiles" title="Permalink to this definition">¶</a></dt>
+<dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">doTimelines=True</em>, <em class="sig-param">doFiles=True</em>, <em class="sig-param">singleFile=False</em>, <em class="sig-param">startTime=None</em>, <em class="sig-param">endTime=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>titles</strong> – The titles of the data elements</p></li>
+<li><p><strong>progressTemplate</strong> – Progress output to be reported</p></li>
+<li><p><strong>plotIterations</strong> – plot iterations instead of the real time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.addToFiles">
+<code class="sig-name descname">addToFiles</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.addToFiles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.addToFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that adds matched data to files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>match</strong> – data matched by a regular expression</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.addToTimelines">
-<code class="descname">addToTimelines</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.addToTimelines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.addToTimelines" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">addToTimelines</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.addToTimelines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.addToTimelines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method that adds matched data to timelines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>match</strong> – data matched by a regular expression</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.clockFirst">
-<code class="descname">clockFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.clockFirst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.clockFirst" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">clockFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.clockFirst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.clockFirst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Wall-Clock-Time of the first timestep</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.clockTotal">
-<code class="descname">clockTotal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.clockTotal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.clockTotal" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">clockTotal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.clockTotal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.clockTotal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the total Wall-Clock-Time</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.endAnalysis">
-<code class="descname">endAnalysis</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.endAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.endAnalysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">endAnalysis</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.endAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.endAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method at the end of a successfull match</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.resetFile">
-<code class="descname">resetFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.resetFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.resetFile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">resetFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.resetFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.resetFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restart the analysis because we’re using a new input file</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.startAnalysis">
-<code class="descname">startAnalysis</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.startAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.startAnalysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">startAnalysis</code><span class="sig-paren">(</span><em class="sig-param">match</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.startAnalysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.startAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method at the start of a successfull match</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.timeFirst">
-<code class="descname">timeFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.timeFirst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.timeFirst" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timeFirst</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.timeFirst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.timeFirst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the CPU-Time of the first timestep</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.timeTotal">
-<code class="descname">timeTotal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.timeTotal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.timeTotal" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">timeTotal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#GeneralExecutionLineAnalyzer.timeTotal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.timeTotal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the total CPU-Time</p>
 </dd></dl>
 
@@ -251,14 +298,33 @@
 
 <dl class="class">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer">
-<em class="property">class </em><code class="descclassname">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.</code><code class="descname">TimeLineExecutionTimeLineAnalyzer</code><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#TimeLineExecutionTimeLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer" title="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer"><code class="xref py py-class docutils literal"><span class="pre">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer</span></code></a></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.</code><code class="sig-name descname">TimeLineExecutionTimeLineAnalyzer</code><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#TimeLineExecutionTimeLineAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer" title="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer</span></code></a></p>
 <p>Parses lines for the execution time</p>
+<dl class="method">
+<dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#TimeLineExecutionTimeLineAnalyzer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>titles</strong> – The titles of the data elements</p></li>
+<li><p><strong>progressTemplate</strong> – Progress output to be reported</p></li>
+<li><p><strong>plotIterations</strong> – plot iterations instead of the real time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer'</em><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="function">
 <dt id="PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.executionRegexp">
-<code class="descclassname">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.</code><code class="descname">executionRegexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#executionRegexp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.executionRegexp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.</code><code class="sig-name descname">executionRegexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/LogAnalysis/ExecutionTimeLineAnalyzer.html#executionRegexp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.executionRegexp" title="Permalink to this definition">¶</a></dt>
 <dd><p>&#64;Return: The regular expression that parses the execution time
 depending on the OpenFOAM-Version</p>
 </dd></dl>
@@ -267,9 +333,7 @@ depending on the OpenFOAM-Version</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -278,7 +342,7 @@ depending on the OpenFOAM-Version</p>
         <a href="PyFoam.LogAnalysis.FileLineAnalyzer.html" class="btn btn-neutral float-right" title="PyFoam.LogAnalysis.FileLineAnalyzer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.LogAnalysis.ExecNameLineAnalyzer.html" class="btn btn-neutral" title="PyFoam.LogAnalysis.ExecNameLineAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.LogAnalysis.ExecNameLineAnalyzer.html" class="btn btn-neutral float-left" title="PyFoam.LogAnalysis.ExecNameLineAnalyzer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -287,11 +351,11 @@ depending on the OpenFOAM-Version</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -304,36 +368,15 @@ depending on the OpenFOAM-Version</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

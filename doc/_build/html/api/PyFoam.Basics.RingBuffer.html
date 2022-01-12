@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PyFoam 0.6.11-development documentation" href="../index.html"/>
-        <link rel="up" title="PyFoam.Basics package" href="PyFoam.Basics.html"/>
-        <link rel="next" title="PyFoam.Basics.RunDatabase module" href="PyFoam.Basics.RunDatabase.html"/>
-        <link rel="prev" title="PyFoam.Basics.RestructuredTextHelper module" href="PyFoam.Basics.RestructuredTextHelper.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PyFoam.Basics.RunDatabase module" href="PyFoam.Basics.RunDatabase.html" />
+    <link rel="prev" title="PyFoam.Basics.RestructuredTextHelper module" href="PyFoam.Basics.RestructuredTextHelper.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -125,7 +118,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyFoam</a>
@@ -133,9 +126,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,41 +182,61 @@
 <p>A ring-buffer data structure</p>
 <dl class="class">
 <dt id="PyFoam.Basics.RingBuffer.RingBuffer">
-<em class="property">class </em><code class="descclassname">PyFoam.Basics.RingBuffer.</code><code class="descname">RingBuffer</code><span class="sig-paren">(</span><em>nr=1000</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="sig-prename descclassname">PyFoam.Basics.RingBuffer.</code><code class="sig-name descname">RingBuffer</code><span class="sig-paren">(</span><em class="sig-param">nr=1000</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A data structure that stores a number N of elements. The
 N+1-element overwrites the first and so on ….</p>
+<dl class="attribute">
+<dt id="PyFoam.Basics.RingBuffer.RingBuffer.__dict__">
+<code class="sig-name descname">__dict__</code><em class="property"> = mappingproxy({'__module__': 'PyFoam.Basics.RingBuffer', '__doc__': 'A data structure that stores a number N of elements. The\n    N+1-element overwrites the first and so on ....', '__init__': &lt;function RingBuffer.__init__&gt;, 'insert': &lt;function RingBuffer.insert&gt;, 'last': &lt;function RingBuffer.last&gt;, 'dump': &lt;function RingBuffer.dump&gt;, '__dict__': &lt;attribute '__dict__' of 'RingBuffer' objects&gt;, '__weakref__': &lt;attribute '__weakref__' of 'RingBuffer' objects&gt;})</em><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="PyFoam.Basics.RingBuffer.RingBuffer.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">nr=1000</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nr</strong> – Number of elements to store</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.RingBuffer.RingBuffer.__module__">
+<code class="sig-name descname">__module__</code><em class="property"> = 'PyFoam.Basics.RingBuffer'</em><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="PyFoam.Basics.RingBuffer.RingBuffer.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="PyFoam.Basics.RingBuffer.RingBuffer.dump">
-<code class="descname">dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer.dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.dump" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list with all the values in the ring buffer in the correct order</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer.dump"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.dump" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list with all the values in the ring buffer in the correct order</p>
+</dd>
+</dl>
 <p>(starting with the oldest)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.RingBuffer.RingBuffer.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><em>dings</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.insert" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param">dings</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inserts am element into the ring-buffer</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="PyFoam.Basics.RingBuffer.RingBuffer.last">
-<code class="descname">last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer.last"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.last" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the latest element in the buffer, None if</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">last</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/PyFoam/Basics/RingBuffer.html#RingBuffer.last"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyFoam.Basics.RingBuffer.RingBuffer.last" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the latest element in the buffer, None if</p>
+</dd>
+</dl>
 <p>nothing was inserted into the buffer</p>
 </dd></dl>
 
@@ -232,9 +246,7 @@ N+1-element overwrites the first and so on ….</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -243,7 +255,7 @@ N+1-element overwrites the first and so on ….</p>
         <a href="PyFoam.Basics.RunDatabase.html" class="btn btn-neutral float-right" title="PyFoam.Basics.RunDatabase module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="PyFoam.Basics.RestructuredTextHelper.html" class="btn btn-neutral" title="PyFoam.Basics.RestructuredTextHelper module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PyFoam.Basics.RestructuredTextHelper.html" class="btn btn-neutral float-left" title="PyFoam.Basics.RestructuredTextHelper module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -252,11 +264,11 @@ N+1-element overwrites the first and so on ….</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Bernhard F.W. Gschaider.
+        &copy; Copyright 2019, Bernhard F.W. Gschaider
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -269,36 +281,15 @@ N+1-element overwrites the first and so on ….</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.6.11-development',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

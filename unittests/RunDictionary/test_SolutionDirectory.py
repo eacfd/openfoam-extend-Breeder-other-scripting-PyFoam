@@ -6,9 +6,9 @@ from PyFoam.RunDictionary.TimeDirectory import TimeDirectory
 
 from PyFoam.FoamInformation import foamTutorials
 
-from os import path,environ,system
+from os import path, environ, system, rename
 from tempfile import mkdtemp
-from shutil import rmtree,copytree
+from shutil import rmtree, copytree
 
 from .test_TimeDirectory import damBreakTutorial
 
@@ -21,6 +21,12 @@ class SolutionDirectoryTest(unittest.TestCase):
         self.theDir=mkdtemp()
         self.theFile=path.join(self.theDir,"damBreak")
         copytree(damBreakTutorial(),self.theFile)
+
+        oldZero = path.join(self.theFile, "0")
+        newZero = path.join(self.theFile, "0.orig")
+
+        if not path.exists(oldZero) and path.exists(newZero):
+            rename(newZero, oldZero)
 
     def tearDown(self):
         rmtree(self.theDir)
@@ -75,7 +81,7 @@ def test_SolutionDirectoryMultiRegionTest(setupHeater):
     assert type(td)==TimeDirectory
     assert len(td)==7
     assert sol.missingFiles()==[]
-    assert sol.nrProcs()==0
+    assert sol.nrProcs()==1
     assert sol.getParallelTimes()==[]
 
     assert path.basename(sol.latestDir())=="0"
@@ -88,7 +94,7 @@ def test_SolutionDirectoryMultiRegionTest(setupHeater):
     solTop=SolutionDirectory(".",region="topAir")
     assert solTop.isValid()
     assert solTop.missingFiles()==[]
-    assert solTop.nrProcs()==0
+    assert solTop.nrProcs()==1
 
     assert sol.controlDict()==solTop.controlDict()
     assert sol.systemDir()!=solTop.systemDir()
